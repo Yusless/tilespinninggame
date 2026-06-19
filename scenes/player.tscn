@@ -25,9 +25,10 @@ position = Vector2(0, -13)
 shape = SubResource("CircleShape2D_jq8tk")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=112002694]
+z_index = 1
 position = Vector2(-9.536743e-07, -12.000001)
-scale = Vector2(1.125, 1.1249999)
 sprite_frames = SubResource("SpriteFrames_3xd07")
 animation = &"idle"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1319108064]
+zoom = Vector2(1.2, 1.2)

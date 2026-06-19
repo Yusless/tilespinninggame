@@ -1,8 +1,10 @@
 [gd_scene format=4 uid="uid://bic5v8bsj303"]
 
-[ext_resource type="Script" uid="uid://b6g2gy5046og5" path="res://scenes/main_scene.gd" id="1_7ykc4"]
 [ext_resource type="Texture2D" uid="uid://dijrcbj2jmakg" path="res://assets/tilemap.png" id="1_pw63i"]
 [ext_resource type="PackedScene" uid="uid://c5bhx5utsovbg" path="res://scenes/player.tscn" id="1_w2twt"]
+[ext_resource type="Script" uid="uid://cvbxoliwiw2oe" path="res://scenes/tile_map_layer.gd" id="2_gubc5"]
+[ext_resource type="Script" uid="uid://c52h00sukof0w" path="res://scripts/cells_register.gd" id="3_7ykc4"]
+[ext_resource type="Script" uid="uid://cq0gyl52d5nre" path="res://scenes/map_system.gd" id="4_rt2n2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7ykc4"]
 texture = ExtResource("1_pw63i")
@@ -13,15 +15,21 @@ texture_region_size = Vector2i(32, 32)
 0:1/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_3xd07"]
-tile_size = Vector2i(320, 320)
+tile_size = Vector2i(280, 280)
 sources/0 = SubResource("TileSetAtlasSource_7ykc4")
 
 [node name="MainScene" type="Node" unique_id=2095065835]
-script = ExtResource("1_7ykc4")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=934223199]
 tile_map_data = PackedByteArray("AAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD//wAAAAAAAAAAAAD/////AAAAAAAAAAAAAP//AAAAAAAAAAABAP//AAAAAAAAAAABAP7/AAAAAAAAAAD///7/AAAAAAAAAAAAAP7/AAAAAAAAAAA=")
 tile_set = SubResource("TileSet_3xd07")
+script = ExtResource("2_gubc5")
 
 [node name="Player" parent="." unique_id=251603508 instance=ExtResource("1_w2twt")]
-position = Vector2(10, -1)
+position = Vector2(151, -136)
+
+[node name="MapSystem" type="Node" parent="." unique_id=2095547045]
+script = ExtResource("4_rt2n2")
+
+[node name="CellsRegister" type="Node2D" parent="." unique_id=280263883]
+script = ExtResource("3_7ykc4")
