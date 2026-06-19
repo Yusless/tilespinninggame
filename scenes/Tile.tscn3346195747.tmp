@@ -62,18 +62,9 @@ b = Vector2(-4, -17)
 a = Vector2(4, -17)
 b = Vector2(19, -17)
 
-[node name="Tile" type="Node2D" unique_id=1779673374 node_paths=PackedStringArray("up_bridge_collision", "right_bridge_collision", "down_bridge_collision", "left_bridge_collision")]
+[node name="Tile" type="Node2D" unique_id=1779673374]
 script = ExtResource("1_vhibn")
-has_bridges = {
-"down": false,
-"left": false,
-"right": true,
-"up": false
-}
-up_bridge_collision = NodePath("StaticBody2D/UpperMidBorder")
-right_bridge_collision = NodePath("StaticBody2D/RightMidBorder")
-down_bridge_collision = NodePath("StaticBody2D/DownMidBorder")
-left_bridge_collision = NodePath("StaticBody2D/LeftMidBorder")
+has_bridges = []
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1475120105]
 sprite_frames = SubResource("SpriteFrames_3xd07")

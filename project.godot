@@ -45,6 +45,11 @@ move_down={
 ]
 }
 
+[layer_names]
+
+2d_render/layer_1="water_walls"
+2d_render/layer_2="player"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"
