@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://dhfxsclatflk7"]
+
+[ext_resource type="Texture2D" uid="uid://ceixrm6nxybr6" path="res://assets/tile1.png" id="1_2sjy5"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3xd07"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_2sjy5")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Tile" type="Node2D" unique_id=1779673374]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1475120105]
+sprite_frames = SubResource("SpriteFrames_3xd07")
