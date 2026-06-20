@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://02f72d0pgon"
-path="res://.godot/imported/boomerang.png-f2a10ab78c245852451ded34d1d3bde1.ctex"
+uid="uid://vadmxyflk13v"
+path="res://.godot/imported/bridge_right.png-341d199561ec795e117f8ff2711f7763.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/graphics/boomerang.png"
-dest_files=["res://.godot/imported/boomerang.png-f2a10ab78c245852451ded34d1d3bde1.ctex"]
+source_file="res://assets/bridge_right.png"
+dest_files=["res://.godot/imported/bridge_right.png-341d199561ec795e117f8ff2711f7763.ctex"]
 
 [params]
 
