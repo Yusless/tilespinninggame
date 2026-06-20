@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://ccj1l3ms32as7"]
+
+[ext_resource type="Script" uid="uid://dcicdw0afe04b" path="res://scripts/boomerang.gd" id="1_wt5k1"]
+[ext_resource type="Texture2D" uid="uid://02f72d0pgon" path="res://assets/graphics/boomerang.png" id="2_y75ew"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kg37j"]
+size = Vector2(18, 18)
+
+[node name="Boomerang" type="CharacterBody2D" unique_id=864464630 node_paths=PackedStringArray("sprite", "hitbox")]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_wt5k1")
+sprite = NodePath("Sprite")
+hitbox = NodePath("Hitbox")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=2129376263]
+texture = ExtResource("2_y75ew")
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=1438122726]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1565320733]
+shape = SubResource("RectangleShape2D_kg37j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1939043812]
+visible = false
+shape = SubResource("RectangleShape2D_kg37j")
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

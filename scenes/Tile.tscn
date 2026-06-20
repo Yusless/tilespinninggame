@@ -16,4 +16,7 @@ animations = [{
 [node name="Tile" type="Node2D" unique_id=1779673374]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1475120105]
+visible = false
 sprite_frames = SubResource("SpriteFrames_3xd07")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1715584999]
