@@ -47,3 +47,5 @@ func check_for_completed_bridges(bridge_instance,border):
 	if get_parent().neighbours.get(border):
 		if get_parent().neighbours.get(border).find_child("border_component").borders.get(opposite) == border_types.bridge:
 			bridge_instance.find_child("MidPart").disabled = true
+		else: 
+			bridge_instance.find_child("MidPart").disabled = false

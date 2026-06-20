@@ -12,6 +12,12 @@ enum border_types {
 	bridge
 }
 
+var opposite_dict = {"up": "down",
+				"right": "left",
+				"down": "up",
+				"left": "right"
+}
+
 const DIST_BETWEEN_TILES = 285
 
 var neighbours = {"up":null,
@@ -64,4 +70,8 @@ func place_yourself() -> void:
 func rotate_self():
 	border_c.rotate_borders()
 	visual_c.draw_bridges()
+	for neighbour in neighbours:
+		print(neighbours.get(neighbour))
+		if neighbours.get(neighbour) and neighbours.get(neighbour).get_node(opposite_dict.get(neighbour) + "Bridge"):
+			neighbours.get(neighbour).visual_c.check_for_completed_bridges(neighbours.get(neighbour).get_node(opposite_dict.get(neighbour) + "Bridge"), opposite_dict.get(neighbour))
 	remove_colissions()
