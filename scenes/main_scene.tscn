@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://c52h00sukof0w" path="res://scripts/cells_system.gd" id="3_7ykc4"]
 [ext_resource type="PackedScene" uid="uid://bg883sbyv044c" path="res://scenes/tiles/border_component.tscn" id="4_gubc5"]
 [ext_resource type="PackedScene" uid="uid://dhfxsclatflk7" path="res://scenes/tiles/Tile.tscn" id="4_pu3yx"]
+[ext_resource type="PackedScene" uid="uid://crdvmqfwg720o" path="res://scenes/tiles/visual_component.tscn" id="5_rt2n2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rt2n2"]
 texture = ExtResource("1_gubc5")
@@ -32,10 +33,15 @@ script = ExtResource("3_7ykc4")
 position = Vector2(0, 1)
 
 [node name="border_component" parent="CellsSystem/Tile" unique_id=1884247040 instance=ExtResource("4_gubc5")]
+left_border = 2
 right_border = 2
+
+[node name="visual_component" parent="CellsSystem/Tile" unique_id=440603332 instance=ExtResource("5_rt2n2")]
 
 [node name="Tile2" parent="CellsSystem" unique_id=1831295897 instance=ExtResource("4_pu3yx")]
 position = Vector2(286, 0)
+
+[node name="visual_component" parent="CellsSystem/Tile2" unique_id=1088811670 instance=ExtResource("5_rt2n2")]
 
 [node name="border_component" parent="CellsSystem/Tile2" unique_id=840157777 instance=ExtResource("4_gubc5")]
 left_border = 2
@@ -46,8 +52,14 @@ position = Vector2(577, 2)
 [node name="border_component" parent="CellsSystem/Tile3" unique_id=1921008639 instance=ExtResource("4_gubc5")]
 left_border = 2
 
+[node name="visual_component" parent="CellsSystem/Tile3" unique_id=1358539127 instance=ExtResource("5_rt2n2")]
+
 [node name="Tile4" parent="CellsSystem" unique_id=113809720 instance=ExtResource("4_pu3yx")]
-position = Vector2(280, 288)
+position = Vector2(-2, 293)
+
+[node name="border_component" parent="CellsSystem/Tile4" unique_id=380480855 instance=ExtResource("4_gubc5")]
+
+[node name="visual_component" parent="CellsSystem/Tile4" unique_id=1953142481 instance=ExtResource("5_rt2n2")]
 
 [node name="Tile5" parent="CellsSystem" unique_id=306828586 instance=ExtResource("4_pu3yx")]
 position = Vector2(571, 294)
@@ -56,3 +68,5 @@ position = Vector2(571, 294)
 left_border = 1
 up_border = 1
 right_border = 2
+
+[node name="visual_component" parent="CellsSystem/Tile5" unique_id=730074647 instance=ExtResource("5_rt2n2")]

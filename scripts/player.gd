@@ -12,7 +12,7 @@ func _input(event: InputEvent) -> void:
 		var dir_to_mouse := global_position.direction_to(get_global_mouse_position())
 		boomerang.launch(global_position, dir_to_mouse.angle(), velocity)
 		
-		get_parent().find_child("CellsSystem").get_child(-1).rotate_self()
+		get_parent().find_child("CellsSystem").find_child("Tile").rotate_self()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:

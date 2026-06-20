@@ -5,50 +5,50 @@
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_jq8tk"]
 a = Vector2(-120, -121)
-b = Vector2(-30, -121)
+b = Vector2(-14, -121)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_cdwd0"]
-a = Vector2(30, -121)
-b = Vector2(-30, -121)
+a = Vector2(14, -121)
+b = Vector2(-14, -121)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_t7n2i"]
-a = Vector2(30, -121)
+a = Vector2(14, -121)
 b = Vector2(120, -121)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_r3gf4"]
 a = Vector2(-120, -121)
-b = Vector2(-30, -121)
+b = Vector2(-14, -121)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_rvdvl"]
-a = Vector2(30, -121)
-b = Vector2(-30, -121)
+a = Vector2(14, -121)
+b = Vector2(-14, -121)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_ukgqd"]
-a = Vector2(30, -121)
+a = Vector2(14, -121)
 b = Vector2(120, -121)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_esqu7"]
 a = Vector2(-120, -121)
-b = Vector2(-30, -121)
+b = Vector2(-14, -121)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_1g878"]
-a = Vector2(30, -121)
-b = Vector2(-30, -121)
+a = Vector2(14, -121)
+b = Vector2(-14, -121)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_1m54g"]
-a = Vector2(30, -121)
+a = Vector2(14, -121)
 b = Vector2(120, -121)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_5f4kx"]
 a = Vector2(-120, -121)
-b = Vector2(-30, -121)
+b = Vector2(-14, -121)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_1ipp3"]
-a = Vector2(30, -121)
-b = Vector2(-30, -121)
+a = Vector2(14, -121)
+b = Vector2(-14, -121)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_o7uur"]
-a = Vector2(30, -121)
+a = Vector2(14, -121)
 b = Vector2(120, -121)
 
 [node name="Tile" type="Node2D" unique_id=1779673374 node_paths=PackedStringArray("up_bridge_collision", "right_bridge_collision", "down_bridge_collision", "left_bridge_collision")]

@@ -5,7 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://ccj1l3ms32as7" path="res://scenes/player/boomerang.tscn" id="3_qhqgy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jq8tk"]
-radius = 13.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3xd07"]
 animations = [{
@@ -39,9 +38,9 @@ animation = &"idle"
 
 [node name="Boomerang" parent="." unique_id=864464630 instance=ExtResource("3_qhqgy")]
 visible = false
-position = Vector2(11, -16)
+position = Vector2(12, -16)
 
-[node name="Hitbox" type="Area2D" parent="." unique_id=1610626716 groups=["Player"]]
+[node name="Hitbox" type="Area2D" parent="." unique_id=1610626716]
 collision_layer = 2
 collision_mask = 0
 

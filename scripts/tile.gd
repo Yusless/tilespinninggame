@@ -12,7 +12,7 @@ enum border_types {
 	bridge
 }
 
-const DIST_BETWEEN_TILES = 280
+const DIST_BETWEEN_TILES = 285
 
 var neighbours = {"up":null,
 				"right":null,
@@ -20,12 +20,10 @@ var neighbours = {"up":null,
 				"left":null
 }
 
+var border_c
+var visual_c
+
 @export var tile_type = tile_types.hub
-var borders = { "up": border_types.nothing,
-				"right": border_types.nothing,
-				"down": border_types.nothing,
-				"left": border_types.nothing
-							}
 
 @export var up_bridge_collision = CollisionShape2D
 @export var right_bridge_collision = CollisionShape2D
@@ -34,19 +32,20 @@ var borders = { "up": border_types.nothing,
 
 var bridges_collisions = {}
 
-func _ready() -> void:
+func _ready() -> void:	
+	border_c = find_child("border_component")
+	visual_c = find_child("visual_component")
 	bridges_collisions = {"up": up_bridge_collision,
 						"right": right_bridge_collision,
 						"down": down_bridge_collision,
 						"left": left_bridge_collision
 						}
-	borders = component_data_to_border_data()
 	place_yourself()
 	remove_colissions()
 
 func remove_colissions() -> void:
 	for bridge_collision in bridges_collisions:
-		if borders.get(bridge_collision) == border_types.bridge:
+		if border_c.borders.get(bridge_collision) == border_types.bridge:
 			bridges_collisions.get(bridge_collision).disabled = true
 		else:
 			bridges_collisions.get(bridge_collision).disabled = false
@@ -62,17 +61,7 @@ func place_yourself() -> void:
 	position.x = pos_x * DIST_BETWEEN_TILES
 	position.y = pos_y * DIST_BETWEEN_TILES
 	
-	
-func component_data_to_border_data():
-	if find_child("border_component"):
-		return find_child("border_component").create_dict_from_export()
-	return borders
-	
 func rotate_self():
-	var temp = borders.get("up")
-	borders.set("up", borders.get("left"))
-	borders.set("left", borders.get("down"))
-	borders.set("down", borders.get("right"))
-	borders.set("right", temp)
+	border_c.rotate_borders()
+	visual_c.draw_bridges()
 	remove_colissions()
-	
