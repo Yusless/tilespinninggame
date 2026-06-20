@@ -11,6 +11,8 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("attack") and !boomerang.launched:
 		var dir_to_mouse := global_position.direction_to(get_global_mouse_position())
 		boomerang.launch(global_position, dir_to_mouse.angle(), velocity)
+		
+		get_parent().find_child("CellsSystem").get_child(-1).rotate_self()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:

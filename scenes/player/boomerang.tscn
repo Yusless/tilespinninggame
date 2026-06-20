@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://ccj1l3ms32as7"]
 
 [ext_resource type="Script" uid="uid://dcicdw0afe04b" path="res://scripts/boomerang.gd" id="1_wt5k1"]
-[ext_resource type="Texture2D" uid="uid://02f72d0pgon" path="res://assets/graphics/boomerang.png" id="2_y75ew"]
+[ext_resource type="Texture2D" uid="uid://02f72d0pgon" path="res://assets/graphics/player graphics/boomerang.png" id="2_y75ew"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kg37j"]
 size = Vector2(18, 18)

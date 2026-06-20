@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dhfxsclatflk7"]
 
-[ext_resource type="Script" uid="uid://dfv1bmacg8ufl" path="res://scripts/tile.gd" id="1_vhibn"]
-[ext_resource type="PackedScene" uid="uid://blusdwlfchhx7" path="res://assets/graphics/tile_visuals.tscn" id="2_vhibn"]
+[ext_resource type="Script" uid="uid://dfv1bmacg8ufl" path="res://scripts/tile.gd" id="1_h3aqd"]
+[ext_resource type="PackedScene" uid="uid://blusdwlfchhx7" path="res://assets/graphics/tile graphics/tile_visuals.tscn" id="2_lpyr5"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_jq8tk"]
 a = Vector2(-120, -121)
@@ -52,13 +52,13 @@ a = Vector2(30, -121)
 b = Vector2(120, -121)
 
 [node name="Tile" type="Node2D" unique_id=1779673374 node_paths=PackedStringArray("up_bridge_collision", "right_bridge_collision", "down_bridge_collision", "left_bridge_collision")]
-script = ExtResource("1_vhibn")
+script = ExtResource("1_h3aqd")
 up_bridge_collision = NodePath("StaticBody2D/UpperMidBorder")
 right_bridge_collision = NodePath("StaticBody2D/RightMidBorder")
 down_bridge_collision = NodePath("StaticBody2D/DownMidBorder")
 left_bridge_collision = NodePath("StaticBody2D/LeftMidBorder")
 
-[node name="TileVisuals" parent="." unique_id=1337787306 instance=ExtResource("2_vhibn")]
+[node name="TileVisuals" parent="." unique_id=1337787306 instance=ExtResource("2_lpyr5")]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1553304571]
 

@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://c5bhx5utsovbg"]
 
-[ext_resource type="Texture2D" uid="uid://cpnfujqcoahvh" path="res://assets/player.png" id="1_3vyb7"]
+[ext_resource type="Texture2D" uid="uid://cpnfujqcoahvh" path="res://assets/graphics/player graphics/player.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://xvje5h6ttbty" path="res://scripts/player.gd" id="1_g2els"]
-[ext_resource type="PackedScene" uid="uid://ccj1l3ms32as7" path="res://player/boomerang.tscn" id="3_qhqgy"]
+[ext_resource type="PackedScene" uid="uid://ccj1l3ms32as7" path="res://scenes/player/boomerang.tscn" id="3_qhqgy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jq8tk"]
 radius = 13.0

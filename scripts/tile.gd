@@ -14,11 +14,17 @@ enum border_types {
 
 const DIST_BETWEEN_TILES = 280
 
+var neighbours = {"up":null,
+				"right":null,
+				"down":null,
+				"left":null
+}
+
 @export var tile_type = tile_types.hub
 var borders = { "up": border_types.nothing,
-							"right": border_types.nothing,
-							"down": border_types.nothing,
-							"left": border_types.nothing
+				"right": border_types.nothing,
+				"down": border_types.nothing,
+				"left": border_types.nothing
 							}
 
 @export var up_bridge_collision = CollisionShape2D
@@ -34,15 +40,16 @@ func _ready() -> void:
 						"down": down_bridge_collision,
 						"left": left_bridge_collision
 						}
+	borders = component_data_to_border_data()
 	place_yourself()
 	remove_colissions()
 
 func remove_colissions() -> void:
-	component_data_to_border_data()
 	for bridge_collision in bridges_collisions:
-		borders = component_data_to_border_data()
 		if borders.get(bridge_collision) == border_types.bridge:
 			bridges_collisions.get(bridge_collision).disabled = true
+		else:
+			bridges_collisions.get(bridge_collision).disabled = false
 
 
 func place_yourself() -> void:
@@ -60,3 +67,12 @@ func component_data_to_border_data():
 	if find_child("border_component"):
 		return find_child("border_component").create_dict_from_export()
 	return borders
+	
+func rotate_self():
+	var temp = borders.get("up")
+	borders.set("up", borders.get("left"))
+	borders.set("left", borders.get("down"))
+	borders.set("down", borders.get("right"))
+	borders.set("right", temp)
+	remove_colissions()
+	
