@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dcicdw0afe04b" path="res://scripts/boomerang.gd" id="1_wt5k1"]
 [ext_resource type="Texture2D" uid="uid://02f72d0pgon" path="res://assets/graphics/boomerang.png" id="2_y75ew"]
+[ext_resource type="Script" uid="uid://drkvcnbwm8ot3" path="res://components/attack_component.gd" id="3_c7gwn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kg37j"]
 size = Vector2(18, 18)
@@ -16,9 +17,12 @@ hitbox = NodePath("Hitbox")
 [node name="Sprite" type="Sprite2D" parent="." unique_id=2129376263]
 texture = ExtResource("2_y75ew")
 
-[node name="Hitbox" type="Area2D" parent="." unique_id=1438122726]
+[node name="Hitbox" type="Area2D" parent="." unique_id=807933109]
 collision_layer = 4
 collision_mask = 2
+script = ExtResource("3_c7gwn")
+damage = 2
+metadata/_custom_type_script = "uid://drkvcnbwm8ot3"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1565320733]
 shape = SubResource("RectangleShape2D_kg37j")

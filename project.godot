@@ -18,8 +18,8 @@ config/icon="res://assets/icon.svg"
 
 [display]
 
-window/size/viewport_width=640
-window/size/viewport_height=360
+window/size/viewport_width=480
+window/size/viewport_height=270
 window/size/mode=3
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
@@ -60,6 +60,10 @@ attack={
 
 2d_render/layer_1="water_walls"
 2d_render/layer_2="player"
+2d_physics/layer_2="player"
+2d_physics/layer_3="player_attacks"
+2d_physics/layer_4="enemies"
+2d_physics/layer_5="enemy_attacks"
 
 [physics]
 
