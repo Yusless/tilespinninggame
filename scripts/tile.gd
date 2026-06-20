@@ -33,4 +33,3 @@ func check_for_bridges():
 	for bridge_collision in bridges_collisions:
 		if has_bridges.get(bridge_collision):
 			bridges_collisions.get(bridge_collision).disabled = true
-	
