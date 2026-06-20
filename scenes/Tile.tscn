@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c0l63n1xdgh7p" path="res://scripts/tile.gd" id="1_vhibn"]
 [ext_resource type="PackedScene" uid="uid://blusdwlfchhx7" path="res://assets/graphics/tile_visuals.tscn" id="2_vhibn"]
+[ext_resource type="PackedScene" uid="uid://dojvj3gokqoqk" path="res://natural_resources/wheat.tscn" id="3_r3gf4"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_jq8tk"]
 a = Vector2(-120, -121)
@@ -107,3 +108,6 @@ shape = SubResource("SegmentShape2D_1ipp3")
 [node name="LeftRightBorder" type="CollisionShape2D" parent="StaticBody2D" unique_id=1463410384]
 rotation = 4.712389
 shape = SubResource("SegmentShape2D_o7uur")
+
+[node name="Wheat" parent="." unique_id=173354698 instance=ExtResource("3_r3gf4")]
+position = Vector2(82, 19)

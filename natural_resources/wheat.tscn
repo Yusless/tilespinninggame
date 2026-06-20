@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://dojvj3gokqoqk"]
+
+[ext_resource type="Script" uid="uid://dbsn27wpp5q4p" path="res://natural_resources/natural_resource_node.gd" id="1_gwl5s"]
+[ext_resource type="Resource" uid="uid://c3xr3hu8jlinu" path="res://natural_resources/wheat_resource.tres" id="2_skmqv"]
+[ext_resource type="Script" uid="uid://nno1v8gxy1x8" path="res://components/health_component.gd" id="2_wtba6"]
+[ext_resource type="Script" uid="uid://drtj3bknkeioh" path="res://components/hurtbox_component.gd" id="3_skmqv"]
+[ext_resource type="Texture2D" uid="uid://cucejsxyki48h" path="res://assets/graphics/wheat_placeholder.png" id="4_2byp2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kg37j"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r6an1"]
+atlas = ExtResource("4_2byp2")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ebd77"]
+atlas = ExtResource("4_2byp2")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kg37j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r6an1")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ebd77")
+}],
+"loop": 1,
+"name": &"harvested",
+"speed": 5.0
+}]
+
+[node name="Wheat" type="Node2D" unique_id=173354698 node_paths=PackedStringArray("health_component", "collectable_origin", "sprite")]
+script = ExtResource("1_gwl5s")
+resource = ExtResource("2_skmqv")
+health_component = NodePath("HealthComponent")
+collectable_origin = NodePath("CollectableOrigin")
+sprite = NodePath("Sprite")
+
+[node name="HealthComponent" type="Node" parent="." unique_id=992880836]
+script = ExtResource("2_wtba6")
+max_health = 1
+metadata/_custom_type_script = "uid://nno1v8gxy1x8"
+
+[node name="HurtboxComponent" type="Area2D" parent="." unique_id=1985610439 node_paths=PackedStringArray("health_component")]
+collision_layer = 32
+collision_mask = 4
+script = ExtResource("3_skmqv")
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" unique_id=756006451]
+shape = SubResource("RectangleShape2D_kg37j")
+debug_color = Color(1.6364455e-06, 0.6465062, 0.24281707, 0.41960785)
+
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=262051222]
+sprite_frames = SubResource("SpriteFrames_kg37j")
+animation = &"harvested"
+
+[node name="CollectableOrigin" type="Marker2D" parent="." unique_id=1246272587]
+visible = false

@@ -4,8 +4,16 @@
 [ext_resource type="Script" uid="uid://c52h00sukof0w" path="res://scripts/cells_system.gd" id="3_7ykc4"]
 [ext_resource type="PackedScene" uid="uid://bg883sbyv044c" path="res://scenes/border_component.tscn" id="4_gubc5"]
 [ext_resource type="PackedScene" uid="uid://dhfxsclatflk7" path="res://scenes/Tile.tscn" id="4_pu3yx"]
+[ext_resource type="Script" uid="uid://duuyi4e3d3ipw" path="res://natural_resources/resource_manager.gd" id="5_c16ls"]
+[ext_resource type="Script" uid="uid://36bx0jkgt0vc" path="res://natural_resources/natural_resource.gd" id="6_18nlu"]
+[ext_resource type="Resource" uid="uid://c3xr3hu8jlinu" path="res://natural_resources/wheat_resource.tres" id="7_c1pb6"]
+[ext_resource type="PackedScene" uid="uid://bjtqir2jwep7s" path="res://hud/hud.tscn" id="8_18nlu"]
 
 [node name="MainScene" type="Node" unique_id=2095065835]
+
+[node name="ResourceManager" type="Node" parent="." unique_id=84701733 groups=["Managers"]]
+script = ExtResource("5_c16ls")
+available_resources = Array[ExtResource("6_18nlu")]([ExtResource("7_c1pb6")])
 
 [node name="Player" parent="." unique_id=251603508 instance=ExtResource("1_w2twt")]
 position = Vector2(1, 11)
@@ -33,3 +41,7 @@ position = Vector2(280, 288)
 
 [node name="Tile5" parent="CellsSystem" unique_id=306828586 instance=ExtResource("4_pu3yx")]
 position = Vector2(286, -295)
+
+[node name="GUILayer" type="CanvasLayer" parent="." unique_id=587643093]
+
+[node name="HUD" parent="GUILayer" unique_id=1161228326 instance=ExtResource("8_18nlu")]
