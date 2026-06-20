@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://blusdwlfchhx7"]
 
 [ext_resource type="Script" uid="uid://c4rr2vivlxd3k" path="res://assets/graphics/tile_visuals.gd" id="1_fna84"]
-[ext_resource type="TileSet" uid="uid://2s1f4ntvo15j" path="res://assets/tile_set_grass.tres" id="2_tuy25"]
+[ext_resource type="TileSet" uid="uid://2s1f4ntvo15j" path="res://assets/graphics/tile_set_grass.tres" id="2_tuy25"]
 
 [node name="TileVisuals" type="Node2D" unique_id=1337787306 node_paths=PackedStringArray("tile_map_ground", "tile_map_details", "tile_map_texture")]
 z_index = -1
