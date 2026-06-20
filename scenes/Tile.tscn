@@ -53,12 +53,6 @@ b = Vector2(120, -121)
 
 [node name="Tile" type="Node2D" unique_id=1779673374 node_paths=PackedStringArray("up_bridge_collision", "right_bridge_collision", "down_bridge_collision", "left_bridge_collision")]
 script = ExtResource("1_vhibn")
-has_bridges = {
-"down": true,
-"left": true,
-"right": true,
-"up": true
-}
 up_bridge_collision = NodePath("StaticBody2D/UpperMidBorder")
 right_bridge_collision = NodePath("StaticBody2D/RightMidBorder")
 down_bridge_collision = NodePath("StaticBody2D/DownMidBorder")
