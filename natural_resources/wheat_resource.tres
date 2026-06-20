@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="NaturalResource" format=3 uid="uid://c3xr3hu8jlinu"]
+
+[ext_resource type="Script" uid="uid://36bx0jkgt0vc" path="res://natural_resources/natural_resource.gd" id="1_mj7v3"]
+
+[resource]
+script = ExtResource("1_mj7v3")
+metadata/_custom_type_script = "uid://36bx0jkgt0vc"

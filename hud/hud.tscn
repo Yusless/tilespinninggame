@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://bjtqir2jwep7s"]
+
+[ext_resource type="PackedScene" uid="uid://cqe4c2cnhc5f5" path="res://hud/resource_counter.tscn" id="1_6ca3a"]
+[ext_resource type="Resource" uid="uid://c3xr3hu8jlinu" path="res://natural_resources/wheat_resource.tres" id="2_2gk58"]
+
+[node name="HUD" type="Control" unique_id=1161228326]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1989892583]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ResourceCounters" type="VBoxContainer" parent="MarginContainer" unique_id=1200879334]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="WheatCounter" parent="MarginContainer/ResourceCounters" unique_id=522965764 instance=ExtResource("1_6ca3a")]
+layout_mode = 2
+resource = ExtResource("2_2gk58")

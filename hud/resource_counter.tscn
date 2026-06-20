@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://cqe4c2cnhc5f5"]
+
+[ext_resource type="Script" uid="uid://d2a5hdu6aahq6" path="res://hud/resource_counter.gd" id="1_bq7jd"]
+[ext_resource type="Texture2D" uid="uid://ccks4rl8s3h2l" path="res://natural_resources/resource_icons.png" id="1_kya28"]
+
+[node name="WheatCounter" type="HBoxContainer" unique_id=522965764 node_paths=PackedStringArray("counter")]
+script = ExtResource("1_bq7jd")
+counter = NodePath("Counter")
+
+[node name="Icon" type="TextureRect" parent="." unique_id=1770491988]
+layout_mode = 2
+texture = ExtResource("1_kya28")
+expand_mode = 3
+
+[node name="Counter" type="Label" parent="." unique_id=761771920]
+layout_mode = 2
+text = "0"
