@@ -1,17 +1,35 @@
 [gd_scene format=3 uid="uid://bic5v8bsj303"]
 
 [ext_resource type="PackedScene" uid="uid://c5bhx5utsovbg" path="res://scenes/player.tscn" id="1_w2twt"]
-[ext_resource type="PackedScene" uid="uid://dhfxsclatflk7" path="res://scenes/Tile.tscn" id="2_pw63i"]
-[ext_resource type="PackedScene" uid="uid://blusdwlfchhx7" path="res://assets/graphics/tile_visuals.tscn" id="3_7ykc4"]
+[ext_resource type="Script" uid="uid://c52h00sukof0w" path="res://scripts/cells_system.gd" id="3_7ykc4"]
+[ext_resource type="PackedScene" uid="uid://bg883sbyv044c" path="res://scenes/border_component.tscn" id="4_gubc5"]
+[ext_resource type="PackedScene" uid="uid://dhfxsclatflk7" path="res://scenes/Tile.tscn" id="4_pu3yx"]
 
 [node name="MainScene" type="Node" unique_id=2095065835]
 
-[node name="Tile" parent="." unique_id=1779673374 instance=ExtResource("2_pw63i")]
-position = Vector2(598.00006, 322)
-scale = Vector2(20, 20)
-
 [node name="Player" parent="." unique_id=251603508 instance=ExtResource("1_w2twt")]
-position = Vector2(590, 376)
+position = Vector2(1, 11)
 
-[node name="TileVisuals" parent="." unique_id=1337787306 instance=ExtResource("3_7ykc4")]
-position = Vector2(409, 345)
+[node name="CellsSystem" type="Node2D" parent="." unique_id=280263883]
+script = ExtResource("3_7ykc4")
+
+[node name="Tile" parent="CellsSystem" unique_id=1779673374 instance=ExtResource("4_pu3yx")]
+position = Vector2(0, 1)
+
+[node name="border_component" parent="CellsSystem/Tile" unique_id=1884247040 instance=ExtResource("4_gubc5")]
+right_border = 2
+
+[node name="Tile2" parent="CellsSystem" unique_id=1831295897 instance=ExtResource("4_pu3yx")]
+position = Vector2(286, 0)
+
+[node name="border_component" parent="CellsSystem/Tile2" unique_id=840157777 instance=ExtResource("4_gubc5")]
+left_border = 2
+
+[node name="Tile3" parent="CellsSystem" unique_id=769931347 instance=ExtResource("4_pu3yx")]
+position = Vector2(577, 2)
+
+[node name="Tile4" parent="CellsSystem" unique_id=113809720 instance=ExtResource("4_pu3yx")]
+position = Vector2(280, 288)
+
+[node name="Tile5" parent="CellsSystem" unique_id=306828586 instance=ExtResource("4_pu3yx")]
+position = Vector2(286, -295)
