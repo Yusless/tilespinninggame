@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dhfxsclatflk7"]
 
-[ext_resource type="Script" uid="uid://dfv1bmacg8ufl" path="res://scripts/tile.gd" id="1_vhibn"]
+[ext_resource type="Script" uid="uid://c0l63n1xdgh7p" path="res://scripts/tile.gd" id="1_vhibn"]
 [ext_resource type="PackedScene" uid="uid://blusdwlfchhx7" path="res://assets/graphics/tile_visuals.tscn" id="2_vhibn"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_jq8tk"]
@@ -52,6 +52,7 @@ a = Vector2(30, -121)
 b = Vector2(120, -121)
 
 [node name="Tile" type="Node2D" unique_id=1779673374 node_paths=PackedStringArray("up_bridge_collision", "right_bridge_collision", "down_bridge_collision", "left_bridge_collision")]
+z_index = -1
 script = ExtResource("1_vhibn")
 up_bridge_collision = NodePath("StaticBody2D/UpperMidBorder")
 right_bridge_collision = NodePath("StaticBody2D/RightMidBorder")
