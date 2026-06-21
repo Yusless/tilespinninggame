@@ -177,7 +177,7 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D" unique_id=251603508 node_paths=PackedStringArray("boomerang", "sprite", "stun_timer", "hurtbox", "animation_player", "health_component", "camera_2d") groups=["Player"]]
-z_index = 1
+y_sort_enabled = true
 collision_layer = 2
 script = ExtResource("1_g2els")
 max_speed = 200.0
@@ -197,7 +197,6 @@ metadata/_custom_type_script = "uid://nno1v8gxy1x8"
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=112002694]
 sprite_frames = SubResource("SpriteFrames_3xd07")
 animation = &"idle"
-frame_progress = 1.0
 offset = Vector2(1.5, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1949865156]

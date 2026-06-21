@@ -14,8 +14,9 @@ size = Vector2(31, 12)
 script = ExtResource("1_km4o1")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1662788210]
-position = Vector2(0, -1)
+position = Vector2(0, 108)
 texture = ExtResource("2_kma2a")
+offset = Vector2(0, -106)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=783042237]
 

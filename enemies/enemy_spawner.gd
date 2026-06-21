@@ -16,8 +16,9 @@ class_name EnemySpawner
 var enemies: Array[Enemy] = []
 
 func _ready() -> void:
-	spawn_timer.wait_time = spawn_interval
-	spawn_timer.start()
+	if !Engine.is_editor_hint():
+		spawn_timer.wait_time = spawn_interval
+		spawn_timer.start()
 
 func spawn_enemy():
 	if enemies.size() >= enemy_limit:

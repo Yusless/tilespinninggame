@@ -16,44 +16,51 @@
 script = ExtResource("5_c16ls")
 available_resources = Array[ExtResource("6_18nlu")]([ExtResource("7_c1pb6")])
 
-[node name="CellsSystem" type="Node2D" parent="." unique_id=280263883]
+[node name="World" type="Node2D" parent="." unique_id=1455164938]
+y_sort_enabled = true
+
+[node name="CellsSystem" type="Node2D" parent="World" unique_id=280263883]
+y_sort_enabled = true
 script = ExtResource("3_7ykc4")
 
-[node name="Tile" parent="CellsSystem" unique_id=1779673374 instance=ExtResource("4_pu3yx")]
+[node name="Tile" parent="World/CellsSystem" unique_id=1779673374 instance=ExtResource("4_pu3yx")]
 position = Vector2(0, 1)
 down_border = 2
 
-[node name="Tile2" parent="CellsSystem" unique_id=1831295897 instance=ExtResource("4_pu3yx")]
+[node name="Tile2" parent="World/CellsSystem" unique_id=1831295897 instance=ExtResource("4_pu3yx")]
 position = Vector2(288, 4)
 left_border = 2
 
-[node name="Tile3" parent="CellsSystem" unique_id=769931347 instance=ExtResource("4_pu3yx")]
+[node name="Tile3" parent="World/CellsSystem" unique_id=769931347 instance=ExtResource("4_pu3yx")]
 position = Vector2(577, 2)
 
-[node name="Tile4" parent="CellsSystem" unique_id=113809720 instance=ExtResource("4_pu3yx")]
+[node name="Tile4" parent="World/CellsSystem" unique_id=113809720 instance=ExtResource("4_pu3yx")]
 position = Vector2(-2, 293)
 up_border = 2
 
-[node name="Tile6" parent="CellsSystem" unique_id=1282555252 node_paths=PackedStringArray("tile_visuals") instance=ExtResource("6_c1pb6")]
+[node name="Tile6" parent="World/CellsSystem" unique_id=1282555252 node_paths=PackedStringArray("tile_visuals") instance=ExtResource("6_c1pb6")]
+y_sort_enabled = false
 position = Vector2(291, 288)
 right_border = 2
 tile_visuals = NodePath("TileVisuals")
 
-[node name="Tile7" parent="CellsSystem" unique_id=266878388 instance=ExtResource("4_pu3yx")]
+[node name="Tile7" parent="World/CellsSystem" unique_id=266878388 instance=ExtResource("4_pu3yx")]
 position = Vector2(1, 574)
 
-[node name="Tile8" parent="CellsSystem" unique_id=661761576 instance=ExtResource("4_pu3yx")]
+[node name="Tile8" parent="World/CellsSystem" unique_id=661761576 instance=ExtResource("4_pu3yx")]
 position = Vector2(604, 584)
 
-[node name="Tile9" parent="CellsSystem" unique_id=1758505538 instance=ExtResource("4_pu3yx")]
+[node name="Tile9" parent="World/CellsSystem" unique_id=1758505538 instance=ExtResource("4_pu3yx")]
 position = Vector2(307, 582)
 
-[node name="TilePond" parent="CellsSystem" unique_id=351429902 node_paths=PackedStringArray("tile_visuals") instance=ExtResource("7_6wevv")]
+[node name="TilePond" parent="World/CellsSystem" unique_id=351429902 node_paths=PackedStringArray("tile_visuals") instance=ExtResource("7_6wevv")]
+y_sort_enabled = false
 position = Vector2(579, 288)
 left_border = 2
 tile_visuals = NodePath("TileVisuals")
 
-[node name="Player" parent="." unique_id=251603508 instance=ExtResource("1_w2twt")]
+[node name="Player" parent="World" unique_id=251603508 instance=ExtResource("1_w2twt")]
+y_sort_enabled = false
 position = Vector2(289, 324)
 
 [node name="GUILayer" type="CanvasLayer" parent="." unique_id=587643093]

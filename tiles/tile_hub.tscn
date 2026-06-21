@@ -5,10 +5,6 @@
 
 [node name="TileHub" unique_id=1779673374 instance=ExtResource("1_4r23m")]
 tile_type = 0
-left_border = 0
-up_border = 0
-right_border = 0
-down_border = 0
 
 [node name="Lighthouse" parent="." index="3" unique_id=1382120843 instance=ExtResource("2_5xtjl")]
 position = Vector2(7, -119)
