@@ -34,6 +34,7 @@ const DIST_BETWEEN_TILES = 285
 @export var up_border = BorderTypes.NOTHING
 @export var right_border = BorderTypes.NOTHING
 @export var down_border = BorderTypes.NOTHING
+@export var tile_visuals: TileVisuals
 
 var borders = {}
 
@@ -51,6 +52,10 @@ var neighbours: Dictionary[Side.Sides, Tile] = {Side.Sides.UP:null,
 				Side.Sides.LEFT:null
 }
 
+var treated_as_interface := false
+var default_position: Vector2
+var hovering_position: Vector2
+
 @export var visual_c: VisualComponent =  null
 
 func _ready() -> void:
@@ -59,6 +64,13 @@ func _ready() -> void:
 	place_yourself()
 	init_bridges_to_tile()
 	remove_colissions()
+	
+	var player := Global.get_player()
+	player.lighthouse_entered.connect(_on_player_lighthouse_entered)
+	player.lighthouse_exited.connect(_on_player_lighthouse_exited)
+	
+	default_position = position
+	hovering_position = position + Vector2(0.0, -ELEVATING_BY_HOVERING)
 
 func remove_colissions() -> void:
 	for bridge_collision in bridges_collisions:
@@ -136,14 +148,14 @@ func rotate_bridges_to_tile() -> void:
 
 
 func _on_area_2d_mouse_entered() -> void:
-	if Global.get_player().state == Global.get_player().States.INSIDE and tile_type != TileTypes.HUB:
-		position.y -= ELEVATING_BY_HOVERING 
+	if treated_as_interface and tile_type != TileTypes.HUB:
+		position = hovering_position
 	else:
 		hovering_before_interacting = true
 
 func _on_area_2d_mouse_exited() -> void:
-	if Global.get_player().state == Global.get_player().States.INSIDE and tile_type != TileTypes.HUB and !hovering_before_interacting:
-		position.y += ELEVATING_BY_HOVERING 
+	if treated_as_interface and tile_type != TileTypes.HUB and !hovering_before_interacting:
+		position = default_position
 	else: 
 		hovering_before_interacting = false
 
@@ -151,3 +163,12 @@ func _on_area_2d_mouse_exited() -> void:
 func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if Global.get_player().state == Global.get_player().States.INSIDE and event.is_action_pressed("attack"):
 		rotate_self()
+		tile_visuals.rotate_visuals()
+
+func _on_player_lighthouse_entered():
+	treated_as_interface = true
+
+func _on_player_lighthouse_exited():
+	treated_as_interface = false
+	if position != default_position:
+		position = default_position

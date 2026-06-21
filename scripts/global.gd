@@ -6,6 +6,7 @@ enum border_types {
 	bridge
 }
 
+var treat_tiles_as_interface := false
 
 func get_manager(manager_type: Object):
 	for mgr in get_tree().get_nodes_in_group("Managers"):

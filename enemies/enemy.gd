@@ -2,6 +2,7 @@ extends CharacterBody2D
 class_name Enemy
 
 signal destination_reached
+signal defeated(enemy: Enemy)
 
 enum States {
 	IDLE,
@@ -106,6 +107,7 @@ func die():
 	step_timer.stop()
 	rest_timer.stop()
 	attack_component.end_attack()
+	defeated.emit(self)
 
 func parabolic(x: float):
 	return (-4 *(x**2)) + 4*x

@@ -3,9 +3,12 @@
 [ext_resource type="Script" uid="uid://c4rr2vivlxd3k" path="res://assets/graphics/tile/tile_visuals.gd" id="1_fna84"]
 [ext_resource type="TileSet" uid="uid://2s1f4ntvo15j" path="res://assets/graphics/tile/tile_set_grass.tres" id="2_tuy25"]
 
-[node name="TileVisuals" type="Node2D" unique_id=1337787306]
+[node name="TileVisuals" type="Node2D" unique_id=1337787306 node_paths=PackedStringArray("tile_map_ground", "tile_map_details", "tile_map_texture")]
 z_index = -1
 script = ExtResource("1_fna84")
+tile_map_ground = NodePath("TileMapGround")
+tile_map_details = NodePath("TileMapDetails")
+tile_map_texture = NodePath("TileMapTexture")
 
 [node name="TileMapGround" type="TileMapLayer" parent="." unique_id=803984556]
 y_sort_enabled = true
