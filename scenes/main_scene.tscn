@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://crdvmqfwg720o" path="res://tiles/visual_component.tscn" id="7_6wevv"]
 [ext_resource type="Resource" uid="uid://c3xr3hu8jlinu" path="res://natural_resources/wheat_resource.tres" id="7_c1pb6"]
 [ext_resource type="PackedScene" uid="uid://bjtqir2jwep7s" path="res://hud/hud.tscn" id="8_18nlu"]
+[ext_resource type="PackedScene" uid="uid://cqo0fhog3v5km" path="res://enemies/toad.tscn" id="10_6wevv"]
 
 [node name="MainScene" type="Node" unique_id=2095065835]
 
@@ -61,12 +62,11 @@ right_border = 2
 
 [node name="visual_component" parent="CellsSystem/Tile5" unique_id=354693373 instance=ExtResource("7_6wevv")]
 
+[node name="Player" parent="." unique_id=251603508 instance=ExtResource("1_w2twt")]
+
 [node name="GUILayer" type="CanvasLayer" parent="." unique_id=587643093]
 
 [node name="HUD" parent="GUILayer" unique_id=1161228326 instance=ExtResource("8_18nlu")]
-offset_left = -247.0
-offset_top = -134.0
-offset_right = -247.0
-offset_bottom = -134.0
 
-[node name="Player" parent="." unique_id=251603508 instance=ExtResource("1_w2twt")]
+[node name="Toad" parent="." unique_id=1894793058 instance=ExtResource("10_6wevv")]
+position = Vector2(67, -46)

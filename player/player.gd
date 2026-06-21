@@ -1,4 +1,12 @@
 extends CharacterBody2D
+class_name Player
+
+enum States {
+	IDLE,
+	MOVING,
+	STUNNED,
+	DEAD,
+}
 
 const ACCELERATION_TIME: float = 0.085
 const DECCELERATION_TIME: float = 0.05
@@ -7,12 +15,19 @@ const DECCELERATION_TIME: float = 0.05
 @export_subgroup("Deps")
 @export var boomerang: Boomerang
 @export var sprite: AnimatedSprite2D
+@export var stun_timer: Timer
+@export var hurtbox: HurtboxComponent
+@export var animation_player: AnimationPlayer
+@export var health_component: HealthComponent
 
 var last_direction := Vector2.ONE
+var state := States.IDLE
 
 # Called when the node enters the scene tree for the first time.	
 func _ready() -> void:
 	boomerang.return_target = self
+	hurtbox.hit.connect(_on_hurtbox_hit)
+	health_component.health_depleted.connect(_on_health_depleted)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("attack") and !boomerang.launched:
@@ -21,8 +36,10 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("rotate"):
 		get_parent().find_child("CellsSystem").find_child("Tile").rotate_self()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta: float) -> void:
+func die():
+	state = States.DEAD
+
+func move(delta):
 	var movement = get_movement_vector()
 	var direction = movement.normalized()
 	var acceleration = max_speed / (ACCELERATION_TIME if direction else DECCELERATION_TIME)
@@ -36,6 +53,22 @@ func _physics_process(delta: float) -> void:
 	)
 	animate()
 	move_and_slide()
+
+func simple_state_machine(delta):
+	match state:
+		States.IDLE:
+			if get_movement_vector():
+				state = States.MOVING
+		States.MOVING:
+			move(delta)
+		States.STUNNED:
+			if stun_timer.is_stopped():
+				state = States.IDLE
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _physics_process(delta: float) -> void:
+	simple_state_machine(delta)
+	animate()
 
 func animate():
 	var anim := "idle"
@@ -54,3 +87,12 @@ func get_movement_vector():
 	var movement_x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 	var movement_y = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
 	return Vector2(movement_x, movement_y)
+
+
+func _on_hurtbox_hit():
+	animation_player.play("damaged")
+	state = States.STUNNED
+	stun_timer.start()
+
+func _on_health_depleted():
+	die()

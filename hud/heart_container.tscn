@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://cui53jrjjjef4"]
+
+[ext_resource type="Texture2D" uid="uid://ddovnh2rqpcm0" path="res://hud/healthbar.png" id="1_oxwcw"]
+[ext_resource type="Script" uid="uid://8y17v4ojl11v" path="res://hud/heart_container.gd" id="2_e3gnb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v4clq"]
+atlas = ExtResource("1_oxwcw")
+region = Rect2(0, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ivg5"]
+atlas = ExtResource("1_oxwcw")
+region = Rect2(0, 12, 12, 12)
+
+[node name="HeartContainer" type="TextureRect" unique_id=858936775]
+texture = SubResource("AtlasTexture_v4clq")
+script = ExtResource("2_e3gnb")
+texture_full = SubResource("AtlasTexture_v4clq")
+texture_empty = SubResource("AtlasTexture_0ivg5")

@@ -1,6 +1,6 @@
 extends Node2D
-
 class_name Tile
+
 enum tile_types {
 	hub,
 	fan,
@@ -40,7 +40,7 @@ var visual_c
 
 var bridges_collisions = {}
 
-func _ready() -> void:	
+func _ready() -> void:
 	border_c = find_child("border_component")
 	visual_c = find_child("visual_component")
 	bridges_collisions = {"up": up_bridge_collision,

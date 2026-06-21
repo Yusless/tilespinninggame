@@ -2,7 +2,9 @@
 
 [ext_resource type="Script" uid="uid://xvje5h6ttbty" path="res://player/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://3b8xhhpq4f7a" path="res://assets/graphics/player/player-Sheet.png" id="2_qhqgy"]
+[ext_resource type="Script" uid="uid://nno1v8gxy1x8" path="res://components/health_component.gd" id="2_yw30f"]
 [ext_resource type="PackedScene" uid="uid://ccj1l3ms32as7" path="res://player/boomerang.tscn" id="3_qhqgy"]
+[ext_resource type="Script" uid="uid://drtj3bknkeioh" path="res://components/hurtbox_component.gd" id="5_qjkh3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dqkch"]
 atlas = ExtResource("2_qhqgy")
@@ -70,24 +72,135 @@ animations = [{
 size = Vector2(7, 4)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kg37j"]
+size = Vector2(8, 14)
 
-[node name="Player" type="CharacterBody2D" unique_id=251603508 node_paths=PackedStringArray("boomerang", "sprite") groups=["Player"]]
+[sub_resource type="Animation" id="Animation_yw30f"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_qjkh3"]
+resource_name = "damaged"
+length = 0.19999999999999998
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.2),
+"transitions": PackedFloat32Array(0, 0, 0),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0.36, 0.36, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -0.13962634015954636, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-1, -2), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_g6k8r"]
+resource_name = "dead"
+length = 0.19999999999999998
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 0.5),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 7)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 0.5),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.3, 0.25)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_boad6"]
+_data = {
+&"RESET": SubResource("Animation_yw30f"),
+&"damaged": SubResource("Animation_qjkh3"),
+&"dead": SubResource("Animation_g6k8r")
+}
+
+[node name="Player" type="CharacterBody2D" unique_id=251603508 node_paths=PackedStringArray("boomerang", "sprite", "stun_timer", "hurtbox", "animation_player", "health_component") groups=["Player"]]
+z_index = 1
 collision_layer = 2
 script = ExtResource("1_g2els")
 max_speed = 200.0
 boomerang = NodePath("Boomerang")
 sprite = NodePath("Sprite")
+stun_timer = NodePath("StunTimer")
+hurtbox = NodePath("Hurtbox")
+animation_player = NodePath("AnimationPlayer")
+health_component = NodePath("HealthComponent")
+
+[node name="HealthComponent" type="Node" parent="." unique_id=504088857]
+script = ExtResource("2_yw30f")
+max_health = 5
+metadata/_custom_type_script = "uid://nno1v8gxy1x8"
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=112002694]
-z_index = 1
-position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_3xd07")
 animation = &"idle"
 frame_progress = 1.0
-offset = Vector2(1, 0)
+offset = Vector2(1.5, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1949865156]
-position = Vector2(-0.5, -5)
+position = Vector2(0, 7)
 shape = SubResource("RectangleShape2D_qhqgy")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1319108064]
@@ -100,12 +213,20 @@ top_level = true
 z_index = 2
 position = Vector2(11, -16)
 
-[node name="Hitbox" type="Area2D" parent="." unique_id=1610626716]
+[node name="Hurtbox" type="Area2D" parent="." unique_id=1430777681 node_paths=PackedStringArray("health_component")]
 collision_layer = 2
 collision_mask = 0
+script = ExtResource("5_qjkh3")
+health_component = NodePath("../HealthComponent")
+metadata/_custom_type_script = "uid://drtj3bknkeioh"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1576054573]
-visible = false
-position = Vector2(0, -12)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1576054573]
 shape = SubResource("RectangleShape2D_kg37j")
 debug_color = Color(1.6364455e-06, 0.6465062, 0.24281707, 0.41960785)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1899766909]
+libraries/ = SubResource("AnimationLibrary_boad6")
+
+[node name="StunTimer" type="Timer" parent="." unique_id=5314081]
+wait_time = 0.2
+one_shot = true
