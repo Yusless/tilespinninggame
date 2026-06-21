@@ -1,7 +1,7 @@
 extends Node
 const DIST_BETWEEN_TILES = 280
 const FIELD_WIDTH = 3
-const FIELD_HEIGHT = 2
+const FIELD_HEIGHT = 3
 
 var map = []
 
