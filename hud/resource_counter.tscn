@@ -10,7 +10,7 @@ counter = NodePath("Counter")
 [node name="Icon" type="TextureRect" parent="." unique_id=1770491988]
 layout_mode = 2
 texture = ExtResource("1_kya28")
-expand_mode = 3
+stretch_mode = 5
 
 [node name="Counter" type="Label" parent="." unique_id=761771920]
 layout_mode = 2

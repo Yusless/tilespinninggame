@@ -52,6 +52,11 @@ b = Vector2(-14, -121)
 a = Vector2(14, -121)
 b = Vector2(120, -121)
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_dej15"]
+vertices = PackedVector2Array(104.03906, 103.03906, -106.953125, 103.953125, -106.03906, -105.03906, 104.953125, -105.953125)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-116, -115, 115, -116, 114, 113, -117, 114)])
+
 [node name="Tile" type="Node2D" unique_id=1779673374 node_paths=PackedStringArray("up_bridge_collision", "right_bridge_collision", "down_bridge_collision", "left_bridge_collision")]
 z_index = -1
 script = ExtResource("1_h3aqd")
@@ -111,3 +116,6 @@ shape = SubResource("SegmentShape2D_o7uur")
 
 [node name="Wheat" parent="." unique_id=173354698 instance=ExtResource("3_r3gf4")]
 position = Vector2(82, 19)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=1497879206]
+navigation_polygon = SubResource("NavigationPolygon_dej15")

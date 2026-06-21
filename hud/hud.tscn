@@ -2,6 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://cqe4c2cnhc5f5" path="res://hud/resource_counter.tscn" id="1_6ca3a"]
 [ext_resource type="Resource" uid="uid://c3xr3hu8jlinu" path="res://natural_resources/wheat_resource.tres" id="2_2gk58"]
+[ext_resource type="Script" uid="uid://d1dgpsgkkpt23" path="res://hud/healthbar.gd" id="3_318vg"]
+[ext_resource type="PackedScene" uid="uid://cui53jrjjjef4" path="res://hud/heart_container.tscn" id="4_w8tcp"]
 
 [node name="HUD" type="Control" unique_id=1161228326]
 layout_mode = 3
@@ -25,9 +27,17 @@ theme_override_constants/margin_bottom = 10
 
 [node name="ResourceCounters" type="VBoxContainer" parent="MarginContainer" unique_id=1200879334]
 layout_mode = 2
-size_flags_horizontal = 0
+size_flags_horizontal = 8
 size_flags_vertical = 0
 
 [node name="WheatCounter" parent="MarginContainer/ResourceCounters" unique_id=522965764 instance=ExtResource("1_6ca3a")]
 layout_mode = 2
 resource = ExtResource("2_2gk58")
+
+[node name="Healthbar" type="HBoxContainer" parent="MarginContainer" unique_id=1486487844]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+script = ExtResource("3_318vg")
+max_health = null
+heart_container_scene = ExtResource("4_w8tcp")

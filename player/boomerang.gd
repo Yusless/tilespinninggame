@@ -21,9 +21,6 @@ var return_target: CharacterBody2D
 var distance_flied := 0.0
 var target_fly_distance := 0.0
 
-func _ready() -> void:
-	hitbox.body_entered.connect(_on_hitbox_body_entered)
-
 func launch(origin: Vector2, direction: float, inherited_speed: Vector2):
 	var base_velocity := Vector2.RIGHT * fly_speed
 	velocity = base_velocity.rotated(direction) + inherited_speed * inherited_speed_multiplier
@@ -32,30 +29,33 @@ func launch(origin: Vector2, direction: float, inherited_speed: Vector2):
 	returning_straight = false
 	global_position = origin
 	distance_flied = 0.0
+	hitbox.begin_attack()
 	show()
 
 func retrieve():
 	launched = false
+	hitbox.end_attack()
 	hide()
 
 func _physics_process(delta: float) -> void:
 	
 	if launched:
 		distance_flied += velocity.length() * delta
-		if distance_flied >= fly_distance and !returning_straight:
+		if distance_flied >= fly_distance and !returning:
+			returning = true
+			hitbox.begin_attack()
+		if returning and !returning_straight:
 			decceleration = global_position.direction_to(return_target.global_position) * decceleration_strength
 			velocity += decceleration * delta
-			returning = true
-			if max_fly_speed - velocity.length() <= 20:
-				returning_straight = true
+		if max_fly_speed - velocity.length() <= 20 and returning:
+			returning_straight = true
 		if returning_straight:
 			velocity = max_fly_speed * global_position.direction_to(return_target.global_position)
 		sprite.rotate(sprite_rotation_speed * delta)
-	
 	velocity.limit_length(max_fly_speed)
 	move_and_slide()
 
 
-func _on_hitbox_body_entered(body: PhysicsBody2D) -> void:
+func _on_return_detector_body_entered(body: Node2D) -> void:
 	if body == return_target and returning:
 		retrieve()

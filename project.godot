@@ -19,6 +19,7 @@ config/icon="res://assets/icon.svg"
 [autoload]
 
 Global="*uid://16qu6801ebgr"
+CombatManager="*uid://fma35as6qqrd"
 
 [display]
 

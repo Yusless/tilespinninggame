@@ -1,5 +1,4 @@
 extends Node2D
-
 class_name Tile
 
 const BRIDGE_SCENE = "res://tiles/bridge.tscn"
