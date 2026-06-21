@@ -1,62 +1,67 @@
 extends Node2D
 class_name Tile
 
-enum tile_types {
-	hub,
-	fan,
-	campfire,
-	river,
+const BRIDGE_SCENE = "res://tiles/bridge.tscn"
+
+enum TileTypes {
+	HUB,
+	FOREST,
+	PLAIN,
+	RIVER,
+	MOUNTAIN
 }
 
-enum border_types {
-	nothing,
-	wall,
-	bridge
-}
-
-var opposite_dict = {"up": "down",
-				"right": "left",
-				"down": "up",
-				"left": "right"
+enum BorderTypes {
+	NOTHING,
+	WALL,
+	BRIDGE
 }
 
 const DIST_BETWEEN_TILES = 285
 
-var neighbours = {"up":null,
-				"right":null,
-				"down":null,
-				"left":null
-}
-
-var border_c
-var visual_c
-
-@export var tile_type = tile_types.hub
+@export var tile_type = TileTypes.HUB
 
 @export var up_bridge_collision = CollisionShape2D
 @export var right_bridge_collision = CollisionShape2D
 @export var down_bridge_collision = CollisionShape2D
 @export var left_bridge_collision = CollisionShape2D
 
+@export var left_border = BorderTypes.NOTHING
+@export var up_border = BorderTypes.NOTHING
+@export var right_border = BorderTypes.NOTHING
+@export var down_border = BorderTypes.NOTHING
+
+var borders = {}
+
+var border_objects: Dictionary[Side.Sides, Border] = { Side.Sides.UP: null,
+				Side.Sides.RIGHT: null,
+				Side.Sides.DOWN: null,
+				Side.Sides.LEFT: null
+				}
+
 var bridges_collisions = {}
 
+var neighbours: Dictionary[Side.Sides, Tile] = {Side.Sides.UP:null,
+				Side.Sides.RIGHT:null,
+				Side.Sides.DOWN:null,
+				Side.Sides.LEFT:null
+}
+
+@export var visual_c: VisualComponent =  null
+
 func _ready() -> void:
-	border_c = find_child("border_component")
-	visual_c = find_child("visual_component")
-	bridges_collisions = {"up": up_bridge_collision,
-						"right": right_bridge_collision,
-						"down": down_bridge_collision,
-						"left": left_bridge_collision
-						}
+	collisions_from_export()
+	borders_from_export()
 	place_yourself()
+	init_bridges_to_tile()
 	remove_colissions()
 
 func remove_colissions() -> void:
 	for bridge_collision in bridges_collisions:
-		if border_c.borders.get(bridge_collision) == border_types.bridge:
-			bridges_collisions.get(bridge_collision).disabled = true
+		if borders[bridge_collision] == BorderTypes.BRIDGE:
+			bridges_collisions[bridge_collision].disabled = true
 		else:
-			bridges_collisions.get(bridge_collision).disabled = false
+			bridges_collisions[bridge_collision].disabled = false
 
 
 func place_yourself() -> void:
@@ -68,11 +73,59 @@ func place_yourself() -> void:
 	
 	position.x = pos_x * DIST_BETWEEN_TILES
 	position.y = pos_y * DIST_BETWEEN_TILES
+
+func borders_from_export():
+	borders = {Side.Sides.UP: up_border,
+				Side.Sides.RIGHT: right_border,
+				Side.Sides.DOWN: down_border,
+			 	Side.Sides.LEFT: left_border
+				}
 	
 func rotate_self():
-	border_c.rotate_borders()
-	visual_c.draw_bridges()
-	for neighbour in neighbours:
-		if neighbours.get(neighbour) and neighbours.get(neighbour).get_node(opposite_dict.get(neighbour) + "Bridge"):
-			neighbours.get(neighbour).visual_c.check_for_completed_bridges(neighbours.get(neighbour).get_node(opposite_dict.get(neighbour) + "Bridge"), opposite_dict.get(neighbour))
+	rotate_borders()
+	rotate_bridges_to_tile()
 	remove_colissions()
+
+
+func collisions_from_export() -> void:
+	bridges_collisions = {Side.Sides.UP: up_bridge_collision,
+						Side.Sides.RIGHT: right_bridge_collision,
+						Side.Sides.DOWN: down_bridge_collision,
+						Side.Sides.LEFT: left_bridge_collision
+						}
+
+func rotate_borders() -> void:
+	var temp = borders[Side.Sides.UP]
+	borders[Side.Sides.UP] = borders[Side.Sides.LEFT]
+	borders[Side.Sides.LEFT] =  borders[Side.Sides.DOWN]
+	borders[Side.Sides.DOWN] =  borders[Side.Sides.RIGHT]
+	borders[Side.Sides.RIGHT] =  temp
+
+
+func init_bridges_to_tile() -> void:
+	var bridge = preload(BRIDGE_SCENE)
+	for side in borders:
+		if borders[side] == BorderTypes.BRIDGE:
+			var bridge_instance = bridge.instantiate()
+			border_objects[side] = bridge_instance
+			add_child(bridge_instance)
+			bridge_instance.side = side
+			bridge_instance.update()
+
+func rotate_bridges_to_tile() -> void:
+	var temp = border_objects[Side.Sides.UP]
+	border_objects[Side.Sides.UP] = border_objects[Side.Sides.LEFT]
+	if border_objects[Side.Sides.UP]:
+		border_objects[Side.Sides.UP].side = Side.Sides.UP
+	border_objects[Side.Sides.LEFT] =  border_objects[Side.Sides.DOWN]
+	if border_objects[Side.Sides.LEFT]:
+		border_objects[Side.Sides.LEFT].side = Side.Sides.LEFT
+	border_objects[Side.Sides.DOWN] =  border_objects[Side.Sides.RIGHT]
+	if border_objects[Side.Sides.DOWN]:
+		border_objects[Side.Sides.DOWN].side = Side.Sides.DOWN
+	border_objects[Side.Sides.RIGHT] =  temp
+	if border_objects[Side.Sides.RIGHT]:
+		border_objects[Side.Sides.RIGHT].side = Side.Sides.RIGHT
+	for dir in border_objects:
+		if border_objects[dir] is Bridge:
+			border_objects[dir].update()

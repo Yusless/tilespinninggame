@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://2ywgxwdhdrt0"]
 
 [ext_resource type="Texture2D" uid="uid://vadmxyflk13v" path="res://assets/graphics/tile/bridge_right.png" id="1_36a3b"]
+[ext_resource type="Script" uid="uid://k74stjhfdhxg" path="res://tiles/bridge.gd" id="1_bfbeh"]
 [ext_resource type="Texture2D" uid="uid://dtrljpg3fjyd2" path="res://assets/graphics/tile/bridge_left.png" id="2_3cciu"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_3cciu"]
@@ -8,14 +9,21 @@ a = Vector2(123, 14)
 b = Vector2(145, 14)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_3xd07"]
-a = Vector2(123, -13)
-b = Vector2(144, -13)
+a = Vector2(123, -14)
+b = Vector2(145, -14)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_jq8tk"]
-a = Vector2(144, -13)
+a = Vector2(144, -14)
 b = Vector2(144, 15)
 
-[node name="bridge" type="Node2D" unique_id=1152005720]
+[node name="bridge" type="Node2D" unique_id=1152005720 node_paths=PackedStringArray("mid_part", "hit_box", "right_bridge_sprite", "left_bridge_sprite", "up_bridge_sprite", "down_bridge_sprite")]
+script = ExtResource("1_bfbeh")
+mid_part = NodePath("StaticBody2D/MidPart")
+hit_box = NodePath("StaticBody2D")
+right_bridge_sprite = NodePath("rightBridge")
+left_bridge_sprite = NodePath("leftBridge")
+up_bridge_sprite = NodePath("upBridge")
+down_bridge_sprite = NodePath("downBridge")
 
 [node name="rightBridge" type="Sprite2D" parent="." unique_id=720671349]
 visible = false
