@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://ci5v15gpogo2o"]
+
+[ext_resource type="PackedScene" uid="uid://dhfxsclatflk7" path="res://tiles/tile.tscn" id="1_4r23m"]
+[ext_resource type="PackedScene" uid="uid://cjo2i2d6n8tw2" path="res://tiles/lighthouse.tscn" id="2_5xtjl"]
+
+[node name="Tile" unique_id=1779673374 instance=ExtResource("1_4r23m")]
+
+[node name="Lighthouse" parent="." index="3" unique_id=1382120843 instance=ExtResource("2_5xtjl")]
+position = Vector2(7, -119)
