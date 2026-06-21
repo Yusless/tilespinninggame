@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://2ywgxwdhdrt0"]
 
-[ext_resource type="Texture2D" uid="uid://vadmxyflk13v" path="res://assets/bridge_right.png" id="1_36a3b"]
-[ext_resource type="Texture2D" uid="uid://dtrljpg3fjyd2" path="res://assets/bridge_left.png" id="2_3cciu"]
+[ext_resource type="Texture2D" uid="uid://vadmxyflk13v" path="res://assets/graphics/tile/bridge_right.png" id="1_36a3b"]
+[ext_resource type="Texture2D" uid="uid://dtrljpg3fjyd2" path="res://assets/graphics/tile/bridge_left.png" id="2_3cciu"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_3cciu"]
 a = Vector2(123, 14)

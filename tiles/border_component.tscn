@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bg883sbyv044c"]
 
-[ext_resource type="Script" uid="uid://ihqo1thxbxp4" path="res://scripts/border_component.gd" id="1_n6uh8"]
+[ext_resource type="Script" uid="uid://ihqo1thxbxp4" path="res://tiles/border_component.gd" id="1_n6uh8"]
 
 [node name="border_component" type="Node2D" unique_id=1884247040]
 script = ExtResource("1_n6uh8")

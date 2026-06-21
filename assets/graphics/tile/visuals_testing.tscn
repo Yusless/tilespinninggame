@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://qjdal7ks5aqd"]
 
-[ext_resource type="PackedScene" uid="uid://blusdwlfchhx7" path="res://assets/graphics/tile_visuals.tscn" id="1_r2wny"]
+[ext_resource type="PackedScene" uid="uid://blusdwlfchhx7" path="res://assets/graphics/tile/tile_visuals.tscn" id="1_r2wny"]
 
 [node name="VisualsTesting" type="Node2D" unique_id=190544903]
 

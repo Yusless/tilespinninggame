@@ -4,7 +4,7 @@
 [ext_resource type="Resource" uid="uid://c3xr3hu8jlinu" path="res://natural_resources/wheat_resource.tres" id="2_skmqv"]
 [ext_resource type="Script" uid="uid://nno1v8gxy1x8" path="res://components/health_component.gd" id="2_wtba6"]
 [ext_resource type="Script" uid="uid://drtj3bknkeioh" path="res://components/hurtbox_component.gd" id="3_skmqv"]
-[ext_resource type="Texture2D" uid="uid://cucejsxyki48h" path="res://assets/graphics/wheat_placeholder.png" id="4_2byp2"]
+[ext_resource type="Texture2D" uid="uid://cucejsxyki48h" path="res://assets/graphics/resources/wheat_placeholder.png" id="4_2byp2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kg37j"]
 

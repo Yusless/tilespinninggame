@@ -1,4 +1,6 @@
 extends Node2D
+
+class_name Tile
 enum tile_types {
 	hub,
 	fan,
@@ -71,7 +73,6 @@ func rotate_self():
 	border_c.rotate_borders()
 	visual_c.draw_bridges()
 	for neighbour in neighbours:
-		print(neighbours.get(neighbour))
 		if neighbours.get(neighbour) and neighbours.get(neighbour).get_node(opposite_dict.get(neighbour) + "Bridge"):
 			neighbours.get(neighbour).visual_c.check_for_completed_bridges(neighbours.get(neighbour).get_node(opposite_dict.get(neighbour) + "Bridge"), opposite_dict.get(neighbour))
 	remove_colissions()

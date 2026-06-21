@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://dhfxsclatflk7"]
 
-[ext_resource type="Script" uid="uid://dfv1bmacg8ufl" path="res://scripts/tile.gd" id="1_vhibn"]
-[ext_resource type="PackedScene" uid="uid://blusdwlfchhx7" path="res://assets/graphics/tile graphics/tile_visuals.tscn" id="2_vhibn"]
+[ext_resource type="Script" uid="uid://dfv1bmacg8ufl" path="res://tiles/tile.gd" id="1_vhibn"]
+[ext_resource type="PackedScene" uid="uid://blusdwlfchhx7" path="res://assets/graphics/tile/tile_visuals.tscn" id="2_vhibn"]
 [ext_resource type="PackedScene" uid="uid://dojvj3gokqoqk" path="res://natural_resources/wheat.tscn" id="3_r3gf4"]
-[ext_resource type="Script" uid="uid://c4rr2vivlxd3k" path="res://assets/graphics/tile graphics/tile_visuals.gd" id="3_rvdvl"]
-[ext_resource type="Script" uid="uid://dfv1bmacg8ufl" path="res://scripts/tile.gd" id="1_h3aqd"]
-[ext_resource type="PackedScene" uid="uid://blusdwlfchhx7" path="res://assets/graphics/tile graphics/tile_visuals.tscn" id="2_lpyr5"]
+[ext_resource type="Script" uid="uid://c4rr2vivlxd3k" path="res://assets/graphics/tile/tile_visuals.gd" id="3_rvdvl"]
+[ext_resource type="Script" uid="uid://dfv1bmacg8ufl" path="res://tiles/tile.gd" id="1_h3aqd"]
+[ext_resource type="PackedScene" uid="uid://blusdwlfchhx7" path="res://assets/graphics/tile/tile_visuals.tscn" id="2_lpyr5"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_jq8tk"]
 a = Vector2(-120, -121)

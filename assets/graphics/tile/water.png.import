@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dtrljpg3fjyd2"
-path="res://.godot/imported/bridge_left.png-f26bc0a16f1addafebff92a10fddd00a.ctex"
+uid="uid://c6cge5t38blbe"
+path="res://.godot/imported/water.png-23c01f86e720645bd74af4d95122e48f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/bridge_left.png"
-dest_files=["res://.godot/imported/bridge_left.png-f26bc0a16f1addafebff92a10fddd00a.ctex"]
+source_file="res://assets/graphics/tile/water.png"
+dest_files=["res://.godot/imported/water.png-23c01f86e720645bd74af4d95122e48f.ctex"]
 
 [params]
 

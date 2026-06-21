@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://vadmxyflk13v"
-path="res://.godot/imported/bridge_right.png-341d199561ec795e117f8ff2711f7763.ctex"
+uid="uid://cucejsxyki48h"
+path="res://.godot/imported/wheat_placeholder.png-affd8cb3328d9caba84730024bf3eaf2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/bridge_right.png"
-dest_files=["res://.godot/imported/bridge_right.png-341d199561ec795e117f8ff2711f7763.ctex"]
+source_file="res://assets/graphics/resources/wheat_placeholder.png"
+dest_files=["res://.godot/imported/wheat_placeholder.png-affd8cb3328d9caba84730024bf3eaf2.ctex"]
 
 [params]
 
