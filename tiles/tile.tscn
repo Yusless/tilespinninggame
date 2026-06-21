@@ -118,4 +118,5 @@ shape = SubResource("SegmentShape2D_o7uur")
 position = Vector2(82, 19)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=1497879206]
+visible = false
 navigation_polygon = SubResource("NavigationPolygon_dej15")
