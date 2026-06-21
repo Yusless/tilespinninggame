@@ -2,9 +2,13 @@
 
 [ext_resource type="Script" uid="uid://c8quovgmpg2f6" path="res://lighthouse.gd" id="1_km4o1"]
 [ext_resource type="Texture2D" uid="uid://b2ombqpddahws" path="res://assets/graphics/tile/lighthouse.png" id="2_kma2a"]
+[ext_resource type="PackedScene" uid="uid://b87baohfr4ygs" path="res://tiles/interaction_component.tscn" id="3_kma2a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3xd07"]
 size = Vector2(67, 35)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6fhyq"]
+size = Vector2(31, 12)
 
 [node name="Lighthouse" type="Node2D" unique_id=1382120843]
 script = ExtResource("1_km4o1")
@@ -18,3 +22,10 @@ texture = ExtResource("2_kma2a")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1456147397]
 position = Vector2(-4, 116)
 shape = SubResource("RectangleShape2D_3xd07")
+
+[node name="InteractionComponent" parent="." unique_id=522060589 node_paths=PackedStringArray("collision") instance=ExtResource("3_kma2a")]
+collision = NodePath("CollisionShape2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionComponent" unique_id=1679411096]
+position = Vector2(-2.5, 134)
+shape = SubResource("RectangleShape2D_6fhyq")

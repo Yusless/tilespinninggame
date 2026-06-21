@@ -1,9 +1,8 @@
 extends Node2D
 
-
-
 func try_to_interact():
-	get_inside()
-	
-func get_inside():
-	pass
+	var player = Global.get_player()
+	if player.state == player.States.INSIDE:
+		player.get_outside()
+	else:
+		player.get_inside()

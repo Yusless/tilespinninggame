@@ -6,6 +6,7 @@ enum States {
 	MOVING,
 	STUNNED,
 	DEAD,
+	INSIDE
 }
 
 const ACCELERATION_TIME: float = 0.085
@@ -19,6 +20,8 @@ const DECCELERATION_TIME: float = 0.05
 @export var hurtbox: HurtboxComponent
 @export var animation_player: AnimationPlayer
 @export var health_component: HealthComponent
+@export var camera_2d: Camera2D
+
 
 var last_direction := Vector2.ONE
 var state := States.IDLE
@@ -30,11 +33,9 @@ func _ready() -> void:
 	health_component.health_depleted.connect(_on_health_depleted)
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("attack") and !boomerang.launched:
+	if event.is_action_pressed("attack") and !boomerang.launched and state != States.INSIDE:
 		var dir_to_mouse := global_position.direction_to(get_global_mouse_position())
 		boomerang.launch(global_position, dir_to_mouse.angle(), velocity)
-	if event.is_action_pressed("rotate"):
-		get_parent().find_child("CellsSystem").find_child("Tile").rotate_self()
 
 func die():
 	state = States.DEAD
@@ -96,3 +97,14 @@ func _on_hurtbox_hit():
 
 func _on_health_depleted():
 	die()
+
+
+func get_inside():
+	sprite.visible = false
+	camera_2d.zoom = Vector2(0.3,0.3)
+	state = States.INSIDE
+	
+func get_outside():
+	sprite.visible = true
+	camera_2d.zoom = Vector2(1,1)
+	state = States.IDLE

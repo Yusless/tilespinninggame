@@ -3,6 +3,10 @@ class_name Tile
 
 const BRIDGE_SCENE = "res://tiles/bridge.tscn"
 
+const ELEVATING_BY_HOVERING = 20
+
+var hovering_before_interacting
+
 enum TileTypes {
 	HUB,
 	FOREST,
@@ -129,3 +133,21 @@ func rotate_bridges_to_tile() -> void:
 	for dir in border_objects:
 		if border_objects[dir] is Bridge:
 			border_objects[dir].update()
+
+
+func _on_area_2d_mouse_entered() -> void:
+	if Global.get_player().state == Global.get_player().States.INSIDE and tile_type != TileTypes.HUB:
+		position.y -= ELEVATING_BY_HOVERING 
+	else:
+		hovering_before_interacting = true
+
+func _on_area_2d_mouse_exited() -> void:
+	if Global.get_player().state == Global.get_player().States.INSIDE and tile_type != TileTypes.HUB and !hovering_before_interacting:
+		position.y += ELEVATING_BY_HOVERING 
+	else: 
+		hovering_before_interacting = false
+
+
+func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	if Global.get_player().state == Global.get_player().States.INSIDE and event.is_action_pressed("attack"):
+		rotate_self()
