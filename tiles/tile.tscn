@@ -1,11 +1,8 @@
 [gd_scene format=3 uid="uid://dhfxsclatflk7"]
 
-[ext_resource type="Script" uid="uid://dfv1bmacg8ufl" path="res://tiles/tile.gd" id="1_vhibn"]
-[ext_resource type="PackedScene" uid="uid://blusdwlfchhx7" path="res://assets/graphics/tile/tile_visuals.tscn" id="2_vhibn"]
-[ext_resource type="PackedScene" uid="uid://dojvj3gokqoqk" path="res://natural_resources/wheat.tscn" id="3_r3gf4"]
-[ext_resource type="Script" uid="uid://c4rr2vivlxd3k" path="res://assets/graphics/tile/tile_visuals.gd" id="3_rvdvl"]
 [ext_resource type="Script" uid="uid://dfv1bmacg8ufl" path="res://tiles/tile.gd" id="1_h3aqd"]
 [ext_resource type="PackedScene" uid="uid://blusdwlfchhx7" path="res://assets/graphics/tile/tile_visuals.tscn" id="2_lpyr5"]
+[ext_resource type="PackedScene" uid="uid://dojvj3gokqoqk" path="res://natural_resources/wheat.tscn" id="3_r3gf4"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_jq8tk"]
 a = Vector2(-120, -121)
@@ -57,18 +54,13 @@ b = Vector2(120, -121)
 
 [node name="Tile" type="Node2D" unique_id=1779673374 node_paths=PackedStringArray("up_bridge_collision", "right_bridge_collision", "down_bridge_collision", "left_bridge_collision")]
 z_index = -1
-script = ExtResource("1_vhibn")
+script = ExtResource("1_h3aqd")
 up_bridge_collision = NodePath("StaticBody2D/UpperMidBorder")
 right_bridge_collision = NodePath("StaticBody2D/RightMidBorder")
 down_bridge_collision = NodePath("StaticBody2D/DownMidBorder")
 left_bridge_collision = NodePath("StaticBody2D/LeftMidBorder")
 
-[node name="TileVisuals" type="Node2D" parent="." unique_id=1337787306 node_paths=PackedStringArray("tile_map_ground", "tile_map_details", "tile_map_texture") instance=ExtResource("2_vhibn")]
-z_index = -1
-script = ExtResource("3_rvdvl")
-tile_map_ground = NodePath("TileMapGround")
-tile_map_details = NodePath("TileMapDetails")
-tile_map_texture = NodePath("TileMapTexture")
+[node name="TileVisuals" parent="." unique_id=1337787306 instance=ExtResource("2_lpyr5")]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1553304571]
 

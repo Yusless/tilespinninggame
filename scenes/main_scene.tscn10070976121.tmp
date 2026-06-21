@@ -20,30 +20,52 @@ script = ExtResource("3_7ykc4")
 
 [node name="Tile" parent="CellsSystem" unique_id=1779673374 node_paths=PackedStringArray("visual_c") instance=ExtResource("4_pu3yx")]
 position = Vector2(0, 1)
-down_border = 2
+tile_type = null
+left_border = 1
+up_border = null
+right_border = null
+down_border = null
 visual_c = NodePath("visual_component")
 
 [node name="visual_component" parent="CellsSystem/Tile" unique_id=440603332 instance=ExtResource("7_6wevv")]
 
 [node name="Tile2" parent="CellsSystem" unique_id=1831295897 instance=ExtResource("4_pu3yx")]
-position = Vector2(288, 4)
-left_border = 2
+position = Vector2(286, 0)
+tile_type = null
+left_border = null
+up_border = null
+right_border = null
+down_border = null
 
 [node name="visual_component" parent="CellsSystem/Tile2" unique_id=1763745648 instance=ExtResource("7_6wevv")]
 
 [node name="Tile3" parent="CellsSystem" unique_id=769931347 instance=ExtResource("4_pu3yx")]
 position = Vector2(577, 2)
+tile_type = null
+left_border = null
+up_border = null
+right_border = null
+down_border = null
 
 [node name="visual_component" parent="CellsSystem/Tile3" unique_id=581453994 instance=ExtResource("7_6wevv")]
 
 [node name="Tile4" parent="CellsSystem" unique_id=113809720 instance=ExtResource("4_pu3yx")]
 position = Vector2(-2, 293)
-up_border = 2
+tile_type = null
+left_border = null
+up_border = null
+right_border = null
+down_border = null
 
 [node name="visual_component" parent="CellsSystem/Tile4" unique_id=1622273524 instance=ExtResource("7_6wevv")]
 
 [node name="Tile5" parent="CellsSystem" unique_id=306828586 instance=ExtResource("4_pu3yx")]
-position = Vector2(295, -296)
+position = Vector2(286, -295)
+tile_type = null
+left_border = null
+up_border = null
+right_border = null
+down_border = null
 
 [node name="visual_component" parent="CellsSystem/Tile5" unique_id=354693373 instance=ExtResource("7_6wevv")]
 
