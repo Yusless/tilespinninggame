@@ -2,7 +2,27 @@ extends Node2D
 class_name TileVisuals
 
 const CELL_SIZE := 16
-const TILE_SIZE := 24
+const TILE_SIZE := 16
+
+@export var tile_map_ground: TileMapLayer
+@export var tile_map_details: TileMapLayer
+@export var tile_map_texture: TileMapLayer
+
+var tilemaps: Array[TileMapLayer]
+
+func _ready() -> void:
+	for child in get_children():
+		if child is TileMapLayer:
+			tilemaps.push_back(child)
+
+func rotate_visuals():
+	var tween := create_tween()
+	tween.tween_property(self, "rotation", rotation - PI/12, 0.15).set_ease(Tween.EASE_OUT)
+	tween.tween_property(self, "rotation", rotation + PI/2 + PI/12, 0.1).set_ease(Tween.EASE_IN_OUT)
+	for layer in tilemaps:
+		tween.tween_callback(rotate_tilemap.bind(layer, 90.0))
+	tween.tween_property(self, "rotation", PI/12, 0.0)
+	tween.tween_property(self, "rotation", 0, 0.1).set_ease(Tween.EASE_OUT)
 
 func get_cell_array(tilemap: TileMapLayer) -> Array[Array]:
 	var res: Array[Array] = []

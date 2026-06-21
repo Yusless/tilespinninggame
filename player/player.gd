@@ -1,6 +1,9 @@
 extends CharacterBody2D
 class_name Player
 
+signal lighthouse_entered
+signal lighthouse_exited
+
 enum States {
 	IDLE,
 	MOVING,
@@ -103,8 +106,10 @@ func get_inside():
 	sprite.visible = false
 	camera_2d.zoom = Vector2(0.3,0.3)
 	state = States.INSIDE
+	lighthouse_entered.emit()
 	
 func get_outside():
 	sprite.visible = true
 	camera_2d.zoom = Vector2(1,1)
 	state = States.IDLE
+	lighthouse_exited.emit()

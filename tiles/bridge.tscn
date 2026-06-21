@@ -17,6 +17,7 @@ a = Vector2(144, -14)
 b = Vector2(144, 15)
 
 [node name="bridge" type="Node2D" unique_id=1152005720 node_paths=PackedStringArray("mid_part", "hit_box", "right_bridge_sprite", "left_bridge_sprite", "up_bridge_sprite", "down_bridge_sprite")]
+z_index = -1
 script = ExtResource("1_bfbeh")
 mid_part = NodePath("StaticBody2D/MidPart")
 hit_box = NodePath("StaticBody2D")

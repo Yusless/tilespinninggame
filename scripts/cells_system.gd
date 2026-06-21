@@ -21,8 +21,9 @@ func create_map_from_tiles() -> void:
 
 	var tiles = get_tiles_as_array()
 	for tile in tiles:
-		var pos = get_map_position(tile)
-		map[pos.y][pos.x] = tile
+		if tile is Tile:
+			var pos = get_map_position(tile)
+			map[pos.y][pos.x] = tile
 
 
 func get_map_position(tile: Tile) :
