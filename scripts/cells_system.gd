@@ -52,8 +52,12 @@ func get_neighbours(tile):
 	tile.neighbours = neighbours_dict
 	return neighbours_dict
 
-func get_tiles_as_array():
-	return get_children()
+func get_tiles_as_array() -> Array[Tile]:
+	var res := []
+	for child in get_children():
+		if child is Tile:
+			res.push_back(child)
+	return res
 	
 func update_all_bridges():
 	for tile in get_tiles_as_array():
@@ -64,7 +68,7 @@ func update_all_bridges():
 
 
 func check_for_interactions():
-	for tile in get_tiles_as_array():
+	for tile: Tile in get_tiles_as_array():
 		for side in tile.neighbours:
 			if tile.neighbours[side]:
 				if tile.can_interact(tile.neighbours[side], side):

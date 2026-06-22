@@ -55,7 +55,17 @@ func _physics_process(delta: float) -> void:
 	velocity.limit_length(max_fly_speed)
 	move_and_slide()
 
+func bounce():
+	returning = true
+	returning_straight = false
+	hitbox.begin_attack()
+	velocity = -velocity
 
 func _on_return_detector_body_entered(body: Node2D) -> void:
 	if body == return_target and returning:
 		retrieve()
+
+
+func _on_hitbox_area_entered(area: Area2D) -> void:
+	if area.is_in_group("Bouncers"):
+		bounce()

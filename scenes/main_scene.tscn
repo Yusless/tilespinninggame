@@ -27,35 +27,35 @@ script = ExtResource("3_7ykc4")
 down_border = 2
 
 [node name="Tile2" parent="World/CellsSystem" unique_id=1831295897 instance=ExtResource("4_pu3yx")]
-position = Vector2(384, 0)
+position = Vector2(368, 0)
 tile_type = 3
 left_border = 2
 
 [node name="Tile3" parent="World/CellsSystem" unique_id=769931347 instance=ExtResource("4_pu3yx")]
-position = Vector2(768, 0)
+position = Vector2(736, 0)
 left_border = 2
 
 [node name="Tile4" parent="World/CellsSystem" unique_id=113809720 instance=ExtResource("4_pu3yx")]
-position = Vector2(0, 384)
+position = Vector2(0, 368)
 up_border = 2
 
 [node name="Tile6" parent="World/CellsSystem" unique_id=1282555252 instance=ExtResource("6_c1pb6")]
 y_sort_enabled = false
-position = Vector2(384, 384)
+position = Vector2(368, 368)
 right_border = 2
 
 [node name="Tile7" parent="World/CellsSystem" unique_id=266878388 instance=ExtResource("4_pu3yx")]
-position = Vector2(0, 768)
+position = Vector2(0, 736)
 
 [node name="Tile8" parent="World/CellsSystem" unique_id=661761576 instance=ExtResource("4_pu3yx")]
-position = Vector2(768, 768)
+position = Vector2(736, 736)
 
 [node name="Tile9" parent="World/CellsSystem" unique_id=1758505538 instance=ExtResource("4_pu3yx")]
-position = Vector2(384, 768)
+position = Vector2(368, 736)
 
 [node name="TilePond" parent="World/CellsSystem" unique_id=351429902 instance=ExtResource("7_6wevv")]
 y_sort_enabled = false
-position = Vector2(768, 384)
+position = Vector2(736, 368)
 tile_type = 5
 left_border = 2
 up_border = 0

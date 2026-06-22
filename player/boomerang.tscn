@@ -39,4 +39,5 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ReturnDetector" unique_id=1745860770]
 shape = SubResource("RectangleShape2D_kg37j")
 
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="body_entered" from="ReturnDetector" to="." method="_on_return_detector_body_entered"]

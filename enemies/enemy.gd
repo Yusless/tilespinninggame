@@ -107,6 +107,7 @@ func die():
 	step_timer.stop()
 	rest_timer.stop()
 	attack_component.end_attack()
+	hurtbox_component.disable()
 	defeated.emit(self)
 
 func parabolic(x: float):

@@ -315,7 +315,7 @@ animation = &"idle"
 script = ExtResource("3_577yf")
 metadata/_custom_type_script = "uid://nno1v8gxy1x8"
 
-[node name="HurtboxComponent" type="Area2D" parent="." unique_id=577922681 node_paths=PackedStringArray("health_component")]
+[node name="HurtboxComponent" type="Area2D" parent="." unique_id=577922681 node_paths=PackedStringArray("health_component") groups=["Bouncers"]]
 visible = false
 collision_layer = 8
 collision_mask = 4

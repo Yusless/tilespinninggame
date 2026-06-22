@@ -7,6 +7,18 @@ signal hit
 
 var attack_ids_taken := []
 
+func disable():
+	var child := get_child(0)
+	if child:
+		if child is CollisionShape2D:
+			child.disabled = true
+
+func enable():
+	var child := get_child(0)
+	if child:
+		if child is CollisionShape2D:
+			child.disabled = false
+
 func get_hit(attack: AttackComponent):
 	if attack.attack_id in attack_ids_taken:
 		return

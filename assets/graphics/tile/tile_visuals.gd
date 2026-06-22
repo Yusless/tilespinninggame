@@ -72,6 +72,8 @@ func rotate_node(node: Node2D, degrees: float):
 		node.rotate(PI/2 * rotations)
 
 func rotate_tilemap(tilemap: TileMapLayer, degrees: float):
+	if tilemap.name == "TileMapGround":
+		return
 	var array := get_cell_array(tilemap)
 	var rotated_array := get_rotated_array_by_degrees(array, degrees)
 	tilemap.clear()
@@ -89,7 +91,7 @@ func rotate_tilemap(tilemap: TileMapLayer, degrees: float):
 					terrains[[tile_data.terrain_set, tile_data.terrain]].push_back(cell_coords)
 				else:
 					tilemap.set_cell(
-						Vector2i(x-int(TILE_SIZE/2.0), y-int(TILE_SIZE/2.0)),
+						cell_coords,
 						0,
 						atlas_coords
 					)
