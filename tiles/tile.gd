@@ -7,12 +7,22 @@ const ELEVATING_BY_HOVERING = 20
 
 var hovering_before_interacting
 
+var interaction_dict = {
+	TileTypes.HUB: [],
+	TileTypes.FOREST: [TileTypes.PLAIN, TileTypes.RIVER],
+	TileTypes.PLAIN: [],
+	TileTypes.RIVER: [],
+	TileTypes.MOUNTAIN: [],
+	TileTypes.POND: []
+}
+
 enum TileTypes {
 	HUB,
 	FOREST,
 	PLAIN,
 	RIVER,
-	MOUNTAIN
+	MOUNTAIN,
+	POND
 }
 
 enum BorderTypes {
@@ -172,3 +182,13 @@ func _on_player_lighthouse_exited():
 	treated_as_interface = false
 	if position != default_position:
 		position = default_position
+
+	
+func can_interact(neighbour, side) -> bool:
+	if neighbour.tile_type in interaction_dict[tile_type]:
+		if neighbour.border_objects[Side.get_opposite(side)] is Bridge and border_objects[side] is Bridge:
+			return true
+	return false
+	
+func interact(neighbour,side):
+	print(self, 'HAS INTERACTED WITH', neighbour, "BY", side)

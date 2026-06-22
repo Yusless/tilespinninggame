@@ -62,3 +62,14 @@ func update_all_bridges():
 			var border = tile.border_objects[side]
 			if border is Bridge:
 				border.update()
+
+
+func check_for_interactions():
+	for tile in get_tiles_as_array():
+		for side in tile.neighbours:
+			if tile.neighbours[side]:
+				if tile.can_interact(tile.neighbours[side], side):
+					tile.interact(tile.neighbours[side], side)
+			
+func submit_tile_position():
+	check_for_interactions()

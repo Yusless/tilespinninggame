@@ -29,20 +29,21 @@ down_border = 2
 
 [node name="Tile2" parent="World/CellsSystem" unique_id=1831295897 instance=ExtResource("4_pu3yx")]
 position = Vector2(288, 4)
+tile_type = 3
 left_border = 2
 
 [node name="Tile3" parent="World/CellsSystem" unique_id=769931347 instance=ExtResource("4_pu3yx")]
 position = Vector2(577, 2)
+left_border = 2
 
 [node name="Tile4" parent="World/CellsSystem" unique_id=113809720 instance=ExtResource("4_pu3yx")]
 position = Vector2(-2, 293)
 up_border = 2
 
-[node name="Tile6" parent="World/CellsSystem" unique_id=1282555252 node_paths=PackedStringArray("tile_visuals") instance=ExtResource("6_c1pb6")]
+[node name="Tile6" parent="World/CellsSystem" unique_id=1282555252 instance=ExtResource("6_c1pb6")]
 y_sort_enabled = false
 position = Vector2(291, 288)
 right_border = 2
-tile_visuals = NodePath("TileVisuals")
 
 [node name="Tile7" parent="World/CellsSystem" unique_id=266878388 instance=ExtResource("4_pu3yx")]
 position = Vector2(1, 574)
@@ -53,17 +54,25 @@ position = Vector2(604, 584)
 [node name="Tile9" parent="World/CellsSystem" unique_id=1758505538 instance=ExtResource("4_pu3yx")]
 position = Vector2(307, 582)
 
-[node name="TilePond" parent="World/CellsSystem" unique_id=351429902 node_paths=PackedStringArray("tile_visuals") instance=ExtResource("7_6wevv")]
+[node name="TilePond" parent="World/CellsSystem" unique_id=351429902 instance=ExtResource("7_6wevv")]
 y_sort_enabled = false
 position = Vector2(579, 288)
+tile_type = 5
 left_border = 2
-tile_visuals = NodePath("TileVisuals")
+up_border = 0
+right_border = 0
+down_border = 0
 
-[node name="Player" parent="World" unique_id=251603508 instance=ExtResource("1_w2twt")]
+[node name="Player" parent="World" unique_id=251603508 node_paths=PackedStringArray("cells_system") instance=ExtResource("1_w2twt")]
 y_sort_enabled = false
 position = Vector2(289, 324)
+cells_system = NodePath("../CellsSystem")
 
 [node name="GUILayer" type="CanvasLayer" parent="." unique_id=587643093]
 
 [node name="HUD" parent="GUILayer" unique_id=1161228326 instance=ExtResource("8_18nlu")]
+offset_left = 17.0
+offset_top = -1.0
+offset_right = 17.0
+offset_bottom = -1.0
 mouse_filter = 1

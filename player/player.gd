@@ -24,6 +24,8 @@ const DECCELERATION_TIME: float = 0.05
 @export var animation_player: AnimationPlayer
 @export var health_component: HealthComponent
 @export var camera_2d: Camera2D
+@export var cells_system: Node2D
+
 
 
 var last_direction := Vector2.ONE
@@ -113,3 +115,4 @@ func get_outside():
 	camera_2d.zoom = Vector2(1,1)
 	state = States.IDLE
 	lighthouse_exited.emit()
+	cells_system.submit_tile_position()
