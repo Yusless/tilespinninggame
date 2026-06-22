@@ -1,63 +1,136 @@
-[gd_scene format=3 uid="uid://2ywgxwdhdrt0"]
+[gd_scene format=4 uid="uid://2ywgxwdhdrt0"]
 
-[ext_resource type="Texture2D" uid="uid://vadmxyflk13v" path="res://assets/graphics/tile/bridge_right.png" id="1_36a3b"]
 [ext_resource type="Script" uid="uid://k74stjhfdhxg" path="res://tiles/bridge.gd" id="1_bfbeh"]
-[ext_resource type="Texture2D" uid="uid://dtrljpg3fjyd2" path="res://assets/graphics/tile/bridge_left.png" id="2_3cciu"]
+[ext_resource type="TileSet" uid="uid://2s1f4ntvo15j" path="res://assets/graphics/tile/tile_set_grass.tres" id="2_x127y"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_3cciu"]
-a = Vector2(123, 14)
+a = Vector2(82, 14.000013)
 b = Vector2(145, 14)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_3xd07"]
-a = Vector2(123, -14)
-b = Vector2(145, -14)
+a = Vector2(81.00001, -22.999979)
+b = Vector2(144, -22.999968)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_jq8tk"]
-a = Vector2(144, -14)
-b = Vector2(144, 15)
+a = Vector2(144, -26)
+b = Vector2(144, 52.00002)
 
-[node name="bridge" type="Node2D" unique_id=1152005720 node_paths=PackedStringArray("mid_part", "hit_box", "right_bridge_sprite", "left_bridge_sprite", "up_bridge_sprite", "down_bridge_sprite")]
+[node name="bridge" type="Node2D" unique_id=1152005720 node_paths=PackedStringArray("mid_part", "hit_box", "right_bridge_sprite", "left_bridge_sprite", "up_bridge_sprite", "down_bridge_sprite", "merge_part_left", "merge_part_up")]
 z_index = -1
 script = ExtResource("1_bfbeh")
-mid_part = NodePath("StaticBody2D/MidPart")
-hit_box = NodePath("StaticBody2D")
-right_bridge_sprite = NodePath("rightBridge")
-left_bridge_sprite = NodePath("leftBridge")
-up_bridge_sprite = NodePath("upBridge")
-down_bridge_sprite = NodePath("downBridge")
+mid_part = NodePath("CollisionRight/MidPart")
+hit_box = NodePath("CollisionRight")
+right_bridge_sprite = NodePath("RightBridge")
+left_bridge_sprite = NodePath("LeftBridge")
+up_bridge_sprite = NodePath("UpBridge")
+down_bridge_sprite = NodePath("DownBridge")
+merge_part_left = NodePath("MergePartLeft")
+merge_part_up = NodePath("MergePartUp")
 
-[node name="rightBridge" type="Sprite2D" parent="." unique_id=720671349]
-visible = false
-position = Vector2(126, -3.5)
-scale = Vector2(1.1875, 2.15625)
-texture = ExtResource("1_36a3b")
+[node name="CollisionRight" type="StaticBody2D" parent="." unique_id=1221304630]
+z_index = 3
 
-[node name="leftBridge" type="Sprite2D" parent="." unique_id=264139454]
-visible = false
-position = Vector2(-126, -3.5)
-scale = Vector2(1.188, 2.156)
-texture = ExtResource("2_3cciu")
-
-[node name="upBridge" type="Sprite2D" parent="." unique_id=1336318934]
-visible = false
-position = Vector2(2, -138)
-scale = Vector2(1.21875, 1.6718749)
-texture = ExtResource("1_36a3b")
-
-[node name="downBridge" type="Sprite2D" parent="." unique_id=11075418]
-visible = false
-position = Vector2(-2.281251, 142.69531)
-scale = Vector2(1.9550781, 1.2934569)
-texture = ExtResource("1_36a3b")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1221304630]
-
-[node name="LeftPart" type="CollisionShape2D" parent="StaticBody2D" unique_id=2017517653]
+[node name="LeftPart" type="CollisionShape2D" parent="CollisionRight" unique_id=2017517653]
+position = Vector2(35.999996, 22.000006)
 shape = SubResource("SegmentShape2D_3cciu")
 
-[node name="RightPart" type="CollisionShape2D" parent="StaticBody2D" unique_id=2097953050]
+[node name="RightPart" type="CollisionShape2D" parent="CollisionRight" unique_id=2097953050]
+position = Vector2(37, -1)
 shape = SubResource("SegmentShape2D_3xd07")
 
-[node name="MidPart" type="CollisionShape2D" parent="StaticBody2D" unique_id=1641121764]
+[node name="MidPart" type="CollisionShape2D" parent="CollisionRight" unique_id=1641121764]
 z_index = 2
+position = Vector2(37, 0)
 shape = SubResource("SegmentShape2D_jq8tk")
+
+[node name="CollisionLeft" type="StaticBody2D" parent="." unique_id=194165701]
+z_index = 3
+
+[node name="LeftPart" type="CollisionShape2D" parent="CollisionLeft" unique_id=1613118318]
+position = Vector2(-38, -11)
+rotation = -3.1415927
+shape = SubResource("SegmentShape2D_3cciu")
+
+[node name="RightPart" type="CollisionShape2D" parent="CollisionLeft" unique_id=1313723177]
+position = Vector2(-37, 14)
+rotation = -3.1415927
+shape = SubResource("SegmentShape2D_3xd07")
+
+[node name="MidPart" type="CollisionShape2D" parent="CollisionLeft" unique_id=976335946]
+z_index = 2
+position = Vector2(-37, 15)
+rotation = -3.1415927
+shape = SubResource("SegmentShape2D_jq8tk")
+
+[node name="CollisionDown" type="StaticBody2D" parent="." unique_id=194129362]
+z_index = 3
+rotation = -1.5707964
+
+[node name="LeftPart" type="CollisionShape2D" parent="CollisionDown" unique_id=872215712]
+position = Vector2(-38, -24.000002)
+rotation = -3.1415927
+shape = SubResource("SegmentShape2D_3cciu")
+
+[node name="RightPart" type="CollisionShape2D" parent="CollisionDown" unique_id=1429698214]
+position = Vector2(-37, 14)
+rotation = -3.1415927
+shape = SubResource("SegmentShape2D_3xd07")
+
+[node name="MidPart" type="CollisionShape2D" parent="CollisionDown" unique_id=263775419]
+z_index = 2
+position = Vector2(-37, 15)
+rotation = -3.1415927
+shape = SubResource("SegmentShape2D_jq8tk")
+
+[node name="CollisionUp" type="StaticBody2D" parent="." unique_id=103539948]
+z_index = 3
+rotation = -4.712389
+
+[node name="LeftPart" type="CollisionShape2D" parent="CollisionUp" unique_id=1842853266]
+position = Vector2(-38, -24.000002)
+rotation = -3.1415927
+shape = SubResource("SegmentShape2D_3cciu")
+
+[node name="RightPart" type="CollisionShape2D" parent="CollisionUp" unique_id=1838943649]
+position = Vector2(-37, 14)
+rotation = -3.1415927
+shape = SubResource("SegmentShape2D_3xd07")
+
+[node name="MidPart" type="CollisionShape2D" parent="CollisionUp" unique_id=1635873087]
+z_index = 2
+position = Vector2(-37, 15)
+rotation = -3.1415927
+shape = SubResource("SegmentShape2D_jq8tk")
+
+[node name="RightBridge" type="TileMapLayer" parent="." unique_id=1014033833]
+z_index = 1
+tile_map_data = PackedByteArray("AAAHAP//AAAEAAIAAAAHAAAAAAAEAAIAAAAKAAIAAAAEAAMAAAAKAAEAAAAEAAIAAAAKAAAAAAAEAAIAAAAKAP//AAAEAAIAAAAKAP7/AAAEAAEAAAAJAAIAAAAEAAMAAAAJAAEAAAAEAAIAAAAJAAAAAAAEAAIAAAAJAP//AAAEAAIAAAAJAP7/AAAEAAEAAAAIAAIAAAAEAAMAAAAIAAEAAAAEAAIAAAAIAAAAAAAEAAIAAAAIAP//AAAEAAIAAAAIAP7/AAAEAAEAAAAHAAIAAAAHAAMAAAAHAAEAAAAEAAIAAAAHAP7/AAAHAAIAAAALAP//AAAFAAIAAAALAAAAAAAFAAIAAAALAAEAAAAFAAIAAAALAAIAAAAFAAMAAAALAP7/AAAFAAEAAAA=")
+tile_set = ExtResource("2_x127y")
+
+[node name="LeftBridge" type="TileMapLayer" parent="." unique_id=935780701]
+z_index = 1
+scale = Vector2(1.000421, 0.999884)
+tile_map_data = PackedByteArray("AAD0//7/AAADAAEAAAD0////AAADAAIAAAD0/wAAAAADAAIAAAD0/wEAAAADAAIAAAD0/wIAAAADAAMAAAD1//7/AAAEAAEAAAD1////AAAEAAIAAAD1/wAAAAAEAAIAAAD1/wEAAAAEAAIAAAD1/wIAAAAEAAMAAAD2//7/AAAEAAEAAAD2////AAAEAAIAAAD2/wAAAAAEAAIAAAD2/wEAAAAEAAIAAAD2/wIAAAAEAAMAAAD3//7/AAAEAAEAAAD3////AAAEAAIAAAD3/wAAAAAEAAIAAAD3/wEAAAAEAAIAAAD3/wIAAAAEAAMAAAD4//7/AAAGAAIAAAD4////AAAEAAIAAAD4/wAAAAAEAAIAAAD4/wEAAAAEAAIAAAD4/wIAAAAGAAMAAAA=")
+tile_set = ExtResource("2_x127y")
+
+[node name="UpBridge" type="TileMapLayer" parent="." unique_id=1578992346]
+z_index = 1
+tile_map_data = PackedByteArray("AAD+//T/AAAEAAEAAAD+//X/AAAEAAIAAAD+//b/AAAEAAIAAAD+//f/AAAEAAIAAAD+//j/AAAEAAIAAAD///T/AAAEAAEAAAD///X/AAAEAAIAAAD///b/AAAEAAIAAAD///f/AAAEAAIAAAD///j/AAAEAAIAAAAAAPT/AAAEAAEAAAAAAPX/AAAEAAIAAAAAAPb/AAAEAAIAAAAAAPf/AAAEAAIAAAAAAPj/AAAEAAIAAAABAPT/AAAEAAEAAAABAPX/AAAEAAIAAAABAPb/AAAEAAIAAAABAPf/AAAEAAIAAAABAPj/AAAEAAIAAAACAPT/AAAFAAEAAAACAPX/AAAFAAIAAAACAPb/AAAFAAIAAAACAPf/AAAFAAIAAAACAPj/AAAHAAIAAAD9//T/AAADAAEAAAD9//X/AAADAAIAAAD9//b/AAADAAIAAAD9//f/AAADAAIAAAD9//j/AAAGAAIAAAA=")
+tile_set = ExtResource("2_x127y")
+
+[node name="DownBridge" type="TileMapLayer" parent="." unique_id=1393964727]
+z_index = 1
+tile_map_data = PackedByteArray("AAD9/wcAAAAGAAMAAAD9/wgAAAADAAIAAAD9/wkAAAADAAIAAAD9/woAAAADAAIAAAD9/wsAAAADAAMAAAD+/wcAAAAEAAIAAAD+/wgAAAAEAAIAAAD+/wkAAAAEAAIAAAD+/woAAAAEAAIAAAD+/wsAAAAEAAMAAAD//wcAAAAEAAIAAAD//wgAAAAEAAIAAAD//wkAAAAEAAIAAAD//woAAAAEAAIAAAD//wsAAAAEAAMAAAAAAAcAAAAEAAIAAAAAAAgAAAAEAAIAAAAAAAkAAAAEAAIAAAAAAAoAAAAEAAIAAAAAAAsAAAAEAAMAAAABAAcAAAAEAAIAAAABAAgAAAAEAAIAAAABAAkAAAAEAAIAAAABAAoAAAAEAAIAAAABAAsAAAAEAAMAAAACAAcAAAAHAAMAAAACAAgAAAAFAAIAAAACAAkAAAAFAAIAAAACAAoAAAAFAAIAAAACAAsAAAAFAAMAAAA=")
+tile_set = ExtResource("2_x127y")
+
+[node name="MergePartLeft" type="TileMapLayer" parent="." unique_id=2060545061]
+visible = false
+z_index = 1
+tile_map_data = PackedByteArray("AAD0/wEAAAAEAAIAAAD0/wAAAAAEAAIAAAD0////AAAEAAIAAAD0//7/AAAEAAEAAAD0/wIAAAAEAAMAAAA=")
+tile_set = ExtResource("2_x127y")
+
+[node name="MergePartUp" type="TileMapLayer" parent="." unique_id=2076209079]
+visible = false
+z_index = 1
+tile_map_data = PackedByteArray("AAD0/wEAAAAEAAIAAAD0/wAAAAAEAAIAAAD0////AAAEAAIAAAD0//7/AAAEAAEAAAD0/wIAAAAEAAMAAAD9//T/AAADAAIAAAD+//T/AAAEAAIAAAD///T/AAAEAAIAAAAAAPT/AAAEAAIAAAABAPT/AAAEAAIAAAACAPT/AAAFAAIAAAA=")
+tile_set = ExtResource("2_x127y")

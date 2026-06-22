@@ -1,5 +1,4 @@
 extends Node
-const DIST_BETWEEN_TILES = 280
 const FIELD_WIDTH = 3
 const FIELD_HEIGHT = 3
 
@@ -30,8 +29,8 @@ func get_map_position(tile: Tile) :
 	var pos_x = tile.position.x 
 	var pos_y = tile.position.y
 
-	pos_x = int(pos_x/DIST_BETWEEN_TILES)
-	pos_y = int(pos_y/DIST_BETWEEN_TILES)
+	pos_x = int(pos_x/Global.DIST_BETWEEN_TILES)
+	pos_y = int(pos_y/Global.DIST_BETWEEN_TILES)
 
 	return Vector2i(pos_x,pos_y)
 
