@@ -1,5 +1,7 @@
 extends Node
 
+const DIST_BETWEEN_TILES = 368
+
 enum border_types {
 	nothing,
 	wall,

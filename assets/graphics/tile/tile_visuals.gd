@@ -1,28 +1,35 @@
 extends Node2D
-class_name TileVisuals
+class_name TileContents
 
 const CELL_SIZE := 16
 const TILE_SIZE := 16
+
+@export var rotation_time := 0.15 + 0.1
 
 @export var tile_map_ground: TileMapLayer
 @export var tile_map_details: TileMapLayer
 @export var tile_map_texture: TileMapLayer
 
 var tilemaps: Array[TileMapLayer]
+var nodes: Array[Node2D]
 
 func _ready() -> void:
 	for child in get_children():
 		if child is TileMapLayer:
 			tilemaps.push_back(child)
+		else:
+			nodes.push_back(child)
 
-func rotate_visuals():
+func rotate_contents():
 	var tween := create_tween()
-	tween.tween_property(self, "rotation", rotation - PI/12, 0.15).set_ease(Tween.EASE_OUT)
-	tween.tween_property(self, "rotation", rotation + PI/2 + PI/12, 0.1).set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(self, "rotation", rotation - PI/12, rotation_time * 0.6).set_ease(Tween.EASE_OUT)
+	tween.tween_property(self, "rotation", rotation + PI/2 + PI/12, rotation_time * 0.4).set_ease(Tween.EASE_IN_OUT)
 	for layer in tilemaps:
 		tween.tween_callback(rotate_tilemap.bind(layer, 90.0))
+	for node in nodes:
+		tween.tween_callback(rotate_node.bind(node, 90.0))
 	tween.tween_property(self, "rotation", PI/12, 0.0)
-	tween.tween_property(self, "rotation", 0, 0.1).set_ease(Tween.EASE_OUT)
+	tween.tween_property(self, "rotation", 0, rotation_time * 0.4).set_ease(Tween.EASE_OUT)
 
 func get_cell_array(tilemap: TileMapLayer) -> Array[Array]:
 	var res: Array[Array] = []
@@ -56,6 +63,13 @@ func get_rotated_array_by_degrees(array: Array[Array], degrees: float) -> Array[
 		for i in range(res.size()):
 			res[i].reverse()
 	return res
+
+func rotate_node(node: Node2D, degrees: float):
+	var rotations := floori(degrees / 90.0)
+	var new_pos := node.position.rotated(PI/2 * rotations)
+	node.position = new_pos
+	if node.is_in_group("NeedsRotationChanged"):
+		node.rotate(PI/2 * rotations)
 
 func rotate_tilemap(tilemap: TileMapLayer, degrees: float):
 	var array := get_cell_array(tilemap)

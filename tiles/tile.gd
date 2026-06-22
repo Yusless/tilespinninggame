@@ -31,8 +31,6 @@ enum BorderTypes {
 	BRIDGE
 }
 
-const DIST_BETWEEN_TILES = 285
-
 @export var tile_type = TileTypes.HUB
 
 @export var up_bridge_collision = CollisionShape2D
@@ -44,7 +42,7 @@ const DIST_BETWEEN_TILES = 285
 @export var up_border = BorderTypes.NOTHING
 @export var right_border = BorderTypes.NOTHING
 @export var down_border = BorderTypes.NOTHING
-@export var tile_visuals: TileVisuals
+@export var tile_contents: TileContents
 
 var borders = {}
 
@@ -65,8 +63,6 @@ var neighbours: Dictionary[Side.Sides, Tile] = {Side.Sides.UP:null,
 var treated_as_interface := false
 var default_position: Vector2
 var hovering_position: Vector2
-
-@export var visual_c: VisualComponent =  null
 
 func _ready() -> void:
 	collisions_from_export()
@@ -94,11 +90,11 @@ func place_yourself() -> void:
 	var pos_x = position.x 
 	var pos_y = position.y
 	
-	pos_x = int(pos_x/DIST_BETWEEN_TILES)
-	pos_y = int(pos_y/DIST_BETWEEN_TILES)
+	pos_x = int(pos_x/Global.DIST_BETWEEN_TILES)
+	pos_y = int(pos_y/Global.DIST_BETWEEN_TILES)
 	
-	position.x = pos_x * DIST_BETWEEN_TILES
-	position.y = pos_y * DIST_BETWEEN_TILES
+	position.x = pos_x * Global.DIST_BETWEEN_TILES
+	position.y = pos_y * Global.DIST_BETWEEN_TILES
 
 func borders_from_export():
 	borders = {Side.Sides.UP: up_border,
@@ -134,8 +130,9 @@ func init_bridges_to_tile() -> void:
 		if borders[side] == BorderTypes.BRIDGE:
 			var bridge_instance = bridge.instantiate()
 			border_objects[side] = bridge_instance
-			add_child(bridge_instance)
+			tile_contents.add_child(bridge_instance)
 			bridge_instance.side = side
+			bridge_instance.tile = self
 			bridge_instance.update()
 
 func rotate_bridges_to_tile() -> void:
@@ -170,10 +167,10 @@ func _on_area_2d_mouse_exited() -> void:
 		hovering_before_interacting = false
 
 
-func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+func _on_area_2d_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if Global.get_player().state == Global.get_player().States.INSIDE and event.is_action_pressed("attack"):
-		rotate_self()
-		tile_visuals.rotate_visuals()
+		tile_contents.rotate_contents()
+		create_tween().tween_callback(rotate_self).set_delay(tile_contents.rotation_time)
 
 func _on_player_lighthouse_entered():
 	treated_as_interface = true
