@@ -35,6 +35,11 @@ Player=""
 Managers=""
 NeedsRotationChanged=""
 Bouncers=""
+NeedsResetting=""
+
+[gui]
+
+theme/custom="uid://cyr5vfnkvpaly"
 
 [input]
 

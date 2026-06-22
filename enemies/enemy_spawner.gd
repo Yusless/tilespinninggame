@@ -13,10 +13,12 @@ class_name EnemySpawner
 @export var boundry_right_marker: Marker2D
 @export var spawn_timer: Timer
 
+
+var active := false
 var enemies: Array[Enemy] = []
 
 func _ready() -> void:
-	if !Engine.is_editor_hint():
+	if !Engine.is_editor_hint() and active:
 		spawn_timer.wait_time = spawn_interval
 		spawn_timer.start()
 
@@ -34,9 +36,9 @@ func spawn_enemy():
 	)
 
 func remove_enemy(enemy: Enemy):
-	enemies.erase(enemy)
 	enemy.queue_free()
-	if enemies.size() < enemy_limit and spawn_timer.is_stopped():
+	enemies.erase(enemy)
+	if enemies.size() < enemy_limit and spawn_timer.is_stopped() and active:
 		spawn_timer.start()
 
 func _process(_delta: float) -> void:
@@ -46,11 +48,26 @@ func _process(_delta: float) -> void:
 
 
 func _on_spawn_timer_timeout() -> void:
+	if !active:
+		return
 	spawn_enemy()
 	if enemies.size() < enemy_limit:
+		spawn_timer.wait_time = spawn_interval
 		spawn_timer.start()
 
 func _on_enemy_defeated(enemy: Enemy):
 	await get_tree().create_timer(1.0).timeout
 	if is_inside_tree():
 		remove_enemy(enemy)
+
+func deactivate():
+	active = false
+	spawn_timer.stop()
+
+func activate():
+	active = true
+	spawn_timer.start()
+
+func reset():
+	while enemies:
+		remove_enemy(enemies[0])

@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://h8s01ufejtin"]
+
+[ext_resource type="Script" uid="uid://dwkj4ges6b3kj" path="res://hud/resource_number.tscn.gd" id="1_5d1we"]
+[ext_resource type="Texture2D" uid="uid://ccks4rl8s3h2l" path="res://natural_resources/resource_icons.png" id="2_3aeuh"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_kg37j"]
+font_size = 9
+font_color = Color(0, 0, 0, 1)
+
+[node name="WheatCounter" type="HBoxContainer" unique_id=522965764 node_paths=PackedStringArray("icon", "counter")]
+script = ExtResource("1_5d1we")
+icon = NodePath("Icon")
+counter = NodePath("Counter")
+
+[node name="Icon" type="TextureRect" parent="." unique_id=1770491988]
+layout_mode = 2
+texture = ExtResource("2_3aeuh")
+stretch_mode = 5
+
+[node name="Counter" type="Label" parent="." unique_id=761771920]
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_kg37j")

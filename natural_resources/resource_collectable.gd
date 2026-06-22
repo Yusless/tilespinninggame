@@ -6,13 +6,14 @@ class_name ResourceCollectable
 @export var fly_up_distance := 8.0
 @export var drop_distance := 8.0
 @export var horizontal_spread_max := 6.0
-@export var sprite: AnimatedSprite2D
+@export var sprite: Sprite2D
 @export var animation_player: AnimationPlayer
 @export var collision_shape: CollisionShape2D
 
 
 func _ready() -> void:
 	drop()
+	sprite.texture = resource.icon
 
 func drop():
 	var direction := 1 if randi()%2 else -1

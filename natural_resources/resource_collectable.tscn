@@ -1,22 +1,6 @@
 [gd_scene format=3 uid="uid://d267fo2rmy84p"]
 
 [ext_resource type="Script" uid="uid://csnbwddnflk0" path="res://natural_resources/resource_collectable.gd" id="1_o1gfo"]
-[ext_resource type="Texture2D" uid="uid://ccks4rl8s3h2l" path="res://natural_resources/resource_icons.png" id="2_qq1v6"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_511nk"]
-atlas = ExtResource("2_qq1v6")
-region = Rect2(0, 0, 8, 8)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_o1gfo"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_511nk")
-}],
-"loop": 1,
-"name": &"wheat",
-"speed": 5.0
-}]
 
 [sub_resource type="Animation" id="Animation_21ecd"]
 length = 0.001
@@ -47,7 +31,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_mhojj"]
 resource_name = "collect"
-length = 0.39999999999999997
+length = 0.4
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -90,9 +74,7 @@ sprite = NodePath("Sprite")
 animation_player = NodePath("AnimationPlayer")
 collision_shape = NodePath("PlayerDetector/CollisionShape2D")
 
-[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=337912061]
-sprite_frames = SubResource("SpriteFrames_o1gfo")
-animation = &"wheat"
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1122536501]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1278813624]
 libraries/ = SubResource("AnimationLibrary_y2dwq")

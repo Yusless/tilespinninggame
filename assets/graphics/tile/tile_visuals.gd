@@ -97,3 +97,15 @@ func rotate_tilemap(tilemap: TileMapLayer, degrees: float):
 					)
 	for terrain in terrains:
 		tilemap.set_cells_terrain_connect(terrains[terrain], terrain[0], terrain[1])
+
+func reset():
+	for node in nodes:
+		if node.is_in_group("NeedsResetting") and node.has_method("reset"):
+			if node.has_method("deactivate"):
+				node.deactivate()
+			node.reset()
+
+func activate():
+	for node in nodes:
+		if node.has_method("activate"):
+			node.activate()

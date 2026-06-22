@@ -8,6 +8,11 @@ enum border_types {
 	bridge
 }
 
+var resource_list := [
+	preload("res://natural_resources/wheat_resource.tres"),
+	preload("res://natural_resources/wood_resource.tres"),
+]
+
 var treat_tiles_as_interface := false
 
 func get_manager(manager_type: Object):

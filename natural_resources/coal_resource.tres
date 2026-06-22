@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="NaturalResource" format=3 uid="uid://dh2vwv3hcj4gu"]
+
+[ext_resource type="Texture2D" uid="uid://ccks4rl8s3h2l" path="res://natural_resources/resource_icons.png" id="1_4h1yn"]
+[ext_resource type="Script" uid="uid://36bx0jkgt0vc" path="res://natural_resources/natural_resource.gd" id="2_rprg6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bfbeh"]
+atlas = ExtResource("1_4h1yn")
+region = Rect2(32, 0, 16, 16)
+
+[resource]
+script = ExtResource("2_rprg6")
+name = "coal"
+icon = SubResource("AtlasTexture_bfbeh")
+metadata/_custom_type_script = "uid://36bx0jkgt0vc"

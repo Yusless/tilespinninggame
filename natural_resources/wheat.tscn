@@ -35,7 +35,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Wheat" type="Node2D" unique_id=173354698 node_paths=PackedStringArray("health_component", "collectable_origin", "sprite")]
+[node name="Wheat" type="Node2D" unique_id=173354698 node_paths=PackedStringArray("health_component", "collectable_origin", "sprite") groups=["NeedsResetting"]]
 script = ExtResource("1_gwl5s")
 resource = ExtResource("2_skmqv")
 health_component = NodePath("HealthComponent")

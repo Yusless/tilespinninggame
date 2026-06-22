@@ -59,7 +59,8 @@ func bounce():
 	returning = true
 	returning_straight = false
 	hitbox.begin_attack()
-	velocity = -velocity
+	velocity = -velocity*0.75
+	velocity += velocity.rotated(randf_range(-PI/2, PI/2)) * 0.5
 
 func _on_return_detector_body_entered(body: Node2D) -> void:
 	if body == return_target and returning:

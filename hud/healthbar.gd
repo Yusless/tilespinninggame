@@ -17,9 +17,10 @@ func _ready() -> void:
 		add_child(container)
 		containers.push_back(container)
 	
-	var player := Global.get_player()
-	player.health_component.damaged.connect(_on_player_damaged)
-	player.health_component.healed.connect(_on_player_healed)
+	if !Engine.is_editor_hint():
+		var player := Global.get_player()
+		player.health_component.damaged.connect(_on_player_damaged)
+		player.health_component.healed.connect(_on_player_healed)
 
 func fill_containers(amount: int):
 	for i in range(amount):

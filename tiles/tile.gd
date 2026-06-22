@@ -9,19 +9,18 @@ var hovering_before_interacting
 
 var interaction_dict = {
 	TileTypes.HUB: [],
-	TileTypes.FOREST: [TileTypes.PLAIN, TileTypes.RIVER],
-	TileTypes.PLAIN: [],
-	TileTypes.RIVER: [],
-	TileTypes.MOUNTAIN: [],
+	TileTypes.FOREST: [TileTypes.LAVA_LAKE],
+	TileTypes.WHEAT: [TileTypes.LAVA_LAKE],
+	TileTypes.LAVA_LAKE: [TileTypes.FOREST, TileTypes.WHEAT],
 	TileTypes.POND: []
 }
 
 enum TileTypes {
 	HUB,
 	FOREST,
-	PLAIN,
-	RIVER,
-	MOUNTAIN,
+	WHEAT,
+	LAVA_LAKE,
+	EMPTY,
 	POND
 }
 
@@ -32,6 +31,7 @@ enum BorderTypes {
 }
 
 @export var tile_type = TileTypes.HUB
+@export var rotatable := true
 
 @export var up_bridge_collision = CollisionShape2D
 @export var right_bridge_collision = CollisionShape2D
@@ -161,14 +161,14 @@ func _on_area_2d_mouse_entered() -> void:
 		hovering_before_interacting = true
 
 func _on_area_2d_mouse_exited() -> void:
-	if treated_as_interface and tile_type != TileTypes.HUB and !hovering_before_interacting:
+	if treated_as_interface and rotatable and !hovering_before_interacting:
 		position = default_position
 	else: 
 		hovering_before_interacting = false
 
 
 func _on_area_2d_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
-	if Global.get_player().state == Global.get_player().States.INSIDE and event.is_action_pressed("attack"):
+	if Global.get_player().state == Global.get_player().States.INSIDE and event.is_action_pressed("attack") and rotatable:
 		tile_contents.rotate_contents()
 		create_tween().tween_callback(rotate_self).set_delay(tile_contents.rotation_time)
 
@@ -189,3 +189,13 @@ func can_interact(neighbour, side) -> bool:
 	
 func interact(neighbour,side):
 	print(self, 'HAS INTERACTED WITH', neighbour, "BY", side)
+
+func reset():
+	for child in get_children():
+		if child.has_method("reset") and child.is_in_group("NeedsResetting"):
+			child.reset()
+
+func activate():
+	for child in get_children():
+		if child.has_method("activate"):
+			child.activate()

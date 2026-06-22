@@ -4,13 +4,17 @@ const FIELD_HEIGHT = 3
 
 var map = []
 
+@export var hub_tile: HubTile
+@export var environment_manager: EnvironmentManager
+
 
 func _ready() -> void:
 	create_map_from_tiles()
 	for tile in get_tiles_as_array():
 		get_neighbours(tile)
 	update_all_bridges()
-	
+	hub_tile.lighthouse.expedition_finished.connect(_on_lighthouse_expedition_finished)
+	hub_tile.lighthouse.expedition_started.connect(_on_lighthouse_expedition_started)
 	
 func create_map_from_tiles() -> void:
 	for i in range(FIELD_HEIGHT):
@@ -66,6 +70,13 @@ func update_all_bridges():
 			if border is Bridge:
 				border.update()
 
+func reset_tiles():
+	for tile in get_tiles_as_array():
+		tile.reset()
+
+func activate_tiles():
+	for tile in get_tiles_as_array():
+		tile.activate()
 
 func check_for_interactions():
 	for tile: Tile in get_tiles_as_array():
@@ -76,3 +87,11 @@ func check_for_interactions():
 			
 func submit_tile_position():
 	check_for_interactions()
+
+func _on_lighthouse_expedition_finished():
+	environment_manager.switch_to_night()
+	reset_tiles()
+
+func _on_lighthouse_expedition_started():
+	environment_manager.switch_to_day()
+	activate_tiles()

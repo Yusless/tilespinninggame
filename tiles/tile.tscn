@@ -4,6 +4,9 @@
 [ext_resource type="Script" uid="uid://c4rr2vivlxd3k" path="res://assets/graphics/tile/tile_visuals.gd" id="2_l53t7"]
 [ext_resource type="TileSet" uid="uid://2s1f4ntvo15j" path="res://assets/graphics/tile/tile_set_grass.tres" id="3_ys7py"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3xd07"]
+size = Vector2(250, 256)
+
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_jq8tk"]
 a = Vector2(-120, -121)
 b = Vector2(-38, -121)
@@ -57,9 +60,6 @@ vertices = PackedVector2Array(104.03906, 103.03906, -106.953125, 103.953125, -10
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-116, -115, 115, -116, 114, 113, -117, 114)])
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3xd07"]
-size = Vector2(250, 256)
-
 [node name="Tile" type="Node2D" unique_id=1779673374 node_paths=PackedStringArray("up_bridge_collision", "right_bridge_collision", "down_bridge_collision", "left_bridge_collision", "tile_contents")]
 y_sort_enabled = true
 script = ExtResource("1_h3aqd")
@@ -71,7 +71,15 @@ left_bridge_collision = NodePath("StaticBody2D/LeftMidBorder")
 tile_contents = NodePath("TileContents")
 metadata/_edit_group_ = true
 
-[node name="TileContents" type="Node2D" parent="." unique_id=1337787306 node_paths=PackedStringArray("tile_map_ground", "tile_map_details", "tile_map_texture")]
+[node name="Area2D" type="Area2D" parent="." unique_id=1204268483]
+z_index = -2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2042092659]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_3xd07")
+debug_color = Color(0.5953718, 1, 0.59690833, 0.42)
+
+[node name="TileContents" type="Node2D" parent="." unique_id=1337787306 node_paths=PackedStringArray("tile_map_ground", "tile_map_details", "tile_map_texture") groups=["NeedsResetting"]]
 z_index = -1
 script = ExtResource("2_l53t7")
 tile_map_ground = NodePath("TileMapGround")
@@ -143,14 +151,6 @@ shape = SubResource("SegmentShape2D_o7uur")
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=1497879206]
 visible = false
 navigation_polygon = SubResource("NavigationPolygon_dej15")
-
-[node name="Area2D" type="Area2D" parent="." unique_id=1204268483]
-z_index = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2042092659]
-position = Vector2(0, -1)
-shape = SubResource("RectangleShape2D_3xd07")
-debug_color = Color(0.5953718, 1, 0.59690833, 0.42)
 
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]

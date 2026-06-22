@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Demand" format=3 uid="uid://c74136c2d2yhp"]
+
+[ext_resource type="Script" uid="uid://36bx0jkgt0vc" path="res://natural_resources/natural_resource.gd" id="1_icr2w"]
+[ext_resource type="Resource" uid="uid://c3xr3hu8jlinu" path="res://natural_resources/wheat_resource.tres" id="2_ixwkq"]
+[ext_resource type="Resource" uid="uid://dn0snts7urilu" path="res://natural_resources/wood_resource.tres" id="3_ixwkq"]
+[ext_resource type="Script" uid="uid://ekfhsugdy8f3" path="res://natural_resources/demand.gd" id="3_xbih8"]
+
+[resource]
+script = ExtResource("3_xbih8")
+name = "lava_lake_unlock"
+resources_needed = Dictionary[ExtResource("1_icr2w"), int]({
+ExtResource("2_ixwkq"): 200,
+ExtResource("3_ixwkq"): 80
+})
+metadata/_custom_type_script = "uid://ekfhsugdy8f3"

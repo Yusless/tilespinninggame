@@ -12,6 +12,7 @@ class_name NaturalResourceNode
 @export var sprite: AnimatedSprite2D
 
 var harvested := false
+var collectables: Array[Node] = []
 
 func _ready() -> void:
 	health_component.health_depleted.connect(_on_health_depleted)
@@ -24,8 +25,7 @@ func spawn_collectable():
 	call_deferred("add_child", collectable)
 	collectable.top_level = true
 	collectable.global_position = global_position
-	print(1)
-	pass
+	collectables.push_back(collectable)
 
 func harvest():
 	if harvested:
@@ -34,6 +34,14 @@ func harvest():
 	for i in range(collectable_amount):
 		spawn_collectable()
 	sprite.play("harvested")
+
+func reset():
+	harvested = false
+	sprite.play("default")
+	for node in collectables:
+		if node:
+			node.queue_free()
+	collectables.clear()
 
 func _on_health_depleted():
 	harvest()

@@ -1,0 +1,7 @@
+[gd_resource type="Theme" format=3 uid="uid://cyr5vfnkvpaly"]
+
+[ext_resource type="FontFile" uid="uid://cxgbh67iwdbvt" path="res://hud/galvanic.ttf" id="1_bd1bu"]
+
+[resource]
+default_font = ExtResource("1_bd1bu")
+default_font_size = 9

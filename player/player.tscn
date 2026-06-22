@@ -176,7 +176,7 @@ _data = {
 &"dead": SubResource("Animation_g6k8r")
 }
 
-[node name="Player" type="CharacterBody2D" unique_id=251603508 node_paths=PackedStringArray("boomerang", "sprite", "stun_timer", "hurtbox", "animation_player", "health_component", "camera_2d") groups=["Player"]]
+[node name="Player" type="CharacterBody2D" unique_id=251603508 node_paths=PackedStringArray("boomerang", "sprite", "stun_timer", "hurtbox", "animation_player", "health_component", "camera") groups=["Player"]]
 y_sort_enabled = true
 collision_layer = 2
 script = ExtResource("1_g2els")
@@ -187,7 +187,7 @@ stun_timer = NodePath("StunTimer")
 hurtbox = NodePath("Hurtbox")
 animation_player = NodePath("AnimationPlayer")
 health_component = NodePath("HealthComponent")
-camera_2d = NodePath("Camera2D")
+camera = NodePath("Camera2D")
 
 [node name="HealthComponent" type="Node" parent="." unique_id=504088857]
 script = ExtResource("2_yw30f")

@@ -2,10 +2,13 @@
 
 [ext_resource type="Script" uid="uid://d2a5hdu6aahq6" path="res://hud/resource_counter.gd" id="1_bq7jd"]
 [ext_resource type="Texture2D" uid="uid://ccks4rl8s3h2l" path="res://natural_resources/resource_icons.png" id="1_kya28"]
+[ext_resource type="Resource" uid="uid://c3xr3hu8jlinu" path="res://natural_resources/wheat_resource.tres" id="2_16hmn"]
 
-[node name="WheatCounter" type="HBoxContainer" unique_id=522965764 node_paths=PackedStringArray("counter")]
+[node name="WheatCounter" type="HBoxContainer" unique_id=522965764 node_paths=PackedStringArray("counter", "icon")]
 script = ExtResource("1_bq7jd")
 counter = NodePath("Counter")
+resource = ExtResource("2_16hmn")
+icon = NodePath("Icon")
 
 [node name="Icon" type="TextureRect" parent="." unique_id=1770491988]
 layout_mode = 2

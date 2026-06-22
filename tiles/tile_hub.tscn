@@ -2,9 +2,58 @@
 
 [ext_resource type="PackedScene" uid="uid://dhfxsclatflk7" path="res://tiles/tile.tscn" id="1_4r23m"]
 [ext_resource type="PackedScene" uid="uid://cjo2i2d6n8tw2" path="res://tiles/lighthouse.tscn" id="2_5xtjl"]
+[ext_resource type="Script" uid="uid://clotu2rjfug6x" path="res://tiles/hub_tile.gd" id="2_wytmi"]
+[ext_resource type="Script" uid="uid://dp8qer5fmukpn" path="res://tiles/upgrade_table.gd" id="3_howf3"]
+[ext_resource type="Texture2D" uid="uid://brwyo4phhmm1q" path="res://tiles/workbench.png" id="3_kghgt"]
+[ext_resource type="Script" uid="uid://ekfhsugdy8f3" path="res://natural_resources/demand.gd" id="4_qn5lg"]
+[ext_resource type="PackedScene" uid="uid://b87baohfr4ygs" path="res://tiles/interaction_component.tscn" id="4_vqkq1"]
+[ext_resource type="PackedScene" uid="uid://cc7s456mf6s4q" path="res://hud/resource_demander.tscn" id="5_vqkq1"]
+[ext_resource type="Resource" uid="uid://1lp2ssn0t0im" path="res://natural_resources/demands/forest_unlock.tres" id="5_yxt03"]
+[ext_resource type="Resource" uid="uid://c74136c2d2yhp" path="res://natural_resources/demands/lava_lake_unlock.tres" id="6_yxt03"]
 
-[node name="TileHub" unique_id=1779673374 instance=ExtResource("1_4r23m")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kg37j"]
+size = Vector2(44, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v4clq"]
+size = Vector2(44, 6)
+
+[node name="TileHub" unique_id=1779673374 node_paths=PackedStringArray("lighthouse") instance=ExtResource("1_4r23m")]
+script = ExtResource("2_wytmi")
+lighthouse = NodePath("Lighthouse")
 tile_type = 0
 
 [node name="Lighthouse" parent="." index="3" unique_id=1382120843 instance=ExtResource("2_5xtjl")]
 position = Vector2(7, -119)
+
+[node name="UpgradeTable" type="Node2D" parent="." index="5" unique_id=1977492483 node_paths=PackedStringArray("resource_demander", "interaction_component")]
+position = Vector2(-76, 7)
+script = ExtResource("3_howf3")
+resource_demander = NodePath("ResourceDemander")
+interaction_component = NodePath("InteractionComponent")
+demands = Array[ExtResource("4_qn5lg")]([ExtResource("5_yxt03"), ExtResource("6_yxt03")])
+metadata/_edit_group_ = true
+
+[node name="Workbench" type="Sprite2D" parent="UpgradeTable" index="0" unique_id=791689743]
+position = Vector2(-1, -3)
+texture = ExtResource("3_kghgt")
+
+[node name="InteractionComponent" parent="UpgradeTable" index="1" unique_id=522060589 instance=ExtResource("4_vqkq1")]
+visible = false
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UpgradeTable/InteractionComponent" index="0" unique_id=1712936318]
+shape = SubResource("RectangleShape2D_kg37j")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="UpgradeTable" index="2" unique_id=659589440]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UpgradeTable/StaticBody2D" index="0" unique_id=1067251735]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_v4clq")
+
+[node name="ResourceDemander" parent="UpgradeTable" index="3" unique_id=1649993671 instance=ExtResource("5_vqkq1")]
+visible = false
+z_index = 1
+offset_left = -73.0
+offset_top = -77.0
+offset_right = 7.0
+offset_bottom = -10.0

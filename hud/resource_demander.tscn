@@ -1,0 +1,89 @@
+[gd_scene format=3 uid="uid://cc7s456mf6s4q"]
+
+[ext_resource type="Script" uid="uid://cw81is6xlwe1c" path="res://hud/resource_demander.gd" id="1_mmot6"]
+[ext_resource type="Texture2D" uid="uid://yrksdk4oobqe" path="res://hud/speechbubble.png" id="1_xf2qj"]
+[ext_resource type="PackedScene" uid="uid://h8s01ufejtin" path="res://hud/resource_number.tscn" id="2_36uo1"]
+[ext_resource type="Resource" uid="uid://c3xr3hu8jlinu" path="res://natural_resources/wheat_resource.tres" id="3_c1cuk"]
+[ext_resource type="Texture2D" uid="uid://ccks4rl8s3h2l" path="res://natural_resources/resource_icons.png" id="4_k45mv"]
+[ext_resource type="Resource" uid="uid://dn0snts7urilu" path="res://natural_resources/wood_resource.tres" id="6_6ds52"]
+[ext_resource type="Resource" uid="uid://dh2vwv3hcj4gu" path="res://natural_resources/coal_resource.tres" id="7_6ds52"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w08kg"]
+atlas = ExtResource("4_k45mv")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oj44l"]
+atlas = ExtResource("4_k45mv")
+region = Rect2(16, 0, 16, 16)
+
+[node name="ResourceDemander" type="Control" unique_id=1649993671 node_paths=PackedStringArray("number_root")]
+custom_minimum_size = Vector2(102, 21)
+layout_mode = 3
+anchors_preset = 0
+offset_left = -91.0
+offset_top = -41.0
+offset_right = 11.0
+script = ExtResource("1_mmot6")
+number_root = NodePath("VBoxContainer/MarginContainer/MarginContainer/NumberRoot")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1802064153]
+layout_mode = 0
+offset_top = -128.0
+offset_right = 103.0
+offset_bottom = 40.0
+alignment = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer" unique_id=1382766173]
+layout_mode = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="VBoxContainer/MarginContainer" unique_id=1671007429]
+layout_mode = 2
+texture = ExtResource("1_xf2qj")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer" unique_id=1647252399]
+layout_mode = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 11
+theme_override_constants/margin_bottom = 15
+
+[node name="NumberRoot" type="GridContainer" parent="VBoxContainer/MarginContainer/MarginContainer" unique_id=1883719743]
+layout_mode = 2
+columns = 3
+
+[node name="WheatNumber" parent="VBoxContainer/MarginContainer/MarginContainer/NumberRoot" unique_id=522965764 instance=ExtResource("2_36uo1")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+resource = ExtResource("3_c1cuk")
+
+[node name="Icon" parent="VBoxContainer/MarginContainer/MarginContainer/NumberRoot/WheatNumber" index="0" unique_id=1770491988]
+texture = SubResource("AtlasTexture_w08kg")
+
+[node name="Counter" parent="VBoxContainer/MarginContainer/MarginContainer/NumberRoot/WheatNumber" index="1" unique_id=761771920]
+text = "1"
+
+[node name="WoodNumber" parent="VBoxContainer/MarginContainer/MarginContainer/NumberRoot" unique_id=1966305976 instance=ExtResource("2_36uo1")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+resource = ExtResource("6_6ds52")
+
+[node name="Icon" parent="VBoxContainer/MarginContainer/MarginContainer/NumberRoot/WoodNumber" index="0" unique_id=1770491988]
+texture = SubResource("AtlasTexture_oj44l")
+
+[node name="Counter" parent="VBoxContainer/MarginContainer/MarginContainer/NumberRoot/WoodNumber" index="1" unique_id=761771920]
+text = "1"
+
+[node name="CoalCounter" parent="VBoxContainer/MarginContainer/MarginContainer/NumberRoot" unique_id=1104870881 instance=ExtResource("2_36uo1")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+resource = ExtResource("7_6ds52")
+
+[editable path="VBoxContainer/MarginContainer/MarginContainer/NumberRoot/WheatNumber"]
+[editable path="VBoxContainer/MarginContainer/MarginContainer/NumberRoot/WoodNumber"]

@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://c8ipos8nvsj4s" path="res://enemies/enemy_spawner.gd" id="1_531ly"]
 [ext_resource type="PackedScene" uid="uid://cqo0fhog3v5km" path="res://enemies/toad.tscn" id="2_5lcht"]
 
-[node name="EnemySpawner" type="Node2D" unique_id=92675540 node_paths=PackedStringArray("boundry_left_marker", "boundry_right_marker", "spawn_timer")]
+[node name="EnemySpawner" type="Node2D" unique_id=92675540 node_paths=PackedStringArray("boundry_left_marker", "boundry_right_marker", "spawn_timer") groups=["NeedsResetting"]]
 script = ExtResource("1_531ly")
 enemy_scene = ExtResource("2_5lcht")
 boundry_left = Vector2(-65, 10)

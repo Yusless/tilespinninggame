@@ -16,6 +16,7 @@ const ACCELERATION_TIME: float = 0.085
 const DECCELERATION_TIME: float = 0.05
 
 @export var max_speed := 250.0
+@export var max_camera_speed := 500.0
 @export_subgroup("Deps")
 @export var boomerang: Boomerang
 @export var sprite: AnimatedSprite2D
@@ -23,13 +24,14 @@ const DECCELERATION_TIME: float = 0.05
 @export var hurtbox: HurtboxComponent
 @export var animation_player: AnimationPlayer
 @export var health_component: HealthComponent
-@export var camera_2d: Camera2D
+@export var camera: Camera2D
 @export var cells_system: Node2D
 
 
 
 var last_direction := Vector2.ONE
 var state := States.IDLE
+var camera_velocity := Vector2.ZERO
 
 # Called when the node enters the scene tree for the first time.	
 func _ready() -> void:
@@ -70,11 +72,28 @@ func simple_state_machine(delta):
 		States.STUNNED:
 			if stun_timer.is_stopped():
 				state = States.IDLE
+		States.INSIDE:
+			move_camera(delta)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	simple_state_machine(delta)
 	animate()
+
+func move_camera(delta):
+	var movement = get_movement_vector()
+	var direction = movement.normalized()
+	var acceleration = max_camera_speed / (ACCELERATION_TIME if direction else DECCELERATION_TIME)
+	camera_velocity = Vector2(
+		move_toward(camera_velocity.x, max_camera_speed * direction.x, delta * acceleration),
+		move_toward(camera_velocity.y, max_camera_speed * direction.y, delta * acceleration)
+	)
+	last_direction = Vector2(
+		sign(direction.x) if direction.x else last_direction.x,
+		sign(direction.y) if direction.y else last_direction.y,
+	)
+	animate()
+	camera.position += camera_velocity*delta
 
 func animate():
 	var anim := "idle"
@@ -106,13 +125,14 @@ func _on_health_depleted():
 
 func get_inside():
 	sprite.visible = false
-	camera_2d.zoom = Vector2(0.3,0.3)
+	create_tween().tween_property(camera, "zoom", Vector2(0.3,0.3), 0.15).set_ease(Tween.EASE_OUT)
 	state = States.INSIDE
 	lighthouse_entered.emit()
 	
 func get_outside():
 	sprite.visible = true
-	camera_2d.zoom = Vector2(1,1)
 	state = States.IDLE
 	lighthouse_exited.emit()
 	cells_system.submit_tile_position()
+	create_tween().tween_property(camera, "position", Vector2.ZERO, 0.3).set_ease(Tween.EASE_OUT)
+	create_tween().tween_property(camera, "zoom", Vector2(1,1), 0.3).set_ease(Tween.EASE_OUT)
