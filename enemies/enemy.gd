@@ -34,6 +34,7 @@ const JUMP_HEIGHT := 16.0
 @export var attack_cooldown: Timer
 @export var attack_delay: Timer
 @export var sprite: AnimatedSprite2D
+@export var sound_hit: AudioStreamPlayer2D
 
 var state := States.IDLE
 var has_movement_target := false
@@ -183,14 +184,10 @@ func _on_rest_timer_timeout() -> void:
 
 func _on_step_timer_timeout() -> void:
 	end_step()
-	if state == States.ATTACKING:
-		state = States.HOSTILE
-		has_hyper_armor = false
-		create_tween().tween_property(sprite, "rotation", 0.0, 0.08)
-		attack_cooldown.start()
 
 func _on_hurtbox_hit():
 	if state not in [States.DEAD]:
+		sound_hit.play()
 		animation_player.play("damaged")
 		if !has_hyper_armor:
 			state = States.STUNNED

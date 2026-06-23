@@ -1,6 +1,6 @@
 extends Node
-const FIELD_WIDTH = 3
-const FIELD_HEIGHT = 3
+const FIELD_WIDTH = 5
+const FIELD_HEIGHT = 5
 
 var map = []
 

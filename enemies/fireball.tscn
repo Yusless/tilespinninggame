@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://db4aflu18ewjr"]
+
+[ext_resource type="Script" uid="uid://t3qtrex3lh2a" path="res://enemies/fireball.gd" id="1_j8tgu"]
+[ext_resource type="Texture2D" uid="uid://b3sws0ccqauqv" path="res://enemies/fire_projectile.png" id="1_xulmx"]
+[ext_resource type="Script" uid="uid://drkvcnbwm8ot3" path="res://components/attack_component.gd" id="2_j8tgu"]
+[ext_resource type="Texture2D" uid="uid://cscxu6da3atos" path="res://enemies/light128.png" id="4_hbguw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hbguw"]
+atlas = ExtResource("1_xulmx")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t5ls5"]
+atlas = ExtResource("1_xulmx")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w0t3y"]
+atlas = ExtResource("1_xulmx")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kypdx"]
+atlas = ExtResource("1_xulmx")
+region = Rect2(24, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kg37j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hbguw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t5ls5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w0t3y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kypdx")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 15.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kg37j"]
+size = Vector2(4, 4)
+
+[node name="Fireball" type="Node2D" unique_id=960910834 node_paths=PackedStringArray("expire_timer", "attack_component")]
+z_index = 2
+script = ExtResource("1_j8tgu")
+expire_timer = NodePath("ExpireTimer")
+attack_component = NodePath("Sprite/AttackComponent")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1375857305]
+sprite_frames = SubResource("SpriteFrames_kg37j")
+frame_progress = 0.02390106
+
+[node name="AttackComponent" type="Area2D" parent="Sprite" unique_id=318532344]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("2_j8tgu")
+metadata/_custom_type_script = "uid://drkvcnbwm8ot3"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/AttackComponent" unique_id=32704310]
+shape = SubResource("RectangleShape2D_kg37j")
+debug_color = Color(1, 0, 0, 0.38500002)
+
+[node name="ExpireTimer" type="Timer" parent="." unique_id=1463770567]
+one_shot = true
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=475238974]
+color = Color(4.0059752, 1.8247246, 0, 1)
+texture = ExtResource("4_hbguw")
+texture_scale = 0.1
+
+[connection signal="timeout" from="ExpireTimer" to="." method="_on_expire_timer_timeout"]

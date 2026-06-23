@@ -156,7 +156,7 @@ func rotate_bridges_to_tile() -> void:
 
 
 func _on_area_2d_mouse_entered() -> void:
-	if treated_as_interface and tile_type != TileTypes.HUB:
+	if treated_as_interface and tile_type != TileTypes.HUB and rotatable:
 		position = hovering_position
 	else:
 		hovering_before_interacting = true

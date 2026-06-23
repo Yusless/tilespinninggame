@@ -3,6 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://hqexdlr6q77f" path="res://enemies/enemy.tscn" id="1_1i4j2"]
 [ext_resource type="Script" uid="uid://deyxkpx5mv5l6" path="res://enemies/toad.gd" id="2_ebqlv"]
 [ext_resource type="Texture2D" uid="uid://bx0gj8p88grts" path="res://enemies/toad.png" id="2_wuusq"]
+[ext_resource type="AudioStream" uid="uid://dirf287ss5bmm" path="res://enemies/toad_jump_1.wav" id="5_577yf"]
+[ext_resource type="AudioStream" uid="uid://ce076c6qs81kg" path="res://enemies/toad_land_1.wav" id="5_wuusq"]
+[ext_resource type="AudioStream" uid="uid://bff6tk6latel1" path="res://enemies/toad_land_2.wav" id="6_74qte"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w808d"]
 atlas = ExtResource("2_wuusq")
@@ -78,12 +81,38 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="Enemy" unique_id=1894793058 instance=ExtResource("1_1i4j2")]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_v4clq"]
+random_pitch = 1.0174797
+streams_count = 1
+stream_0/stream = ExtResource("5_wuusq")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_kg37j"]
+random_pitch = 1.0174797
+streams_count = 1
+stream_0/stream = ExtResource("5_577yf")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_rm2jj"]
+random_pitch = 1.0174797
+streams_count = 1
+stream_0/stream = ExtResource("6_74qte")
+
+[node name="Enemy" unique_id=1894793058 node_paths=PackedStringArray("croak_jump", "croak_land") instance=ExtResource("1_1i4j2")]
 script = ExtResource("2_ebqlv")
+croak_jump = NodePath("CroakJump")
+croak_land = NodePath("CroakLand")
 step_distance = 120.0
 rest_time = 0.6
 attack_distance = 96.0
 
-[node name="Sprite" parent="." index="1" unique_id=877205313]
+[node name="Sprite" parent="." index="2" unique_id=877205313]
 sprite_frames = SubResource("SpriteFrames_ebqlv")
 animation = &"idle"
+
+[node name="SoundHit" parent="." index="14" unique_id=458644540]
+stream = SubResource("AudioStreamRandomizer_v4clq")
+
+[node name="CroakJump" type="AudioStreamPlayer2D" parent="." index="15" unique_id=1099775834]
+stream = SubResource("AudioStreamRandomizer_kg37j")
+
+[node name="CroakLand" type="AudioStreamPlayer2D" parent="." index="16" unique_id=1707833909]
+stream = SubResource("AudioStreamRandomizer_rm2jj")

@@ -1,6 +1,8 @@
 extends Area2D
 class_name AttackComponent
 
+signal hit
+
 @export var damage := 1
 var attack_id := 0
 var hurtbox_active := false

@@ -210,7 +210,7 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0xjen"]
 size = Vector2(14, 14)
 
-[node name="Enemy" type="CharacterBody2D" unique_id=1894793058 node_paths=PackedStringArray("health_component", "hurtbox_component", "nav_agent", "aggro_area", "rest_timer", "step_timer", "animation_player", "stun_timer", "attack_component", "attack_cooldown", "attack_delay", "sprite")]
+[node name="Enemy" type="CharacterBody2D" unique_id=1894793058 node_paths=PackedStringArray("health_component", "hurtbox_component", "nav_agent", "aggro_area", "rest_timer", "step_timer", "animation_player", "stun_timer", "attack_component", "attack_cooldown", "attack_delay", "sprite", "sound_hit")]
 z_index = 1
 collision_layer = 8
 script = ExtResource("1_a6vjd")
@@ -229,6 +229,7 @@ attack_component = NodePath("AttackComponent")
 attack_cooldown = NodePath("AttackCooldown")
 attack_delay = NodePath("AttackDelay")
 sprite = NodePath("Sprite")
+sound_hit = NodePath("SoundHit")
 
 [node name="NavAgent" type="NavigationAgent2D" parent="." unique_id=448801775]
 avoidance_enabled = true
@@ -298,6 +299,8 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackComponent" unique_id=1221440661]
 shape = SubResource("RectangleShape2D_0xjen")
 debug_color = Color(0.99999994, 0.0061502918, 0.12490878, 0.41960785)
+
+[node name="SoundHit" type="AudioStreamPlayer2D" parent="." unique_id=458644540]
 
 [connection signal="area_entered" from="AggroArea" to="." method="_on_aggro_area_area_entered"]
 [connection signal="body_entered" from="AggroArea" to="." method="_on_aggro_area_body_entered"]
