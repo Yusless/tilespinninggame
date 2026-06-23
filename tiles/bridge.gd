@@ -51,7 +51,7 @@ func check_for_completed_bridges(recursive = true):
 	merge_part_left.hide()
 	merge_part_up.hide()
 	if neighbour_by_side:
-		if neighbour_by_side.border_objects[opposite] is Bridge:
+		if neighbour_by_side.border_objects[opposite] is Bridge and neighbour_by_side.unlocked and tile.unlocked:
 			side_to_middle[side].disabled = true
 			if side == Side.Sides.UP:
 				merge_part_up.show()

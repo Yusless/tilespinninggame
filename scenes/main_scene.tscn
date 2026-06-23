@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://bjtqir2jwep7s" path="res://hud/hud.tscn" id="8_18nlu"]
 [ext_resource type="Texture2D" uid="uid://c6cge5t38blbe" path="res://assets/graphics/tile/water.png" id="9_6wevv"]
 [ext_resource type="PackedScene" uid="uid://dumvev7p6ndd6" path="res://tiles/wheat_tile.tscn" id="11_e1cbu"]
+[ext_resource type="Resource" uid="uid://1lp2ssn0t0im" path="res://natural_resources/demands/forest_unlock.tres" id="12_6u1mn"]
 [ext_resource type="Script" uid="uid://ci8t37q1enmah" path="res://effects/environment_manager.gd" id="13_r6p65"]
 
 [node name="MainScene" type="Node" unique_id=2095065835]
@@ -32,6 +33,7 @@ environment_manager = NodePath("../EnvironmentManager")
 
 [node name="Tile4" parent="World/CellsSystem" unique_id=113809720 instance=ExtResource("4_pu3yx")]
 position = Vector2(0, 368)
+demand_for_unlock = null
 left_border = 2
 up_border = 2
 right_border = 2
@@ -39,10 +41,12 @@ right_border = 2
 [node name="HubTile" parent="World/CellsSystem" unique_id=1282555252 instance=ExtResource("6_c1pb6")]
 y_sort_enabled = false
 position = Vector2(368, 368)
+demand_for_unlock = null
 left_border = 2
 down_border = 2
 
 [node name="WheatTile" parent="World/CellsSystem" unique_id=1779673374 instance=ExtResource("11_e1cbu")]
+demand_for_unlock = null
 right_border = 2
 down_border = 2
 
@@ -55,6 +59,7 @@ right_border = 2
 
 [node name="WheatTile2" parent="World/CellsSystem" unique_id=1860228072 instance=ExtResource("11_e1cbu")]
 position = Vector2(368, 736)
+demand_for_unlock = ExtResource("12_6u1mn")
 up_border = 2
 down_border = 2
 

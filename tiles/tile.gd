@@ -29,9 +29,11 @@ enum BorderTypes {
 	WALL,
 	BRIDGE
 }
-
 @export var tile_type = TileTypes.HUB
-@export var rotatable := true
+
+@export var demand_for_unlock: Demand
+var unlocked: = !demand_for_unlock
+var rotatable: = unlocked
 
 @export var up_bridge_collision = CollisionShape2D
 @export var right_bridge_collision = CollisionShape2D
@@ -42,7 +44,11 @@ enum BorderTypes {
 @export var up_border = BorderTypes.NOTHING
 @export var right_border = BorderTypes.NOTHING
 @export var down_border = BorderTypes.NOTHING
+
 @export var tile_contents: TileContents
+
+@export var color_rect: ColorRect
+
 
 var borders = {}
 
@@ -65,6 +71,9 @@ var default_position: Vector2
 var hovering_position: Vector2
 
 func _ready() -> void:
+	unlocked = !demand_for_unlock
+	rotatable = !demand_for_unlock
+	set_tile_contents_modulation()
 	collisions_from_export()
 	borders_from_export()
 	place_yourself()
@@ -155,7 +164,7 @@ func rotate_bridges_to_tile() -> void:
 
 
 func _on_area_2d_mouse_entered() -> void:
-	if treated_as_interface and tile_type != TileTypes.HUB:
+	if treated_as_interface and tile_type != TileTypes.HUB and rotatable:
 		position = hovering_position
 	else:
 		hovering_before_interacting = true
@@ -191,6 +200,7 @@ func interact(neighbour,side):
 	print(self, 'HAS INTERACTED WITH', neighbour, "BY", side)
 
 func reset():
+	set_tile_contents_modulation()
 	for child in get_children():
 		if child.has_method("reset") and child.is_in_group("NeedsResetting"):
 			child.reset()
@@ -199,3 +209,15 @@ func activate():
 	for child in get_children():
 		if child.has_method("activate"):
 			child.activate()
+	
+func unlock():
+	unlocked = true
+	rotatable = true
+
+func set_tile_contents_modulation():
+	if unlocked:
+		color_rect.visible = false
+		tile_contents.modulate = Color("ffffff")
+	else:
+		color_rect.visible = true
+		tile_contents.modulate = Color("3d3d3d")

@@ -17,9 +17,10 @@ size = Vector2(44, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v4clq"]
 size = Vector2(44, 6)
 
-[node name="TileHub" unique_id=1779673374 node_paths=PackedStringArray("lighthouse") instance=ExtResource("1_4r23m")]
+[node name="TileHub" unique_id=1779673374 node_paths=PackedStringArray("lighthouse", "upgrade_table") instance=ExtResource("1_4r23m")]
 script = ExtResource("2_wytmi")
 lighthouse = NodePath("Lighthouse")
+upgrade_table = NodePath("UpgradeTable")
 tile_type = 0
 
 [node name="Lighthouse" parent="." index="3" unique_id=1382120843 instance=ExtResource("2_5xtjl")]
