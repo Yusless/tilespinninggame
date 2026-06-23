@@ -63,7 +63,7 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-116, -115, 115, -116, 
 [node name="Tile" type="Node2D" unique_id=1779673374 node_paths=PackedStringArray("up_bridge_collision", "right_bridge_collision", "down_bridge_collision", "left_bridge_collision", "tile_contents")]
 y_sort_enabled = true
 script = ExtResource("1_h3aqd")
-tile_type = 1
+tile_type = 4
 up_bridge_collision = NodePath("StaticBody2D/UpperMidBorder")
 right_bridge_collision = NodePath("StaticBody2D/RightMidBorder")
 down_bridge_collision = NodePath("StaticBody2D/DownMidBorder")

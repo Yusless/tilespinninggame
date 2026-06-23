@@ -24,11 +24,16 @@ available_resources = Array[ExtResource("6_18nlu")]([ExtResource("7_c1pb6"), Ext
 [node name="World" type="Node2D" parent="." unique_id=1455164938]
 y_sort_enabled = true
 
-[node name="CellsSystem" type="Node2D" parent="World" unique_id=280263883 node_paths=PackedStringArray("hub_tile", "environment_manager") groups=["Managers"]]
+[node name="EnvironmentManager" type="CanvasModulate" parent="World" unique_id=575506547 groups=["Managers"]]
+script = ExtResource("13_r6p65")
+transition_time = 0.5
+
+[node name="CellsSystem" type="Node2D" parent="World" unique_id=280263883 node_paths=PackedStringArray("hub_tile", "environment_manager", "player") groups=["Managers"]]
 y_sort_enabled = true
 script = ExtResource("3_7ykc4")
 hub_tile = NodePath("HubTile")
 environment_manager = NodePath("../EnvironmentManager")
+player = NodePath("../Player")
 
 [node name="Tile4" parent="World/CellsSystem" unique_id=113809720 instance=ExtResource("4_pu3yx")]
 position = Vector2(0, 368)
@@ -43,24 +48,20 @@ left_border = 2
 down_border = 2
 
 [node name="WheatTile" parent="World/CellsSystem" unique_id=1779673374 instance=ExtResource("11_e1cbu")]
+tile_type = 1
 right_border = 2
 down_border = 2
 
 [node name="TilePond" parent="World/CellsSystem" unique_id=351429902 instance=ExtResource("7_6wevv")]
 position = Vector2(0, 736)
-tile_type = 5
 up_border = 2
 right_border = 2
 
 [node name="WheatTile2" parent="World/CellsSystem" unique_id=1860228072 instance=ExtResource("11_e1cbu")]
 position = Vector2(368, 736)
+tile_type = 1
 up_border = 2
 down_border = 2
-
-[node name="Player" parent="World" unique_id=251603508 node_paths=PackedStringArray("cells_system") instance=ExtResource("1_w2twt")]
-y_sort_enabled = false
-position = Vector2(373, 420)
-cells_system = NodePath("../CellsSystem")
 
 [node name="Water" type="Sprite2D" parent="World" unique_id=1453842171]
 modulate = Color(0.8346143, 0.8346143, 0.8346143, 1)
@@ -72,9 +73,15 @@ region_enabled = true
 region_rect = Rect2(0, 0, 5000, 5000)
 metadata/_edit_lock_ = true
 
-[node name="EnvironmentManager" type="CanvasModulate" parent="World" unique_id=575506547 groups=["Managers"]]
-script = ExtResource("13_r6p65")
-transition_time = 0.5
+[node name="Player" parent="World" unique_id=251603508 node_paths=PackedStringArray("cells_system", "spawn_point", "resource_manager") instance=ExtResource("1_w2twt")]
+y_sort_enabled = false
+position = Vector2(370, 405)
+cells_system = NodePath("../CellsSystem")
+spawn_point = NodePath("../SpawnPoint")
+resource_manager = NodePath("../../ResourceManager")
+
+[node name="SpawnPoint" type="Marker2D" parent="World" unique_id=973232823]
+position = Vector2(370, 405)
 
 [node name="GUILayer" type="CanvasLayer" parent="." unique_id=587643093]
 

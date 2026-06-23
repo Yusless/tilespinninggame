@@ -4,46 +4,45 @@
 [ext_resource type="PackedScene" uid="uid://dojvj3gokqoqk" path="res://natural_resources/wheat.tscn" id="2_5g5rk"]
 
 [node name="WheatTile" unique_id=1779673374 instance=ExtResource("1_36hql")]
+tile_type = 2
 
-[node name="TileContents" parent="." index="1" unique_id=1337787306 groups=["NeedsResetting"]]
-
-[node name="TileMapDetails" parent="TileContents" index="1" unique_id=1440210401]
+[node name="TileMapDetails" parent="TileContents" parent_id_path=PackedInt32Array(1337787306) index="1" unique_id=1440210401]
 tile_map_data = PackedByteArray("AAACAAEAAAAFAAQAAAD+/wAAAAAFAAQAAAD6/wMAAAADAAAAAAD6/wQAAAAEAAAAAAD7/wQAAAAEAAAAAAD8/wQAAAAEAAAAAAD9/wUAAAADAAAAAAD+/wUAAAAEAAAAAAADAPz/AAAFAAAAAAAAAPv/AAAEAAAAAAD///v/AAAFAAAAAAD///z/AAAFAAAAAAD6//z/AAAFAAAAAAD7//z/AAADAAAAAAD7//v/AAAEAAAAAAD8//v/AAADAAAAAAD8/wMAAAAFAAAAAAD7/wMAAAAEAAAAAAADAPv/AAAFAAAAAAADAPr/AAAEAAAAAAAEAPr/AAADAAAAAAAEAPv/AAADAAAAAAAEAPz/AAAFAAAAAAAFAPz/AAADAAAAAAAFAP3/AAAEAAAAAAAFAPv/AAAEAAAAAAD+//v/AAADAAAAAAD9//v/AAADAAAAAAD6//3/AAAFAAAAAAD7//3/AAADAAAAAAD8//z/AAADAAAAAAD9//z/AAADAAAAAAD+//z/AAAEAAAAAAAAAAYAAAAEAAAAAAAAAAUAAAAEAAAAAAD//wUAAAADAAAAAAABAAUAAAAFAAAAAAD8/wUAAAAFAAAAAAD7/wUAAAAEAAAAAAD7/wYAAAAFAAAAAAAFAAMAAAAEAAAAAAAFAAQAAAADAAAAAAAGAAQAAAADAAAAAAADAAYAAAAEAAAAAAD6//r/AAAEAAQAAAA=")
 
-[node name="TileMapTexture" parent="TileContents" index="2" unique_id=1061062628]
+[node name="TileMapTexture" parent="TileContents" parent_id_path=PackedInt32Array(1337787306) index="2" unique_id=1061062628]
 tile_map_data = PackedByteArray("AAD7//3/AAABAAQAAAD7//7/AAACAAIAAAD8//3/AAABAAIAAAD9//3/AAABAAIAAAD+//3/AAACAAIAAAAAAAQAAAABAAAAAAABAPv/AAACAAIAAAABAAQAAAABAAAAAAAEAPz/AAAAAAAAAAAEAP3/AAAAAAEAAAAFAPz/AAABAAAAAAAFAP3/AAABAAEAAAAEAAEAAAAAAAIAAAACAAQAAAACAAAAAAD//wYAAAACAAIAAAD//wUAAAABAAQAAAD+/wYAAAABAAIAAAD+/wUAAAAAAAMAAAD9/wYAAAABAAIAAAD9/wUAAAABAAAAAAD8/wYAAAABAAIAAAD8/wUAAAABAAAAAAD7/wYAAAABAAIAAAD7/wUAAAABAAAAAAD6/wYAAAAAAAIAAAD6/wUAAAAAAAAAAAACAAUAAAACAAIAAAABAAUAAAABAAIAAAAAAAUAAAABAAIAAAD//wQAAAABAAAAAAD+/wQAAAAAAAAAAAD6//7/AAABAAIAAAD5//7/AAAAAAIAAAD7//z/AAABAAEAAAD7//v/AAAAAAMAAAD6//3/AAAAAAMAAAD6//z/AAAAAAEAAAD6//v/AAAAAAAAAAD5//3/AAAAAAAAAAD///z/AAACAAIAAAD///v/AAABAAQAAAD///r/AAABAAAAAAD+//z/AAABAAQAAAD+//v/AAAAAAMAAAD+//r/AAAAAAAAAAD9//z/AAABAAEAAAD9//v/AAABAAAAAAD8//z/AAABAAEAAAD8//v/AAABAAMAAAD8//r/AAACAAAAAAD7//r/AAAAAAAAAAAAAPv/AAABAAIAAAABAPr/AAACAAAAAAAAAPr/AAABAAAAAAAGAPz/AAACAAAAAAAGAP3/AAACAAEAAAAGAP7/AAACAAEAAAAGAP//AAACAAEAAAAGAAAAAAACAAIAAAAFAAAAAAABAAQAAAAEAAAAAAAAAAEAAAAEAP//AAAAAAEAAAAEAP7/AAAAAAEAAAAFAP7/AAABAAEAAAAFAP//AAABAAEAAAAFAAEAAAACAAIAAAA=")
 
-[node name="Wheat" parent="TileContents" index="3" unique_id=173354698 instance=ExtResource("2_5g5rk")]
+[node name="Wheat" parent="TileContents" parent_id_path=PackedInt32Array(1337787306) index="3" unique_id=173354698 instance=ExtResource("2_5g5rk")]
 
-[node name="Wheat2" parent="TileContents" index="4" unique_id=400914465 instance=ExtResource("2_5g5rk")]
+[node name="Wheat2" parent="TileContents" parent_id_path=PackedInt32Array(1337787306) index="4" unique_id=400914465 instance=ExtResource("2_5g5rk")]
 position = Vector2(7, 25)
 
-[node name="Wheat3" parent="TileContents" index="5" unique_id=1292933169 instance=ExtResource("2_5g5rk")]
+[node name="Wheat3" parent="TileContents" parent_id_path=PackedInt32Array(1337787306) index="5" unique_id=1292933169 instance=ExtResource("2_5g5rk")]
 position = Vector2(43, -13)
 
-[node name="Wheat4" parent="TileContents" index="6" unique_id=184318648 instance=ExtResource("2_5g5rk")]
+[node name="Wheat4" parent="TileContents" parent_id_path=PackedInt32Array(1337787306) index="6" unique_id=184318648 instance=ExtResource("2_5g5rk")]
 position = Vector2(-24, -19)
 
-[node name="Wheat5" parent="TileContents" index="7" unique_id=437113446 instance=ExtResource("2_5g5rk")]
+[node name="Wheat5" parent="TileContents" parent_id_path=PackedInt32Array(1337787306) index="7" unique_id=437113446 instance=ExtResource("2_5g5rk")]
 position = Vector2(-56, 23)
 
-[node name="Wheat6" parent="TileContents" index="8" unique_id=1403580322 instance=ExtResource("2_5g5rk")]
+[node name="Wheat6" parent="TileContents" parent_id_path=PackedInt32Array(1337787306) index="8" unique_id=1403580322 instance=ExtResource("2_5g5rk")]
 position = Vector2(-19, 46)
 
-[node name="Wheat7" parent="TileContents" index="9" unique_id=1206594036 instance=ExtResource("2_5g5rk")]
+[node name="Wheat7" parent="TileContents" parent_id_path=PackedInt32Array(1337787306) index="9" unique_id=1206594036 instance=ExtResource("2_5g5rk")]
 position = Vector2(40, 60)
 
-[node name="Wheat8" parent="TileContents" index="10" unique_id=116861250 instance=ExtResource("2_5g5rk")]
+[node name="Wheat8" parent="TileContents" parent_id_path=PackedInt32Array(1337787306) index="10" unique_id=116861250 instance=ExtResource("2_5g5rk")]
 position = Vector2(8, -27)
 
-[node name="Wheat9" parent="TileContents" index="11" unique_id=500426496 instance=ExtResource("2_5g5rk")]
+[node name="Wheat9" parent="TileContents" parent_id_path=PackedInt32Array(1337787306) index="11" unique_id=500426496 instance=ExtResource("2_5g5rk")]
 position = Vector2(-60, -23)
 
-[node name="Wheat10" parent="TileContents" index="12" unique_id=1944440763 instance=ExtResource("2_5g5rk")]
+[node name="Wheat10" parent="TileContents" parent_id_path=PackedInt32Array(1337787306) index="12" unique_id=1944440763 instance=ExtResource("2_5g5rk")]
 position = Vector2(66, 41)
 
-[node name="Wheat11" parent="TileContents" index="13" unique_id=445206656 instance=ExtResource("2_5g5rk")]
+[node name="Wheat11" parent="TileContents" parent_id_path=PackedInt32Array(1337787306) index="13" unique_id=445206656 instance=ExtResource("2_5g5rk")]
 position = Vector2(24, 4)
 
-[node name="Wheat12" parent="TileContents" index="14" unique_id=1092527734 instance=ExtResource("2_5g5rk")]
+[node name="Wheat12" parent="TileContents" parent_id_path=PackedInt32Array(1337787306) index="14" unique_id=1092527734 instance=ExtResource("2_5g5rk")]
 position = Vector2(-47, -1)

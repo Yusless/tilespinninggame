@@ -3,43 +3,33 @@ class_name AttackComponent
 
 @export var damage := 1
 var attack_id := 0
-var active := false
+var hurtbox_active := false
 var hit_queue := []
+var shape: CollisionShape2D
 
 func _ready() -> void:
 	if !area_entered.is_connected(_on_area_entered):
 		area_entered.connect(_on_area_entered)
 		body_entered.connect(_on_body_entered)
-		area_exited.connect(_on_area_exited)
-		body_exited.connect(_on_body_exited)
+		if get_child(0):
+			if get_child(0) is CollisionShape2D:
+				shape = get_child(0)
 
 func begin_attack():
 	attack_id = CombatManager.get_attack_id()
-	active = true
+	hurtbox_active = true
+	if shape:
+		shape.set_deferred("disabled", false)
 
 func end_attack():
-	active = false
-
-func _process(_delta: float) -> void:
-	if active and hit_queue:
-		for node in hit_queue:
-			node.get_hit(self)
-			hit_queue.erase(node)
+	hurtbox_active = false
+	if shape:
+		shape.set_deferred("disabled", true)
 
 func _on_area_entered(area: Area2D) -> void:
-	if area.has_method("get_hit"):
-		hit_queue.push_back(area)
-
+	if area.has_method("get_hit") and hurtbox_active:
+		area.get_hit(self)
 
 func _on_body_entered(body: Node2D) -> void:
-	if body.has_method("get_hit"):
-		hit_queue.push_back(body)
-
-func _on_area_exited(area: Area2D) -> void:
-	if area.has_method("get_hit"):
-		hit_queue.erase(area)
-
-
-func _on_body_exited(body: Node2D) -> void:
-	if body.has_method("get_hit"):
-		hit_queue.erase(body)
+	if body.has_method("get_hit") and hurtbox_active:
+		body.get_hit(self)

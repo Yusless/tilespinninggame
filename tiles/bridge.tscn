@@ -153,12 +153,14 @@ tile_set = ExtResource("2_x127y")
 metadata/_edit_lock_ = true
 
 [node name="NavlinkLeft" type="NavigationLink2D" parent="." unique_id=556705513]
+visible = false
 z_index = 1
 enabled = false
 start_position = Vector2(-127, 8)
 end_position = Vector2(-102, 8)
 
 [node name="NavlinkLeft2" type="NavigationLink2D" parent="NavlinkLeft" unique_id=1324580988]
+visible = false
 z_index = 1
 position = Vector2(-144, 0)
 enabled = false
@@ -166,6 +168,7 @@ start_position = Vector2(-127, 8)
 end_position = Vector2(-102, 8)
 
 [node name="NavlinkUp" type="NavigationLink2D" parent="." unique_id=5385456]
+visible = false
 z_index = 1
 rotation = 1.5707964
 enabled = false
@@ -173,6 +176,7 @@ start_position = Vector2(-126, 5.507635e-06)
 end_position = Vector2(-101, 4.41485e-06)
 
 [node name="NavlinkUp2" type="NavigationLink2D" parent="NavlinkUp" unique_id=1737482193]
+visible = false
 z_index = 1
 position = Vector2(-143, 6.2507283e-06)
 enabled = false
@@ -180,9 +184,11 @@ start_position = Vector2(-126, 5.507635e-06)
 end_position = Vector2(-101, 4.41485e-06)
 
 [node name="NavRegionLeft" type="NavigationRegion2D" parent="." unique_id=657341552]
+visible = false
 navigation_polygon = SubResource("NavigationPolygon_qc0na")
 
 [node name="NavRegionUp" type="NavigationRegion2D" parent="." unique_id=1168549012]
+visible = false
 position = Vector2(9, 1)
 rotation = 1.5707964
 navigation_polygon = SubResource("NavigationPolygon_qc0na")

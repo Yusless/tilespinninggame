@@ -3,6 +3,7 @@ class_name Player
 
 signal lighthouse_entered
 signal lighthouse_exited
+signal died
 
 enum States {
 	IDLE,
@@ -26,6 +27,8 @@ const DECCELERATION_TIME: float = 0.05
 @export var health_component: HealthComponent
 @export var camera: Camera2D
 @export var cells_system: Node2D
+@export var spawn_point: Marker2D
+@export var resource_manager: ResourceManager
 
 
 
@@ -44,8 +47,14 @@ func _input(event: InputEvent) -> void:
 		var dir_to_mouse := global_position.direction_to(get_global_mouse_position())
 		boomerang.launch(global_position, dir_to_mouse.angle(), velocity)
 
+func spawn():
+	health_component.reset()
+	position = spawn_point.global_position
+
 func die():
 	state = States.DEAD
+	died.emit()
+	resource_manager.clear()
 
 func move(delta):
 	var movement = get_movement_vector()
@@ -74,6 +83,8 @@ func simple_state_machine(delta):
 				state = States.IDLE
 		States.INSIDE:
 			move_camera(delta)
+		States.DEAD:
+			pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
@@ -131,6 +142,7 @@ func get_inside():
 	
 func get_outside():
 	sprite.visible = true
+	spawn()
 	state = States.IDLE
 	lighthouse_exited.emit()
 	cells_system.submit_tile_position()

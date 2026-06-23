@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://hqexdlr6q77f"]
 
 [ext_resource type="Script" uid="uid://bdwhkpdypc7p7" path="res://enemies/enemy.gd" id="1_a6vjd"]
-[ext_resource type="Texture2D" uid="uid://bx0gj8p88grts" path="res://enemies/toad.png" id="1_orwns"]
 [ext_resource type="Script" uid="uid://nno1v8gxy1x8" path="res://components/health_component.gd" id="2_a6vjd"]
 [ext_resource type="Script" uid="uid://drtj3bknkeioh" path="res://components/hurtbox_component.gd" id="3_07tka"]
+[ext_resource type="Texture2D" uid="uid://cpbe12qdjm34e" path="res://enemies/shadow.png" id="5_3t1x0"]
 [ext_resource type="PackedScene" uid="uid://ctw2mgmn04h6t" path="res://components/attack_component.tscn" id="5_07tka"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kg37j"]
@@ -109,7 +109,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_07tka"]
 resource_name = "damaged"
-length = 0.19999999999999998
+length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -181,10 +181,10 @@ tracks/2/path = NodePath("Sprite:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.13333334, 0.16666667),
-"transitions": PackedFloat32Array(1, 1, 0),
+"times": PackedFloat32Array(-0.033333335, 0.033333335, 0.06666667, 0.16666667),
+"transitions": PackedFloat32Array(0, 0, 1, 0),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0.43, 0.43, 0.43, 1)]
+"values": [Color(1, 0.36, 0.36, 1), Color(1, 0.36, 0.36, 1), Color(1, 1, 1, 1), Color(0.43, 0.43, 0.43, 1)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -211,6 +211,7 @@ _data = {
 size = Vector2(14, 14)
 
 [node name="Enemy" type="CharacterBody2D" unique_id=1894793058 node_paths=PackedStringArray("health_component", "hurtbox_component", "nav_agent", "aggro_area", "rest_timer", "step_timer", "animation_player", "stun_timer", "attack_component", "attack_cooldown", "attack_delay", "sprite")]
+z_index = 1
 collision_layer = 8
 script = ExtResource("1_a6vjd")
 step_distance = 80.0
@@ -233,14 +234,18 @@ sprite = NodePath("Sprite")
 avoidance_enabled = true
 radius = 5.0
 
-[node name="Sprite" type="Sprite2D" parent="." unique_id=1187341595]
-texture = ExtResource("1_orwns")
+[node name="Shadow" type="Sprite2D" parent="." unique_id=1391642454]
+position = Vector2(-3, 9)
+texture = ExtResource("5_3t1x0")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=877205313]
+animation = &""
 
 [node name="HealthComponent" type="Node" parent="." unique_id=105615674]
 script = ExtResource("2_a6vjd")
 metadata/_custom_type_script = "uid://nno1v8gxy1x8"
 
-[node name="HurtboxComponent" type="Area2D" parent="." unique_id=577922681 node_paths=PackedStringArray("health_component")]
+[node name="HurtboxComponent" type="Area2D" parent="." unique_id=577922681 node_paths=PackedStringArray("health_component") groups=["Bouncers"]]
 visible = false
 collision_layer = 8
 collision_mask = 4
@@ -272,7 +277,7 @@ one_shot = true
 one_shot = true
 
 [node name="AttackCooldown" type="Timer" parent="." unique_id=440763531]
-wait_time = 2.0
+wait_time = 1.2
 one_shot = true
 
 [node name="AttackDelay" type="Timer" parent="." unique_id=1098934846]

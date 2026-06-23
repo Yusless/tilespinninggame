@@ -18,7 +18,10 @@ const JUMP_HEIGHT := 16.0
 @export var speed := 160.0
 @export var step_distance := 120.0
 @export var rest_time := 0.6
+@export var step_spread := PI/12
 @export var attack_distance := 96.0
+
+@export_group("Deps")
 @export var health_component: HealthComponent
 @export var hurtbox_component: HurtboxComponent
 @export var nav_agent: NavigationAgent2D
@@ -55,6 +58,9 @@ func remove_movement_target():
 	has_movement_target = false
 
 func start_step(direction: Vector2, step_speed: float):
+	direction = direction.rotated(randf_range(-step_spread, step_spread))
+	direction = direction.rotated(randf_range(-step_spread, step_spread))
+	direction = direction.rotated(randf_range(-step_spread, step_spread))
 	velocity = direction * step_speed
 	step_in_progress = true
 	step_timer.wait_time = step_distance / step_speed
@@ -76,12 +82,7 @@ func charge_attack():
 	attack_delay.start()
 
 func attack():
-	attack_component.begin_attack()
-	var direction_to_target := global_position.direction_to(combat_target.global_position)
-	start_step(direction_to_target, speed * 2.0)
-	#var tween := create_tween()
-	#tween.tween_property(sprite, "rotation", direction_to_target.angle() + PI/2, 0.08)
-	attacking = true
+	pass
 
 func navigate(_delta: float):
 	if !has_movement_target:
@@ -110,6 +111,13 @@ func die():
 	hurtbox_component.disable()
 	defeated.emit(self)
 
+func be_gone():
+	step_timer.stop()
+	rest_timer.stop()
+	attack_component.end_attack()
+	hurtbox_component.disable()
+	queue_free()
+	
 func parabolic(x: float):
 	return (-4 *(x**2)) + 4*x
 
@@ -121,7 +129,6 @@ func animate():
 			anim = "attack"
 		else:
 			anim = "move"
-		sprite.position.y = -parabolic(step_timer.time_left/step_timer.wait_time) * JUMP_HEIGHT
 	if anim != sprite.animation:
 		sprite.play(anim)
 	

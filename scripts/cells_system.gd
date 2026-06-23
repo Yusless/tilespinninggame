@@ -6,7 +6,7 @@ var map = []
 
 @export var hub_tile: HubTile
 @export var environment_manager: EnvironmentManager
-
+@export var player: Player
 
 func _ready() -> void:
 	create_map_from_tiles()
@@ -15,6 +15,7 @@ func _ready() -> void:
 	update_all_bridges()
 	hub_tile.lighthouse.expedition_finished.connect(_on_lighthouse_expedition_finished)
 	hub_tile.lighthouse.expedition_started.connect(_on_lighthouse_expedition_started)
+	player.died.connect(_on_player_died)
 	
 func create_map_from_tiles() -> void:
 	for i in range(FIELD_HEIGHT):
@@ -95,3 +96,8 @@ func _on_lighthouse_expedition_finished():
 func _on_lighthouse_expedition_started():
 	environment_manager.switch_to_day()
 	activate_tiles()
+
+func _on_player_died():
+	reset_tiles()
+	hub_tile.lighthouse.start_expedition()
+	player.spawn()

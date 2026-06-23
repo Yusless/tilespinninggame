@@ -69,5 +69,5 @@ func _on_return_detector_body_entered(body: Node2D) -> void:
 
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
-	if area.is_in_group("Bouncers"):
+	if area.is_in_group("Bouncers") and launched:
 		bounce()

@@ -36,7 +36,7 @@ func spawn_enemy():
 	)
 
 func remove_enemy(enemy: Enemy):
-	enemy.queue_free()
+	enemy.be_gone()
 	enemies.erase(enemy)
 	if enemies.size() < enemy_limit and spawn_timer.is_stopped() and active:
 		spawn_timer.start()

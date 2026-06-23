@@ -19,3 +19,7 @@ func add_resource(res: NaturalResource, amount: int):
 func detract_resource(res: NaturalResource, amount: int):
 	resource_amounts[res] = max(0, resource_amounts[res] - amount)
 	resource_detracted.emit(res)
+
+func clear():
+	for res in resource_amounts:
+		resource_amounts[res] = 0

@@ -11,7 +11,7 @@ func disable():
 	var child := get_child(0)
 	if child:
 		if child is CollisionShape2D:
-			child.disabled = true
+			child.set_deferred("disabled", true)
 
 func enable():
 	var child := get_child(0)

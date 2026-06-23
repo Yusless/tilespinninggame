@@ -18,8 +18,13 @@ func take_damage(damage: int):
 	health = max(0, health - damage)
 	damaged.emit(damage)
 	if health <= 0 and !dead:
-		health_depleted.emit()
 		dead = true
+		health_depleted.emit()
+
+func reset():
+	healed.emit(max_health - health)
+	health = max_health
+	dead = false
 
 func heal(healing: int):
 	if !can_overheal:

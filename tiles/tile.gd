@@ -12,6 +12,7 @@ var interaction_dict = {
 	TileTypes.FOREST: [TileTypes.LAVA_LAKE],
 	TileTypes.WHEAT: [TileTypes.LAVA_LAKE],
 	TileTypes.LAVA_LAKE: [TileTypes.FOREST, TileTypes.WHEAT],
+	TileTypes.EMPTY: [],
 	TileTypes.POND: []
 }
 
