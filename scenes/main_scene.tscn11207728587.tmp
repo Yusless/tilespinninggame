@@ -42,7 +42,7 @@ position = Vector2(0, 368)
 right_border = 2
 
 [node name="Tile4" parent="World/CellsSystem" unique_id=113809720 instance=ExtResource("4_pu3yx")]
-position = Vector2(368, 368)
+position = Vector2(0, 368)
 demand_for_unlock = null
 left_border = 2
 up_border = 2
@@ -50,7 +50,7 @@ right_border = 2
 
 [node name="HubTile" parent="World/CellsSystem" unique_id=1282555252 instance=ExtResource("6_c1pb6")]
 y_sort_enabled = false
-position = Vector2(736, 368)
+position = Vector2(368, 368)
 demand_for_unlock = null
 left_border = 2
 down_border = 2
@@ -67,12 +67,11 @@ down_border = 2
 
 [node name="TilePond" parent="World/CellsSystem" unique_id=351429902 instance=ExtResource("7_6wevv")]
 position = Vector2(368, 736)
-demand_for_unlock = ExtResource("12_6u1mn")
 up_border = 2
 right_border = 2
 
 [node name="WheatTile2" parent="World/CellsSystem" unique_id=1860228072 instance=ExtResource("11_e1cbu")]
-position = Vector2(736, 736)
+position = Vector2(368, 736)
 tile_type = 1
 demand_for_unlock = ExtResource("12_6u1mn")
 up_border = 2

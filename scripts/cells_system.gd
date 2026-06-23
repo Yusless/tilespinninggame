@@ -4,6 +4,8 @@ const FIELD_HEIGHT = 5
 
 var map = []
 
+var unlock_dict: Dictionary[Demand, Array] = {}
+
 @export var hub_tile: HubTile
 @export var environment_manager: EnvironmentManager
 @export var player: Player
@@ -16,6 +18,7 @@ func _ready() -> void:
 	hub_tile.lighthouse.expedition_finished.connect(_on_lighthouse_expedition_finished)
 	hub_tile.lighthouse.expedition_started.connect(_on_lighthouse_expedition_started)
 	player.died.connect(_on_player_died)
+	hub_tile.upgrade_table.demand_completed.connect(_on_demand_completed)
 	
 func create_map_from_tiles() -> void:
 	for i in range(FIELD_HEIGHT):
@@ -28,6 +31,12 @@ func create_map_from_tiles() -> void:
 		if tile is Tile:
 			var pos = get_map_position(tile)
 			map[pos.y][pos.x] = tile
+	for tile in tiles:
+		if tile.demand_for_unlock:
+			if tile.demand_for_unlock not in unlock_dict:
+				unlock_dict[tile.demand_for_unlock] = []
+			unlock_dict[tile.demand_for_unlock].append(tile)
+	print(unlock_dict)
 
 
 func get_map_position(tile: Tile) :
@@ -72,6 +81,7 @@ func update_all_bridges():
 				border.update()
 
 func reset_tiles():
+	update_all_bridges()
 	for tile in get_tiles_as_array():
 		tile.reset()
 
@@ -97,7 +107,16 @@ func _on_lighthouse_expedition_started():
 	environment_manager.switch_to_day()
 	activate_tiles()
 
+
 func _on_player_died():
 	reset_tiles()
 	hub_tile.lighthouse.start_expedition()
 	player.spawn()
+
+func _on_demand_completed(demand: Demand):
+	unlock_tiles(demand)
+
+
+func unlock_tiles(demand: Demand):
+	for tile in unlock_dict[demand]:
+		tile.unlock()
