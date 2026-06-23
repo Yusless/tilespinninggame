@@ -69,6 +69,7 @@ size = Vector2(12, 12)
 
 [node name="ResourceCollectable" type="Node2D" unique_id=311562473 node_paths=PackedStringArray("sprite", "animation_player", "collision_shape")]
 top_level = true
+z_index = 1
 script = ExtResource("1_o1gfo")
 sprite = NodePath("Sprite")
 animation_player = NodePath("AnimationPlayer")

@@ -177,6 +177,7 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D" unique_id=251603508 node_paths=PackedStringArray("boomerang", "sprite", "stun_timer", "hurtbox", "animation_player", "health_component", "camera") groups=["Player"]]
+z_index = 1
 y_sort_enabled = true
 collision_layer = 2
 script = ExtResource("1_g2els")

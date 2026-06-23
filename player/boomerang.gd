@@ -34,6 +34,7 @@ func launch(origin: Vector2, direction: float, inherited_speed: Vector2):
 
 func retrieve():
 	launched = false
+	velocity = Vector2.ZERO
 	hitbox.end_attack()
 	hide()
 

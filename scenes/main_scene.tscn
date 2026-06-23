@@ -47,7 +47,6 @@ right_border = 2
 down_border = 2
 
 [node name="TilePond" parent="World/CellsSystem" unique_id=351429902 instance=ExtResource("7_6wevv")]
-y_sort_enabled = false
 position = Vector2(0, 736)
 tile_type = 5
 up_border = 2

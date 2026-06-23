@@ -57,7 +57,7 @@ func _on_spawn_timer_timeout() -> void:
 
 func _on_enemy_defeated(enemy: Enemy):
 	await get_tree().create_timer(1.0).timeout
-	if is_inside_tree():
+	if is_inside_tree() and enemy:
 		remove_enemy(enemy)
 
 func deactivate():

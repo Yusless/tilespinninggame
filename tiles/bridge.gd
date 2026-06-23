@@ -11,6 +11,12 @@ var side: Side.Sides = Side.Sides.UP
 @export var down_bridge_sprite: Node2D
 @export var merge_part_left: TileMapLayer
 @export var merge_part_up: TileMapLayer
+@export var navreg_left: NavigationRegion2D
+@export var navreg_up: NavigationRegion2D
+@export var navlink_left: NavigationLink2D
+@export var navlink_up: NavigationLink2D
+@export var navlink_left2: NavigationLink2D
+@export var navlink_up2: NavigationLink2D
 
 var rot_dict = {Side.Sides.UP: -90,
 				Side.Sides.RIGHT: 0,
@@ -47,16 +53,27 @@ func _ready() -> void:
 func check_for_completed_bridges(recursive = true):
 	var opposite = Side.get_opposite(side)
 	var neighbour_by_side = tile.neighbours[side]
+	
 	side_to_middle[side].disabled = false
 	merge_part_left.hide()
 	merge_part_up.hide()
+	
+	navlink_left.enabled = false
+	navlink_left2.enabled = false
+	navlink_up.enabled = false
+	navlink_up2.enabled = false
+	
 	if neighbour_by_side:
 		if neighbour_by_side.border_objects[opposite] is Bridge:
 			side_to_middle[side].disabled = true
 			if side == Side.Sides.UP:
 				merge_part_up.show()
+				navlink_up.enabled = true
+				navlink_up2.enabled = true
 			if side == Side.Sides.LEFT:
 				merge_part_left.show()
+				navlink_left.enabled = true
+				navlink_left2.enabled = true
 	if recursive == true:
 		for direction in tile.neighbours:
 			neighbour_by_side = tile.neighbours[direction]

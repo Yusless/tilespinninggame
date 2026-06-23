@@ -285,6 +285,7 @@ _data = {
 size = Vector2(14, 14)
 
 [node name="Toad" type="CharacterBody2D" unique_id=1894793058 node_paths=PackedStringArray("health_component", "hurtbox_component", "nav_agent", "aggro_area", "rest_timer", "step_timer", "animation_player", "stun_timer", "attack_component", "attack_cooldown", "attack_delay", "sprite")]
+z_index = 1
 collision_layer = 8
 script = ExtResource("1_w808d")
 step_distance = 80.0
