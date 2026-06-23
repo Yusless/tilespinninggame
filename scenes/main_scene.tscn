@@ -39,6 +39,7 @@ player = NodePath("../Player")
 
 [node name="TileLavaLake" parent="World/CellsSystem" unique_id=923661624 instance=ExtResource("12_si52b")]
 position = Vector2(0, 368)
+demand_for_unlock = null
 right_border = 2
 
 [node name="Tile4" parent="World/CellsSystem" unique_id=113809720 instance=ExtResource("4_pu3yx")]
@@ -51,7 +52,6 @@ right_border = 2
 [node name="HubTile" parent="World/CellsSystem" unique_id=1282555252 instance=ExtResource("6_c1pb6")]
 y_sort_enabled = false
 position = Vector2(736, 368)
-demand_for_unlock = null
 left_border = 2
 down_border = 2
 

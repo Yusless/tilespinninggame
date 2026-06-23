@@ -12,9 +12,14 @@ func shoot_fireball():
 
 func attack():
 	super()
-	shoot_fireball()
 	attacking = true
-	state = States.HOSTILE
-	has_hyper_armor = false
-	create_tween().tween_property(sprite, "rotation", 0.0, 0.08)
-	attack_cooldown.start()
+
+
+func _on_sprite_frame_changed() -> void:
+	if sprite.frame == 4 and sprite.animation == "attack":
+		shoot_fireball()
+
+
+func _on_sprite_animation_finished() -> void:
+	if sprite.animation == "attack":
+		end_attack()

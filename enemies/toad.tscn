@@ -63,6 +63,14 @@ animations = [{
 "texture": SubResource("AtlasTexture_wuusq")
 }],
 "loop": 0,
+"name": &"dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wuusq")
+}],
+"loop": 0,
 "name": &"idle",
 "speed": 5.0
 }, {
@@ -106,7 +114,7 @@ attack_distance = 96.0
 
 [node name="Sprite" parent="." index="2" unique_id=877205313]
 sprite_frames = SubResource("SpriteFrames_ebqlv")
-animation = &"idle"
+animation = &"dead"
 
 [node name="SoundHit" parent="." index="14" unique_id=458644540]
 stream = SubResource("AudioStreamRandomizer_v4clq")

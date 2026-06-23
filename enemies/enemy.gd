@@ -125,11 +125,12 @@ func parabolic(x: float):
 func animate():
 	var anim := "idle"
 	sprite.position.y = 0.0
-	if step_in_progress:
-		if state == States.ATTACKING:
-			anim = "attack"
-		else:
-			anim = "move"
+	if state == States.DEAD:
+		anim = "dead"
+	elif state == States.ATTACKING:
+		anim = "attack"
+	elif step_in_progress:
+		anim = "move"
 	if anim != sprite.animation:
 		sprite.play(anim)
 	
@@ -153,6 +154,12 @@ func simple_state_machine(delta: float):
 				state = States.IDLE
 		States.ATTACKING:
 			move_and_slide()
+
+func end_attack():
+	attacking = true
+	state = States.HOSTILE
+	has_hyper_armor = false
+	attack_cooldown.start()
 
 func _physics_process(delta: float) -> void:
 	simple_state_machine(delta)

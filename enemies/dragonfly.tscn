@@ -5,19 +5,109 @@
 [ext_resource type="PackedScene" uid="uid://db4aflu18ewjr" path="res://enemies/fireball.tscn" id="3_qwgkk"]
 [ext_resource type="Texture2D" uid="uid://ivpld1v7tmo4" path="res://enemies/dragonfly.png" id="3_rgsyg"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ihiei"]
+atlas = ExtResource("3_rgsyg")
+region = Rect2(96, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_udwm5"]
+atlas = ExtResource("3_rgsyg")
+region = Rect2(120, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vmkg5"]
+atlas = ExtResource("3_rgsyg")
+region = Rect2(144, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hjs40"]
+atlas = ExtResource("3_rgsyg")
+region = Rect2(168, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ybl7s"]
+atlas = ExtResource("3_rgsyg")
+region = Rect2(48, 0, 24, 24)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_qwgkk"]
 atlas = ExtResource("3_rgsyg")
 region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_efacf"]
+atlas = ExtResource("3_rgsyg")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b0w4b"]
+atlas = ExtResource("3_rgsyg")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_niu41"]
+atlas = ExtResource("3_rgsyg")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cuevd"]
+atlas = ExtResource("3_rgsyg")
+region = Rect2(24, 0, 24, 24)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_si52b"]
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_ihiei")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_udwm5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vmkg5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hjs40")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vmkg5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_udwm5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ihiei")
+}],
+"loop": 0,
+"name": &"attack",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ybl7s")
+}],
+"loop": 1,
+"name": &"dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_qwgkk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_efacf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ybl7s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b0w4b")
 }],
 "loop": 1,
 "name": &"idle",
-"speed": 5.0
+"speed": 25.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_niu41")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cuevd")
+}],
+"loop": 1,
+"name": &"move",
+"speed": 20.0
 }]
 
 [node name="Dragonfly" unique_id=1894793058 node_paths=PackedStringArray("fireball_origin") instance=ExtResource("1_o0t5j")]
@@ -27,13 +117,22 @@ fireball_scene = ExtResource("3_qwgkk")
 fireball_origin = NodePath("Sprite/FireballOrigin")
 speed = 240.0
 step_distance = 96.0
-rest_time = 1.2
 step_spread = 0.349
 attack_distance = 128.0
 
 [node name="Sprite" parent="." index="2" unique_id=877205313]
 sprite_frames = SubResource("SpriteFrames_si52b")
-animation = &"idle"
+animation = &"attack"
+frame = 3
 
 [node name="FireballOrigin" type="Marker2D" parent="Sprite" index="0" unique_id=895482796]
-position = Vector2(9, 0)
+position = Vector2(5, 5)
+
+[node name="AttackCooldown" parent="." index="9" unique_id=440763531]
+wait_time = 2.4
+
+[node name="AttackDelay" parent="." index="10" unique_id=1098934846]
+wait_time = 0.5
+
+[connection signal="animation_finished" from="Sprite" to="." method="_on_sprite_animation_finished"]
+[connection signal="frame_changed" from="Sprite" to="." method="_on_sprite_frame_changed"]

@@ -33,7 +33,7 @@ enum BorderTypes {
 @export var tile_type = TileTypes.HUB
 
 @export var demand_for_unlock: Demand
-var unlocked: = !demand_for_unlock
+var unlocked: bool
 var rotatable: = unlocked
 
 @export var up_bridge_collision = CollisionShape2D

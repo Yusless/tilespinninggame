@@ -28,7 +28,4 @@ func animate():
 
 func _on_step_timer_timeout() -> void:
 	if state == States.ATTACKING:
-		state = States.HOSTILE
-		has_hyper_armor = false
-		create_tween().tween_property(sprite, "rotation", 0.0, 0.08)
-		attack_cooldown.start()
+		end_attack()
