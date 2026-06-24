@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://ckej6k0mt88cx"]
+
+[ext_resource type="PackedScene" uid="uid://dhfxsclatflk7" path="res://tiles/tile types/tile.tscn" id="1_f6p5n"]
+[ext_resource type="PackedScene" uid="uid://ce22yjh5n4eiq" path="res://tiles/tile types/tree.tscn" id="2_w85yc"]
+
+[node name="Tile" unique_id=1779673374 instance=ExtResource("1_f6p5n")]
+
+[node name="Tree" parent="TileContents" parent_id_path=PackedInt32Array(1337787306) index="3" unique_id=173354698 instance=ExtResource("2_w85yc")]
+position = Vector2(-25, -67)
+
+[node name="Tree2" parent="TileContents" parent_id_path=PackedInt32Array(1337787306) index="4" unique_id=1480277034 instance=ExtResource("2_w85yc")]
+position = Vector2(37, -67)
+
+[node name="Tree3" parent="TileContents" parent_id_path=PackedInt32Array(1337787306) index="5" unique_id=1199683696 instance=ExtResource("2_w85yc")]
+position = Vector2(-83, 35)
+
+[node name="Tree4" parent="TileContents" parent_id_path=PackedInt32Array(1337787306) index="6" unique_id=399045991 instance=ExtResource("2_w85yc")]
+position = Vector2(-55, -24)
+
+[node name="Tree5" parent="TileContents" parent_id_path=PackedInt32Array(1337787306) index="7" unique_id=1514663575 instance=ExtResource("2_w85yc")]
+position = Vector2(74, -5)

@@ -7,7 +7,6 @@
 
 [resource]
 script = ExtResource("3_xbih8")
-name = "lava_lake_unlock"
 resources_needed = Dictionary[ExtResource("1_icr2w"), int]({
 ExtResource("2_ixwkq"): 200,
 ExtResource("3_ixwkq"): 80
