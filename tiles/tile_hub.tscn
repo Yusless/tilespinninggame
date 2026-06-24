@@ -25,6 +25,7 @@ tile_type = 0
 demand_for_unlock = null
 
 [node name="Lighthouse" parent="." index="3" unique_id=1382120843 instance=ExtResource("2_5xtjl")]
+z_index = 1
 position = Vector2(7, -119)
 
 [node name="UpgradeTable" type="Node2D" parent="." index="5" unique_id=1977492483 node_paths=PackedStringArray("resource_demander", "interaction_component")]

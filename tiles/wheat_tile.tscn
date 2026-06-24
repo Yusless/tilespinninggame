@@ -2,9 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://dhfxsclatflk7" path="res://tiles/tile.tscn" id="1_36hql"]
 [ext_resource type="PackedScene" uid="uid://dojvj3gokqoqk" path="res://natural_resources/wheat.tscn" id="2_5g5rk"]
+[ext_resource type="Script" uid="uid://dxqniiif8ufsk" path="res://tiles/wheat_tile.gd" id="2_pgqps"]
 
 [node name="WheatTile" unique_id=1779673374 instance=ExtResource("1_36hql")]
+script = ExtResource("2_pgqps")
 tile_type = 2
+demand_for_unlock = null
 
 [node name="TileMapDetails" parent="TileContents" parent_id_path=PackedInt32Array(1337787306) index="1" unique_id=1440210401]
 tile_map_data = PackedByteArray("AAACAAEAAAAFAAQAAAD+/wAAAAAFAAQAAAD6/wMAAAADAAAAAAD6/wQAAAAEAAAAAAD7/wQAAAAEAAAAAAD8/wQAAAAEAAAAAAD9/wUAAAADAAAAAAD+/wUAAAAEAAAAAAADAPz/AAAFAAAAAAAAAPv/AAAEAAAAAAD///v/AAAFAAAAAAD///z/AAAFAAAAAAD6//z/AAAFAAAAAAD7//z/AAADAAAAAAD7//v/AAAEAAAAAAD8//v/AAADAAAAAAD8/wMAAAAFAAAAAAD7/wMAAAAEAAAAAAADAPv/AAAFAAAAAAADAPr/AAAEAAAAAAAEAPr/AAADAAAAAAAEAPv/AAADAAAAAAAEAPz/AAAFAAAAAAAFAPz/AAADAAAAAAAFAP3/AAAEAAAAAAAFAPv/AAAEAAAAAAD+//v/AAADAAAAAAD9//v/AAADAAAAAAD6//3/AAAFAAAAAAD7//3/AAADAAAAAAD8//z/AAADAAAAAAD9//z/AAADAAAAAAD+//z/AAAEAAAAAAAAAAYAAAAEAAAAAAAAAAUAAAAEAAAAAAD//wUAAAADAAAAAAABAAUAAAAFAAAAAAD8/wUAAAAFAAAAAAD7/wUAAAAEAAAAAAD7/wYAAAAFAAAAAAAFAAMAAAAEAAAAAAAFAAQAAAADAAAAAAAGAAQAAAADAAAAAAADAAYAAAAEAAAAAAD6//r/AAAEAAQAAAA=")

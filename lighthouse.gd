@@ -1,7 +1,6 @@
 extends Node2D
 class_name Lighthouse
 
-
 signal expedition_finished
 signal expedition_started
 

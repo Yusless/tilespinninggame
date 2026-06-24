@@ -104,7 +104,7 @@ random_pitch = 1.0174797
 streams_count = 1
 stream_0/stream = ExtResource("6_74qte")
 
-[node name="Enemy" unique_id=1894793058 node_paths=PackedStringArray("croak_jump", "croak_land") instance=ExtResource("1_1i4j2")]
+[node name="Toad" unique_id=1894793058 node_paths=PackedStringArray("croak_jump", "croak_land") instance=ExtResource("1_1i4j2")]
 script = ExtResource("2_ebqlv")
 croak_jump = NodePath("CroakJump")
 croak_land = NodePath("CroakLand")

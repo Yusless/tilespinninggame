@@ -15,7 +15,7 @@ void vertex() {
 }
 void fragment() {
 
- vec4 color = texture(noise_texture, UV + vec2(sin(TIME / 10.0)));
+ 	vec4 color = texture(noise_texture, UV + vec2(sin(TIME / 10.0)));
     vec2 uv = UV;
 
     vec2 centered_uv = uv - vec2(0.5);

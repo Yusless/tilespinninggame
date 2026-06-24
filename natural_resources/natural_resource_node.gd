@@ -35,9 +35,14 @@ func harvest():
 		spawn_collectable()
 	sprite.play("harvested")
 
+func burn():
+	harvested = true
+	sprite.play("burnt")
+
 func reset():
 	harvested = false
 	sprite.play("default")
+	health_component.reset()
 	for node in collectables:
 		if node:
 			node.queue_free()

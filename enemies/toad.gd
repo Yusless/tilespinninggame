@@ -29,3 +29,6 @@ func animate():
 func _on_step_timer_timeout() -> void:
 	if state == States.ATTACKING:
 		end_attack()
+		end_step()
+	else:
+		end_step()

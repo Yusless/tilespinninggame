@@ -81,13 +81,13 @@ func update_all_bridges():
 				border.update()
 
 func reset_tiles():
-	update_all_bridges()
 	for tile in get_tiles_as_array():
 		tile.reset()
 
 func activate_tiles():
 	for tile in get_tiles_as_array():
-		tile.activate()
+		if tile.rotatable:
+			tile.activate()
 
 func check_for_interactions():
 	for tile: Tile in get_tiles_as_array():
@@ -105,6 +105,7 @@ func _on_lighthouse_expedition_finished():
 
 func _on_lighthouse_expedition_started():
 	environment_manager.switch_to_day()
+	update_all_bridges()
 	activate_tiles()
 
 

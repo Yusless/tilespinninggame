@@ -38,8 +38,6 @@ environment_manager = NodePath("../EnvironmentManager")
 player = NodePath("../Player")
 
 [node name="TileLavaLake" parent="World/CellsSystem" unique_id=923661624 instance=ExtResource("12_si52b")]
-position = Vector2(0, 368)
-demand_for_unlock = null
 right_border = 2
 
 [node name="Tile4" parent="World/CellsSystem" unique_id=113809720 instance=ExtResource("4_pu3yx")]
@@ -60,8 +58,7 @@ position = Vector2(2, 37)
 
 [node name="WheatTile" parent="World/CellsSystem" unique_id=1779673374 instance=ExtResource("11_e1cbu")]
 position = Vector2(368, 0)
-tile_type = 1
-demand_for_unlock = null
+left_border = 2
 right_border = 2
 down_border = 2
 

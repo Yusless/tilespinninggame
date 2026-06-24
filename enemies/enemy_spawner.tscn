@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://c8ipos8nvsj4s" path="res://enemies/enemy_spawner.gd" id="1_531ly"]
 [ext_resource type="PackedScene" uid="uid://cqo0fhog3v5km" path="res://enemies/toad.tscn" id="2_5lcht"]
 
-[node name="EnemySpawner" type="Node2D" unique_id=92675540 node_paths=PackedStringArray("boundry_left_marker", "boundry_right_marker", "spawn_timer") groups=["NeedsResetting"]]
+[node name="EnemySpawner" type="Node2D" unique_id=92675540 node_paths=PackedStringArray("boundry_left_marker", "boundry_right_marker", "spawn_timer", "dummy_nav_agent") groups=["NeedsResetting"]]
 script = ExtResource("1_531ly")
 enemy_scene = ExtResource("2_5lcht")
 boundry_left = Vector2(-65, 10)
@@ -11,6 +11,7 @@ boundry_right = Vector2(50.935, 38.605)
 boundry_left_marker = NodePath("RectBoundryLeft")
 boundry_right_marker = NodePath("RectBoundryRight")
 spawn_timer = NodePath("SpawnTimer")
+dummy_nav_agent = NodePath("DummyNavAgent")
 
 [node name="RectBoundryLeft" type="Marker2D" parent="." unique_id=1857335623]
 position = Vector2(-65, 10)
@@ -20,5 +21,7 @@ position = Vector2(50.935, 38.605)
 
 [node name="SpawnTimer" type="Timer" parent="." unique_id=1012507013]
 one_shot = true
+
+[node name="DummyNavAgent" type="NavigationAgent2D" parent="." unique_id=205260247]
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

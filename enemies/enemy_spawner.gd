@@ -12,10 +12,13 @@ class_name EnemySpawner
 @export var boundry_left_marker: Marker2D
 @export var boundry_right_marker: Marker2D
 @export var spawn_timer: Timer
+@export var dummy_nav_agent: NavigationAgent2D
 
 
 var active := false
 var enemies: Array[Enemy] = []
+
+var points_of_interest: Array[Vector2] = []
 
 func _ready() -> void:
 	if !Engine.is_editor_hint() and active:
@@ -28,6 +31,8 @@ func spawn_enemy():
 	
 	var enemy: Enemy = enemy_scene.instantiate()
 	enemies.push_back(enemy)
+	if points_of_interest:
+		enemy.points_of_interest.push_back(points_of_interest.pick_random())
 	enemy.defeated.connect(_on_enemy_defeated)
 	get_parent().add_child(enemy)
 	enemy.global_position = Vector2(
@@ -40,6 +45,20 @@ func remove_enemy(enemy: Enemy):
 	enemies.erase(enemy)
 	if enemies.size() < enemy_limit and spawn_timer.is_stopped() and active:
 		spawn_timer.start()
+
+func determine_points_of_interest():
+	points_of_interest.clear()
+	var neighbour_centers := [
+		global_position + Vector2.RIGHT.rotated(0) * Global.DIST_BETWEEN_TILES,
+		global_position + Vector2.RIGHT.rotated(PI/2) * Global.DIST_BETWEEN_TILES,
+		global_position + Vector2.RIGHT.rotated(PI) * Global.DIST_BETWEEN_TILES,
+		global_position + Vector2.RIGHT.rotated(PI*1.5) * Global.DIST_BETWEEN_TILES,
+	]
+	
+	for center in neighbour_centers:
+		dummy_nav_agent.target_position = center
+		if dummy_nav_agent.is_target_reachable():
+			points_of_interest.push_back(center)
 
 func _process(_delta: float) -> void:
 	if Engine.is_editor_hint():
@@ -65,6 +84,7 @@ func deactivate():
 	spawn_timer.stop()
 
 func activate():
+	determine_points_of_interest()
 	active = true
 	spawn_timer.start()
 

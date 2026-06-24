@@ -197,7 +197,7 @@ func can_interact(neighbour, side) -> bool:
 			return true
 	return false
 	
-func interact(neighbour,side):
+func interact(neighbour: Tile, side: Side.Sides):
 	print(self, 'HAS INTERACTED WITH', neighbour, "BY", side)
 
 func reset():
@@ -221,4 +221,4 @@ func set_tile_contents_modulation():
 		tile_contents.modulate = Color("ffffff")
 	else:
 		color_rect.visible = true
-		tile_contents.modulate = Color("3d3d3d")
+		tile_contents.modulate = Color("1a1a1aff")

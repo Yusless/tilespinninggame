@@ -142,6 +142,9 @@ func simple_state_machine(delta: float):
 		States.IDLE:
 			if combat_target:
 				state = States.HOSTILE
+			elif points_of_interest:
+				state = States.CURIOUS
+				set_movement_target(points_of_interest[0])
 		States.CURIOUS:
 			navigate(delta)
 		States.HOSTILE:
@@ -179,6 +182,10 @@ func _on_aggro_area_body_entered(body: Node2D) -> void:
 		else:
 			add_point_of_interest(body)
 
+func _on_destination_reached():
+	if state == States.CURIOUS:
+		state = States.IDLE
+		points_of_interest.pop_front()
 
 func _on_aggro_area_area_entered(area: Area2D) -> void:
 	if state in [States.IDLE, States.CURIOUS]:
