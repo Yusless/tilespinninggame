@@ -68,7 +68,6 @@ func start_step(direction: Vector2, step_speed: float):
 	step_timer.start()
 
 func end_step():
-	step_timer.stop()
 	velocity = Vector2.ZERO
 	rest_timer.wait_time = rest_time + randf_range(-rest_time * 0.3, rest_time * 0.3)
 	attack_component.end_attack()
@@ -148,6 +147,9 @@ func simple_state_machine(delta: float):
 		States.CURIOUS:
 			navigate(delta)
 		States.HOSTILE:
+			if !combat_target:
+				state = States.CURIOUS
+				return
 			set_movement_target(combat_target.global_position)
 			navigate(delta)
 			if combat_target.global_position.distance_to(global_position) <= attack_distance and attack_cooldown.is_stopped() and !step_in_progress:
@@ -216,4 +218,5 @@ func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
 
 
 func _on_attack_delay_timeout() -> void:
-	attack()
+	if state == States.ATTACKING and combat_target:
+		attack()

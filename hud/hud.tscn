@@ -6,6 +6,7 @@
 [ext_resource type="Resource" uid="uid://dh2vwv3hcj4gu" path="res://natural_resources/coal_resource.tres" id="3_svhta"]
 [ext_resource type="Resource" uid="uid://dn0snts7urilu" path="res://natural_resources/wood_resource.tres" id="4_fjv1a"]
 [ext_resource type="PackedScene" uid="uid://cui53jrjjjef4" path="res://hud/heart_container.tscn" id="4_w8tcp"]
+[ext_resource type="Resource" uid="uid://cu42um0n8tj08" path="res://natural_resources/lava_core_resource.tres" id="5_0ivg5"]
 
 [node name="HUD" type="Control" unique_id=1161228326]
 layout_mode = 3
@@ -43,6 +44,10 @@ resource = ExtResource("3_svhta")
 [node name="WheatCounter3" parent="MarginContainer/ResourceCounters" unique_id=166755699 instance=ExtResource("1_6ca3a")]
 layout_mode = 2
 resource = ExtResource("4_fjv1a")
+
+[node name="WheatCounter4" parent="MarginContainer/ResourceCounters" unique_id=18565563 instance=ExtResource("1_6ca3a")]
+layout_mode = 2
+resource = ExtResource("5_0ivg5")
 
 [node name="Healthbar" type="HBoxContainer" parent="MarginContainer" unique_id=1486487844]
 layout_mode = 2

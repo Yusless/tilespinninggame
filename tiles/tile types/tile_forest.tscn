@@ -1,9 +1,11 @@
 [gd_scene format=3 uid="uid://ckej6k0mt88cx"]
 
 [ext_resource type="PackedScene" uid="uid://dhfxsclatflk7" path="res://tiles/tile types/tile.tscn" id="1_f6p5n"]
+[ext_resource type="Script" uid="uid://dxqniiif8ufsk" path="res://tiles/wheat_tile.gd" id="2_ss37w"]
 [ext_resource type="PackedScene" uid="uid://ce22yjh5n4eiq" path="res://tiles/tile types/tree.tscn" id="2_w85yc"]
 
 [node name="Tile" unique_id=1779673374 instance=ExtResource("1_f6p5n")]
+script = ExtResource("2_ss37w")
 
 [node name="Tree" parent="TileContents" parent_id_path=PackedInt32Array(1337787306) index="3" unique_id=173354698 instance=ExtResource("2_w85yc")]
 position = Vector2(-25, -67)

@@ -3,9 +3,11 @@
 [ext_resource type="PackedScene" uid="uid://hqexdlr6q77f" path="res://enemies/enemy.tscn" id="1_1i4j2"]
 [ext_resource type="Script" uid="uid://deyxkpx5mv5l6" path="res://enemies/toad.gd" id="2_ebqlv"]
 [ext_resource type="Texture2D" uid="uid://bx0gj8p88grts" path="res://enemies/toad.png" id="2_wuusq"]
+[ext_resource type="Resource" uid="uid://cu42um0n8tj08" path="res://natural_resources/lava_core_resource.tres" id="3_74qte"]
 [ext_resource type="AudioStream" uid="uid://dirf287ss5bmm" path="res://enemies/toad_jump_1.wav" id="5_577yf"]
 [ext_resource type="AudioStream" uid="uid://ce076c6qs81kg" path="res://enemies/toad_land_1.wav" id="5_wuusq"]
 [ext_resource type="AudioStream" uid="uid://bff6tk6latel1" path="res://enemies/toad_land_2.wav" id="6_74qte"]
+[ext_resource type="Texture2D" uid="uid://cj1t67qxwaqic" path="res://enemies/toad-lava.png" id="6_rm2jj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w808d"]
 atlas = ExtResource("2_wuusq")
@@ -66,6 +68,11 @@ animations = [{
 "name": &"dead",
 "speed": 5.0
 }, {
+"frames": [],
+"loop": 1,
+"name": &"empty",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_wuusq")
@@ -89,6 +96,92 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_yli7v"]
+atlas = ExtResource("6_rm2jj")
+region = Rect2(96, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y0s8k"]
+atlas = ExtResource("6_rm2jj")
+region = Rect2(120, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ewsu"]
+atlas = ExtResource("6_rm2jj")
+region = Rect2(144, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f11gm"]
+atlas = ExtResource("6_rm2jj")
+region = Rect2(168, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dggi0"]
+atlas = ExtResource("6_rm2jj")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bxv2a"]
+atlas = ExtResource("6_rm2jj")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l8i8a"]
+atlas = ExtResource("6_rm2jj")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jtii4"]
+atlas = ExtResource("6_rm2jj")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jtvsb"]
+atlas = ExtResource("6_rm2jj")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nrbbi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yli7v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y0s8k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ewsu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f11gm")
+}],
+"loop": 1,
+"name": &"attack",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dggi0")
+}],
+"loop": 0,
+"name": &"dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bxv2a")
+}],
+"loop": 0,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l8i8a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jtii4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jtvsb")
+}],
+"loop": 0,
+"name": &"move",
+"speed": 10.0
+}]
+
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_v4clq"]
 random_pitch = 1.0174797
 streams_count = 1
@@ -104,17 +197,31 @@ random_pitch = 1.0174797
 streams_count = 1
 stream_0/stream = ExtResource("6_74qte")
 
-[node name="Toad" unique_id=1894793058 node_paths=PackedStringArray("croak_jump", "croak_land") instance=ExtResource("1_1i4j2")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v4clq"]
+size = Vector2(24, 24)
+
+[node name="Toad" unique_id=1894793058 node_paths=PackedStringArray("sprite_default", "sprite_lava", "croak_jump", "croak_land") instance=ExtResource("1_1i4j2")]
 script = ExtResource("2_ebqlv")
+sprite_default = NodePath("Sprite")
+sprite_lava = NodePath("Sprite/SpriteLava")
 croak_jump = NodePath("CroakJump")
 croak_land = NodePath("CroakLand")
+lava_core_res = ExtResource("3_74qte")
 step_distance = 120.0
 rest_time = 0.6
 attack_distance = 96.0
 
 [node name="Sprite" parent="." index="2" unique_id=877205313]
 sprite_frames = SubResource("SpriteFrames_ebqlv")
-animation = &"dead"
+animation = &"empty"
+
+[node name="SpriteLava" type="AnimatedSprite2D" parent="Sprite" index="0" unique_id=1344687125]
+visible = false
+sprite_frames = SubResource("SpriteFrames_nrbbi")
+animation = &"move"
+
+[node name="AggroArea" parent="." index="6" unique_id=1966480571]
+collision_mask = 10
 
 [node name="SoundHit" parent="." index="14" unique_id=458644540]
 stream = SubResource("AudioStreamRandomizer_v4clq")
@@ -124,3 +231,12 @@ stream = SubResource("AudioStreamRandomizer_kg37j")
 
 [node name="CroakLand" type="AudioStreamPlayer2D" parent="." index="16" unique_id=1707833909]
 stream = SubResource("AudioStreamRandomizer_rm2jj")
+
+[node name="DragonflyConsumer" type="Area2D" parent="." index="17" unique_id=1700680851]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DragonflyConsumer" index="0" unique_id=1376745069]
+shape = SubResource("RectangleShape2D_v4clq")
+
+[connection signal="body_entered" from="DragonflyConsumer" to="." method="_on_dragonfly_consumer_body_entered"]

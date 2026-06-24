@@ -1,0 +1,196 @@
+[gd_scene format=4 uid="uid://b8pjbtk6ujqp5"]
+
+[ext_resource type="Script" uid="uid://dfv1bmacg8ufl" path="res://tiles/tile types/tile.gd" id="1_h3aqd"]
+[ext_resource type="Script" uid="uid://c4rr2vivlxd3k" path="res://assets/graphics/tile/tile_visuals.gd" id="2_l53t7"]
+[ext_resource type="Resource" uid="uid://c74136c2d2yhp" path="res://natural_resources/demands/lava_lake_unlock.tres" id="2_ys7py"]
+[ext_resource type="TileSet" uid="uid://2s1f4ntvo15j" path="res://assets/graphics/tile/tile_set_grass.tres" id="3_ys7py"]
+[ext_resource type="Shader" uid="uid://c5sakyyec35pn" path="res://tiles/fog.gdshader" id="5_ys7py"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3xd07"]
+size = Vector2(250, 256)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_jq8tk"]
+a = Vector2(-120, -121)
+b = Vector2(-38, -121)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_cdwd0"]
+a = Vector2(41, -121)
+b = Vector2(-41, -121)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_t7n2i"]
+a = Vector2(41, -121)
+b = Vector2(120, -121)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_r3gf4"]
+a = Vector2(-120, -121)
+b = Vector2(-26.000006, -121)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_rvdvl"]
+a = Vector2(33.999996, -121)
+b = Vector2(-22.000006, -121)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_ukgqd"]
+a = Vector2(37.999996, -121)
+b = Vector2(120, -121)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_esqu7"]
+a = Vector2(-120, -121)
+b = Vector2(-38.00001, -120)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_1g878"]
+a = Vector2(36.99999, -120)
+b = Vector2(-35.00001, -120)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_1m54g"]
+a = Vector2(39.99999, -121)
+b = Vector2(120, -121)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_5f4kx"]
+a = Vector2(-120, -121)
+b = Vector2(-38, -121)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_1ipp3"]
+a = Vector2(22.999998, -121)
+b = Vector2(-35, -121)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_o7uur"]
+a = Vector2(25.999998, -121)
+b = Vector2(120, -121)
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_dej15"]
+vertices = PackedVector2Array(104.03906, 103.03906, -106.953125, 103.953125, -106.03906, -105.03906, 104.953125, -105.953125)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-116, -115, 115, -116, 114, 113, -117, 114)])
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_qyorp"]
+noise_type = 0
+seed = 9
+frequency = 0.0467
+offset = Vector3(-666.67, -877.19, 0)
+fractal_octaves = 10
+fractal_lacunarity = 1.97
+fractal_gain = 0.435
+fractal_ping_pong_strength = 0.735
+metadata/_preview_in_3d_space_ = true
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ys7py"]
+width = 100
+height = 100
+generate_mipmaps = false
+noise = SubResource("FastNoiseLite_qyorp")
+seamless = true
+normalize = false
+seamless_blend_skirt = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3xd07"]
+shader = ExtResource("5_ys7py")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_ys7py")
+shader_parameter/smoke_color = Color(1, 1, 1, 1)
+shader_parameter/distortion_speed = 0.0
+
+[node name="Tile" type="Node2D" unique_id=1779673374 node_paths=PackedStringArray("up_bridge_collision", "right_bridge_collision", "down_bridge_collision", "left_bridge_collision", "tile_contents", "color_rect")]
+y_sort_enabled = true
+script = ExtResource("1_h3aqd")
+tile_type = 1
+demand_for_unlock = ExtResource("2_ys7py")
+up_bridge_collision = NodePath("StaticBody2D/UpperMidBorder")
+right_bridge_collision = NodePath("StaticBody2D/RightMidBorder")
+down_bridge_collision = NodePath("StaticBody2D/DownMidBorder")
+left_bridge_collision = NodePath("StaticBody2D/LeftMidBorder")
+tile_contents = NodePath("TileContents")
+color_rect = NodePath("ColorRect")
+metadata/_edit_group_ = true
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1204268483]
+z_index = -2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2042092659]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_3xd07")
+debug_color = Color(0.5953718, 1, 0.59690833, 0.42)
+
+[node name="TileContents" type="Node2D" parent="." unique_id=1337787306 node_paths=PackedStringArray("tile_map_ground", "tile_map_details", "tile_map_texture") groups=["NeedsResetting"]]
+z_index = -1
+script = ExtResource("2_l53t7")
+tile_map_ground = NodePath("TileMapGround")
+tile_map_details = NodePath("TileMapDetails")
+tile_map_texture = NodePath("TileMapTexture")
+
+[node name="TileMapGround" type="TileMapLayer" parent="TileContents" unique_id=803984556]
+y_sort_enabled = true
+tile_map_data = PackedByteArray("AAD4//r/AAADAAIAAAD4//v/AAADAAIAAAD4//z/AAADAAIAAAD4//3/AAADAAIAAAD4//7/AAADAAIAAAD4////AAADAAIAAAD4/wAAAAADAAIAAAD4/wEAAAADAAIAAAD4/wIAAAADAAIAAAD4/wMAAAADAAIAAAD4/wQAAAADAAIAAAD4/wUAAAADAAIAAAD4/wYAAAADAAIAAAD5//r/AAAEAAIAAAD5//v/AAAEAAIAAAD5//z/AAAEAAIAAAD5//3/AAAEAAIAAAD5//7/AAAEAAIAAAD5////AAAEAAIAAAD5/wAAAAAEAAIAAAD5/wEAAAAEAAIAAAD5/wIAAAAEAAIAAAD5/wMAAAAEAAIAAAD5/wQAAAAEAAIAAAD5/wUAAAAEAAIAAAD5/wYAAAAEAAIAAAD6//r/AAAEAAIAAAD6//v/AAAEAAIAAAD6//z/AAAEAAIAAAD6//3/AAAEAAIAAAD6//7/AAAEAAIAAAD6////AAAEAAIAAAD6/wAAAAAEAAIAAAD6/wEAAAAEAAIAAAD6/wIAAAAEAAIAAAD6/wMAAAAEAAIAAAD6/wQAAAAEAAIAAAD6/wUAAAAEAAIAAAD6/wYAAAAEAAIAAAD7//r/AAAEAAIAAAD7//v/AAAEAAIAAAD7//z/AAAEAAIAAAD7//3/AAAEAAIAAAD7//7/AAAEAAIAAAD7////AAAEAAIAAAD7/wAAAAAEAAIAAAD7/wEAAAAEAAIAAAD7/wIAAAAEAAIAAAD7/wMAAAAEAAIAAAD7/wQAAAAEAAIAAAD7/wUAAAAEAAIAAAD7/wYAAAAEAAIAAAD8//r/AAAEAAIAAAD8//v/AAAEAAIAAAD8//z/AAAEAAIAAAD8//3/AAAEAAIAAAD8//7/AAAEAAIAAAD8////AAAEAAIAAAD8/wAAAAAEAAIAAAD8/wEAAAAEAAIAAAD8/wIAAAAEAAIAAAD8/wMAAAAEAAIAAAD8/wQAAAAEAAIAAAD8/wUAAAAEAAIAAAD8/wYAAAAEAAIAAAD9//r/AAAEAAIAAAD9//v/AAAEAAIAAAD9//z/AAAEAAIAAAD9//3/AAAEAAIAAAD9//7/AAAEAAIAAAD9////AAAEAAIAAAD9/wAAAAAEAAIAAAD9/wEAAAAEAAIAAAD9/wIAAAAEAAIAAAD9/wMAAAAEAAIAAAD9/wQAAAAEAAIAAAD9/wUAAAAEAAIAAAD9/wYAAAAEAAIAAAD+//r/AAAEAAIAAAD+//v/AAAEAAIAAAD+//z/AAAEAAIAAAD+//3/AAAEAAIAAAD+//7/AAAEAAIAAAD+////AAAEAAIAAAD+/wAAAAAEAAIAAAD+/wEAAAAEAAIAAAD+/wIAAAAEAAIAAAD+/wMAAAAEAAIAAAD+/wQAAAAEAAIAAAD+/wUAAAAEAAIAAAD+/wYAAAAEAAIAAAD///r/AAAEAAIAAAD///v/AAAEAAIAAAD///z/AAAEAAIAAAD///3/AAAEAAIAAAD///7/AAAEAAIAAAD/////AAAEAAIAAAD//wAAAAAEAAIAAAD//wEAAAAEAAIAAAD//wIAAAAEAAIAAAD//wMAAAAEAAIAAAD//wQAAAAEAAIAAAD//wUAAAAEAAIAAAD//wYAAAAEAAIAAAAAAPr/AAAEAAIAAAAAAPv/AAAEAAIAAAAAAPz/AAAEAAIAAAAAAP3/AAAEAAIAAAAAAP7/AAAEAAIAAAAAAP//AAAEAAIAAAAAAAAAAAAEAAIAAAAAAAEAAAAEAAIAAAAAAAIAAAAEAAIAAAAAAAMAAAAEAAIAAAAAAAQAAAAEAAIAAAAAAAUAAAAEAAIAAAAAAAYAAAAEAAIAAAABAPr/AAAEAAIAAAABAPv/AAAEAAIAAAABAPz/AAAEAAIAAAABAP3/AAAEAAIAAAABAP7/AAAEAAIAAAABAP//AAAEAAIAAAABAAAAAAAEAAIAAAABAAEAAAAEAAIAAAABAAIAAAAEAAIAAAABAAMAAAAEAAIAAAABAAQAAAAEAAIAAAABAAUAAAAEAAIAAAABAAYAAAAEAAIAAAACAPr/AAAEAAIAAAACAPv/AAAEAAIAAAACAPz/AAAEAAIAAAACAP3/AAAEAAIAAAACAP7/AAAEAAIAAAACAP//AAAEAAIAAAACAAAAAAAEAAIAAAACAAEAAAAEAAIAAAACAAIAAAAEAAIAAAACAAMAAAAEAAIAAAACAAQAAAAEAAIAAAACAAUAAAAEAAIAAAACAAYAAAAEAAIAAAADAPr/AAAEAAIAAAADAPv/AAAEAAIAAAADAPz/AAAEAAIAAAADAP3/AAAEAAIAAAADAP7/AAAEAAIAAAADAP//AAAEAAIAAAADAAAAAAAEAAIAAAADAAEAAAAEAAIAAAADAAIAAAAEAAIAAAADAAMAAAAEAAIAAAADAAQAAAAEAAIAAAADAAUAAAAEAAIAAAADAAYAAAAEAAIAAAAEAPr/AAAEAAIAAAAEAPv/AAAEAAIAAAAEAPz/AAAEAAIAAAAEAP3/AAAEAAIAAAAEAP7/AAAEAAIAAAAEAP//AAAEAAIAAAAEAAAAAAAEAAIAAAAEAAEAAAAEAAIAAAAEAAIAAAAEAAIAAAAEAAMAAAAEAAIAAAAEAAQAAAAEAAIAAAAEAAUAAAAEAAIAAAAEAAYAAAAEAAIAAAAFAPr/AAAEAAIAAAAFAPv/AAAEAAIAAAAFAPz/AAAEAAIAAAAFAP3/AAAEAAIAAAAFAP7/AAAEAAIAAAAFAP//AAAEAAIAAAAFAAAAAAAEAAIAAAAFAAEAAAAEAAIAAAAFAAIAAAAEAAIAAAAFAAMAAAAEAAIAAAAFAAQAAAAEAAIAAAAFAAUAAAAEAAIAAAAFAAYAAAAEAAIAAAAGAPr/AAAEAAIAAAAGAPv/AAAEAAIAAAAGAPz/AAAEAAIAAAAGAP3/AAAEAAIAAAAGAP7/AAAEAAIAAAAGAP//AAAEAAIAAAAGAAAAAAAEAAIAAAAGAAEAAAAEAAIAAAAGAAIAAAAEAAIAAAAGAAMAAAAEAAIAAAAGAAQAAAAEAAIAAAAGAAUAAAAEAAIAAAAGAAYAAAAEAAIAAAAHAPr/AAAFAAIAAAAHAPv/AAAFAAIAAAAHAPz/AAAFAAIAAAAHAP3/AAAFAAIAAAAHAP7/AAAFAAIAAAAHAP//AAAFAAIAAAAHAAAAAAAFAAIAAAAHAAEAAAAFAAIAAAAHAAIAAAAFAAIAAAAHAAMAAAAFAAIAAAAHAAQAAAAFAAIAAAAHAAYAAAAFAAIAAAAHAAUAAAAFAAIAAAAHAAcAAAAFAAMAAAAGAAcAAAAEAAMAAAAFAAcAAAAEAAMAAAAEAAcAAAAEAAMAAAADAAcAAAAEAAMAAAACAAcAAAAEAAMAAAABAAcAAAAEAAMAAAAAAAcAAAAEAAMAAAD//wcAAAAEAAMAAAD+/wcAAAAEAAMAAAD9/wcAAAAEAAMAAAD8/wcAAAAEAAMAAAD7/wcAAAAEAAMAAAD6/wcAAAAEAAMAAAD5/wcAAAAEAAMAAAD4/wcAAAADAAMAAAAHAPn/AAAFAAIAAAAGAPn/AAAEAAIAAAAFAPn/AAAEAAIAAAAEAPn/AAAEAAIAAAADAPn/AAAEAAIAAAACAPn/AAAEAAIAAAABAPn/AAAEAAIAAAAAAPn/AAAEAAIAAAD///n/AAAEAAIAAAD+//n/AAAEAAIAAAD9//n/AAAEAAIAAAD8//n/AAAEAAIAAAD7//n/AAAEAAIAAAD6//n/AAAEAAIAAAD5//n/AAAEAAIAAAD4//n/AAADAAIAAAD4//j/AAADAAEAAAD5//j/AAAEAAEAAAD6//j/AAAEAAEAAAD7//j/AAAEAAEAAAD8//j/AAAEAAEAAAD9//j/AAAEAAEAAAD///j/AAAEAAEAAAAAAPj/AAAEAAEAAAACAPj/AAAEAAEAAAADAPj/AAAEAAEAAAAEAPj/AAAEAAEAAAAFAPj/AAAEAAEAAAAGAPj/AAAEAAEAAAAHAPj/AAAFAAEAAAABAPj/AAAEAAEAAAD+//j/AAAEAAEAAAA=")
+tile_set = ExtResource("3_ys7py")
+
+[node name="TileMapDetails" type="TileMapLayer" parent="TileContents" unique_id=1440210401]
+tile_map_data = PackedByteArray("AAD8////AAAEAAAAAAD9////AAAEAAAAAAD9/wAAAAAEAAAAAAD9/wEAAAADAAAAAAD+/wEAAAADAAAAAAD//wEAAAADAAAAAAD//wAAAAADAAAAAAD/////AAAEAAAAAAAAAP//AAADAAAAAAABAP//AAAFAAAAAAABAAAAAAAEAAAAAAABAAEAAAAEAAAAAAABAAIAAAAEAAAAAAACAAIAAAADAAAAAAADAAIAAAAEAAAAAAADAAEAAAAFAAAAAAACAAEAAAADAAAAAAACAAAAAAAFAAAAAAADAAAAAAAFAAAAAAD+/wAAAAAEAAAAAAD6/wMAAAAEAAAAAAD6/wQAAAAFAAAAAAD7/wQAAAAEAAAAAAD8/wQAAAAFAAAAAAD9/wQAAAAEAAAAAAD9/wUAAAADAAAAAAD+/wUAAAAEAAAAAAADAPz/AAADAAAAAAACAPz/AAAEAAAAAAACAPv/AAAEAAAAAAABAPv/AAAEAAAAAAAAAPv/AAAEAAAAAAD///v/AAAFAAAAAAD///z/AAADAAAAAAD5//z/AAADAAAAAAD6//z/AAAEAAAAAAD7//z/AAADAAAAAAD7//v/AAADAAAAAAAEAP7/AAADAAQAAAACAAUAAAAEAAQAAAD5//7/AAAEAAQAAAD8//v/AAAFAAQAAAD9/wIAAAAFAAQAAAA=")
+tile_set = ExtResource("3_ys7py")
+
+[node name="TileMapTexture" type="TileMapLayer" parent="TileContents" unique_id=1061062628]
+rotation = -6.2831855
+tile_map_data = PackedByteArray("AAD5/wAAAAAAAAAAAAD5/wEAAAAAAAEAAAD5/wIAAAAAAAEAAAD5/wMAAAAAAAIAAAD6/wAAAAACAAAAAAD6/wEAAAABAAMAAAD6/wIAAAABAAEAAAD6/wMAAAAAAAQAAAD6/wQAAAAAAAIAAAD7//3/AAAAAAAAAAD7//7/AAAAAAEAAAD7////AAAAAAIAAAD7/wEAAAABAAAAAAD7/wIAAAABAAEAAAD7/wMAAAABAAEAAAD7/wQAAAABAAIAAAD8//3/AAABAAAAAAD8//7/AAABAAEAAAD8////AAABAAIAAAD8/wEAAAACAAAAAAD8/wIAAAACAAEAAAD8/wMAAAACAAEAAAD8/wQAAAACAAIAAAD9//3/AAABAAAAAAD9//7/AAABAAEAAAD9////AAAAAAQAAAD9/wAAAAAAAAIAAAD+//3/AAABAAAAAAD+//7/AAABAAEAAAD+////AAABAAEAAAD+/wAAAAAAAAQAAAD+/wEAAAAAAAEAAAD+/wIAAAAAAAEAAAD+/wMAAAAAAAIAAAD///3/AAACAAAAAAD///7/AAACAAEAAAD/////AAABAAMAAAD//wAAAAABAAEAAAD//wEAAAABAAEAAAD//wIAAAABAAEAAAD//wMAAAABAAIAAAAAAP//AAABAAAAAAAAAAAAAAABAAEAAAAAAAEAAAABAAEAAAAAAAIAAAABAAEAAAAAAAMAAAAAAAQAAAAAAAQAAAAAAAIAAAABAPv/AAAAAAAAAAABAPz/AAAAAAIAAAABAP//AAABAAAAAAABAAAAAAABAAQAAAABAAEAAAACAAEAAAABAAIAAAABAAMAAAABAAMAAAABAAEAAAABAAQAAAABAAIAAAACAPr/AAAAAAAAAAACAPv/AAAAAAMAAAACAPz/AAAAAAQAAAACAP3/AAAAAAIAAAACAP//AAACAAAAAAACAAAAAAACAAIAAAACAAIAAAABAAAAAAACAAMAAAABAAEAAAADAPr/AAABAAAAAAADAPv/AAABAAEAAAADAPz/AAABAAEAAAADAP3/AAABAAIAAAAEAPr/AAACAAAAAAAEAPv/AAABAAMAAAAEAPz/AAABAAEAAAAEAP3/AAABAAIAAAAFAPv/AAACAAAAAAAFAPz/AAACAAEAAAAFAP3/AAACAAIAAAADAAMAAAACAAEAAAADAAIAAAACAAMAAAAEAAIAAAACAAIAAAAEAAEAAAACAAAAAAADAAEAAAAAAAAAAAADAAQAAAACAAIAAAACAAQAAAABAAIAAAA=")
+tile_set = ExtResource("3_ys7py")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1553304571]
+z_index = 1
+
+[node name="UpperLeftBorder" type="CollisionShape2D" parent="StaticBody2D" unique_id=1047201314]
+shape = SubResource("SegmentShape2D_jq8tk")
+
+[node name="UpperMidBorder" type="CollisionShape2D" parent="StaticBody2D" unique_id=740609438]
+shape = SubResource("SegmentShape2D_cdwd0")
+
+[node name="UpperRightBorder" type="CollisionShape2D" parent="StaticBody2D" unique_id=1663713373]
+shape = SubResource("SegmentShape2D_t7n2i")
+
+[node name="RightLeftBorder" type="CollisionShape2D" parent="StaticBody2D" unique_id=674279119]
+rotation = 1.5707964
+shape = SubResource("SegmentShape2D_r3gf4")
+
+[node name="RightMidBorder" type="CollisionShape2D" parent="StaticBody2D" unique_id=1322636875]
+rotation = 1.5707964
+shape = SubResource("SegmentShape2D_rvdvl")
+
+[node name="RightRightBorder" type="CollisionShape2D" parent="StaticBody2D" unique_id=1916305395]
+rotation = 1.5707964
+shape = SubResource("SegmentShape2D_ukgqd")
+
+[node name="DownLeftBorder" type="CollisionShape2D" parent="StaticBody2D" unique_id=646349712]
+rotation = 3.1415927
+shape = SubResource("SegmentShape2D_esqu7")
+
+[node name="DownMidBorder" type="CollisionShape2D" parent="StaticBody2D" unique_id=68287464]
+rotation = 3.1415927
+shape = SubResource("SegmentShape2D_1g878")
+
+[node name="DownRightBorder" type="CollisionShape2D" parent="StaticBody2D" unique_id=867609206]
+rotation = 3.1415927
+shape = SubResource("SegmentShape2D_1m54g")
+
+[node name="LeftLeftBorder" type="CollisionShape2D" parent="StaticBody2D" unique_id=967328648]
+rotation = 4.712389
+shape = SubResource("SegmentShape2D_5f4kx")
+
+[node name="LeftMidBorder" type="CollisionShape2D" parent="StaticBody2D" unique_id=1127334878]
+rotation = 4.712389
+shape = SubResource("SegmentShape2D_1ipp3")
+
+[node name="LeftRightBorder" type="CollisionShape2D" parent="StaticBody2D" unique_id=1463410384]
+rotation = 4.712389
+shape = SubResource("SegmentShape2D_o7uur")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=1497879206]
+visible = false
+navigation_polygon = SubResource("NavigationPolygon_dej15")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1750820177]
+visible = false
+visibility_layer = 4
+material = SubResource("ShaderMaterial_3xd07")
+offset_left = -331.0
+offset_top = -334.0
+offset_right = 330.0
+offset_bottom = 310.0
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

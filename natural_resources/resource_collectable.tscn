@@ -65,9 +65,9 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kg37j"]
-size = Vector2(12, 12)
+size = Vector2(18, 18)
 
-[node name="ResourceCollectable" type="Node2D" unique_id=311562473 node_paths=PackedStringArray("sprite", "animation_player", "collision_shape")]
+[node name="ResourceCollectable" type="Node2D" unique_id=311562473 node_paths=PackedStringArray("sprite", "animation_player", "collision_shape") groups=["NeedsResetting"]]
 top_level = true
 z_index = 1
 script = ExtResource("1_o1gfo")

@@ -90,4 +90,8 @@ func activate():
 
 func reset():
 	while enemies:
-		remove_enemy(enemies[0])
+		if enemies[0]:
+			remove_enemy(enemies[0])
+		else:
+			enemies.pop_front()
+	enemies.clear()

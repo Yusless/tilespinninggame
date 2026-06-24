@@ -9,6 +9,10 @@ signal demand_completed(demand: Demand)
 
 var current_demand_id := 0
 
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("forest_unlock"):
+		complete_demand()
+
 func _ready() -> void:
 	interaction_component.area_entered.connect(_on_interaction_area_entered)
 	interaction_component.area_exited.connect(_on_interaction_area_exited)

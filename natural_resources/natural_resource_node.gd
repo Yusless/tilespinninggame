@@ -5,6 +5,7 @@ class_name NaturalResourceNode
 
 @export var resource: NaturalResource
 @export var health_component: HealthComponent
+@export var hurtbox_component: HurtboxComponent
 @export var amount_min := 1
 @export var amount_max := 2
 @export var collectable_amount := 3
@@ -16,6 +17,7 @@ var collectables: Array[Node] = []
 
 func _ready() -> void:
 	health_component.health_depleted.connect(_on_health_depleted)
+	hurtbox_component.hit.connect(_on_hit)
 	sprite.play("default")
 
 func spawn_collectable():
@@ -24,7 +26,8 @@ func spawn_collectable():
 	collectable.resource = resource
 	call_deferred("add_child", collectable)
 	collectable.top_level = true
-	collectable.global_position = global_position
+	collectable.global_position = collectable_origin.global_position
+	collectable.drop_distance = global_position.y - collectable_origin.global_position.y + 8
 	collectables.push_back(collectable)
 
 func harvest():
@@ -50,3 +53,6 @@ func reset():
 
 func _on_health_depleted():
 	harvest()
+
+func _on_hit():
+	pass

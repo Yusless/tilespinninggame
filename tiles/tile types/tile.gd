@@ -191,7 +191,7 @@ func _on_player_lighthouse_exited():
 	
 func can_interact(neighbour, side) -> bool:
 	if neighbour.tile_type in interaction_dict[tile_type]:
-		if neighbour.border_objects[Side.get_opposite(side)] is Bridge and border_objects[side] is Bridge:
+		if neighbour.border_objects[Side.get_opposite(side)] is Bridge and border_objects[side] is Bridge and rotatable and neighbour.rotatable:
 			return true
 	return false
 	

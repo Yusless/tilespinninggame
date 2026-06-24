@@ -39,5 +39,8 @@ func collect():
 	if is_inside_tree():
 		queue_free()
 
+func reset():
+	queue_free()
+
 func _on_player_detector_area_entered(_area: Area2D) -> void:
 	collect()

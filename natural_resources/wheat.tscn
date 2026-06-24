@@ -48,10 +48,11 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Wheat" type="Node2D" unique_id=173354698 node_paths=PackedStringArray("health_component", "collectable_origin", "sprite") groups=["NeedsResetting"]]
+[node name="Wheat" type="Node2D" unique_id=173354698 node_paths=PackedStringArray("health_component", "hurtbox_component", "collectable_origin", "sprite") groups=["NeedsResetting"]]
 script = ExtResource("1_gwl5s")
 resource = ExtResource("2_skmqv")
 health_component = NodePath("HealthComponent")
+hurtbox_component = NodePath("HurtboxComponent")
 collectable_origin = NodePath("CollectableOrigin")
 sprite = NodePath("Sprite")
 
@@ -74,4 +75,4 @@ debug_color = Color(1.6364455e-06, 0.6465062, 0.24281707, 0.41960785)
 sprite_frames = SubResource("SpriteFrames_kg37j")
 
 [node name="CollectableOrigin" type="Marker2D" parent="." unique_id=1246272587]
-visible = false
+position = Vector2(0, -10)

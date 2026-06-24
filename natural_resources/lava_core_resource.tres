@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="NaturalResource" format=3 uid="uid://cu42um0n8tj08"]
+
+[ext_resource type="Texture2D" uid="uid://ccks4rl8s3h2l" path="res://natural_resources/resource_icons.png" id="1_sub42"]
+[ext_resource type="Script" uid="uid://36bx0jkgt0vc" path="res://natural_resources/natural_resource.gd" id="2_7ip2f"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8dehk"]
+atlas = ExtResource("1_sub42")
+region = Rect2(48, 0, 16, 16)
+
+[resource]
+script = ExtResource("2_7ip2f")
+name = "lava_core"
+icon = SubResource("AtlasTexture_8dehk")
+metadata/_custom_type_script = "uid://36bx0jkgt0vc"

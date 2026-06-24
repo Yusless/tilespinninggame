@@ -1,20 +1,40 @@
 [gd_scene format=3 uid="uid://ce22yjh5n4eiq"]
 
-[ext_resource type="Script" uid="uid://dbsn27wpp5q4p" path="res://natural_resources/natural_resource_node.gd" id="1_55dlt"]
+[ext_resource type="Script" uid="uid://bxfuu8dl52vp3" path="res://natural_resources/tree.gd" id="1_blsi1"]
+[ext_resource type="Resource" uid="uid://dh2vwv3hcj4gu" path="res://natural_resources/coal_resource.tres" id="2_8dehk"]
 [ext_resource type="Resource" uid="uid://dn0snts7urilu" path="res://natural_resources/wood_resource.tres" id="2_55dlt"]
 [ext_resource type="Script" uid="uid://nno1v8gxy1x8" path="res://components/health_component.gd" id="3_k8l2c"]
+[ext_resource type="Texture2D" uid="uid://b80y0wpbj3biu" path="res://natural_resources/tree.png" id="4_nnu1j"]
 [ext_resource type="Script" uid="uid://drtj3bknkeioh" path="res://components/hurtbox_component.gd" id="4_or2vh"]
-[ext_resource type="Texture2D" uid="uid://cgoo7joww1ol3" path="res://assets/graphics/resources/tree.png" id="5_kqbpe"]
-[ext_resource type="Texture2D" uid="uid://cv1kj8l5xsjse" path="res://assets/graphics/resources/tree_chopped.png" id="6_hvnhx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jq8tk"]
 size = Vector2(12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nnu1j"]
+atlas = ExtResource("4_nnu1j")
+region = Rect2(64, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8dehk"]
+atlas = ExtResource("4_nnu1j")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k8l2c"]
+atlas = ExtResource("4_nnu1j")
+region = Rect2(32, 0, 32, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3xd07"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("5_kqbpe")
+"texture": SubResource("AtlasTexture_nnu1j")
+}],
+"loop": 1,
+"name": &"burnt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8dehk")
 }],
 "loop": 1,
 "name": &"default",
@@ -22,7 +42,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("6_hvnhx")
+"texture": SubResource("AtlasTexture_k8l2c")
 }],
 "loop": 1,
 "name": &"harvested",
@@ -32,13 +52,14 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3xd07"]
 size = Vector2(12, 13)
 
-[node name="Tree" type="Node2D" unique_id=173354698 node_paths=PackedStringArray("health_component", "collectable_origin", "sprite") groups=["NeedsResetting"]]
-script = ExtResource("1_55dlt")
+[node name="Tree" type="Node2D" unique_id=173354698 node_paths=PackedStringArray("health_component", "hurtbox_component", "collectable_origin", "sprite") groups=["NeedsResetting"]]
+script = ExtResource("1_blsi1")
+coal_res = ExtResource("2_8dehk")
+wood_res = ExtResource("2_55dlt")
 resource = ExtResource("2_55dlt")
 health_component = NodePath("HealthComponent")
-amount_min = 2
-amount_max = 5
-collectable_amount = 2
+hurtbox_component = NodePath("HurtboxComponent")
+amount_max = 1
 collectable_origin = NodePath("CollectableOrigin")
 sprite = NodePath("Sprite")
 
@@ -59,12 +80,11 @@ shape = SubResource("RectangleShape2D_jq8tk")
 debug_color = Color(1.6364455e-06, 0.6465062, 0.24281707, 0.41960785)
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=262051222]
-position = Vector2(2.2500012, -25.250002)
-scale = Vector2(0.57500005, 0.695)
+position = Vector2(0, -23)
 sprite_frames = SubResource("SpriteFrames_3xd07")
 
 [node name="CollectableOrigin" type="Marker2D" parent="." unique_id=1246272587]
-visible = false
+position = Vector2(0, -36)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=510377073]
 
