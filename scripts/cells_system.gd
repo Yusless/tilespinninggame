@@ -36,7 +36,6 @@ func create_map_from_tiles() -> void:
 			if tile.demand_for_unlock not in unlock_dict:
 				unlock_dict[tile.demand_for_unlock] = []
 			unlock_dict[tile.demand_for_unlock].append(tile)
-	print(unlock_dict)
 
 
 func get_map_position(tile: Tile) :
@@ -119,5 +118,6 @@ func _on_demand_completed(demand: Demand):
 
 
 func unlock_tiles(demand: Demand):
-	for tile in unlock_dict[demand]:
-		tile.unlock()
+	if demand in unlock_dict:
+		for tile in unlock_dict[demand]:
+			tile.unlock()

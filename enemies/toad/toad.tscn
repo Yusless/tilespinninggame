@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://cqo0fhog3v5km"]
 
 [ext_resource type="PackedScene" uid="uid://hqexdlr6q77f" path="res://enemies/enemy.tscn" id="1_1i4j2"]
-[ext_resource type="Script" uid="uid://deyxkpx5mv5l6" path="res://enemies/toad.gd" id="2_ebqlv"]
-[ext_resource type="Texture2D" uid="uid://bx0gj8p88grts" path="res://enemies/toad.png" id="2_wuusq"]
-[ext_resource type="AudioStream" uid="uid://dirf287ss5bmm" path="res://enemies/toad_jump_1.wav" id="5_577yf"]
-[ext_resource type="AudioStream" uid="uid://ce076c6qs81kg" path="res://enemies/toad_land_1.wav" id="5_wuusq"]
-[ext_resource type="AudioStream" uid="uid://bff6tk6latel1" path="res://enemies/toad_land_2.wav" id="6_74qte"]
+[ext_resource type="Script" uid="uid://deyxkpx5mv5l6" path="res://enemies/toad/toad.gd" id="2_ebqlv"]
+[ext_resource type="Texture2D" uid="uid://bx0gj8p88grts" path="res://enemies/toad/toad.png" id="2_wuusq"]
+[ext_resource type="AudioStream" uid="uid://dirf287ss5bmm" path="res://enemies/toad/toad_jump_1.wav" id="5_577yf"]
+[ext_resource type="AudioStream" uid="uid://ce076c6qs81kg" path="res://enemies/toad/toad_land_1.wav" id="5_wuusq"]
+[ext_resource type="AudioStream" uid="uid://bff6tk6latel1" path="res://enemies/toad/toad_land_2.wav" id="6_74qte"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w808d"]
 atlas = ExtResource("2_wuusq")

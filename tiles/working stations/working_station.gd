@@ -1,7 +1,5 @@
-extends Node2D
-class_name UpgradeTable
-
-signal demand_completed(demand: Demand)
+extends Node
+class_name WorkingStation
 
 @export var resource_demander: ResourceDemander
 @export var interaction_component: Area2D
@@ -15,23 +13,26 @@ func _ready() -> void:
 	resource_demander.set_demand(demands[current_demand_id])
 
 func complete_demand():
-	demand_completed.emit(demands[current_demand_id])
-	
+
 	var res_mgr: ResourceManager = Global.get_manager(ResourceManager)
-	
+
 	for res in demands[current_demand_id].resources_needed:
 		res_mgr.detract_resource(res, demands[current_demand_id].resources_needed[res])
-	
+
 	current_demand_id += 1
 	if current_demand_id < demands.size():
 		resource_demander.set_demand(demands[current_demand_id])
+	else:
+		resource_demander.hide()
 
 func try_to_interact():
-	if resource_demander.is_demand_met():
-		complete_demand()
+	if current_demand_id < demands.size():
+		if resource_demander.is_demand_met():
+			complete_demand()
 
 func _on_interaction_area_entered(_area: Area2D):
-	resource_demander.show()
+	if current_demand_id < demands.size():
+		resource_demander.show()
 
 func _on_interaction_area_exited(_area: Area2D):
 	resource_demander.hide()

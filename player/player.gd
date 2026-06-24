@@ -148,3 +148,4 @@ func get_outside():
 	cells_system.submit_tile_position()
 	create_tween().tween_property(camera, "position", Vector2.ZERO, 0.3).set_ease(Tween.EASE_OUT)
 	create_tween().tween_property(camera, "zoom", Vector2(1,1), 0.3).set_ease(Tween.EASE_OUT)
+	
