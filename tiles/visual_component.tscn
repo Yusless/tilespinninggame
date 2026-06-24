@@ -1,6 +1,0 @@
-[gd_scene format=3 uid="uid://crdvmqfwg720o"]
-
-[ext_resource type="Script" uid="uid://cohpvdxaajcm" path="res://tiles/visual_component.gd" id="1_veesf"]
-
-[node name="visual_component" type="Node2D" unique_id=440603332]
-script = ExtResource("1_veesf")

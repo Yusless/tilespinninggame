@@ -1,8 +1,6 @@
 extends Node2D
 class_name Tile
 
-const BRIDGE_SCENE = "res://tiles/bridge.tscn"
-
 const ELEVATING_BY_HOVERING = 20
 
 var hovering_before_interacting
@@ -40,6 +38,7 @@ var rotatable: = unlocked
 @export var right_bridge_collision = CollisionShape2D
 @export var down_bridge_collision = CollisionShape2D
 @export var left_bridge_collision = CollisionShape2D
+@export var bridge_scene: PackedScene
 
 @export var left_border = BorderTypes.NOTHING
 @export var up_border = BorderTypes.NOTHING
@@ -135,10 +134,9 @@ func rotate_borders() -> void:
 
 
 func init_bridges_to_tile() -> void:
-	var bridge = preload(BRIDGE_SCENE)
 	for side in borders:
 		if borders[side] == BorderTypes.BRIDGE:
-			var bridge_instance = bridge.instantiate()
+			var bridge_instance = bridge_scene.instantiate()
 			border_objects[side] = bridge_instance
 			tile_contents.add_child(bridge_instance)
 			bridge_instance.side = side

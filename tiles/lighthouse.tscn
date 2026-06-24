@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cjo2i2d6n8tw2"]
 
-[ext_resource type="Script" uid="uid://c8quovgmpg2f6" path="res://lighthouse.gd" id="1_km4o1"]
+[ext_resource type="Script" uid="uid://c8quovgmpg2f6" path="res://tiles/lighthouse.gd" id="1_km4o1"]
 [ext_resource type="Texture2D" uid="uid://b2ombqpddahws" path="res://assets/graphics/tile/lighthouse.png" id="2_kma2a"]
 [ext_resource type="PackedScene" uid="uid://b87baohfr4ygs" path="res://tiles/interaction_component.tscn" id="3_kma2a"]
 
@@ -11,6 +11,7 @@ size = Vector2(67, 35)
 size = Vector2(31, 12)
 
 [node name="Lighthouse" type="Node2D" unique_id=1382120843]
+z_index = 1
 script = ExtResource("1_km4o1")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1662788210]

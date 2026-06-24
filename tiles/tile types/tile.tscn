@@ -1,8 +1,9 @@
 [gd_scene format=4 uid="uid://dhfxsclatflk7"]
 
-[ext_resource type="Script" uid="uid://dfv1bmacg8ufl" path="res://tiles/tile.gd" id="1_h3aqd"]
+[ext_resource type="Script" uid="uid://dfv1bmacg8ufl" path="res://tiles/tile types/tile.gd" id="1_h3aqd"]
 [ext_resource type="Script" uid="uid://c4rr2vivlxd3k" path="res://assets/graphics/tile/tile_visuals.gd" id="2_l53t7"]
 [ext_resource type="Resource" uid="uid://c74136c2d2yhp" path="res://natural_resources/demands/lava_lake_unlock.tres" id="2_ys7py"]
+[ext_resource type="PackedScene" uid="uid://2ywgxwdhdrt0" path="res://tiles/bridge.tscn" id="3_bwym4"]
 [ext_resource type="TileSet" uid="uid://2s1f4ntvo15j" path="res://assets/graphics/tile/tile_set_grass.tres" id="3_ys7py"]
 [ext_resource type="Shader" uid="uid://c5sakyyec35pn" path="res://tiles/fog.gdshader" id="5_ys7py"]
 
@@ -26,8 +27,8 @@ a = Vector2(-120, -121)
 b = Vector2(-26.000006, -121)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_rvdvl"]
-a = Vector2(33.999996, -121)
-b = Vector2(-22.000006, -121)
+a = Vector2(37.999996, -121)
+b = Vector2(-26.000006, -121)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_ukgqd"]
 a = Vector2(37.999996, -121)
@@ -35,11 +36,11 @@ b = Vector2(120, -121)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_esqu7"]
 a = Vector2(-120, -121)
-b = Vector2(-38.00001, -120)
+b = Vector2(-38.00001, -121)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_1g878"]
-a = Vector2(36.99999, -120)
-b = Vector2(-35.00001, -120)
+a = Vector2(39.99999, -121)
+b = Vector2(-38.00001, -121)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_1m54g"]
 a = Vector2(39.99999, -121)
@@ -50,8 +51,8 @@ a = Vector2(-120, -121)
 b = Vector2(-38, -121)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_1ipp3"]
-a = Vector2(22.999998, -121)
-b = Vector2(-35, -121)
+a = Vector2(25.999998, -121)
+b = Vector2(-38, -121)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_o7uur"]
 a = Vector2(25.999998, -121)
@@ -68,8 +69,8 @@ seed = 9
 frequency = 0.0467
 offset = Vector3(-666.67, -877.19, 0)
 fractal_octaves = 10
-fractal_lacunarity = 1.97
-fractal_gain = 0.435
+fractal_lacunarity = 2.085
+fractal_gain = 0.635
 fractal_ping_pong_strength = 0.735
 metadata/_preview_in_3d_space_ = true
 
@@ -97,6 +98,7 @@ up_bridge_collision = NodePath("StaticBody2D/UpperMidBorder")
 right_bridge_collision = NodePath("StaticBody2D/RightMidBorder")
 down_bridge_collision = NodePath("StaticBody2D/DownMidBorder")
 left_bridge_collision = NodePath("StaticBody2D/LeftMidBorder")
+bridge_scene = ExtResource("3_bwym4")
 tile_contents = NodePath("TileContents")
 color_rect = NodePath("ColorRect")
 metadata/_edit_group_ = true

@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://dumvev7p6ndd6"]
 
-[ext_resource type="PackedScene" uid="uid://dhfxsclatflk7" path="res://tiles/tile.tscn" id="1_36hql"]
+[ext_resource type="PackedScene" uid="uid://dhfxsclatflk7" path="res://tiles/tile types/tile.tscn" id="1_36hql"]
 [ext_resource type="PackedScene" uid="uid://dojvj3gokqoqk" path="res://natural_resources/wheat.tscn" id="2_5g5rk"]
 [ext_resource type="Script" uid="uid://dxqniiif8ufsk" path="res://tiles/wheat_tile.gd" id="2_pgqps"]
 
