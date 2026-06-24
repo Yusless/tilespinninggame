@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://db4aflu18ewjr"]
 
-[ext_resource type="Script" uid="uid://t3qtrex3lh2a" path="res://enemies/fireball.gd" id="1_j8tgu"]
-[ext_resource type="Texture2D" uid="uid://b3sws0ccqauqv" path="res://enemies/fire_projectile.png" id="1_xulmx"]
+[ext_resource type="Script" uid="uid://t3qtrex3lh2a" path="res://enemies/dragonfly/fireball.gd" id="1_j8tgu"]
+[ext_resource type="Texture2D" uid="uid://b3sws0ccqauqv" path="res://enemies/dragonfly/fire_projectile.png" id="1_xulmx"]
 [ext_resource type="Script" uid="uid://drkvcnbwm8ot3" path="res://components/attack_component.gd" id="2_j8tgu"]
-[ext_resource type="Texture2D" uid="uid://cscxu6da3atos" path="res://enemies/light128.png" id="4_hbguw"]
+[ext_resource type="Texture2D" uid="uid://cscxu6da3atos" path="res://enemies/dragonfly/light128.png" id="4_hbguw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hbguw"]
 atlas = ExtResource("1_xulmx")

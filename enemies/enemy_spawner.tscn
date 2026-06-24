@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://d0o7kbchwru1o"]
 
 [ext_resource type="Script" uid="uid://c8ipos8nvsj4s" path="res://enemies/enemy_spawner.gd" id="1_531ly"]
-[ext_resource type="PackedScene" uid="uid://cqo0fhog3v5km" path="res://enemies/toad.tscn" id="2_5lcht"]
+[ext_resource type="PackedScene" uid="uid://cqo0fhog3v5km" path="res://enemies/toad/toad.tscn" id="2_5lcht"]
 
 [node name="EnemySpawner" type="Node2D" unique_id=92675540 node_paths=PackedStringArray("boundry_left_marker", "boundry_right_marker", "spawn_timer", "dummy_nav_agent") groups=["NeedsResetting"]]
 script = ExtResource("1_531ly")

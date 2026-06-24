@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dtrljpg3fjyd2"
-path="res://.godot/imported/bridge_left.png-9f79f08952c26546ad24d9a099e09b4f.ctex"
+uid="uid://cscxu6da3atos"
+path="res://.godot/imported/light128.png-f70650ced2a1d781038620c6781c63a8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/graphics/tile/bridge_left.png"
-dest_files=["res://.godot/imported/bridge_left.png-9f79f08952c26546ad24d9a099e09b4f.ctex"]
+source_file="res://enemies/dragonfly/light128.png"
+dest_files=["res://.godot/imported/light128.png-f70650ced2a1d781038620c6781c63a8.ctex"]
 
 [params]
 

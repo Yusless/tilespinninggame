@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://dfv1bmacg8ufl" path="res://tiles/tile types/tile.gd" id="1_h3aqd"]
 [ext_resource type="Script" uid="uid://c4rr2vivlxd3k" path="res://assets/graphics/tile/tile_visuals.gd" id="2_l53t7"]
-[ext_resource type="Resource" uid="uid://c74136c2d2yhp" path="res://natural_resources/demands/lava_lake_unlock.tres" id="2_ys7py"]
 [ext_resource type="PackedScene" uid="uid://2ywgxwdhdrt0" path="res://tiles/bridge.tscn" id="3_bwym4"]
 [ext_resource type="TileSet" uid="uid://2s1f4ntvo15j" path="res://assets/graphics/tile/tile_set_grass.tres" id="3_ys7py"]
 [ext_resource type="Shader" uid="uid://c5sakyyec35pn" path="res://tiles/fog.gdshader" id="5_ys7py"]
@@ -93,7 +92,6 @@ shader_parameter/distortion_speed = 0.0
 y_sort_enabled = true
 script = ExtResource("1_h3aqd")
 tile_type = 1
-demand_for_unlock = ExtResource("2_ys7py")
 up_bridge_collision = NodePath("StaticBody2D/UpperMidBorder")
 right_bridge_collision = NodePath("StaticBody2D/RightMidBorder")
 down_bridge_collision = NodePath("StaticBody2D/DownMidBorder")

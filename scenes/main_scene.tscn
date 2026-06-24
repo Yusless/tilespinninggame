@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://bic5v8bsj303"]
 
+[ext_resource type="Script" uid="uid://hhgxf43xrpcn" path="res://scenes/upgrade_manager.gd" id="1_7nt27"]
 [ext_resource type="PackedScene" uid="uid://c5bhx5utsovbg" path="res://player/player.tscn" id="1_w2twt"]
 [ext_resource type="Script" uid="uid://c52h00sukof0w" path="res://scripts/cells_system.gd" id="3_7ykc4"]
 [ext_resource type="Resource" uid="uid://dn0snts7urilu" path="res://natural_resources/wood_resource.tres" id="4_4w45t"]
@@ -18,9 +19,14 @@
 [ext_resource type="Resource" uid="uid://1lp2ssn0t0im" path="res://natural_resources/demands/forest_unlock.tres" id="12_6u1mn"]
 [ext_resource type="PackedScene" uid="uid://r27t1jiq2hxy" path="res://tiles/tile types/tile_lava_lake.tscn" id="12_si52b"]
 [ext_resource type="Script" uid="uid://ci8t37q1enmah" path="res://effects/environment_manager.gd" id="13_r6p65"]
+[ext_resource type="PackedScene" uid="uid://bsbvtell7k17b" path="res://tiles/tile types/tile_unlock_1.tscn" id="15_bcnxi"]
 [ext_resource type="PackedScene" uid="uid://ckej6k0mt88cx" path="res://tiles/tile types/tile_forest.tscn" id="17_6u1mn"]
 
 [node name="MainScene" type="Node" unique_id=2095065835]
+
+[node name="UpgradeManager" type="Node" parent="." unique_id=100137014 node_paths=PackedStringArray("tile_unlock_1") groups=["Managers"]]
+script = ExtResource("1_7nt27")
+tile_unlock_1 = NodePath("../World/CellsSystem/TileUnlock1")
 
 [node name="ResourceManager" type="Node" parent="." unique_id=84701733 groups=["Managers"]]
 script = ExtResource("5_c16ls")
@@ -59,12 +65,13 @@ down_border = 2
 [node name="TileLavaLake" parent="World/CellsSystem" unique_id=923661624 instance=ExtResource("12_si52b")]
 position = Vector2(0, 368)
 demand_for_unlock = ExtResource("9_bcnxi")
-up_border = 2
+left_border = null
+up_border = null
 right_border = 2
+down_border = null
 
 [node name="Tile4" parent="World/CellsSystem" unique_id=113809720 instance=ExtResource("4_pu3yx")]
 position = Vector2(368, 368)
-demand_for_unlock = null
 left_border = 2
 up_border = 2
 right_border = 2
@@ -91,13 +98,14 @@ up_border = 2
 [node name="TilePond" parent="World/CellsSystem" unique_id=351429902 instance=ExtResource("7_6wevv")]
 position = Vector2(368, 736)
 demand_for_unlock = ExtResource("12_6u1mn")
+left_border = null
 up_border = 2
 right_border = 2
+down_border = 2
 
 [node name="WheatTile2" parent="World/CellsSystem" unique_id=1860228072 instance=ExtResource("11_e1cbu")]
 position = Vector2(736, 736)
 tile_type = 1
-demand_for_unlock = ExtResource("12_6u1mn")
 up_border = 2
 down_border = 2
 
@@ -111,11 +119,10 @@ position = Vector2(0, 1104)
 up_border = 2
 right_border = 2
 
-[node name="Tile" parent="World/CellsSystem" unique_id=1886864243 instance=ExtResource("4_pu3yx")]
-position = Vector2(368, 1104)
-left_border = 2
-up_border = 2
-down_border = 2
+[node name="TileUnlock1" parent="World/CellsSystem" unique_id=1732918086 instance=ExtResource("15_bcnxi")]
+position = Vector2(368, 1112)
+demand_for_unlock = ExtResource("12_6u1mn")
+right_border = 2
 
 [node name="TileLavaLake2" parent="World/CellsSystem" unique_id=1427897426 instance=ExtResource("12_si52b")]
 position = Vector2(736, 1104)
