@@ -1,6 +1,8 @@
-[gd_scene format=3 uid="uid://bg883sbyv044c"]
+[gd_scene format=3 uid="uid://o5kiau65w28u"]
 
-[ext_resource type="Script" uid="uid://ihqo1thxbxp4" path="res://tiles/border_component.gd" id="1_n6uh8"]
+[sub_resource type="GDScript" id="GDScript_vygka"]
+script/source = "extends Node2D
+"
 
 [node name="border_component" type="Node2D" unique_id=1884247040]
-script = ExtResource("1_n6uh8")
+script = SubResource("GDScript_vygka")

@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://bff6tk6latel1"
-path="res://.godot/imported/toad_land_2.wav-3e40ee9ffff0b2f4698fbf875f63cba8.sample"
+path="res://.godot/imported/toad_land_2.wav-5d131dbbb144e43823a1735c87a0420f.sample"
 
 [deps]
 
-source_file="res://enemies/toad_land_2.wav"
-dest_files=["res://.godot/imported/toad_land_2.wav-3e40ee9ffff0b2f4698fbf875f63cba8.sample"]
+source_file="res://enemies/toad/toad_land_2.wav"
+dest_files=["res://.godot/imported/toad_land_2.wav-5d131dbbb144e43823a1735c87a0420f.sample"]
 
 [params]
 

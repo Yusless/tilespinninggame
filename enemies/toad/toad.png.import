@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://vadmxyflk13v"
-path="res://.godot/imported/bridge_right.png-93654ab663cb974b3cc12da42b53f9aa.ctex"
+uid="uid://bx0gj8p88grts"
+path="res://.godot/imported/toad.png-8c151e7db378b1be982a679c16c92779.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/graphics/tile/bridge_right.png"
-dest_files=["res://.godot/imported/bridge_right.png-93654ab663cb974b3cc12da42b53f9aa.ctex"]
+source_file="res://enemies/toad/toad.png"
+dest_files=["res://.godot/imported/toad.png-8c151e7db378b1be982a679c16c92779.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bx0gj8p88grts"
-path="res://.godot/imported/toad.png-9746b3c0d3ebd40b836696703b9c93e9.ctex"
+uid="uid://cpbe12qdjm34e"
+path="res://.godot/imported/shadow.png-ed4ae51638b3b618236d305394a18f33.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://enemies/toad.png"
-dest_files=["res://.godot/imported/toad.png-9746b3c0d3ebd40b836696703b9c93e9.ctex"]
+source_file="res://enemies/dragonfly/shadow.png"
+dest_files=["res://.godot/imported/shadow.png-ed4ae51638b3b618236d305394a18f33.ctex"]
 
 [params]
 

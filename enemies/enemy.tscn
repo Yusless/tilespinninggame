@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bdwhkpdypc7p7" path="res://enemies/enemy.gd" id="1_a6vjd"]
 [ext_resource type="Script" uid="uid://nno1v8gxy1x8" path="res://components/health_component.gd" id="2_a6vjd"]
 [ext_resource type="Script" uid="uid://drtj3bknkeioh" path="res://components/hurtbox_component.gd" id="3_07tka"]
-[ext_resource type="Texture2D" uid="uid://cpbe12qdjm34e" path="res://enemies/shadow.png" id="5_3t1x0"]
+[ext_resource type="Texture2D" uid="uid://cpbe12qdjm34e" path="res://enemies/dragonfly/shadow.png" id="5_3t1x0"]
 [ext_resource type="PackedScene" uid="uid://ctw2mgmn04h6t" path="res://components/attack_component.tscn" id="5_07tka"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kg37j"]
