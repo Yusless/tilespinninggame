@@ -51,8 +51,10 @@ func _input(event: InputEvent) -> void:
 		if !boomerang.is_launched:
 			var dir_to_mouse := global_position.direction_to(get_global_mouse_position())
 			boomerang.launch(global_position, dir_to_mouse.angle(), velocity)
-		else:
+		elif boomerang.distance_flied > boomerang.minimum_fly_distance:
 			boomerang.force_return()
+	if event.is_action_pressed("lava_lake_unlock"):
+		Engine.time_scale = 0.3
 
 func spawn():
 	health_component.reset()
