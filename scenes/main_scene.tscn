@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://hhgxf43xrpcn" path="res://scenes/upgrade_manager.gd" id="1_7nt27"]
 [ext_resource type="PackedScene" uid="uid://c5bhx5utsovbg" path="res://player/player.tscn" id="1_w2twt"]
+[ext_resource type="Resource" uid="uid://djry785e6txmc" path="res://natural_resources/demands/mill_unlock.tres" id="2_u0fll"]
+[ext_resource type="Resource" uid="uid://c5x66rynkscu7" path="res://natural_resources/demands/Sawmill_unlock.tres" id="3_6p3nn"]
 [ext_resource type="Script" uid="uid://c52h00sukof0w" path="res://scripts/cells_system.gd" id="3_7ykc4"]
 [ext_resource type="Resource" uid="uid://dn0snts7urilu" path="res://natural_resources/wood_resource.tres" id="4_4w45t"]
 [ext_resource type="PackedScene" uid="uid://dhfxsclatflk7" path="res://tiles/tile types/tile.tscn" id="4_pu3yx"]
@@ -22,7 +24,6 @@
 [ext_resource type="Script" uid="uid://ci8t37q1enmah" path="res://effects/environment_manager.gd" id="13_r6p65"]
 [ext_resource type="PackedScene" uid="uid://bsbvtell7k17b" path="res://tiles/tile types/tile_unlock_1.tscn" id="15_bcnxi"]
 [ext_resource type="PackedScene" uid="uid://ckej6k0mt88cx" path="res://tiles/tile types/tile_forest.tscn" id="17_6u1mn"]
-[ext_resource type="Script" uid="uid://cdup3hcnjit32" path="res://tiles/tile types/tile_unlock.gd" id="20_58gk3"]
 [ext_resource type="PackedScene" uid="uid://c14gjkqh16wlx" path="res://tiles/tile types/tile_unlock_2.tscn" id="22_adb74"]
 
 [node name="MainScene" type="Node" unique_id=2095065835]
@@ -30,6 +31,8 @@
 [node name="UpgradeManager" type="Node" parent="." unique_id=100137014 node_paths=PackedStringArray("tile_unlock_array") groups=["Managers"]]
 script = ExtResource("1_7nt27")
 tile_unlock_array = [NodePath("../World/CellsSystem/TileUnlock1"), NodePath("../World/CellsSystem/TileUnlock2")]
+mill_unlock = ExtResource("2_u0fll")
+sawmill_unlock = ExtResource("3_6p3nn")
 
 [node name="ResourceManager" type="Node" parent="." unique_id=84701733 groups=["Managers"]]
 script = ExtResource("5_c16ls")
@@ -114,12 +117,6 @@ demand_for_unlock = ExtResource("12_k6f3i")
 left_border = 2
 up_border = 2
 
-[node name="Tile2" parent="World/CellsSystem" unique_id=105468340 instance=ExtResource("4_pu3yx")]
-position = Vector2(0, 1104)
-demand_for_unlock = ExtResource("12_k6f3i")
-up_border = 2
-right_border = 2
-
 [node name="TileUnlock1" parent="World/CellsSystem" unique_id=1732918086 instance=ExtResource("15_bcnxi")]
 position = Vector2(368, 1112)
 demand_for_unlock = ExtResource("12_6u1mn")
@@ -134,8 +131,7 @@ up_border = 2
 right_border = 2
 
 [node name="TileUnlock2" parent="World/CellsSystem" unique_id=1676496425 instance=ExtResource("22_adb74")]
-position = Vector2(8, 1112)
-script = ExtResource("20_58gk3")
+position = Vector2(0, 1112)
 up_border = 2
 right_border = 2
 
