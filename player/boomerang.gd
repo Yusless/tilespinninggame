@@ -20,8 +20,11 @@ var decceleration := Vector2.ZERO
 var return_target: CharacterBody2D
 var distance_flied := 0.0
 var target_fly_distance := 0.0
+var minimum_fly_distance = 16.0 * 4
 
-var upgraded = true
+var targets_to_bounce = []
+
+var upgraded = false
 
 func launch(origin: Vector2, direction: float, inherited_speed: Vector2):
 	var base_velocity := Vector2.RIGHT * fly_speed
@@ -59,11 +62,16 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func bounce():
-	returning = true
 	returning_straight = false
 	hitbox.begin_attack()
-	velocity = -velocity*0.75
-	velocity += velocity.rotated(randf_range(-PI/2, PI/2)) * 0.5
+
+	if targets_to_bounce:
+		velocity = velocity.rotated(targets_to_bounce[0].global_position.angle_to_point(global_position)) * 2
+		velocity = velocity * 0.8
+	else:
+		velocity = -velocity*0.75
+		returning = true
+		velocity += velocity.rotated(randf_range(-PI/2, PI/2)) * 0.5
 
 func _on_return_detector_body_entered(body: Node2D) -> void:
 	if body == return_target and returning:
@@ -72,9 +80,22 @@ func _on_return_detector_body_entered(body: Node2D) -> void:
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Bouncers") and launched:
+		targets_to_bounce.erase(area)
 		bounce()
 
 
 func force_return():
 	if upgraded:
 		returning_straight = true
+
+
+func _on_bounce_detector_area_entered(area: Area2D) -> void:
+	if upgraded and area.is_in_group("Bouncers"):
+		targets_to_bounce.append(area)
+
+
+
+
+func _on_bounce_detector_area_exited(area: Area2D) -> void:
+	if area in targets_to_bounce:
+		targets_to_bounce.erase(area)
