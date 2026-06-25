@@ -80,8 +80,8 @@ func _ready() -> void:
 	init_bridges_to_tile()
 	remove_colissions()
 	
-	default_position = position
-	hovering_position = position + Vector2(0.0, -ELEVATING_BY_HOVERING)
+	default_position = Vector2.ZERO
+	hovering_position = Vector2.ZERO + Vector2(0.0, -ELEVATING_BY_HOVERING)
 
 func remove_colissions() -> void:
 	for bridge_collision in bridges_collisions:
@@ -160,13 +160,13 @@ func rotate_bridges_to_tile() -> void:
 
 func _on_area_2d_mouse_entered() -> void:
 	if treated_as_interface and tile_type != TileTypes.HUB and rotatable:
-		position = hovering_position
+		tile_contents.position = tile_contents.hovering_position
 	else:
 		hovering_before_interacting = true
 
 func _on_area_2d_mouse_exited() -> void:
 	if treated_as_interface and rotatable and !hovering_before_interacting:
-		position = default_position
+		tile_contents.position = tile_contents.default_position
 	else: 
 		hovering_before_interacting = false
 
@@ -178,11 +178,11 @@ func _on_area_2d_input_event(_viewport: Node, event: InputEvent, _shape_idx: int
 
 func disable_interface_mode():
 	treated_as_interface = false
+	if tile_contents.position != tile_contents.default_position:
+		tile_contents.position = tile_contents.default_position
 
 func enable_interface_mode():
 	treated_as_interface = true
-	if position != default_position:
-		position = default_position
 
 	
 func can_interact(neighbour, side) -> bool:

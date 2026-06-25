@@ -58,9 +58,11 @@ a = Vector2(25.999998, -121)
 b = Vector2(120, -121)
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_dej15"]
-vertices = PackedVector2Array(104.03906, 103.03906, -106.953125, 103.953125, -106.03906, -105.03906, 104.953125, -105.953125)
+vertices = PackedVector2Array(102.046875, 101.046875, -104.9375, 101.9375, -104.046875, -103.046875, 102.9375, -103.9375)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-116, -115, 115, -116, 114, 113, -117, 114)])
+cell_size = 256.0
+agent_radius = 12.0
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_qyorp"]
 noise_type = 0

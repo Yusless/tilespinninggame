@@ -162,6 +162,8 @@ func simple_state_machine(delta: float):
 				state = States.IDLE
 		States.ATTACKING:
 			move_and_slide()
+			if !combat_target:
+				state = States.IDLE
 
 func end_attack():
 	attacking = true

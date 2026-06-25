@@ -111,7 +111,7 @@ func move_camera(delta):
 
 func animate():
 	var anim := "idle"
-	if get_movement_vector():
+	if get_movement_vector() and velocity:
 		anim = "run"
 	
 	if last_direction.x >= 0:
