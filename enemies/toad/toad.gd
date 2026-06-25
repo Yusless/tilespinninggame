@@ -9,6 +9,7 @@ class_name Toad
 @export var croak_land: AudioStreamPlayer2D
 @export var lava_core_res: NaturalResource
 @export var croak_attack: AudioStreamPlayer2D
+@export var eat_sound: AudioStreamPlayer2D
 
 var collectables: Array[Node] = []
 
@@ -45,6 +46,7 @@ func consume_dragonfly(dragonfly: Dragonfly):
 	sprite_lava.show()
 	points_of_interest.clear()
 	sprite = sprite_lava
+	eat_sound.play()
 
 func start_step(direction: Vector2, step_speed: float):
 	super(direction, step_speed)

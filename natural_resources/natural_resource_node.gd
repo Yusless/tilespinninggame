@@ -11,6 +11,7 @@ class_name NaturalResourceNode
 @export var collectable_amount := 3
 @export var collectable_origin: Marker2D
 @export var sprite: AnimatedSprite2D
+@export var harvest_sound: AudioStreamPlayer2D
 
 var harvested := false
 var collectables: Array[Node] = []
@@ -29,6 +30,7 @@ func spawn_collectable():
 	collectable.global_position = collectable_origin.global_position
 	collectable.drop_distance = global_position.y - collectable_origin.global_position.y + 8
 	collectables.push_back(collectable)
+	harvest_sound.play()
 
 func harvest():
 	if harvested:

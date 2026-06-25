@@ -1,93 +1,28 @@
 [gd_scene format=3 uid="uid://ce22yjh5n4eiq"]
 
+[ext_resource type="PackedScene" uid="uid://co6nj0ikyhojc" path="res://natural_resources/natural_resource_node.tscn" id="1_6cgcp"]
 [ext_resource type="Script" uid="uid://bxfuu8dl52vp3" path="res://natural_resources/tree.gd" id="1_blsi1"]
 [ext_resource type="Resource" uid="uid://dh2vwv3hcj4gu" path="res://natural_resources/coal_resource.tres" id="2_8dehk"]
 [ext_resource type="Resource" uid="uid://dn0snts7urilu" path="res://natural_resources/wood_resource.tres" id="2_55dlt"]
-[ext_resource type="Script" uid="uid://nno1v8gxy1x8" path="res://components/health_component.gd" id="3_k8l2c"]
-[ext_resource type="Texture2D" uid="uid://b80y0wpbj3biu" path="res://natural_resources/tree.png" id="4_nnu1j"]
-[ext_resource type="Script" uid="uid://drtj3bknkeioh" path="res://components/hurtbox_component.gd" id="4_or2vh"]
+[ext_resource type="AudioStream" uid="uid://cqutlfpl36ljl" path="res://natural_resources/wood_1.wav" id="5_8dehk"]
+[ext_resource type="AudioStream" uid="uid://cosxvx1haasx8" path="res://natural_resources/wood_2.wav" id="6_k8l2c"]
+[ext_resource type="AudioStream" uid="uid://dd2jwivm1t51j" path="res://natural_resources/wood_3.wav" id="7_or2vh"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jq8tk"]
-size = Vector2(12, 12)
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_blsi1"]
+random_pitch = 1.0174797
+random_volume_offset_db = 1.0
+streams_count = 3
+stream_0/stream = ExtResource("5_8dehk")
+stream_1/stream = ExtResource("6_k8l2c")
+stream_2/stream = ExtResource("7_or2vh")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_nnu1j"]
-atlas = ExtResource("4_nnu1j")
-region = Rect2(64, 0, 32, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8dehk"]
-atlas = ExtResource("4_nnu1j")
-region = Rect2(0, 0, 32, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_k8l2c"]
-atlas = ExtResource("4_nnu1j")
-region = Rect2(32, 0, 32, 64)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_3xd07"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nnu1j")
-}],
-"loop": 1,
-"name": &"burnt",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8dehk")
-}],
-"loop": 1,
-"name": &"default",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_k8l2c")
-}],
-"loop": 1,
-"name": &"harvested",
-"speed": 5.0
-}]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3xd07"]
-size = Vector2(12, 13)
-
-[node name="Tree" type="Node2D" unique_id=173354698 node_paths=PackedStringArray("health_component", "hurtbox_component", "collectable_origin", "sprite") groups=["NeedsResetting"]]
+[node name="Tree" unique_id=173354698 instance=ExtResource("1_6cgcp")]
 script = ExtResource("1_blsi1")
 coal_res = ExtResource("2_8dehk")
 wood_res = ExtResource("2_55dlt")
 resource = ExtResource("2_55dlt")
-health_component = NodePath("HealthComponent")
-hurtbox_component = NodePath("HurtboxComponent")
-amount_max = 1
-collectable_origin = NodePath("CollectableOrigin")
-sprite = NodePath("Sprite")
 
-[node name="HealthComponent" type="Node" parent="." unique_id=992880836]
-script = ExtResource("3_k8l2c")
-max_health = 3
-metadata/_custom_type_script = "uid://nno1v8gxy1x8"
+[node name="HurtboxComponent" parent="." index="1" unique_id=1985610439 groups=["Bouncers"]]
 
-[node name="HurtboxComponent" type="Area2D" parent="." unique_id=1985610439 node_paths=PackedStringArray("health_component") groups=["Bouncers"]]
-collision_layer = 32
-collision_mask = 4
-script = ExtResource("4_or2vh")
-health_component = NodePath("../HealthComponent")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" unique_id=756006451]
-position = Vector2(0, 2)
-shape = SubResource("RectangleShape2D_jq8tk")
-debug_color = Color(1.6364455e-06, 0.6465062, 0.24281707, 0.41960785)
-
-[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=262051222]
-position = Vector2(0, -23)
-sprite_frames = SubResource("SpriteFrames_3xd07")
-
-[node name="CollectableOrigin" type="Marker2D" parent="." unique_id=1246272587]
-position = Vector2(0, -36)
-
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=510377073]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1574033343]
-position = Vector2(0, 2.5)
-shape = SubResource("RectangleShape2D_3xd07")
+[node name="HarvestSound" parent="." index="5" unique_id=581267007]
+stream = SubResource("AudioStreamRandomizer_blsi1")

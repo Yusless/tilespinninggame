@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://di2jrxq2dx3yx" path="res://enemies/toad/toad_jump_3.wav" id="8_7xus4"]
 [ext_resource type="AudioStream" uid="uid://bfqwaadewtqxk" path="res://enemies/toad/toad_land_3.wav" id="9_0w6sr"]
 [ext_resource type="AudioStream" uid="uid://7ruhu62t1q1j" path="res://enemies/toad/toad_jump-land_3-is_2_but_equalized_properly.wav" id="10_cu176"]
+[ext_resource type="AudioStream" uid="uid://c51648kfyq422" path="res://enemies/toad/toad_eat.wav" id="11_0w6sr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w808d"]
 atlas = ExtResource("2_wuusq")
@@ -205,10 +206,15 @@ random_pitch = 1.0174797
 streams_count = 1
 stream_0/stream = ExtResource("10_cu176")
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_cu176"]
+random_pitch = 1.0174797
+streams_count = 1
+stream_0/stream = ExtResource("11_0w6sr")
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v4clq"]
 size = Vector2(24, 24)
 
-[node name="Toad" unique_id=1894793058 node_paths=PackedStringArray("sprite_default", "sprite_lava", "croak_jump", "croak_land", "croak_attack") instance=ExtResource("1_1i4j2")]
+[node name="Toad" unique_id=1894793058 node_paths=PackedStringArray("sprite_default", "sprite_lava", "croak_jump", "croak_land", "croak_attack", "eat_sound") instance=ExtResource("1_1i4j2")]
 script = ExtResource("2_ebqlv")
 sprite_default = NodePath("Sprite")
 sprite_lava = NodePath("Sprite/SpriteLava")
@@ -216,6 +222,7 @@ croak_jump = NodePath("CroakJump")
 croak_land = NodePath("CroakLand")
 lava_core_res = ExtResource("3_74qte")
 croak_attack = NodePath("CroakAttack")
+eat_sound = NodePath("EatSound")
 step_distance = 120.0
 rest_time = 0.6
 attack_distance = 96.0
@@ -248,7 +255,12 @@ stream = SubResource("AudioStreamRandomizer_g8ftt")
 pitch_scale = 1.4
 max_distance = 384.0
 
-[node name="DragonflyConsumer" type="Area2D" parent="." index="18" unique_id=1700680851]
+[node name="EatSound" type="AudioStreamPlayer2D" parent="." index="18" unique_id=539806235]
+stream = SubResource("AudioStreamRandomizer_cu176")
+pitch_scale = 1.4
+max_distance = 384.0
+
+[node name="DragonflyConsumer" type="Area2D" parent="." index="19" unique_id=1700680851]
 collision_layer = 0
 collision_mask = 8
 
