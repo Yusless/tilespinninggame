@@ -15,6 +15,7 @@ enum States {
 
 const ACCELERATION_TIME: float = 0.085
 const DECCELERATION_TIME: float = 0.05
+const STEP_FRAMES := [1, 4]
 
 @export var max_speed := 250.0
 @export var max_camera_speed := 750.0
@@ -29,6 +30,8 @@ const DECCELERATION_TIME: float = 0.05
 @export var cells_system: Node2D
 @export var spawn_point: Marker2D
 @export var resource_manager: ResourceManager
+@export var step_sound_1: AudioStreamPlayer2D
+@export var step_sound_2: AudioStreamPlayer2D
 
 
 
@@ -152,3 +155,11 @@ func get_outside():
 	spawn()
 	lighthouse_exited.emit()
 	z_index = 1
+
+
+func _on_sprite_frame_changed() -> void:
+	if sprite.animation in ["run"] and sprite.frame in STEP_FRAMES:
+		if !step_sound_1.playing:
+			step_sound_1.play()
+		else:
+			step_sound_2.play()
