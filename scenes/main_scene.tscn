@@ -66,10 +66,7 @@ down_border = 2
 [node name="TileLavaLake" parent="World/CellsSystem" unique_id=923661624 instance=ExtResource("12_si52b")]
 position = Vector2(0, 368)
 demand_for_unlock = ExtResource("9_bcnxi")
-left_border = null
-up_border = null
 right_border = 2
-down_border = null
 
 [node name="Tile4" parent="World/CellsSystem" unique_id=113809720 instance=ExtResource("4_pu3yx")]
 position = Vector2(368, 368)
@@ -99,7 +96,6 @@ up_border = 2
 [node name="TilePond" parent="World/CellsSystem" unique_id=351429902 instance=ExtResource("7_6wevv")]
 position = Vector2(368, 736)
 demand_for_unlock = ExtResource("12_6u1mn")
-left_border = null
 up_border = 2
 right_border = 2
 down_border = 2

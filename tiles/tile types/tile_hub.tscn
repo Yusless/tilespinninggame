@@ -3,39 +3,10 @@
 [ext_resource type="PackedScene" uid="uid://dhfxsclatflk7" path="res://tiles/tile types/tile.tscn" id="1_4r23m"]
 [ext_resource type="PackedScene" uid="uid://cjo2i2d6n8tw2" path="res://tiles/lighthouse.tscn" id="2_5xtjl"]
 [ext_resource type="Script" uid="uid://clotu2rjfug6x" path="res://tiles/tile types/hub_tile.gd" id="2_wytmi"]
-<<<<<<< HEAD
-[ext_resource type="Script" uid="uid://dp8qer5fmukpn" path="res://tiles/upgrade_table.gd" id="3_howf3"]
-[ext_resource type="Texture2D" uid="uid://brwyo4phhmm1q" path="res://tiles/workbench.png" id="3_kghgt"]
-[ext_resource type="Script" uid="uid://ekfhsugdy8f3" path="res://natural_resources/demand.gd" id="4_qn5lg"]
-[ext_resource type="PackedScene" uid="uid://b87baohfr4ygs" path="res://tiles/interaction_component.tscn" id="4_vqkq1"]
-[ext_resource type="PackedScene" uid="uid://cc7s456mf6s4q" path="res://hud/resource_demander.tscn" id="5_vqkq1"]
-[ext_resource type="Resource" uid="uid://1lp2ssn0t0im" path="res://natural_resources/demands/forest_unlock.tres" id="5_yxt03"]
-[ext_resource type="Resource" uid="uid://c74136c2d2yhp" path="res://natural_resources/demands/lava_lake_unlock.tres" id="6_yxt03"]
-[ext_resource type="Resource" uid="uid://cihy01e2mprig" path="res://natural_resources/demands/full_map_unlock.tres" id="8_bvf5a"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kg37j"]
-size = Vector2(44, 20)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_v4clq"]
-size = Vector2(44, 6)
-
-[node name="TileHub" unique_id=1779673374 node_paths=PackedStringArray("lighthouse", "upgrade_table") instance=ExtResource("1_4r23m")]
+[node name="TileHub" unique_id=1779673374 node_paths=PackedStringArray("lighthouse") instance=ExtResource("1_4r23m")]
 script = ExtResource("2_wytmi")
 lighthouse = NodePath("Lighthouse")
-upgrade_table = NodePath("UpgradeTable")
 tile_type = 0
-demand_for_unlock = null
 
 [node name="Lighthouse" parent="." index="3" unique_id=1382120843 instance=ExtResource("2_5xtjl")]
-
-[node name="UpgradeTable" parent="." index="5" unique_id=1508140244 instance=ExtResource("4_cxbee")]
-position = Vector2(-76, 7)
-
-script = ExtResource("3_howf3")
-resource_demander = NodePath("ResourceDemander")
-interaction_component = NodePath("InteractionComponent")
-demands = Array[ExtResource("4_qn5lg")]([ExtResource("5_yxt03"), ExtResource("6_yxt03"), ExtResource("8_bvf5a")])
-metadata/_edit_group_ = true
-
-[node name="ColorRect" parent="." index="6" unique_id=1750820177]
-visible = false

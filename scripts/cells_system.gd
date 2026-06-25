@@ -18,7 +18,7 @@ func _ready() -> void:
 	hub_tile.lighthouse.expedition_finished.connect(_on_lighthouse_expedition_finished)
 	hub_tile.lighthouse.expedition_started.connect(_on_lighthouse_expedition_started)
 	player.died.connect(_on_player_died)
-	hub_tile.upgrade_table.demand_completed.connect(_on_demand_completed)
+	hub_tile.lighthouse.upgrade_table.demand_completed.connect(_on_demand_completed)
 	
 func create_map_from_tiles() -> void:
 	for i in range(FIELD_HEIGHT):
@@ -97,10 +97,14 @@ func check_for_interactions():
 
 func _on_lighthouse_expedition_finished():
 	environment_manager.switch_to_night()
+	for tile in get_tiles_as_array():
+		tile.enable_interface_mode()
 	reset_tiles()
 
 func _on_lighthouse_expedition_started():
 	environment_manager.switch_to_day()
+	for tile in get_tiles_as_array():
+		tile.disable_interface_mode()
 	update_all_bridges()
 	activate_tiles()
 	check_for_interactions()
