@@ -46,9 +46,12 @@ func _ready() -> void:
 	health_component.health_depleted.connect(_on_health_depleted)
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("attack") and !boomerang.launched and state != States.INSIDE:
-		var dir_to_mouse := global_position.direction_to(get_global_mouse_position())
-		boomerang.launch(global_position, dir_to_mouse.angle(), velocity)
+	if event.is_action_pressed("attack") and state != States.INSIDE:
+		if !boomerang.launched:
+			var dir_to_mouse := global_position.direction_to(get_global_mouse_position())
+			boomerang.launch(global_position, dir_to_mouse.angle(), velocity)
+		else:
+			boomerang.force_return()
 
 func spawn():
 	health_component.reset()
@@ -158,7 +161,7 @@ func get_outside():
 
 
 func _on_sprite_frame_changed() -> void:
-	if sprite.animation in ["run"] and sprite.frame in STEP_FRAMES:
+	if sprite.animation in ["run"] and sprite.frame in STEP_FRAMES and state != States.INSIDE:
 		if !step_sound_1.playing:
 			step_sound_1.play()
 		else:

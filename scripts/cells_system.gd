@@ -1,4 +1,6 @@
 extends Node
+
+class_name CellsSystem
 const FIELD_WIDTH = 5
 const FIELD_HEIGHT = 5
 

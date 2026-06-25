@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://dxqniiif8ufsk" path="res://tiles/tile types/wheat_tile.gd" id="2_ss37w"]
 [ext_resource type="PackedScene" uid="uid://ce22yjh5n4eiq" path="res://tiles/tile types/tree.tscn" id="2_w85yc"]
 
-[node name="Tile" unique_id=1779673374 instance=ExtResource("1_f6p5n")]
+[node name="Tile3" unique_id=1779673374 instance=ExtResource("1_f6p5n")]
 script = ExtResource("2_ss37w")
 
 [node name="Tree" parent="TileContents" parent_id_path=PackedInt32Array(1337787306) index="3" unique_id=173354698 instance=ExtResource("2_w85yc")]
@@ -23,4 +23,4 @@ position = Vector2(-55, -24)
 position = Vector2(74, -5)
 
 [node name="ColorRect" parent="." index="4" unique_id=1750820177]
-z_index = 3
+z_index = 0

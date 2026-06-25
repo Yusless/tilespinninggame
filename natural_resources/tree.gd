@@ -13,5 +13,5 @@ func reset():
 	resource = wood_res
 
 func _on_hit():
-	if !harvested:
+	if not harvested:
 		spawn_collectable()

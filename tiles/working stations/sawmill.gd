@@ -1,5 +1,5 @@
 extends WorkingStation
-class_name Mill
+class_name Sawmill
 
 signal unlock_demand_completed(demand: Demand)
 
