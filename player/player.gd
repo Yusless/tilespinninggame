@@ -32,6 +32,7 @@ const STEP_FRAMES := [1, 4]
 @export var resource_manager: ResourceManager
 @export var step_sound_1: AudioStreamPlayer2D
 @export var step_sound_2: AudioStreamPlayer2D
+@export var visual_boomerang: Sprite2D
 
 
 
@@ -47,7 +48,7 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("attack") and state != States.INSIDE:
-		if !boomerang.launched:
+		if !boomerang.is_launched:
 			var dir_to_mouse := global_position.direction_to(get_global_mouse_position())
 			boomerang.launch(global_position, dir_to_mouse.angle(), velocity)
 		else:
@@ -61,6 +62,12 @@ func die():
 	state = States.DEAD
 	died.emit()
 	resource_manager.clear()
+
+func animate_boomerang():
+	visual_boomerang.rotation = PI/3 - max(
+		PI/12 * velocity.length() / max_speed,
+		-PI/12
+	)
 
 func move(delta):
 	var movement = get_movement_vector()
@@ -122,6 +129,7 @@ func animate():
 	else:
 		sprite.scale.x = -1
 	
+	animate_boomerang()
 	sprite.play(anim)
 
 
@@ -166,3 +174,11 @@ func _on_sprite_frame_changed() -> void:
 			step_sound_1.play()
 		else:
 			step_sound_2.play()
+
+
+func _on_boomerang_launched() -> void:
+	visual_boomerang.hide()
+
+
+func _on_boomerang_returned() -> void:
+	visual_boomerang.show()

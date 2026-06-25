@@ -31,7 +31,9 @@ func end_attack():
 func _on_area_entered(area: Area2D) -> void:
 	if area.has_method("get_hit") and hurtbox_active:
 		area.get_hit(self)
+		hit.emit()
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.has_method("get_hit") and hurtbox_active:
 		body.get_hit(self)
+		hit.emit()

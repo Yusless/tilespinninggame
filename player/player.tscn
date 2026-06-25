@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://3b8xhhpq4f7a" path="res://assets/graphics/player/player-Sheet.png" id="2_qhqgy"]
 [ext_resource type="Script" uid="uid://nno1v8gxy1x8" path="res://components/health_component.gd" id="2_yw30f"]
 [ext_resource type="PackedScene" uid="uid://ccj1l3ms32as7" path="res://player/boomerang.tscn" id="3_qhqgy"]
+[ext_resource type="Texture2D" uid="uid://02f72d0pgon" path="res://assets/graphics/player/boomerang.png" id="4_kb6p2"]
 [ext_resource type="Script" uid="uid://drtj3bknkeioh" path="res://components/hurtbox_component.gd" id="5_qjkh3"]
 [ext_resource type="AudioStream" uid="uid://x81wiyoisdcq" path="res://player/steps/step_1.wav" id="6_yllr7"]
 [ext_resource type="AudioStream" uid="uid://lvssmiknihse" path="res://player/steps/step_2.wav" id="7_kb6p2"]
@@ -197,7 +198,7 @@ stream_5/stream = ExtResource("11_e7oew")
 stream_6/stream = ExtResource("12_c35mf")
 stream_7/stream = ExtResource("13_65viv")
 
-[node name="Player" type="CharacterBody2D" unique_id=251603508 node_paths=PackedStringArray("boomerang", "sprite", "stun_timer", "hurtbox", "animation_player", "health_component", "camera", "step_sound_1", "step_sound_2") groups=["Player"]]
+[node name="Player" type="CharacterBody2D" unique_id=251603508 node_paths=PackedStringArray("boomerang", "sprite", "stun_timer", "hurtbox", "animation_player", "health_component", "camera", "step_sound_1", "step_sound_2", "visual_boomerang") groups=["Player"]]
 z_index = 1
 y_sort_enabled = true
 collision_layer = 2
@@ -212,6 +213,7 @@ health_component = NodePath("HealthComponent")
 camera = NodePath("Camera2D")
 step_sound_1 = NodePath("StepSound1")
 step_sound_2 = NodePath("StepSound2")
+visual_boomerang = NodePath("Sprite/VisualBoomerang")
 
 [node name="HealthComponent" type="Node" parent="." unique_id=504088857]
 script = ExtResource("2_yw30f")
@@ -223,6 +225,12 @@ sprite_frames = SubResource("SpriteFrames_3xd07")
 animation = &"idle"
 offset = Vector2(1.5, 0)
 
+[node name="VisualBoomerang" type="Sprite2D" parent="Sprite" unique_id=109217399]
+show_behind_parent = true
+position = Vector2(-0.9999999, -2)
+rotation = 1.1282167
+texture = ExtResource("4_kb6p2")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1949865156]
 position = Vector2(0, 7)
 shape = SubResource("RectangleShape2D_qhqgy")
@@ -232,10 +240,9 @@ position_smoothing_enabled = true
 position_smoothing_speed = 20.0
 
 [node name="Boomerang" parent="." unique_id=864464630 instance=ExtResource("3_qhqgy")]
-visible = false
 top_level = true
 z_index = 2
-position = Vector2(11, -16)
+position = Vector2(0, -2)
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=1430777681 node_paths=PackedStringArray("health_component")]
 collision_layer = 2
@@ -264,3 +271,5 @@ stream = SubResource("AudioStreamRandomizer_kg37j")
 volume_db = 5.0
 
 [connection signal="frame_changed" from="Sprite" to="." method="_on_sprite_frame_changed"]
+[connection signal="launched" from="Boomerang" to="." method="_on_boomerang_launched"]
+[connection signal="returned" from="Boomerang" to="." method="_on_boomerang_returned"]

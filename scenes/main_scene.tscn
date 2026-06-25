@@ -25,6 +25,21 @@
 [ext_resource type="PackedScene" uid="uid://bsbvtell7k17b" path="res://tiles/tile types/tile_unlock_1.tscn" id="15_bcnxi"]
 [ext_resource type="PackedScene" uid="uid://ckej6k0mt88cx" path="res://tiles/tile types/tile_forest.tscn" id="17_6u1mn"]
 [ext_resource type="PackedScene" uid="uid://c14gjkqh16wlx" path="res://tiles/tile types/tile_unlock_2.tscn" id="22_adb74"]
+[ext_resource type="PackedScene" uid="uid://cx1brj3xebjm3" path="res://hud/prompt_displayer.tscn" id="26_6p3nn"]
+[ext_resource type="Script" uid="uid://b0g4feb0lnsfe" path="res://hud/prompt_attack.gd" id="27_k67gn"]
+[ext_resource type="Texture2D" uid="uid://d2ccavou661qm" path="res://hud/button_prompts.png" id="28_4bgka"]
+[ext_resource type="Script" uid="uid://cmurhu2ehuhu5" path="res://hud/prompt_end_expedition.gd" id="29_02d50"]
+[ext_resource type="Script" uid="uid://bdw36dw6y1sog" path="res://hud/prompt_unlock_new_tiles.gd" id="30_02d50"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k67gn"]
+atlas = ExtResource("28_4bgka")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kg37j"]
+size = Vector2(160, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_02d50"]
+size = Vector2(24, 20)
 
 [node name="MainScene" type="Node" unique_id=2095065835]
 
@@ -157,3 +172,35 @@ resource_manager = NodePath("../../ResourceManager")
 [node name="HUD" parent="GUILayer" unique_id=1161228326 instance=ExtResource("8_18nlu")]
 mouse_filter = 1
 metadata/_edit_lock_ = true
+
+[node name="PromptDisplayer" parent="." unique_id=24052782 instance=ExtResource("26_6p3nn")]
+position = Vector2(179, 109)
+script = ExtResource("27_k67gn")
+prompt_text = "to attack"
+prompt_icon = SubResource("AtlasTexture_k67gn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PromptDisplayer" unique_id=1272398371]
+position = Vector2(187, 21)
+shape = SubResource("RectangleShape2D_kg37j")
+
+[node name="PromptDisplayer2" parent="." unique_id=1677368385 node_paths=PackedStringArray("hub_tile") instance=ExtResource("26_6p3nn")]
+position = Vector2(452, 211)
+script = ExtResource("29_02d50")
+wheat = ExtResource("7_c1pb6")
+hub_tile = NodePath("../World/CellsSystem/HubTile")
+prompt_text = "Enter the lighthouse to end the expedition"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PromptDisplayer2" unique_id=991133087]
+position = Vector2(-84, -8)
+shape = SubResource("RectangleShape2D_kg37j")
+
+[node name="PromptDisplayer3" parent="." unique_id=1974343526 node_paths=PackedStringArray("hub_tile") instance=ExtResource("26_6p3nn")]
+position = Vector2(675, 135)
+script = ExtResource("30_02d50")
+wheat = ExtResource("7_c1pb6")
+hub_tile = NodePath("../World/CellsSystem/HubTile")
+prompt_text = "Unlock new tiles for resources"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PromptDisplayer3" unique_id=814493418]
+position = Vector2(54, 86)
+shape = SubResource("RectangleShape2D_02d50")

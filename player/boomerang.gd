@@ -1,6 +1,9 @@
 extends CharacterBody2D
 class_name Boomerang
 
+signal returned
+signal launched
+
 @export var fly_distance := 16.0 * 8
 @export var fly_speed := 480.0
 @export var max_fly_speed := 480.0 * 2.0
@@ -13,7 +16,7 @@ class_name Boomerang
 @export var hitbox: AttackComponent
 
 
-var launched := false
+var is_launched := false
 var returning := false
 var returning_straight := false
 var decceleration := Vector2.ZERO
@@ -26,23 +29,25 @@ var upgraded = true
 func launch(origin: Vector2, direction: float, inherited_speed: Vector2):
 	var base_velocity := Vector2.RIGHT * fly_speed
 	velocity = base_velocity.rotated(direction) + inherited_speed * inherited_speed_multiplier
-	launched = true
+	is_launched = true
 	returning = false
 	returning_straight = false
 	global_position = origin
 	distance_flied = 0.0
 	hitbox.begin_attack()
 	show()
+	launched.emit()
 
 func retrieve():
-	launched = false
+	is_launched = false
 	velocity = Vector2.ZERO
 	hitbox.end_attack()
 	hide()
+	returned.emit()
 
 func _physics_process(delta: float) -> void:
 	
-	if launched:
+	if is_launched:
 		distance_flied += velocity.length() * delta
 		if distance_flied >= fly_distance and !returning:
 			returning = true
@@ -71,7 +76,7 @@ func _on_return_detector_body_entered(body: Node2D) -> void:
 
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
-	if area.is_in_group("Bouncers") and launched:
+	if area.is_in_group("Bouncers") and is_launched:
 		bounce()
 
 

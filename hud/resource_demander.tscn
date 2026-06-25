@@ -78,25 +78,24 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 resource = ExtResource("6_6ds52")
 
+[node name="Icon" parent="VBoxContainer/MarginContainer/MarginContainer/NumberRoot/WoodNumber" index="0" unique_id=1770491988]
+texture = SubResource("AtlasTexture_oj44l")
+
+[node name="Counter" parent="VBoxContainer/MarginContainer/MarginContainer/NumberRoot/WoodNumber" index="1" unique_id=761771920]
+text = "1"
+
 [node name="CoalCounter" parent="VBoxContainer/MarginContainer/MarginContainer/NumberRoot" unique_id=1104870881 instance=ExtResource("2_36uo1")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 resource = ExtResource("7_6ds52")
 
-<<<<<<< HEAD
-[node name="LavaCoreCounter" parent="VBoxContainer/MarginContainer/MarginContainer/NumberRoot" unique_id=1389663936 instance=ExtResource("2_36uo1")]
-=======
 [node name="CoreNumber" parent="VBoxContainer/MarginContainer/MarginContainer/NumberRoot" unique_id=1128857206 instance=ExtResource("2_36uo1")]
->>>>>>> 09b80db13d55dd77b1ae66cde53f58f60d210f1b
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 resource = ExtResource("8_rjf3r")
 
-<<<<<<< HEAD
-[editable path="VBoxContainer/MarginContainer/MarginContainer/NumberRoot/WheatNumber"]
-=======
 [node name="Icon" parent="VBoxContainer/MarginContainer/MarginContainer/NumberRoot/CoreNumber" index="0" unique_id=1770491988]
 texture = SubResource("AtlasTexture_8dehk")
 
@@ -106,4 +105,4 @@ text = "1"
 [editable path="VBoxContainer/MarginContainer/MarginContainer/NumberRoot/WheatNumber"]
 [editable path="VBoxContainer/MarginContainer/MarginContainer/NumberRoot/WoodNumber"]
 [editable path="VBoxContainer/MarginContainer/MarginContainer/NumberRoot/CoreNumber"]
->>>>>>> 09b80db13d55dd77b1ae66cde53f58f60d210f1b
+[editable path="VBoxContainer/MarginContainer/MarginContainer/NumberRoot/CoreNumber"]

@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://brwyo4phhmm1q" path="res://tiles/working stations/workbench.png" id="3_ijjpf"]
 [ext_resource type="PackedScene" uid="uid://b87baohfr4ygs" path="res://components/interaction_component.tscn" id="3_kma2a"]
 [ext_resource type="PackedScene" uid="uid://1ke2ne5t2n4n" path="res://tiles/working stations/upgrade_table.tscn" id="4_lmt17"]
+[ext_resource type="Texture2D" uid="uid://dm36iwhy2ovmb" path="res://hud/interact_prompt_texture.tres" id="6_hbrul"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v4clq"]
 atlas = ExtResource("2_kma2a")
@@ -74,6 +75,7 @@ texture = ExtResource("3_ijjpf")
 collision_layer = 0
 prompt_enabled = true
 prompt_text = "End expedition"
+prompt_icon = ExtResource("6_hbrul")
 prompt_origin = NodePath("Marker2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interior/InteriorCollider/ExpeditionTable/ExpeditionTableInteraction" unique_id=249549584]
@@ -97,10 +99,11 @@ position = Vector2(-7, -151)
 collision_layer = 0
 prompt_enabled = true
 prompt_text = "Leave Lighthosue"
+prompt_icon = ExtResource("6_hbrul")
 
 [node name="PromptOrigin" parent="Interior/LeaveComponent" index="0" unique_id=1990381663]
 visible = true
-position = Vector2(-7, -6)
+position = Vector2(-65, 21)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interior/LeaveComponent" unique_id=429323970]
 position = Vector2(1, 0)
@@ -116,6 +119,13 @@ shape = SubResource("CapsuleShape2D_54bdi")
 
 [node name="InteractionComponent" parent="." unique_id=1693640870 instance=ExtResource("3_kma2a")]
 position = Vector2(0, -106)
+prompt_enabled = true
+prompt_text = "Enter Lighthouse"
+prompt_icon = ExtResource("6_hbrul")
+
+[node name="PromptOrigin" parent="InteractionComponent" index="0" unique_id=1990381663]
+visible = true
+position = Vector2(39, 64)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionComponent" unique_id=1679411096]
 position = Vector2(0, 122)
@@ -128,3 +138,4 @@ position = Vector2(2, -138)
 position = Vector2(0, 26)
 
 [editable path="Interior/LeaveComponent"]
+[editable path="InteractionComponent"]

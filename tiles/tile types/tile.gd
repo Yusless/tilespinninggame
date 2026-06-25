@@ -160,13 +160,13 @@ func rotate_bridges_to_tile() -> void:
 
 func _on_area_2d_mouse_entered() -> void:
 	if treated_as_interface and tile_type != TileTypes.HUB and rotatable:
-		tile_contents.position = tile_contents.hovering_position
+		tile_contents.position = hovering_position
 	else:
 		hovering_before_interacting = true
 
 func _on_area_2d_mouse_exited() -> void:
 	if treated_as_interface and rotatable and !hovering_before_interacting:
-		tile_contents.position = tile_contents.default_position
+		tile_contents.position = default_position
 	else: 
 		hovering_before_interacting = false
 
@@ -178,8 +178,8 @@ func _on_area_2d_input_event(_viewport: Node, event: InputEvent, _shape_idx: int
 
 func disable_interface_mode():
 	treated_as_interface = false
-	if tile_contents.position != tile_contents.default_position:
-		tile_contents.position = tile_contents.default_position
+	if tile_contents.position != default_position:
+		tile_contents.position = default_position
 
 func enable_interface_mode():
 	treated_as_interface = true

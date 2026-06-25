@@ -11,6 +11,8 @@ class_name Prompt
 func _ready() -> void:
 	label.text = text
 	texture_rect.texture = icon
+	if !Engine.is_editor_hint():
+		hide()
 
 func _process(_delta: float) -> void:
 	label.text = text

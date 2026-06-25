@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://cx1brj3xebjm3"]
+
+[ext_resource type="Script" uid="uid://7d87jfothgup" path="res://hud/prompt_displayer.gd" id="1_ghhqn"]
+[ext_resource type="PackedScene" uid="uid://cdyuqo2ftw40b" path="res://hud/prompt.tscn" id="2_j8h22"]
+
+[node name="PromptDisplayer" type="Area2D" unique_id=24052782 node_paths=PackedStringArray("prompt")]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_ghhqn")
+prompt = NodePath("Prompt")
+
+[node name="Prompt" parent="." unique_id=1649993671 instance=ExtResource("2_j8h22")]
+anchors_preset = 0
+text = ""
+icon = null

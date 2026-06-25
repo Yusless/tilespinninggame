@@ -1,7 +1,28 @@
 [gd_resource type="Theme" format=3 uid="uid://cyr5vfnkvpaly"]
 
 [ext_resource type="FontFile" uid="uid://cxgbh67iwdbvt" path="res://hud/galvanic.ttf" id="1_bd1bu"]
+[ext_resource type="Texture2D" uid="uid://clurhrtxd6keh" path="res://hud/panel.png" id="1_ghgtn"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pgk25"]
+texture = ExtResource("1_ghgtn")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l6jws"]
+texture = ExtResource("1_ghgtn")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
 
 [resource]
 default_font = ExtResource("1_bd1bu")
 default_font_size = 9
+Panel/styles/panel = SubResource("StyleBoxTexture_pgk25")
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_l6jws")

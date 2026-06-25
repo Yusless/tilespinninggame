@@ -99,6 +99,10 @@ start_expedition={
 2d_physics/layer_5="enemy_attacks"
 2d_physics/layer_6="resources"
 
+[navigation]
+
+2d/warnings/navmesh_edge_merge_errors=false
+
 [physics]
 
 3d/physics_engine="Jolt Physics"
