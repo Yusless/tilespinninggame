@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cc7s456mf6s4q" path="res://hud/resource_demander.tscn" id="5_vqkq1"]
 [ext_resource type="Resource" uid="uid://1lp2ssn0t0im" path="res://natural_resources/demands/forest_unlock.tres" id="5_yxt03"]
 [ext_resource type="Resource" uid="uid://c74136c2d2yhp" path="res://natural_resources/demands/lava_lake_unlock.tres" id="6_yxt03"]
+[ext_resource type="Resource" uid="uid://cihy01e2mprig" path="res://natural_resources/demands/full_map_unlock.tres" id="8_bvf5a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kg37j"]
 size = Vector2(44, 20)
@@ -25,14 +26,13 @@ tile_type = 0
 demand_for_unlock = null
 
 [node name="Lighthouse" parent="." index="3" unique_id=1382120843 instance=ExtResource("2_5xtjl")]
-position = Vector2(7, -119)
 
 [node name="UpgradeTable" type="Node2D" parent="." index="5" unique_id=1977492483 node_paths=PackedStringArray("resource_demander", "interaction_component")]
 position = Vector2(-76, 7)
 script = ExtResource("3_howf3")
 resource_demander = NodePath("ResourceDemander")
 interaction_component = NodePath("InteractionComponent")
-demands = Array[ExtResource("4_qn5lg")]([ExtResource("5_yxt03"), ExtResource("6_yxt03")])
+demands = Array[ExtResource("4_qn5lg")]([ExtResource("5_yxt03"), ExtResource("6_yxt03"), ExtResource("8_bvf5a")])
 metadata/_edit_group_ = true
 
 [node name="Workbench" type="Sprite2D" parent="UpgradeTable" index="0" unique_id=791689743]

@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://ssdkn2cnce4d"]
 
-[ext_resource type="PackedScene" uid="uid://dhfxsclatflk7" path="res://tiles/tile.tscn" id="1_e2jod"]
+[ext_resource type="PackedScene" uid="uid://dhfxsclatflk7" path="res://tiles/tile types/tile.tscn" id="1_e2jod"]
 [ext_resource type="TileSet" uid="uid://2s1f4ntvo15j" path="res://assets/graphics/tile/tile_set_grass.tres" id="2_erkfj"]
 [ext_resource type="Script" uid="uid://da7115qc8gmwj" path="res://tiles/tile_pond.gd" id="2_sjldy"]
 [ext_resource type="PackedScene" uid="uid://d0o7kbchwru1o" path="res://enemies/enemy_spawner.tscn" id="3_2lykn"]

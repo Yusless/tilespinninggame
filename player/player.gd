@@ -17,7 +17,7 @@ const ACCELERATION_TIME: float = 0.085
 const DECCELERATION_TIME: float = 0.05
 
 @export var max_speed := 250.0
-@export var max_camera_speed := 500.0
+@export var max_camera_speed := 750.0
 @export_subgroup("Deps")
 @export var boomerang: Boomerang
 @export var sprite: AnimatedSprite2D
@@ -145,6 +145,5 @@ func get_outside():
 	spawn()
 	state = States.IDLE
 	lighthouse_exited.emit()
-	cells_system.submit_tile_position()
 	create_tween().tween_property(camera, "position", Vector2.ZERO, 0.3).set_ease(Tween.EASE_OUT)
 	create_tween().tween_property(camera, "zoom", Vector2(1,1), 0.3).set_ease(Tween.EASE_OUT)

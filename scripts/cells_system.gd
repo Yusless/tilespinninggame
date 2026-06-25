@@ -95,9 +95,6 @@ func check_for_interactions():
 			if tile.neighbours[side]:
 				if tile.can_interact(tile.neighbours[side], side):
 					tile.interact(tile.neighbours[side], side)
-			
-func submit_tile_position():
-	check_for_interactions()
 
 func _on_lighthouse_expedition_finished():
 	environment_manager.switch_to_night()
@@ -107,6 +104,7 @@ func _on_lighthouse_expedition_started():
 	environment_manager.switch_to_day()
 	update_all_bridges()
 	activate_tiles()
+	check_for_interactions()
 
 
 func _on_player_died():

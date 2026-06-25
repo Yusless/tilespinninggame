@@ -228,9 +228,11 @@ stream = SubResource("AudioStreamRandomizer_v4clq")
 
 [node name="CroakJump" type="AudioStreamPlayer2D" parent="." index="15" unique_id=1099775834]
 stream = SubResource("AudioStreamRandomizer_kg37j")
+max_distance = 384.0
 
 [node name="CroakLand" type="AudioStreamPlayer2D" parent="." index="16" unique_id=1707833909]
 stream = SubResource("AudioStreamRandomizer_rm2jj")
+max_distance = 384.0
 
 [node name="DragonflyConsumer" type="Area2D" parent="." index="17" unique_id=1700680851]
 collision_layer = 0

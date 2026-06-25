@@ -21,3 +21,6 @@ position = Vector2(-55, -24)
 
 [node name="Tree5" parent="TileContents" parent_id_path=PackedInt32Array(1337787306) index="7" unique_id=1514663575 instance=ExtResource("2_w85yc")]
 position = Vector2(74, -5)
+
+[node name="ColorRect" parent="." index="4" unique_id=1750820177]
+z_index = 3

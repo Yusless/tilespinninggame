@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://d267fo2rmy84p"]
 
 [ext_resource type="Script" uid="uid://csnbwddnflk0" path="res://natural_resources/resource_collectable.gd" id="1_o1gfo"]
+[ext_resource type="Texture2D" uid="uid://ccks4rl8s3h2l" path="res://natural_resources/resource_icons.png" id="2_qq1v6"]
 
 [sub_resource type="Animation" id="Animation_21ecd"]
 length = 0.001
@@ -28,10 +29,22 @@ tracks/1/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_mhojj"]
 resource_name = "collect"
-length = 0.4
+length = 0.19999999999999998
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -40,7 +53,7 @@ tracks/0/path = NodePath("Sprite:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4),
+"times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 0.5),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(0, -4)]
@@ -52,10 +65,22 @@ tracks/1/path = NodePath("Sprite:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.4),
+"times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 0.5),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 0.5),
+"update": 0,
+"values": [0.0, 6.265732014659643]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_y2dwq"]
@@ -67,6 +92,9 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kg37j"]
 size = Vector2(18, 18)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_kg37j"]
+radius = 39.812057
+
 [node name="ResourceCollectable" type="Node2D" unique_id=311562473 node_paths=PackedStringArray("sprite", "animation_player", "collision_shape") groups=["NeedsResetting"]]
 top_level = true
 z_index = 1
@@ -76,6 +104,7 @@ animation_player = NodePath("AnimationPlayer")
 collision_shape = NodePath("PlayerDetector/CollisionShape2D")
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=1122536501]
+texture = ExtResource("2_qq1v6")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1278813624]
 libraries/ = SubResource("AnimationLibrary_y2dwq")
@@ -89,4 +118,12 @@ shape = SubResource("RectangleShape2D_kg37j")
 disabled = true
 debug_color = Color(1.6364455e-06, 0.6465062, 0.24281707, 0.41960785)
 
+[node name="MagnetismDetector" type="Area2D" parent="." unique_id=1235179068]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MagnetismDetector" unique_id=1743266900]
+shape = SubResource("CircleShape2D_kg37j")
+
 [connection signal="area_entered" from="PlayerDetector" to="." method="_on_player_detector_area_entered"]
+[connection signal="body_entered" from="MagnetismDetector" to="." method="_on_magnetism_detector_body_entered"]

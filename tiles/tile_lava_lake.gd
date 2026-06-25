@@ -4,6 +4,7 @@ class_name TileLavaLake
 @export var enemy_spawner: EnemySpawner
 
 func interact(neighbour: Tile, _side: Side.Sides):
+	await NavigationServer2D.map_changed
 	enemy_spawner.points_of_interest.clear()
 	match neighbour.tile_type:
 		TileTypes.WHEAT:

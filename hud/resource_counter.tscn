@@ -4,6 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://ccks4rl8s3h2l" path="res://natural_resources/resource_icons.png" id="1_kya28"]
 [ext_resource type="Resource" uid="uid://c3xr3hu8jlinu" path="res://natural_resources/wheat_resource.tres" id="2_16hmn"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_w08kg"]
+atlas = ExtResource("1_kya28")
+region = Rect2(0, 0, 16, 16)
+
 [node name="WheatCounter" type="HBoxContainer" unique_id=522965764 node_paths=PackedStringArray("counter", "icon")]
 script = ExtResource("1_bq7jd")
 counter = NodePath("Counter")
@@ -12,7 +16,7 @@ icon = NodePath("Icon")
 
 [node name="Icon" type="TextureRect" parent="." unique_id=1770491988]
 layout_mode = 2
-texture = ExtResource("1_kya28")
+texture = SubResource("AtlasTexture_w08kg")
 stretch_mode = 5
 
 [node name="Counter" type="Label" parent="." unique_id=761771920]

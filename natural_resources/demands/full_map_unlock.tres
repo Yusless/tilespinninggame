@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Demand" format=3 uid="uid://cihy01e2mprig"]
+
+[ext_resource type="Script" uid="uid://36bx0jkgt0vc" path="res://natural_resources/natural_resource.gd" id="1_146oh"]
+[ext_resource type="Resource" uid="uid://c3xr3hu8jlinu" path="res://natural_resources/wheat_resource.tres" id="2_20cls"]
+[ext_resource type="Script" uid="uid://ekfhsugdy8f3" path="res://natural_resources/demand.gd" id="2_g6g33"]
+[ext_resource type="Resource" uid="uid://dn0snts7urilu" path="res://natural_resources/wood_resource.tres" id="3_46ydh"]
+[ext_resource type="Resource" uid="uid://dh2vwv3hcj4gu" path="res://natural_resources/coal_resource.tres" id="4_q4cot"]
+
+[resource]
+script = ExtResource("2_g6g33")
+name = "full_map_unlock"
+resources_needed = Dictionary[ExtResource("1_146oh"), int]({
+ExtResource("2_20cls"): 600,
+ExtResource("3_46ydh"): 120,
+ExtResource("4_q4cot"): 40
+})
+metadata/_custom_type_script = "uid://ekfhsugdy8f3"

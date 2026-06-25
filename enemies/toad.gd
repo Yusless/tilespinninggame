@@ -25,7 +25,7 @@ func spawn_lava_core():
 	var collectable: ResourceCollectable = collectable_scene.instantiate()
 	collectable.amount = 1
 	collectable.resource = lava_core_res
-	get_parent().call_deferred("add_child", collectable)
+	get_parent().get_parent().call_deferred("add_child", collectable)
 	collectable.top_level = true
 	collectable.global_position = global_position
 	collectables.push_back(collectable)
