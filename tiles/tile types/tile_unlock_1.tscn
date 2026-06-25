@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://bsbvtell7k17b"]
 
 [ext_resource type="PackedScene" uid="uid://dhfxsclatflk7" path="res://tiles/tile types/tile.tscn" id="1_18nnf"]
-[ext_resource type="Script" uid="uid://cdup3hcnjit32" path="res://tiles/tile types/tile_unlock_1.gd" id="2_bxsha"]
+[ext_resource type="Script" uid="uid://cdup3hcnjit32" path="res://tiles/tile types/tile_unlock.gd" id="2_bxsha"]
 [ext_resource type="PackedScene" uid="uid://cmfur6br7hmd6" path="res://tiles/working stations/mill.tscn" id="2_ne6ft"]
 
-[node name="Tile" unique_id=1779673374 node_paths=PackedStringArray("mill") instance=ExtResource("1_18nnf")]
+[node name="Tile" unique_id=1779673374 node_paths=PackedStringArray("working_station") instance=ExtResource("1_18nnf")]
 script = ExtResource("2_bxsha")
-mill = NodePath("TileContents/Mill")
+working_station = NodePath("TileContents/Mill")
 
 [node name="Mill" parent="TileContents" parent_id_path=PackedInt32Array(1337787306) index="3" unique_id=1337578460 instance=ExtResource("2_ne6ft")]

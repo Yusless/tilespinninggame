@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://c14gjkqh16wlx"]
+
+[ext_resource type="PackedScene" uid="uid://dhfxsclatflk7" path="res://tiles/tile types/tile.tscn" id="1_0b28j"]
+[ext_resource type="Script" uid="uid://cdup3hcnjit32" path="res://tiles/tile types/tile_unlock.gd" id="2_84amy"]
+[ext_resource type="PackedScene" uid="uid://drqijyio72n8b" path="res://tiles/working stations/sawmill.tscn" id="2_ybkve"]
+
+[node name="Tile" unique_id=1779673374 node_paths=PackedStringArray("working_station") instance=ExtResource("1_0b28j")]
+script = ExtResource("2_84amy")
+working_station = NodePath("TileContents/Sawmill")
+
+[node name="Sawmill" parent="TileContents" parent_id_path=PackedInt32Array(1337787306) index="3" unique_id=1337578460 instance=ExtResource("2_ybkve")]

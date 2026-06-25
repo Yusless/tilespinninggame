@@ -21,12 +21,14 @@
 [ext_resource type="Script" uid="uid://ci8t37q1enmah" path="res://effects/environment_manager.gd" id="13_r6p65"]
 [ext_resource type="PackedScene" uid="uid://bsbvtell7k17b" path="res://tiles/tile types/tile_unlock_1.tscn" id="15_bcnxi"]
 [ext_resource type="PackedScene" uid="uid://ckej6k0mt88cx" path="res://tiles/tile types/tile_forest.tscn" id="17_6u1mn"]
+[ext_resource type="Script" uid="uid://cdup3hcnjit32" path="res://tiles/tile types/tile_unlock.gd" id="20_58gk3"]
+[ext_resource type="PackedScene" uid="uid://c14gjkqh16wlx" path="res://tiles/tile types/tile_unlock_2.tscn" id="22_adb74"]
 
 [node name="MainScene" type="Node" unique_id=2095065835]
 
-[node name="UpgradeManager" type="Node" parent="." unique_id=100137014 node_paths=PackedStringArray("tile_unlock_1") groups=["Managers"]]
+[node name="UpgradeManager" type="Node" parent="." unique_id=100137014 node_paths=PackedStringArray("tile_unlock_array") groups=["Managers"]]
 script = ExtResource("1_7nt27")
-tile_unlock_1 = NodePath("../World/CellsSystem/TileUnlock1")
+tile_unlock_array = [NodePath("../World/CellsSystem/TileUnlock1"), NodePath("../World/CellsSystem/TileUnlock2")]
 
 [node name="ResourceManager" type="Node" parent="." unique_id=84701733 groups=["Managers"]]
 script = ExtResource("5_c16ls")
@@ -114,19 +116,22 @@ position = Vector2(1104, 736)
 left_border = 2
 up_border = 2
 
-[node name="Tile2" parent="World/CellsSystem" unique_id=105468340 instance=ExtResource("4_pu3yx")]
-position = Vector2(0, 1104)
-up_border = 2
-right_border = 2
-
 [node name="TileUnlock1" parent="World/CellsSystem" unique_id=1732918086 instance=ExtResource("15_bcnxi")]
 position = Vector2(368, 1112)
 demand_for_unlock = ExtResource("12_6u1mn")
+left_border = 2
+up_border = 2
 right_border = 2
 
 [node name="TileLavaLake2" parent="World/CellsSystem" unique_id=1427897426 instance=ExtResource("12_si52b")]
 position = Vector2(736, 1104)
 demand_for_unlock = ExtResource("9_bcnxi")
+up_border = 2
+right_border = 2
+
+[node name="TileUnlock2" parent="World/CellsSystem" unique_id=1676496425 instance=ExtResource("22_adb74")]
+position = Vector2(8, 1112)
+script = ExtResource("20_58gk3")
 up_border = 2
 right_border = 2
 

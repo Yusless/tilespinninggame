@@ -21,6 +21,8 @@ var return_target: CharacterBody2D
 var distance_flied := 0.0
 var target_fly_distance := 0.0
 
+var upgraded = true
+
 func launch(origin: Vector2, direction: float, inherited_speed: Vector2):
 	var base_velocity := Vector2.RIGHT * fly_speed
 	velocity = base_velocity.rotated(direction) + inherited_speed * inherited_speed_multiplier
@@ -71,3 +73,8 @@ func _on_return_detector_body_entered(body: Node2D) -> void:
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Bouncers") and launched:
 		bounce()
+
+
+func force_return():
+	if upgraded:
+		returning_straight = true
