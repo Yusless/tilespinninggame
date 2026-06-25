@@ -8,6 +8,7 @@ class_name Toad
 @export var croak_jump: AudioStreamPlayer2D
 @export var croak_land: AudioStreamPlayer2D
 @export var lava_core_res: NaturalResource
+@export var croak_attack: AudioStreamPlayer2D
 
 var collectables: Array[Node] = []
 
@@ -21,11 +22,15 @@ func attack():
 	start_step(direction_to_target, speed * 2.0)
 	attacking = true
 
+func charge_attack():
+	super()
+	croak_attack.play()
+
 func spawn_lava_core():
 	var collectable: ResourceCollectable = collectable_scene.instantiate()
 	collectable.amount = 1
 	collectable.resource = lava_core_res
-	get_parent().call_deferred("add_child", collectable)
+	get_parent().get_parent().call_deferred("add_child", collectable)
 	collectable.top_level = true
 	collectable.global_position = global_position
 	collectables.push_back(collectable)

@@ -15,9 +15,10 @@ enum States {
 
 const ACCELERATION_TIME: float = 0.085
 const DECCELERATION_TIME: float = 0.05
+const STEP_FRAMES := [1, 4]
 
 @export var max_speed := 250.0
-@export var max_camera_speed := 500.0
+@export var max_camera_speed := 750.0
 @export_subgroup("Deps")
 @export var boomerang: Boomerang
 @export var sprite: AnimatedSprite2D
@@ -29,6 +30,8 @@ const DECCELERATION_TIME: float = 0.05
 @export var cells_system: Node2D
 @export var spawn_point: Marker2D
 @export var resource_manager: ResourceManager
+@export var step_sound_1: AudioStreamPlayer2D
+@export var step_sound_2: AudioStreamPlayer2D
 
 
 
@@ -134,18 +137,29 @@ func _on_health_depleted():
 	die()
 
 
-func get_inside():
-	sprite.visible = false
+func enter_spin_mode():
 	create_tween().tween_property(camera, "zoom", Vector2(0.3,0.3), 0.15).set_ease(Tween.EASE_OUT)
 	state = States.INSIDE
-	lighthouse_entered.emit()
-	
-func get_outside():
-	sprite.visible = true
-	spawn()
-	state = States.IDLE
-	lighthouse_exited.emit()
-	cells_system.submit_tile_position()
+
+func exit_spin_mode():
 	create_tween().tween_property(camera, "position", Vector2.ZERO, 0.3).set_ease(Tween.EASE_OUT)
 	create_tween().tween_property(camera, "zoom", Vector2(1,1), 0.3).set_ease(Tween.EASE_OUT)
+	state = States.IDLE
+
+func get_inside(spawn_pos: Vector2):
+	lighthouse_entered.emit()
+	global_position = spawn_pos
+	z_index = 2
 	
+func get_outside():
+	spawn()
+	lighthouse_exited.emit()
+	z_index = 1
+
+
+func _on_sprite_frame_changed() -> void:
+	if sprite.animation in ["run"] and sprite.frame in STEP_FRAMES:
+		if !step_sound_1.playing:
+			step_sound_1.play()
+		else:
+			step_sound_2.play()

@@ -1,4 +1,7 @@
 extends Area2D
+class_name InteractionComponent
+
+signal interacted
 
 var can_interact := false
 
@@ -13,5 +16,7 @@ func _on_area_exited(_area: Area2D) -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if can_interact and event.is_action_pressed("interact") and get_parent().has_method("try_to_interact"):
-		get_parent().try_to_interact()
+	if can_interact and event.is_action_pressed("interact"):
+		if get_parent().has_method("try_to_interact"):
+			get_parent().try_to_interact()
+		interacted.emit()

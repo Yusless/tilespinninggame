@@ -10,10 +10,20 @@ class_name ResourceCollectable
 @export var animation_player: AnimationPlayer
 @export var collision_shape: CollisionShape2D
 
+var magnetism_started := false
+var magnetism_target: Node2D
+
+func magnetize_towards_node(node: Node2D):
+	global_position = lerp(global_position, node.global_position, 0.2)
+	sprite.rotation = PI/9 * -sign(global_position.x - node.global_position.x)
 
 func _ready() -> void:
 	drop()
 	sprite.texture = resource.icon
+
+func _physics_process(_delta: float) -> void:
+	if magnetism_started and magnetism_target:
+		magnetize_towards_node(magnetism_target)
 
 func drop():
 	var direction := 1 if randi()%2 else -1
@@ -44,3 +54,9 @@ func reset():
 
 func _on_player_detector_area_entered(_area: Area2D) -> void:
 	collect()
+
+
+func _on_magnetism_detector_body_entered(body: Node2D) -> void:
+	if body is Player:
+		magnetism_started = true
+		magnetism_target = body

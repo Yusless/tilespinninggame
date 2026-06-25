@@ -185,6 +185,7 @@ navigation_polygon = SubResource("NavigationPolygon_dej15")
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1750820177]
 visible = false
 visibility_layer = 4
+z_index = 5
 material = SubResource("ShaderMaterial_3xd07")
 offset_left = -331.0
 offset_top = -334.0

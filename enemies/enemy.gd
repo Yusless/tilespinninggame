@@ -142,8 +142,11 @@ func simple_state_machine(delta: float):
 			if combat_target:
 				state = States.HOSTILE
 			elif points_of_interest:
-				state = States.CURIOUS
-				set_movement_target(points_of_interest[0])
+				if points_of_interest[0]:
+					state = States.CURIOUS
+					set_movement_target(points_of_interest[0])
+				else:
+					points_of_interest.clear()
 		States.CURIOUS:
 			navigate(delta)
 		States.HOSTILE:

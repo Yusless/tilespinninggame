@@ -53,6 +53,7 @@ animations = [{
 size = Vector2(12, 13)
 
 [node name="Tree" type="Node2D" unique_id=173354698 node_paths=PackedStringArray("health_component", "hurtbox_component", "collectable_origin", "sprite") groups=["NeedsResetting"]]
+z_index = 1
 script = ExtResource("1_blsi1")
 coal_res = ExtResource("2_8dehk")
 wood_res = ExtResource("2_55dlt")

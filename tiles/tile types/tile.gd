@@ -80,10 +80,6 @@ func _ready() -> void:
 	init_bridges_to_tile()
 	remove_colissions()
 	
-	var player := Global.get_player()
-	player.lighthouse_entered.connect(_on_player_lighthouse_entered)
-	player.lighthouse_exited.connect(_on_player_lighthouse_exited)
-	
 	default_position = position
 	hovering_position = position + Vector2(0.0, -ELEVATING_BY_HOVERING)
 
@@ -180,11 +176,11 @@ func _on_area_2d_input_event(_viewport: Node, event: InputEvent, _shape_idx: int
 		tile_contents.rotate_contents()
 		create_tween().tween_callback(rotate_self).set_delay(tile_contents.rotation_time)
 
-func _on_player_lighthouse_entered():
-	treated_as_interface = true
-
-func _on_player_lighthouse_exited():
+func disable_interface_mode():
 	treated_as_interface = false
+
+func enable_interface_mode():
+	treated_as_interface = true
 	if position != default_position:
 		position = default_position
 

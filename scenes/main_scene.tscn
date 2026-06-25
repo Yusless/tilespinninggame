@@ -17,6 +17,7 @@
 [ext_resource type="Resource" uid="uid://c74136c2d2yhp" path="res://natural_resources/demands/lava_lake_unlock.tres" id="9_bcnxi"]
 [ext_resource type="PackedScene" uid="uid://dumvev7p6ndd6" path="res://tiles/tile types/wheat_tile.tscn" id="11_e1cbu"]
 [ext_resource type="Resource" uid="uid://1lp2ssn0t0im" path="res://natural_resources/demands/forest_unlock.tres" id="12_6u1mn"]
+[ext_resource type="Resource" uid="uid://cihy01e2mprig" path="res://natural_resources/demands/full_map_unlock.tres" id="12_k6f3i"]
 [ext_resource type="PackedScene" uid="uid://r27t1jiq2hxy" path="res://tiles/tile types/tile_lava_lake.tscn" id="12_si52b"]
 [ext_resource type="Script" uid="uid://ci8t37q1enmah" path="res://effects/environment_manager.gd" id="13_r6p65"]
 [ext_resource type="PackedScene" uid="uid://bsbvtell7k17b" path="res://tiles/tile types/tile_unlock_1.tscn" id="15_bcnxi"]
@@ -60,17 +61,14 @@ right_border = 2
 
 [node name="TilePond2" parent="World/CellsSystem" unique_id=1560052787 instance=ExtResource("7_6wevv")]
 position = Vector2(1104, 0)
-demand_for_unlock = ExtResource("9_bcnxi")
+demand_for_unlock = ExtResource("12_k6f3i")
 right_border = 2
 down_border = 2
 
 [node name="TileLavaLake" parent="World/CellsSystem" unique_id=923661624 instance=ExtResource("12_si52b")]
 position = Vector2(0, 368)
 demand_for_unlock = ExtResource("9_bcnxi")
-left_border = null
-up_border = null
 right_border = 2
-down_border = null
 
 [node name="Tile4" parent="World/CellsSystem" unique_id=113809720 instance=ExtResource("4_pu3yx")]
 position = Vector2(368, 368)
@@ -82,7 +80,7 @@ right_border = 2
 y_sort_enabled = false
 position = Vector2(736, 368)
 left_border = 2
-down_border = 2
+right_border = 2
 
 [node name="SpawnPoint" type="Marker2D" parent="World/CellsSystem/HubTile" unique_id=973232823]
 position = Vector2(2, 37)
@@ -100,7 +98,6 @@ up_border = 2
 [node name="TilePond" parent="World/CellsSystem" unique_id=351429902 instance=ExtResource("7_6wevv")]
 position = Vector2(368, 736)
 demand_for_unlock = ExtResource("12_6u1mn")
-left_border = null
 up_border = 2
 right_border = 2
 down_border = 2
@@ -113,8 +110,15 @@ down_border = 2
 
 [node name="TileForest" parent="World/CellsSystem" unique_id=976141177 instance=ExtResource("17_6u1mn")]
 position = Vector2(1104, 736)
+demand_for_unlock = ExtResource("12_k6f3i")
 left_border = 2
 up_border = 2
+
+[node name="Tile2" parent="World/CellsSystem" unique_id=105468340 instance=ExtResource("4_pu3yx")]
+position = Vector2(0, 1104)
+demand_for_unlock = ExtResource("12_k6f3i")
+up_border = 2
+right_border = 2
 
 [node name="TileUnlock1" parent="World/CellsSystem" unique_id=1732918086 instance=ExtResource("15_bcnxi")]
 position = Vector2(368, 1112)
@@ -125,7 +129,7 @@ right_border = 2
 
 [node name="TileLavaLake2" parent="World/CellsSystem" unique_id=1427897426 instance=ExtResource("12_si52b")]
 position = Vector2(736, 1104)
-demand_for_unlock = ExtResource("9_bcnxi")
+demand_for_unlock = ExtResource("12_k6f3i")
 up_border = 2
 right_border = 2
 
@@ -147,7 +151,7 @@ metadata/_edit_lock_ = true
 
 [node name="Player" parent="World" unique_id=251603508 node_paths=PackedStringArray("cells_system", "spawn_point", "resource_manager") instance=ExtResource("1_w2twt")]
 y_sort_enabled = false
-position = Vector2(736, 368)
+position = Vector2(737, 405)
 cells_system = NodePath("../CellsSystem")
 spawn_point = NodePath("../CellsSystem/HubTile/SpawnPoint")
 resource_manager = NodePath("../../ResourceManager")

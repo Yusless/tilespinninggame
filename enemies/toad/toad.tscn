@@ -1,13 +1,15 @@
 [gd_scene format=3 uid="uid://cqo0fhog3v5km"]
 
 [ext_resource type="PackedScene" uid="uid://hqexdlr6q77f" path="res://enemies/enemy.tscn" id="1_1i4j2"]
-[ext_resource type="Script" uid="uid://deyxkpx5mv5l6" path="res://enemies/toad.gd" id="2_ebqlv"]
-[ext_resource type="Texture2D" uid="uid://bx0gj8p88grts" path="res://enemies/toad.png" id="2_wuusq"]
+[ext_resource type="Script" uid="uid://deyxkpx5mv5l6" path="res://enemies/toad/toad.gd" id="2_ebqlv"]
+[ext_resource type="Texture2D" uid="uid://bx0gj8p88grts" path="res://enemies/toad/toad.png" id="2_wuusq"]
 [ext_resource type="Resource" uid="uid://cu42um0n8tj08" path="res://natural_resources/lava_core_resource.tres" id="3_74qte"]
-[ext_resource type="AudioStream" uid="uid://dirf287ss5bmm" path="res://enemies/toad_jump_1.wav" id="5_577yf"]
-[ext_resource type="AudioStream" uid="uid://ce076c6qs81kg" path="res://enemies/toad_land_1.wav" id="5_wuusq"]
-[ext_resource type="AudioStream" uid="uid://bff6tk6latel1" path="res://enemies/toad_land_2.wav" id="6_74qte"]
+[ext_resource type="AudioStream" uid="uid://dirf287ss5bmm" path="res://enemies/toad/toad_jump_1.wav" id="5_577yf"]
+[ext_resource type="AudioStream" uid="uid://ce076c6qs81kg" path="res://enemies/toad/toad_land_1.wav" id="5_wuusq"]
 [ext_resource type="Texture2D" uid="uid://cj1t67qxwaqic" path="res://enemies/toad-lava.png" id="6_rm2jj"]
+[ext_resource type="AudioStream" uid="uid://di2jrxq2dx3yx" path="res://enemies/toad/toad_jump_3.wav" id="8_7xus4"]
+[ext_resource type="AudioStream" uid="uid://bfqwaadewtqxk" path="res://enemies/toad/toad_land_3.wav" id="9_0w6sr"]
+[ext_resource type="AudioStream" uid="uid://7ruhu62t1q1j" path="res://enemies/toad/toad_jump-land_3-is_2_but_equalized_properly.wav" id="10_cu176"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w808d"]
 atlas = ExtResource("2_wuusq")
@@ -189,24 +191,31 @@ stream_0/stream = ExtResource("5_wuusq")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_kg37j"]
 random_pitch = 1.0174797
-streams_count = 1
+streams_count = 2
 stream_0/stream = ExtResource("5_577yf")
+stream_1/stream = ExtResource("8_7xus4")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_rm2jj"]
 random_pitch = 1.0174797
 streams_count = 1
-stream_0/stream = ExtResource("6_74qte")
+stream_0/stream = ExtResource("9_0w6sr")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_g8ftt"]
+random_pitch = 1.0174797
+streams_count = 1
+stream_0/stream = ExtResource("10_cu176")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v4clq"]
 size = Vector2(24, 24)
 
-[node name="Toad" unique_id=1894793058 node_paths=PackedStringArray("sprite_default", "sprite_lava", "croak_jump", "croak_land") instance=ExtResource("1_1i4j2")]
+[node name="Toad" unique_id=1894793058 node_paths=PackedStringArray("sprite_default", "sprite_lava", "croak_jump", "croak_land", "croak_attack") instance=ExtResource("1_1i4j2")]
 script = ExtResource("2_ebqlv")
 sprite_default = NodePath("Sprite")
 sprite_lava = NodePath("Sprite/SpriteLava")
 croak_jump = NodePath("CroakJump")
 croak_land = NodePath("CroakLand")
 lava_core_res = ExtResource("3_74qte")
+croak_attack = NodePath("CroakAttack")
 step_distance = 120.0
 rest_time = 0.6
 attack_distance = 96.0
@@ -228,11 +237,18 @@ stream = SubResource("AudioStreamRandomizer_v4clq")
 
 [node name="CroakJump" type="AudioStreamPlayer2D" parent="." index="15" unique_id=1099775834]
 stream = SubResource("AudioStreamRandomizer_kg37j")
+max_distance = 384.0
 
 [node name="CroakLand" type="AudioStreamPlayer2D" parent="." index="16" unique_id=1707833909]
 stream = SubResource("AudioStreamRandomizer_rm2jj")
+max_distance = 384.0
 
-[node name="DragonflyConsumer" type="Area2D" parent="." index="17" unique_id=1700680851]
+[node name="CroakAttack" type="AudioStreamPlayer2D" parent="." index="17" unique_id=35460209]
+stream = SubResource("AudioStreamRandomizer_g8ftt")
+pitch_scale = 1.4
+max_distance = 384.0
+
+[node name="DragonflyConsumer" type="Area2D" parent="." index="18" unique_id=1700680851]
 collision_layer = 0
 collision_mask = 8
 

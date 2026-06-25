@@ -23,3 +23,4 @@ func detract_resource(res: NaturalResource, amount: int):
 func clear():
 	for res in resource_amounts:
 		resource_amounts[res] = 0
+		resource_detracted.emit(res)

@@ -4,20 +4,56 @@ class_name Lighthouse
 signal expedition_finished
 signal expedition_started
 
+@export var base: Sprite2D
+@export var outer_layer: Sprite2D
+@export var interior: Node2D
+@export var spawn_point_interior: Marker2D
+@export var leave_component: InteractionComponent
+@export var expedition_table_interaction: InteractionComponent
+@export var upgrade_table: UpgradeTable
+
+var spin_mode := false
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("start_expedition") and spin_mode:
+		start_expedition()
+		var player = Global.get_player()
+		player.exit_spin_mode()
+
 func _ready() -> void:
 	start_expedition()
+	disable_interior()
+	leave_component.interacted.connect(_on_leave_component_interacted)
+	expedition_table_interaction.interacted.connect(_on_expedition_table_interacted)
 
 func try_to_interact():
 	var player = Global.get_player()
-	if player.state == player.States.INSIDE:
-		player.get_outside()
-		start_expedition()
-	else:
-		player.get_inside()
-		finish_expedition()
+	player.get_inside(spawn_point_interior.global_position)
+	enable_interior()
+
+func enable_interior():
+	outer_layer.hide()
+	interior.show()
+
+func disable_interior():
+	outer_layer.show()
+	interior.hide()
 
 func finish_expedition():
 	expedition_finished.emit()
+	spin_mode = true
 
 func start_expedition():
 	expedition_started.emit()
+	spin_mode = false
+
+func _on_leave_component_interacted():
+	var player = Global.get_player()
+	player.get_outside()
+	disable_interior()
+
+func _on_expedition_table_interacted():
+	if !spin_mode:
+		finish_expedition()
+		var player = Global.get_player()
+		player.enter_spin_mode()

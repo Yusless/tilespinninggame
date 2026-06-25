@@ -1,33 +1,116 @@
 [gd_scene format=3 uid="uid://cjo2i2d6n8tw2"]
 
 [ext_resource type="Script" uid="uid://c8quovgmpg2f6" path="res://tiles/lighthouse.gd" id="1_km4o1"]
-[ext_resource type="Texture2D" uid="uid://b2ombqpddahws" path="res://assets/graphics/tile/lighthouse.png" id="2_kma2a"]
+[ext_resource type="Texture2D" uid="uid://byte17fxgtjgk" path="res://tiles/tile types/lighthouse.png" id="2_kma2a"]
+[ext_resource type="Texture2D" uid="uid://brwyo4phhmm1q" path="res://tiles/working stations/workbench.png" id="3_ijjpf"]
 [ext_resource type="PackedScene" uid="uid://b87baohfr4ygs" path="res://components/interaction_component.tscn" id="3_kma2a"]
+[ext_resource type="PackedScene" uid="uid://1ke2ne5t2n4n" path="res://tiles/working stations/upgrade_table.tscn" id="4_lmt17"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3xd07"]
-size = Vector2(67, 35)
+[sub_resource type="AtlasTexture" id="AtlasTexture_v4clq"]
+atlas = ExtResource("2_kma2a")
+region = Rect2(0, 0, 144, 276)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kg37j"]
+atlas = ExtResource("2_kma2a")
+region = Rect2(144, 0, 144, 276)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hbrul"]
+size = Vector2(12, 42)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f1yoe"]
+size = Vector2(10, 43)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kg37j"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_54bdi"]
+radius = 29.0
+height = 138.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6fhyq"]
-size = Vector2(31, 12)
+size = Vector2(43, 20)
 
-[node name="Lighthouse" type="Node2D" unique_id=1382120843]
+[node name="Lighthouse" type="Node2D" unique_id=1382120843 node_paths=PackedStringArray("base", "outer_layer", "interior", "spawn_point_interior", "leave_component", "expedition_table_interaction", "upgrade_table")]
 z_index = 1
 script = ExtResource("1_km4o1")
+base = NodePath("Base")
+outer_layer = NodePath("OuterLayer")
+interior = NodePath("Interior")
+spawn_point_interior = NodePath("SpawnPointInterior")
+leave_component = NodePath("Interior/LeaveComponent")
+expedition_table_interaction = NodePath("Interior/InteriorCollider/ExpeditionTable/ExpeditionTableInteraction")
+upgrade_table = NodePath("Interior/UpgradeTable")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1662788210]
-position = Vector2(0, 108)
-texture = ExtResource("2_kma2a")
+[node name="Base" type="Sprite2D" parent="." unique_id=1662788210]
+position = Vector2(0, 1)
+texture = SubResource("AtlasTexture_v4clq")
 offset = Vector2(0, -106)
 
+[node name="OuterLayer" type="Sprite2D" parent="." unique_id=1057670920]
+visible = false
+position = Vector2(0, 1)
+texture = SubResource("AtlasTexture_kg37j")
+offset = Vector2(0, -106)
+
+[node name="Interior" type="Node2D" parent="." unique_id=1724252881]
+position = Vector2(0, 14)
+
+[node name="UpgradeTable" parent="Interior" unique_id=1508140244 instance=ExtResource("4_lmt17")]
+position = Vector2(-37, -181)
+
+[node name="InteriorCollider" type="StaticBody2D" parent="Interior" unique_id=1318957716]
+position = Vector2(0, -168)
+
+[node name="ExpeditionTable" type="Node2D" parent="Interior/InteriorCollider" unique_id=218060126]
+position = Vector2(53, -14)
+
+[node name="Workbench" type="Sprite2D" parent="Interior/InteriorCollider/ExpeditionTable" unique_id=128763439]
+modulate = Color(0.54839486, 1.506189, 1.5565991, 1)
+position = Vector2(-1, -3)
+rotation = -1.5707964
+texture = ExtResource("3_ijjpf")
+
+[node name="ExpeditionTableInteraction" parent="Interior/InteriorCollider/ExpeditionTable" unique_id=522060589 instance=ExtResource("3_kma2a")]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interior/InteriorCollider/ExpeditionTable/ExpeditionTableInteraction" unique_id=249549584]
+position = Vector2(-3, 0)
+shape = SubResource("RectangleShape2D_hbrul")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Interior/InteriorCollider/ExpeditionTable" unique_id=420674643]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interior/InteriorCollider/ExpeditionTable/StaticBody2D" unique_id=655458769]
+position = Vector2(0, -3.5)
+shape = SubResource("RectangleShape2D_f1yoe")
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Interior/InteriorCollider" unique_id=547049377]
+polygon = PackedVector2Array(82, 0, 63, 5, 59, 11, 39, 20, 0, 25, -47, 20, -68, 6, -63, -8, -30, -15, -2, -18, 29, -16, 56, -8, 63, 2, 83, -1, 1, -42, -93, -6, -45, 34, 52, 33, 80, 8)
+
+[node name="LeaveComponent" parent="Interior" unique_id=605820382 instance=ExtResource("3_kma2a")]
+position = Vector2(-7, -151)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interior/LeaveComponent" unique_id=429323970]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_kg37j")
+
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=783042237]
+position = Vector2(0, -106)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1456147397]
-position = Vector2(-4, 116)
-shape = SubResource("RectangleShape2D_3xd07")
+position = Vector2(-4, 96)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_54bdi")
 
-[node name="InteractionComponent" parent="." unique_id=522060589 node_paths=PackedStringArray("collision") instance=ExtResource("3_kma2a")]
+[node name="InteractionComponent" parent="." unique_id=1693640870 node_paths=PackedStringArray("collision") instance=ExtResource("3_kma2a")]
+position = Vector2(0, -106)
 collision = NodePath("CollisionShape2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionComponent" unique_id=1679411096]
-position = Vector2(-2.5, 134)
+position = Vector2(0, 122)
 shape = SubResource("RectangleShape2D_6fhyq")
+
+[node name="SpawnPointInterior" type="Marker2D" parent="." unique_id=1578638997]
+position = Vector2(2, -138)
+
+[node name="SpawnPointOutside" type="Marker2D" parent="." unique_id=300513277]
+position = Vector2(0, 26)

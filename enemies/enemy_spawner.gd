@@ -19,6 +19,7 @@ var active := false
 var enemies: Array[Enemy] = []
 
 var points_of_interest: Array[Vector2] = []
+var point_of_interest_override: Vector2
 
 func _ready() -> void:
 	if !Engine.is_editor_hint() and active:
@@ -84,9 +85,10 @@ func deactivate():
 	spawn_timer.stop()
 
 func activate():
-	determine_points_of_interest()
 	active = true
 	spawn_timer.start()
+	await NavigationServer2D.map_changed
+	determine_points_of_interest()
 
 func reset():
 	while enemies:

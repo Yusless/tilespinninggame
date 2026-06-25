@@ -1,7 +1,9 @@
 [gd_scene format=4 uid="uid://r27t1jiq2hxy"]
 
 [ext_resource type="PackedScene" uid="uid://dhfxsclatflk7" path="res://tiles/tile types/tile.tscn" id="1_fqisa"]
+
 [ext_resource type="Script" uid="uid://beelorrv72cft" path="res://tiles/tile types/tile_lava_lake.gd" id="2_mup4n"]
+
 [ext_resource type="TileSet" uid="uid://2s1f4ntvo15j" path="res://assets/graphics/tile/tile_set_grass.tres" id="2_tpdxx"]
 [ext_resource type="PackedScene" uid="uid://d0o7kbchwru1o" path="res://enemies/enemy_spawner.tscn" id="3_mup4n"]
 [ext_resource type="PackedScene" uid="uid://bet52db755cmm" path="res://enemies/dragonfly/dragonfly.tscn" id="4_tpdxx"]
