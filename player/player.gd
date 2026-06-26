@@ -20,9 +20,10 @@ const STEP_FRAMES := [1, 4]
 @export var max_speed := 250.0
 @export var max_camera_speed := 750.0
 @export var dash_speed := 700.0
-@export var max_dashes := 100
+@export var max_dashes := 2
 
 @export_subgroup("Deps")
+@export var settings: MarginContainer
 @export var check_for_dead_area: Timer
 @export var dash_timer: Timer
 @export var dash_cooldown: Timer
@@ -41,7 +42,7 @@ const STEP_FRAMES := [1, 4]
 @export var step_sound_2: AudioStreamPlayer2D
 @export var visual_boomerang: Sprite2D
 
-var has_dash = true
+var has_dash = false
 var can_dash = true
 var dash_direction = Vector2()
 var life_areas = []
@@ -49,6 +50,8 @@ var dash_count = 0
 
 var temp_pos
 var last_inside_pos := Vector2.ZERO
+
+var in_settings = false
 
 var last_direction := Vector2.ONE
 var state := States.IDLE
@@ -62,7 +65,7 @@ func _ready() -> void:
 	spawn()
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("attack") and state not in [States.DEAD, States.INSIDE]:
+	if event.is_action_pressed("attack") and state not in [States.DEAD, States.INSIDE, States.STUNNED]:
 		if !boomerang.is_launched:
 			var dir_to_mouse := global_position.direction_to(get_global_mouse_position())
 			boomerang.launch(global_position, dir_to_mouse.angle(), velocity)
@@ -78,7 +81,17 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("zoom in"):
 		if camera.zoom < Vector2(1,1):
 			camera.zoom = camera.zoom + Vector2(0.05,0.05)
-		
+	if event.is_action_pressed("settings"):
+		if !in_settings:
+			state = States.STUNNED
+			stun_timer.start(99999)
+			settings.show()
+			in_settings = true
+		else:
+			settings.hide()
+			stun_timer.start(0.4)
+			state = States.IDLE
+			in_settings = false
 
 func spawn():
 	health_component.reset()
@@ -128,7 +141,6 @@ func simple_state_machine(delta):
 		States.DEAD:
 			pass
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	simple_state_machine(delta)
 	animate()

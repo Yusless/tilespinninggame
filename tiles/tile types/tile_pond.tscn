@@ -22,3 +22,4 @@ tile_set = ExtResource("2_erkfj")
 
 [node name="EnemySpawner" parent="TileContents" parent_id_path=PackedInt32Array(1337787306) index="4" unique_id=92675540 instance=ExtResource("3_2lykn")]
 spawn_interval = 3.0
+enemy_limit = 4
