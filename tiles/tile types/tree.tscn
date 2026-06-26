@@ -68,6 +68,9 @@ resource = ExtResource("2_55dlt")
 amount_max = 1
 collectable_amount = 2
 
+[node name="HealthComponent" parent="." index="0" unique_id=992880836]
+max_health = 5
+
 [node name="HurtboxComponent" parent="." index="1" unique_id=1985610439 groups=["Bouncers"]]
 
 [node name="Sprite" parent="." index="2" unique_id=262051222]

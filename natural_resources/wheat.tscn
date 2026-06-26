@@ -84,3 +84,4 @@ position = Vector2(-1, -3)
 
 [node name="HarvestSound" parent="." index="5" unique_id=581267007]
 stream = SubResource("AudioStreamRandomizer_skmqv")
+bus = &"sfx"

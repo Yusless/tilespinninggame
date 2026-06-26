@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://bic5v8bsj303"]
+[gd_scene format=4 uid="uid://cgco3trm2p16g"]
 
 [ext_resource type="Script" uid="uid://hhgxf43xrpcn" path="res://scenes/upgrade_manager.gd" id="1_7nt27"]
 [ext_resource type="PackedScene" uid="uid://c5bhx5utsovbg" path="res://player/player.tscn" id="1_w2twt"]
@@ -37,6 +37,7 @@
 [ext_resource type="Script" uid="uid://bdw36dw6y1sog" path="res://hud/prompt_unlock_new_tiles.gd" id="30_02d50"]
 [ext_resource type="TileSet" uid="uid://qk1sv4xryi8j" path="res://tiles/wa_ter.tres" id="30_onjth"]
 [ext_resource type="Resource" uid="uid://cybgnstf536l5" path="res://natural_resources/demands/demand_6.tres" id="31_3mjum"]
+[ext_resource type="Script" uid="uid://pho18kmc0uy2" path="res://scenes/master_volume_slider.gd" id="33_xa0eo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v4clq"]
 atlas = ExtResource("25_kkokr")
@@ -95,7 +96,8 @@ environment_manager = NodePath("../EnvironmentManager")
 player = NodePath("../Player")
 
 [node name="Tile9" parent="World/CellsSystem" unique_id=1779673374 instance=ExtResource("21_kkokr")]
-position = Vector2(1472, 1840)
+position = Vector2(736, 2208)
+demand_for_unlock = ExtResource("16_xa0eo")
 left_border = 2
 up_border = 2
 
@@ -240,9 +242,10 @@ demand_for_unlock = ExtResource("31_3mjum")
 left_border = 2
 down_border = 2
 
-[node name="Player" parent="World" unique_id=251603508 node_paths=PackedStringArray("cells_system", "spawn_point", "resource_manager") instance=ExtResource("1_w2twt")]
+[node name="Player" parent="World" unique_id=251603508 node_paths=PackedStringArray("settings", "cells_system", "spawn_point", "resource_manager") instance=ExtResource("1_w2twt")]
 y_sort_enabled = false
 position = Vector2(1083, 1140)
+settings = NodePath("../../GUILayer/MarginContainer")
 cells_system = NodePath("../CellsSystem")
 spawn_point = NodePath("../CellsSystem/HubTile/SpawnPoint")
 resource_manager = NodePath("../../ResourceManager")
@@ -270,6 +273,55 @@ metadata/_edit_lock_ = true
 mouse_filter = 1
 hub_tile = NodePath("../../World/CellsSystem/HubTile")
 metadata/_edit_lock_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="GUILayer" unique_id=765049422]
+visible = false
+offset_left = 16.0
+offset_top = 104.0
+offset_right = 104.0
+offset_bottom = 232.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GUILayer/MarginContainer" unique_id=60791673]
+layout_mode = 2
+
+[node name="Master" type="RichTextLabel" parent="GUILayer/MarginContainer/VBoxContainer" unique_id=2123827251]
+layout_mode = 2
+text = "Master Volume
+"
+fit_content = true
+
+[node name="Master Volume Slider" type="HSlider" parent="GUILayer/MarginContainer/VBoxContainer" unique_id=1826797861]
+layout_mode = 2
+max_value = 1.0
+step = 0.001
+script = ExtResource("33_xa0eo")
+bus_name = "Master"
+
+[node name="Music" type="RichTextLabel" parent="GUILayer/MarginContainer/VBoxContainer" unique_id=842789179]
+layout_mode = 2
+text = "Music Volume
+"
+fit_content = true
+
+[node name="Music Volume Slider" type="HSlider" parent="GUILayer/MarginContainer/VBoxContainer" unique_id=793973070]
+layout_mode = 2
+max_value = 1.0
+step = 0.001
+script = ExtResource("33_xa0eo")
+bus_name = "Music"
+
+[node name="SFX" type="RichTextLabel" parent="GUILayer/MarginContainer/VBoxContainer" unique_id=1479919122]
+layout_mode = 2
+text = "SFX Volume
+"
+fit_content = true
+
+[node name="SFX Volume Slider" type="HSlider" parent="GUILayer/MarginContainer/VBoxContainer" unique_id=2134207327]
+layout_mode = 2
+max_value = 1.0
+step = 0.001
+script = ExtResource("33_xa0eo")
+bus_name = "sfx"
 
 [node name="PromptDisplayer" parent="." unique_id=24052782 instance=ExtResource("26_6p3nn")]
 position = Vector2(979, 1353)

@@ -89,3 +89,4 @@ shape = SubResource("RectangleShape2D_3xd07")
 
 [node name="HarvestSound" type="AudioStreamPlayer2D" parent="." unique_id=581267007]
 max_distance = 384.0
+bus = &"sfx"

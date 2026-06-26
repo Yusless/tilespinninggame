@@ -248,20 +248,24 @@ bus = &"Master"
 [node name="CroakJump" type="AudioStreamPlayer2D" parent="." index="15" unique_id=1099775834]
 stream = SubResource("AudioStreamRandomizer_kg37j")
 max_distance = 384.0
+bus = &"sfx"
 
 [node name="CroakLand" type="AudioStreamPlayer2D" parent="." index="16" unique_id=1707833909]
 stream = SubResource("AudioStreamRandomizer_rm2jj")
 max_distance = 384.0
+bus = &"sfx"
 
 [node name="CroakAttack" type="AudioStreamPlayer2D" parent="." index="17" unique_id=35460209]
 stream = SubResource("AudioStreamRandomizer_g8ftt")
 max_distance = 384.0
+bus = &"sfx"
 
 [node name="EatSound" type="AudioStreamPlayer2D" parent="." index="18" unique_id=539806235]
 stream = SubResource("AudioStreamRandomizer_cu176")
 volume_db = 5.0
 pitch_scale = 1.4
 max_distance = 384.0
+bus = &"sfx"
 
 [node name="DragonflyConsumer" type="Area2D" parent="." index="19" unique_id=1700680851]
 collision_layer = 0
