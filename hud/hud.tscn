@@ -2,13 +2,39 @@
 
 [ext_resource type="PackedScene" uid="uid://cqe4c2cnhc5f5" path="res://hud/resource_counter.tscn" id="1_6ca3a"]
 [ext_resource type="Theme" uid="uid://cyr5vfnkvpaly" path="res://hud/main_theme.tres" id="1_w8tcp"]
+[ext_resource type="Script" uid="uid://cwbun2l08lq6r" path="res://hud/hud.gd" id="2_hwufu"]
 [ext_resource type="Script" uid="uid://d1dgpsgkkpt23" path="res://hud/healthbar.gd" id="3_318vg"]
 [ext_resource type="Resource" uid="uid://dh2vwv3hcj4gu" path="res://natural_resources/coal_resource.tres" id="3_svhta"]
 [ext_resource type="Resource" uid="uid://dn0snts7urilu" path="res://natural_resources/wood_resource.tres" id="4_fjv1a"]
 [ext_resource type="PackedScene" uid="uid://cui53jrjjjef4" path="res://hud/heart_container.tscn" id="4_w8tcp"]
 [ext_resource type="Resource" uid="uid://cu42um0n8tj08" path="res://natural_resources/lava_core_resource.tres" id="5_0ivg5"]
+[ext_resource type="Texture2D" uid="uid://d2ccavou661qm" path="res://hud/button_prompts.png" id="5_mq7b8"]
+[ext_resource type="Script" uid="uid://cw81is6xlwe1c" path="res://hud/resource_demander.gd" id="9_mq7b8"]
+[ext_resource type="PackedScene" uid="uid://h8s01ufejtin" path="res://hud/resource_number.tscn" id="10_jvpmi"]
+[ext_resource type="Resource" uid="uid://c3xr3hu8jlinu" path="res://natural_resources/wheat_resource.tres" id="11_t2ad4"]
+[ext_resource type="Texture2D" uid="uid://ccks4rl8s3h2l" path="res://natural_resources/resource_icons.png" id="12_0jxvb"]
 
-[node name="HUD" type="Control" unique_id=1161228326]
+[sub_resource type="AtlasTexture" id="AtlasTexture_kg37j"]
+atlas = ExtResource("5_mq7b8")
+region = Rect2(48, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jvpmi"]
+atlas = ExtResource("5_mq7b8")
+region = Rect2(0, 16, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w08kg"]
+atlas = ExtResource("12_0jxvb")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oj44l"]
+atlas = ExtResource("12_0jxvb")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8dehk"]
+atlas = ExtResource("12_0jxvb")
+region = Rect2(48, 0, 16, 16)
+
+[node name="HUD" type="Control" unique_id=1161228326 node_paths=PackedStringArray("resource_goal", "spin_mode_guide")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -16,6 +42,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_w8tcp")
+script = ExtResource("2_hwufu")
+resource_goal = NodePath("MarginContainer/HBoxContainer/VBoxContainer2/ResourceGoal")
+spin_mode_guide = NodePath("MarginContainer/HBoxContainer/VBoxContainer/SpinModeGuide")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1989892583]
 layout_mode = 1
@@ -29,29 +58,149 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="ResourceCounters" type="VBoxContainer" parent="MarginContainer" unique_id=1200879334]
-layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 0
-
-[node name="WheatCounter" parent="MarginContainer/ResourceCounters" unique_id=522965764 instance=ExtResource("1_6ca3a")]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1935259580]
 layout_mode = 2
 
-[node name="WheatCounter2" parent="MarginContainer/ResourceCounters" unique_id=1132226209 instance=ExtResource("1_6ca3a")]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=1297034454]
 layout_mode = 2
-resource = ExtResource("3_svhta")
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 4.76
 
-[node name="WheatCounter3" parent="MarginContainer/ResourceCounters" unique_id=166755699 instance=ExtResource("1_6ca3a")]
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=2008317800]
 layout_mode = 2
-resource = ExtResource("4_fjv1a")
+size_flags_horizontal = 0
 
-[node name="WheatCounter4" parent="MarginContainer/ResourceCounters" unique_id=18565563 instance=ExtResource("1_6ca3a")]
-layout_mode = 2
-resource = ExtResource("5_0ivg5")
-
-[node name="Healthbar" type="HBoxContainer" parent="MarginContainer" unique_id=1486487844]
+[node name="Healthbar" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/PanelContainer" unique_id=1486487844]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 script = ExtResource("3_318vg")
 heart_container_scene = ExtResource("4_w8tcp")
+
+[node name="SpinModeGuide" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=418920463]
+layout_mode = 2
+size_flags_vertical = 10
+
+[node name="PanelContainer2" type="PanelContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/SpinModeGuide" unique_id=1774190575]
+layout_mode = 2
+size_flags_vertical = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/SpinModeGuide/PanelContainer2" unique_id=243179809]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer/SpinModeGuide/PanelContainer2/HBoxContainer" unique_id=354373270]
+layout_mode = 2
+texture = SubResource("AtlasTexture_kg37j")
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/SpinModeGuide/PanelContainer2/HBoxContainer" unique_id=829787889]
+layout_mode = 2
+text = "Move Camera"
+
+[node name="PanelContainer3" type="PanelContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/SpinModeGuide" unique_id=2140959192]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/SpinModeGuide/PanelContainer3" unique_id=1231382267]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer/SpinModeGuide/PanelContainer3/HBoxContainer" unique_id=503998421]
+layout_mode = 2
+texture = SubResource("AtlasTexture_jvpmi")
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/SpinModeGuide/PanelContainer3/HBoxContainer" unique_id=591928501]
+layout_mode = 2
+text = "Start expedition"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=740410843]
+layout_mode = 2
+size_flags_horizontal = 10
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2" unique_id=1575358488]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+
+[node name="ResourceCounters" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2/PanelContainer" unique_id=1200879334]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+
+[node name="WheatCounter" parent="MarginContainer/HBoxContainer/VBoxContainer2/PanelContainer/ResourceCounters" unique_id=766597130 instance=ExtResource("1_6ca3a")]
+layout_mode = 2
+
+[node name="WheatCounter2" parent="MarginContainer/HBoxContainer/VBoxContainer2/PanelContainer/ResourceCounters" unique_id=1132226209 instance=ExtResource("1_6ca3a")]
+layout_mode = 2
+resource = ExtResource("3_svhta")
+
+[node name="WheatCounter3" parent="MarginContainer/HBoxContainer/VBoxContainer2/PanelContainer/ResourceCounters" unique_id=166755699 instance=ExtResource("1_6ca3a")]
+layout_mode = 2
+resource = ExtResource("4_fjv1a")
+
+[node name="WheatCounter4" parent="MarginContainer/HBoxContainer/VBoxContainer2/PanelContainer/ResourceCounters" unique_id=18565563 instance=ExtResource("1_6ca3a")]
+layout_mode = 2
+resource = ExtResource("5_0ivg5")
+
+[node name="ResourceGoal" type="PanelContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2" unique_id=1480970487 node_paths=PackedStringArray("number_root")]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 10
+script = ExtResource("9_mq7b8")
+number_root = NodePath("VBoxContainer/NumberRoot")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2/ResourceGoal" unique_id=706030893]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2/ResourceGoal/VBoxContainer" unique_id=107270010]
+layout_mode = 2
+text = "Demand:"
+
+[node name="NumberRoot" type="GridContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2/ResourceGoal/VBoxContainer" unique_id=1407505012]
+layout_mode = 2
+columns = 3
+
+[node name="WheatNumber" parent="MarginContainer/HBoxContainer/VBoxContainer2/ResourceGoal/VBoxContainer/NumberRoot" unique_id=522965764 instance=ExtResource("10_jvpmi")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+resource = ExtResource("11_t2ad4")
+
+[node name="Icon" parent="MarginContainer/HBoxContainer/VBoxContainer2/ResourceGoal/VBoxContainer/NumberRoot/WheatNumber" index="0" unique_id=1770491988]
+texture = SubResource("AtlasTexture_w08kg")
+
+[node name="Counter" parent="MarginContainer/HBoxContainer/VBoxContainer2/ResourceGoal/VBoxContainer/NumberRoot/WheatNumber" index="1" unique_id=761771920]
+text = "1"
+
+[node name="WoodNumber" parent="MarginContainer/HBoxContainer/VBoxContainer2/ResourceGoal/VBoxContainer/NumberRoot" unique_id=614523010 instance=ExtResource("10_jvpmi")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+resource = ExtResource("4_fjv1a")
+
+[node name="Icon" parent="MarginContainer/HBoxContainer/VBoxContainer2/ResourceGoal/VBoxContainer/NumberRoot/WoodNumber" index="0" unique_id=1770491988]
+texture = SubResource("AtlasTexture_oj44l")
+
+[node name="Counter" parent="MarginContainer/HBoxContainer/VBoxContainer2/ResourceGoal/VBoxContainer/NumberRoot/WoodNumber" index="1" unique_id=761771920]
+text = "1"
+
+[node name="CoalCounter" parent="MarginContainer/HBoxContainer/VBoxContainer2/ResourceGoal/VBoxContainer/NumberRoot" unique_id=1082507715 instance=ExtResource("10_jvpmi")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+resource = ExtResource("3_svhta")
+
+[node name="CoreNumber" parent="MarginContainer/HBoxContainer/VBoxContainer2/ResourceGoal/VBoxContainer/NumberRoot" unique_id=1011424065 instance=ExtResource("10_jvpmi")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+resource = ExtResource("5_0ivg5")
+
+[node name="Icon" parent="MarginContainer/HBoxContainer/VBoxContainer2/ResourceGoal/VBoxContainer/NumberRoot/CoreNumber" index="0" unique_id=1770491988]
+texture = SubResource("AtlasTexture_8dehk")
+
+[node name="Counter" parent="MarginContainer/HBoxContainer/VBoxContainer2/ResourceGoal/VBoxContainer/NumberRoot/CoreNumber" index="1" unique_id=761771920]
+text = "1"
+
+[editable path="MarginContainer/HBoxContainer/VBoxContainer2/ResourceGoal/VBoxContainer/NumberRoot/WheatNumber"]
+[editable path="MarginContainer/HBoxContainer/VBoxContainer2/ResourceGoal/VBoxContainer/NumberRoot/WoodNumber"]
+[editable path="MarginContainer/HBoxContainer/VBoxContainer2/ResourceGoal/VBoxContainer/NumberRoot/CoreNumber"]

@@ -6,7 +6,7 @@
 
 [node name="TileHub" unique_id=1779673374 node_paths=PackedStringArray("lighthouse") instance=ExtResource("1_4r23m")]
 script = ExtResource("2_wytmi")
-lighthouse = NodePath("Lighthouse")
+lighthouse = NodePath("TileContents/Lighthouse")
 tile_type = 0
 
-[node name="Lighthouse" parent="." index="3" unique_id=1382120843 instance=ExtResource("2_5xtjl")]
+[node name="Lighthouse" parent="TileContents" parent_id_path=PackedInt32Array(1337787306) index="3" unique_id=1382120843 instance=ExtResource("2_5xtjl")]

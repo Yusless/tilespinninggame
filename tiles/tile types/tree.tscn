@@ -17,10 +17,13 @@ stream_1/stream = ExtResource("6_k8l2c")
 stream_2/stream = ExtResource("7_or2vh")
 
 [node name="Tree" unique_id=173354698 instance=ExtResource("1_6cgcp")]
+z_index = 1
 script = ExtResource("1_blsi1")
 coal_res = ExtResource("2_8dehk")
 wood_res = ExtResource("2_55dlt")
 resource = ExtResource("2_55dlt")
+amount_max = 1
+collectable_amount = 2
 
 [node name="HurtboxComponent" parent="." index="1" unique_id=1985610439 groups=["Bouncers"]]
 
