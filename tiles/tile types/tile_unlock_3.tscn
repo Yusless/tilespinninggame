@@ -9,5 +9,5 @@ script = ExtResource("2_qsg63")
 working_station = NodePath("TileContents/Loom")
 
 [node name="Loom" parent="TileContents" parent_id_path=PackedInt32Array(1337787306) index="3" unique_id=1337578460 instance=ExtResource("2_xvyen")]
-z_index = 1
+z_index = 2
 position = Vector2(0, -1)

@@ -10,6 +10,7 @@ signal healed(amount: int)
 
 var health: int
 var dead := false
+var can_get_hit := false
 
 func _ready() -> void:
 	health = max_health

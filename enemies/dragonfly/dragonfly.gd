@@ -4,6 +4,7 @@ class_name Dragonfly
 @export var fireball_scene: PackedScene
 @export var fireball_origin: Marker2D
 @export var fly_sound: AudioStreamPlayer2D
+@export var attack_sound: AudioStreamPlayer2D
 
 func _ready() -> void:
 	super()
@@ -18,6 +19,7 @@ func shoot_fireball():
 func attack():
 	super()
 	attacking = true
+	attack_sound.play()
 
 
 func _on_sprite_frame_changed() -> void:

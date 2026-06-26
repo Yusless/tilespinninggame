@@ -14,6 +14,7 @@ signal exited
 @export var expedition_table_interaction: InteractionComponent
 @export var upgrade_table: UpgradeTable
 @export var interior_collider: StaticBody2D
+@export var door_sound: AudioStreamPlayer2D
 
 @export var needs_collision_disabled: Array[StaticBody2D]
 
@@ -42,6 +43,7 @@ func enable_interior():
 	for collider in needs_collision_disabled:
 		collider.process_mode = Node.PROCESS_MODE_INHERIT
 	entered.emit()
+	door_sound.play()
 
 func disable_interior():
 	outer_layer.show()
@@ -49,13 +51,15 @@ func disable_interior():
 	for collider in needs_collision_disabled:
 		collider.process_mode = Node.PROCESS_MODE_DISABLED
 	exited.emit()
+	door_sound.play()
 
 func finish_expedition():
 	var player = Global.get_player()
 	expedition_finished.emit()
 	spin_mode = true
 	upgrade_table.res_mgr.clear()
-	disable_interior()
+	outer_layer.show()
+	interior.hide()
 	player.hide()
 	player.health_component.reset()
 
@@ -77,3 +81,16 @@ func _on_expedition_table_interacted():
 		finish_expedition()
 		var player = Global.get_player()
 		player.enter_spin_mode()
+
+func _on_transparency_area_body_entered(body: Node2D) -> void:
+	if !interior.visible and !spin_mode:
+		var tween := create_tween().set_parallel()
+		tween.tween_property(outer_layer, "modulate", Color(1.0, 1.0, 1.0, 0.2), 0.2)
+		tween.tween_property(base, "modulate", Color(1.0, 1.0, 1.0, 0.2), 0.2)
+
+
+func _on_transparency_area_body_exited(body: Node2D) -> void:
+	if !interior.visible and !spin_mode:
+		var tween := create_tween().set_parallel()
+		tween.tween_property(outer_layer, "modulate", Color.WHITE, 0.2)
+		tween.tween_property(base, "modulate", Color.WHITE, 0.2)

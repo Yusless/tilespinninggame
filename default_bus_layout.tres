@@ -1,22 +1,9 @@
 [gd_resource type="AudioBusLayout" format=3 uid="uid://c6410p8k5ld83"]
 
 [resource]
-<<<<<<< HEAD
-bus/1/name = &"music"
-=======
 bus/1/name = &"Music"
->>>>>>> master
 bus/1/solo = false
 bus/1/mute = false
 bus/1/bypass_fx = false
 bus/1/volume_db = 0.0
 bus/1/send = &"Master"
-<<<<<<< HEAD
-bus/2/name = &"sfx"
-bus/2/solo = false
-bus/2/mute = false
-bus/2/bypass_fx = false
-bus/2/volume_db = 0.0694828
-bus/2/send = &"Master"
-=======
->>>>>>> master
