@@ -26,12 +26,20 @@
 [ext_resource type="PackedScene" uid="uid://r27t1jiq2hxy" path="res://tiles/tile types/tile_lava_lake.tscn" id="12_si52b"]
 [ext_resource type="Script" uid="uid://ci8t37q1enmah" path="res://effects/environment_manager.gd" id="13_r6p65"]
 [ext_resource type="PackedScene" uid="uid://ckej6k0mt88cx" path="res://tiles/tile types/tile_forest.tscn" id="17_6u1mn"]
+[ext_resource type="Script" uid="uid://ekfhsugdy8f3" path="res://natural_resources/demand.gd" id="17_lhwp2"]
 [ext_resource type="Resource" uid="uid://c68qftlmflmn2" path="res://natural_resources/demands/toad_unlock.tres" id="19_pgk25"]
 [ext_resource type="PackedScene" uid="uid://cx1brj3xebjm3" path="res://hud/prompt_displayer.tscn" id="26_6p3nn"]
 [ext_resource type="Script" uid="uid://b0g4feb0lnsfe" path="res://hud/prompt_attack.gd" id="27_k67gn"]
 [ext_resource type="Texture2D" uid="uid://d2ccavou661qm" path="res://hud/button_prompts.png" id="28_4bgka"]
 [ext_resource type="Script" uid="uid://cmurhu2ehuhu5" path="res://hud/prompt_end_expedition.gd" id="29_02d50"]
 [ext_resource type="Script" uid="uid://bdw36dw6y1sog" path="res://hud/prompt_unlock_new_tiles.gd" id="30_02d50"]
+
+[sub_resource type="Resource" id="Resource_kkokr"]
+script = ExtResource("17_lhwp2")
+resources_needed = Dictionary[ExtResource("6_18nlu"), int]({
+ExtResource("6_7nt27"): 10
+})
+metadata/_custom_type_script = "uid://ekfhsugdy8f3"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k67gn"]
 atlas = ExtResource("28_4bgka")
@@ -93,6 +101,7 @@ position = Vector2(2, 37)
 
 [node name="Tile" parent="World/CellsSystem" unique_id=1779673374 instance=ExtResource("4_pu3yx")]
 position = Vector2(1104, 736)
+demand_for_unlock = SubResource("Resource_kkokr")
 up_border = 2
 right_border = 2
 
@@ -154,8 +163,8 @@ region_rect = Rect2(0, 0, 5000, 5000)
 metadata/_edit_lock_ = true
 
 [node name="Player" parent="World" unique_id=251603508 node_paths=PackedStringArray("cells_system", "spawn_point", "resource_manager") instance=ExtResource("1_w2twt")]
-y_sort_enabled = false
-position = Vector2(1102, 410)
+z_index = 1
+position = Vector2(1076, 328)
 cells_system = NodePath("../CellsSystem")
 spawn_point = NodePath("../CellsSystem/HubTile/SpawnPoint")
 resource_manager = NodePath("../../ResourceManager")

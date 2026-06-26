@@ -47,14 +47,14 @@ func _ready() -> void:
 	health_component.health_depleted.connect(_on_health_depleted)
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("attack") and state != States.INSIDE:
+	if event.is_action_pressed("attack") and state not in [States.DEAD, States.INSIDE]:
 		if !boomerang.is_launched:
 			var dir_to_mouse := global_position.direction_to(get_global_mouse_position())
 			boomerang.launch(global_position, dir_to_mouse.angle(), velocity)
 		else:
 			boomerang.force_return()
 	
-	if event.is_action_pressed("restart"):
+	if event.is_action_pressed("restart") and state not in [States.DEAD, States.INSIDE]:
 		die()
 
 func spawn():

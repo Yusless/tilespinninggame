@@ -52,6 +52,7 @@ streams_count = 1
 stream_0/stream = ExtResource("5_wtba6")
 
 [node name="Wheat" unique_id=173354698 instance=ExtResource("1_wtba6")]
+z_index = 2
 resource = ExtResource("2_skmqv")
 amount_max = 1
 collectable_amount = 5

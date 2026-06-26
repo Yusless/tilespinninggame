@@ -5,8 +5,48 @@
 [ext_resource type="Resource" uid="uid://dh2vwv3hcj4gu" path="res://natural_resources/coal_resource.tres" id="2_8dehk"]
 [ext_resource type="Resource" uid="uid://dn0snts7urilu" path="res://natural_resources/wood_resource.tres" id="2_55dlt"]
 [ext_resource type="AudioStream" uid="uid://cqutlfpl36ljl" path="res://natural_resources/wood_1.wav" id="5_8dehk"]
+[ext_resource type="Texture2D" uid="uid://b80y0wpbj3biu" path="res://natural_resources/tree.png" id="5_k8l2c"]
 [ext_resource type="AudioStream" uid="uid://cosxvx1haasx8" path="res://natural_resources/wood_2.wav" id="6_k8l2c"]
 [ext_resource type="AudioStream" uid="uid://dd2jwivm1t51j" path="res://natural_resources/wood_3.wav" id="7_or2vh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_or2vh"]
+atlas = ExtResource("5_k8l2c")
+region = Rect2(96, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kqbpe"]
+atlas = ExtResource("5_k8l2c")
+region = Rect2(0, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hvnhx"]
+atlas = ExtResource("5_k8l2c")
+region = Rect2(48, 0, 48, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gm41d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_or2vh")
+}],
+"loop": 1,
+"name": &"burnt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kqbpe")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hvnhx")
+}],
+"loop": 1,
+"name": &"harvested",
+"speed": 5.0
+}]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_blsi1"]
 random_pitch = 1.0174797
@@ -17,7 +57,8 @@ stream_1/stream = ExtResource("6_k8l2c")
 stream_2/stream = ExtResource("7_or2vh")
 
 [node name="Tree" unique_id=173354698 instance=ExtResource("1_6cgcp")]
-z_index = 1
+z_index = 2
+y_sort_enabled = true
 script = ExtResource("1_blsi1")
 coal_res = ExtResource("2_8dehk")
 wood_res = ExtResource("2_55dlt")
@@ -26,6 +67,11 @@ amount_max = 1
 collectable_amount = 2
 
 [node name="HurtboxComponent" parent="." index="1" unique_id=1985610439 groups=["Bouncers"]]
+
+[node name="Sprite" parent="." index="2" unique_id=262051222]
+position = Vector2(0, 2)
+sprite_frames = SubResource("SpriteFrames_gm41d")
+offset = Vector2(0, -25)
 
 [node name="HarvestSound" parent="." index="5" unique_id=581267007]
 stream = SubResource("AudioStreamRandomizer_blsi1")

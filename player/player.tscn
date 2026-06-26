@@ -199,7 +199,6 @@ stream_6/stream = ExtResource("12_c35mf")
 stream_7/stream = ExtResource("13_65viv")
 
 [node name="Player" type="CharacterBody2D" unique_id=251603508 node_paths=PackedStringArray("boomerang", "sprite", "stun_timer", "hurtbox", "animation_player", "health_component", "camera", "step_sound_1", "step_sound_2", "visual_boomerang") groups=["Player"]]
-z_index = 1
 y_sort_enabled = true
 collision_layer = 2
 script = ExtResource("1_g2els")
@@ -223,28 +222,30 @@ metadata/_custom_type_script = "uid://nno1v8gxy1x8"
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=112002694]
 sprite_frames = SubResource("SpriteFrames_3xd07")
 animation = &"idle"
-offset = Vector2(1.5, 0)
+offset = Vector2(1.5, -7)
 
 [node name="VisualBoomerang" type="Sprite2D" parent="Sprite" unique_id=109217399]
 show_behind_parent = true
-position = Vector2(-0.9999999, -2)
+position = Vector2(-1, -8)
 rotation = 1.1282167
 texture = ExtResource("4_kb6p2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1949865156]
-position = Vector2(0, 7)
+position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_qhqgy")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1319108064]
+position = Vector2(-0.5, -7)
 position_smoothing_enabled = true
 position_smoothing_speed = 20.0
 
 [node name="Boomerang" parent="." unique_id=864464630 instance=ExtResource("3_qhqgy")]
 top_level = true
 z_index = 2
-position = Vector2(0, -2)
+position = Vector2(-0.5, -9)
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=1430777681 node_paths=PackedStringArray("health_component")]
+position = Vector2(-0.5, -7)
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("5_qjkh3")
@@ -263,10 +264,12 @@ wait_time = 0.2
 one_shot = true
 
 [node name="StepSound1" type="AudioStreamPlayer2D" parent="." unique_id=763131786]
+position = Vector2(-0.5, -7)
 stream = SubResource("AudioStreamRandomizer_kg37j")
 volume_db = 5.0
 
 [node name="StepSound2" type="AudioStreamPlayer2D" parent="." unique_id=1128527735]
+position = Vector2(-0.5, -7)
 stream = SubResource("AudioStreamRandomizer_kg37j")
 volume_db = 5.0
 

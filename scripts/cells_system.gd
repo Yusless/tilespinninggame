@@ -1,8 +1,8 @@
 extends Node
 
 class_name CellsSystem
-const FIELD_WIDTH = 6
-const FIELD_HEIGHT = 6
+const FIELD_WIDTH = 99
+const FIELD_HEIGHT = 99
 
 var map = []
 
