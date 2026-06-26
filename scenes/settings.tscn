@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://csyjbax0lxw7j"]
 
 [ext_resource type="Script" uid="uid://d3cqc40ifpdnx" path="res://scenes/settings.gd" id="1_5p8wc"]
+[ext_resource type="Script" uid="uid://pho18kmc0uy2" path="res://scenes/master_volume_slider.gd" id="2_r6d6q"]
 
 [node name="Settings" type="Control" unique_id=1949159426]
 layout_mode = 3
@@ -29,6 +30,10 @@ fit_content = true
 
 [node name="Master Volume Slider" type="HSlider" parent="MarginContainer/VBoxContainer" unique_id=1627067043]
 layout_mode = 2
+max_value = 1.0
+step = 0.001
+script = ExtResource("2_r6d6q")
+bus_name = "Master"
 
 [node name="Music" type="RichTextLabel" parent="MarginContainer/VBoxContainer" unique_id=1838366597]
 layout_mode = 2
@@ -38,6 +43,10 @@ fit_content = true
 
 [node name="Music Volume Slider" type="HSlider" parent="MarginContainer/VBoxContainer" unique_id=131569236]
 layout_mode = 2
+max_value = 1.0
+step = 0.001
+script = ExtResource("2_r6d6q")
+bus_name = "music"
 
 [node name="SFX" type="RichTextLabel" parent="MarginContainer/VBoxContainer" unique_id=1891207416]
 layout_mode = 2
@@ -47,6 +56,10 @@ fit_content = true
 
 [node name="SFX Volume Slider" type="HSlider" parent="MarginContainer/VBoxContainer" unique_id=1403767995]
 layout_mode = 2
+max_value = 1.0
+step = 0.001
+script = ExtResource("2_r6d6q")
+bus_name = "sfx"
 
 [node name="Button2" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1264191465]
 layout_mode = 2
