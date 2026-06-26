@@ -7,6 +7,7 @@ class_name Projectile
 @export var destroyed_on_attack := true
 @export var attack_component: AttackComponent
 
+
 var velocity := Vector2.ZERO
 
 func _ready() -> void:
@@ -31,3 +32,7 @@ func _on_expire_timer_timeout() -> void:
 func _on_attack_hit():
 	if destroyed_on_attack:
 		be_gone()
+
+
+func _on_wall_detector_body_entered(body: Node2D) -> void:
+	be_gone()

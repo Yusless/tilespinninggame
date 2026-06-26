@@ -44,6 +44,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kg37j"]
 size = Vector2(4, 4)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_kg37j"]
+radius = 5.0
+
 [node name="Fireball" type="Node2D" unique_id=960910834 node_paths=PackedStringArray("expire_timer", "attack_component")]
 z_index = 2
 script = ExtResource("1_j8tgu")
@@ -73,4 +76,10 @@ energy = 0.7
 texture = ExtResource("4_hbguw")
 texture_scale = 0.2
 
+[node name="WallDetector" type="Area2D" parent="." unique_id=1076057462]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallDetector" unique_id=1645640045]
+shape = SubResource("CircleShape2D_kg37j")
+
 [connection signal="timeout" from="ExpireTimer" to="." method="_on_expire_timer_timeout"]
+[connection signal="body_entered" from="WallDetector" to="." method="_on_wall_detector_body_entered"]

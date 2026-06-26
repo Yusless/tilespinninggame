@@ -40,6 +40,7 @@ const STEP_FRAMES := [1, 4]
 @export var step_sound_1: AudioStreamPlayer2D
 @export var step_sound_2: AudioStreamPlayer2D
 @export var visual_boomerang: Sprite2D
+@export var damage_sound: AudioStreamPlayer2D
 
 var has_dash = true
 var can_dash = true
@@ -166,6 +167,7 @@ func _on_hurtbox_hit():
 	state = States.STUNNED
 	health_component.can_get_hit = false
 	stun_timer.start()
+	damage_sound.play()
 
 func _on_health_depleted():
 	die()

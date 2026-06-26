@@ -4,10 +4,20 @@
 [ext_resource type="PackedScene" uid="uid://cjo2i2d6n8tw2" path="res://tiles/lighthouse.tscn" id="2_5xtjl"]
 [ext_resource type="Script" uid="uid://clotu2rjfug6x" path="res://tiles/tile types/hub_tile.gd" id="2_wytmi"]
 
-[node name="TileHub" unique_id=1779673374 node_paths=PackedStringArray("lighthouse", "transparency_area") instance=ExtResource("1_4r23m")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kg37j"]
+size = Vector2(242, 242)
+
+[node name="TileHub" unique_id=1779673374 node_paths=PackedStringArray("lighthouse") instance=ExtResource("1_4r23m")]
 script = ExtResource("2_wytmi")
 lighthouse = NodePath("TileContents/Lighthouse")
-transparency_area = NodePath("")
 tile_type = 0
 
 [node name="Lighthouse" parent="TileContents" parent_id_path=PackedInt32Array(1337787306) index="3" unique_id=1382120843 instance=ExtResource("2_5xtjl")]
+
+[node name="EnemyWall" type="StaticBody2D" parent="." index="8" unique_id=1083631413]
+visible = false
+collision_layer = 256
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyWall" index="0" unique_id=1825312231]
+shape = SubResource("RectangleShape2D_kg37j")

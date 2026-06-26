@@ -95,7 +95,7 @@ environment_manager = NodePath("../EnvironmentManager")
 player = NodePath("../Player")
 
 [node name="Tile9" parent="World/CellsSystem" unique_id=1779673374 instance=ExtResource("21_kkokr")]
-position = Vector2(736, 2208)
+position = Vector2(1472, 1840)
 left_border = 2
 up_border = 2
 
@@ -109,7 +109,7 @@ down_border = 2
 position = Vector2(2, 37)
 
 [node name="Tile" parent="World/CellsSystem" unique_id=1904470472 instance=ExtResource("4_pu3yx")]
-position = Vector2(1104, 736)
+position = Vector2(1472, 1104)
 demand_for_unlock = ExtResource("17_kkokr")
 left_border = 2
 up_border = 2
@@ -121,7 +121,7 @@ left_border = 2
 up_border = 2
 
 [node name="Tile2" parent="World/CellsSystem" unique_id=1796618350 instance=ExtResource("4_pu3yx")]
-position = Vector2(1472, 1104)
+position = Vector2(1104, 736)
 demand_for_unlock = ExtResource("17_kkokr")
 right_border = 2
 down_border = 2
