@@ -16,6 +16,7 @@
 [ext_resource type="Resource" uid="uid://cybgnstf536l5" path="res://natural_resources/demands/demand_6.tres" id="10_5fys8"]
 [ext_resource type="Resource" uid="uid://crqgvsx0c5u2e" path="res://natural_resources/demands/demand_7.tres" id="11_seoh8"]
 [ext_resource type="Resource" uid="uid://do4evhpjb5snn" path="res://natural_resources/demands/demand_8.tres" id="12_v4osi"]
+[ext_resource type="AudioStream" uid="uid://cgqsyuwaos165" path="res://tiles/tile types/lighthouse_door.wav" id="17_v4osi"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v4clq"]
 atlas = ExtResource("2_kma2a")
@@ -40,7 +41,16 @@ height = 138.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6fhyq"]
 size = Vector2(43, 20)
 
-[node name="Lighthouse" type="Node2D" unique_id=1382120843 node_paths=PackedStringArray("base", "outer_layer", "interior", "spawn_point_interior", "leave_component", "expedition_table_interaction", "upgrade_table", "interior_collider", "needs_collision_disabled")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_seoh8"]
+size = Vector2(124, 191)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_kg37j"]
+random_pitch = 1.0174797
+random_volume_offset_db = 1.0
+streams_count = 1
+stream_0/stream = ExtResource("17_v4osi")
+
+[node name="Lighthouse" type="Node2D" unique_id=1382120843 node_paths=PackedStringArray("base", "outer_layer", "interior", "spawn_point_interior", "leave_component", "expedition_table_interaction", "upgrade_table", "interior_collider", "door_sound", "needs_collision_disabled")]
 z_index = 2
 script = ExtResource("1_km4o1")
 base = NodePath("Base")
@@ -51,6 +61,7 @@ leave_component = NodePath("Interior/LeaveComponent")
 expedition_table_interaction = NodePath("Interior/InteriorCollider/ExpeditionTable/ExpeditionTableInteraction")
 upgrade_table = NodePath("Interior/UpgradeTable")
 interior_collider = NodePath("Interior/InteriorCollider")
+door_sound = NodePath("DoorSound")
 needs_collision_disabled = [NodePath("Interior/InteriorCollider"), NodePath("Interior/InteriorCollider/ExpeditionTable/StaticBody2D"), NodePath("Interior/UpgradeTable/StaticBody2D")]
 
 [node name="Base" type="Sprite2D" parent="." unique_id=1662788210]
@@ -149,6 +160,21 @@ position = Vector2(2, -138)
 
 [node name="SpawnPointOutside" type="Marker2D" parent="." unique_id=300513277]
 position = Vector2(0, 26)
+
+[node name="TransparencyArea" type="Area2D" parent="." unique_id=1547235657]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TransparencyArea" unique_id=770617069]
+position = Vector2(-3, -118.5)
+shape = SubResource("RectangleShape2D_seoh8")
+
+[node name="DoorSound" type="AudioStreamPlayer2D" parent="." unique_id=1796350817]
+stream = SubResource("AudioStreamRandomizer_kg37j")
+volume_db = 10.0
+
+[connection signal="body_entered" from="TransparencyArea" to="." method="_on_transparency_area_body_entered"]
+[connection signal="body_exited" from="TransparencyArea" to="." method="_on_transparency_area_body_exited"]
 
 [editable path="Interior/UpgradeTable"]
 [editable path="Interior/LeaveComponent"]

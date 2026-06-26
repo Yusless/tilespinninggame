@@ -3,7 +3,7 @@ class_name HubTile
 
 @export var lighthouse: Lighthouse
 @export var upgrade_table: UpgradeTable
-
+@export var transparency_area: Area2D
 
 func _on_lighthouse_entered():
 	if border_objects[Side.Sides.UP]:

@@ -116,11 +116,13 @@ func simple_state_machine(delta):
 		States.IDLE:
 			if get_movement_vector():
 				state = States.MOVING
+			health_component.can_get_hit = true
 		States.MOVING:
 			move(delta)
 		States.STUNNED:
 			if stun_timer.is_stopped():
 				state = States.IDLE
+				health_component.can_get_hit = true
 		States.INSIDE:
 			move_camera(delta)
 		States.DEAD:
@@ -169,6 +171,7 @@ func get_movement_vector():
 func _on_hurtbox_hit():
 	animation_player.play("damaged")
 	state = States.STUNNED
+	health_component.can_get_hit = false
 	stun_timer.start()
 
 func _on_health_depleted():
