@@ -14,6 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://cgl817eu61c8b" path="res://player/steps/step_6.wav" id="11_e7oew"]
 [ext_resource type="AudioStream" uid="uid://tln0dqgiasdk" path="res://player/steps/step_7.wav" id="12_c35mf"]
 [ext_resource type="AudioStream" uid="uid://2ktd3faac1nf" path="res://player/steps/step_8.wav" id="13_65viv"]
+[ext_resource type="AudioStream" uid="uid://jmjffn8kcwae" path="res://player/hitHurt.wav" id="15_wodsf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dqkch"]
 atlas = ExtResource("2_qhqgy")
@@ -198,7 +199,7 @@ stream_5/stream = ExtResource("11_e7oew")
 stream_6/stream = ExtResource("12_c35mf")
 stream_7/stream = ExtResource("13_65viv")
 
-[node name="Player" type="CharacterBody2D" unique_id=251603508 node_paths=PackedStringArray("check_for_dead_area", "dash_timer", "dash_cooldown", "drowned_timer", "boomerang", "sprite", "stun_timer", "hurtbox", "animation_player", "health_component", "camera", "step_sound_1", "step_sound_2", "visual_boomerang") groups=["Player"]]
+[node name="Player" type="CharacterBody2D" unique_id=251603508 node_paths=PackedStringArray("check_for_dead_area", "dash_timer", "dash_cooldown", "drowned_timer", "boomerang", "sprite", "stun_timer", "hurtbox", "animation_player", "health_component", "camera", "step_sound_1", "step_sound_2", "visual_boomerang", "damage_sound") groups=["Player"]]
 z_index = 1
 y_sort_enabled = true
 collision_layer = 2
@@ -219,6 +220,7 @@ camera = NodePath("Camera2D")
 step_sound_1 = NodePath("StepSound1")
 step_sound_2 = NodePath("StepSound2")
 visual_boomerang = NodePath("Sprite/VisualBoomerang")
+damage_sound = NodePath("DamageSound")
 
 [node name="HealthComponent" type="Node" parent="." unique_id=504088857]
 script = ExtResource("2_yw30f")
@@ -279,6 +281,10 @@ volume_db = 5.0
 position = Vector2(-0.5, -7)
 stream = SubResource("AudioStreamRandomizer_kg37j")
 volume_db = 5.0
+
+[node name="DamageSound" type="AudioStreamPlayer2D" parent="." unique_id=485178595]
+stream = ExtResource("15_wodsf")
+volume_db = -10.0
 
 [node name="dash_timer" type="Timer" parent="." unique_id=1535436715]
 wait_time = 0.2

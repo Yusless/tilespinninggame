@@ -134,6 +134,7 @@ settings={
 2d_physics/layer_6="resources"
 2d_physics/layer_7="can_dash_through"
 2d_physics/layer_8="can_stand_on"
+2d_physics/layer_9="enemy_wall"
 
 [navigation]
 
