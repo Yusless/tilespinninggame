@@ -1,0 +1,33 @@
+[gd_resource type="TileSet" format=3 uid="uid://qk1sv4xryi8j"]
+
+[ext_resource type="Texture2D" uid="uid://cy2wx10fai1ly" path="res://assets/graphics/tile/water-Sheet.png" id="1_vlstw"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lhwp2"]
+texture = ExtResource("1_vlstw")
+texture_region_size = Vector2i(32, 32)
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+0:1/animation_columns = 8
+0:1/animation_frame_0/duration = 1.0
+0:1/animation_frame_1/duration = 1.0
+0:1/animation_frame_2/duration = 1.0
+0:1/animation_frame_3/duration = 1.0
+0:1/animation_frame_4/duration = 1.0
+0:1/animation_frame_5/duration = 1.0
+0:1/animation_frame_6/duration = 1.0
+0:1/animation_frame_7/duration = 1.0
+0:1/0 = 0
+
+[resource]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_lhwp2")

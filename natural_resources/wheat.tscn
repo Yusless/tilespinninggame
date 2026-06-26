@@ -2,27 +2,29 @@
 
 [ext_resource type="PackedScene" uid="uid://co6nj0ikyhojc" path="res://natural_resources/natural_resource_node.tscn" id="1_wtba6"]
 [ext_resource type="Resource" uid="uid://c3xr3hu8jlinu" path="res://natural_resources/wheat_resource.tres" id="2_skmqv"]
-[ext_resource type="Texture2D" uid="uid://bydaej4opy1jt" path="res://assets/graphics/wheat_placeholder.png" id="3_wtba6"]
-[ext_resource type="Texture2D" uid="uid://cucejsxyki48h" path="res://assets/graphics/resources/wheat_placeholder.png" id="4_2byp2"]
+[ext_resource type="Texture2D" uid="uid://bmvx0ruhmxixd" path="res://natural_resources/wheat.png" id="4_skmqv"]
 [ext_resource type="AudioStream" uid="uid://k4tmeeg0o5an" path="res://natural_resources/wheat_cut_softer.wav" id="5_wtba6"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_skmqv"]
-atlas = ExtResource("3_wtba6")
-region = Rect2(32, 0, 16, 16)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2byp2"]
+size = Vector2(20, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gwl5s"]
+atlas = ExtResource("4_skmqv")
+region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r6an1"]
-atlas = ExtResource("4_2byp2")
-region = Rect2(0, 0, 16, 16)
+atlas = ExtResource("4_skmqv")
+region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ebd77"]
-atlas = ExtResource("4_2byp2")
-region = Rect2(16, 0, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_wtba6"]
+atlas = ExtResource("4_skmqv")
+region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_skmqv"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_skmqv")
+"texture": SubResource("AtlasTexture_gwl5s")
 }],
 "loop": 1,
 "name": &"burnt",
@@ -38,7 +40,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ebd77")
+"texture": SubResource("AtlasTexture_wtba6")
 }],
 "loop": 1,
 "name": &"harvested",
@@ -60,6 +62,11 @@ collectable_amount = 5
 [node name="HealthComponent" parent="." index="0" unique_id=992880836]
 max_health = 1
 
+[node name="CollisionShape2D" parent="HurtboxComponent" parent_id_path=PackedInt32Array(1985610439) index="0" unique_id=756006451]
+z_index = 1
+position = Vector2(-1, -1)
+shape = SubResource("RectangleShape2D_2byp2")
+
 [node name="Sprite" parent="." index="2" unique_id=262051222]
 position = Vector2(0, 0)
 sprite_frames = SubResource("SpriteFrames_skmqv")
@@ -68,8 +75,12 @@ sprite_frames = SubResource("SpriteFrames_skmqv")
 position = Vector2(0, 0)
 
 [node name="StaticBody2D" parent="." index="4" unique_id=510377073]
+visible = false
 collision_layer = 0
 collision_mask = 0
+
+[node name="CollisionShape2D" parent="StaticBody2D" index="0" unique_id=1574033343]
+position = Vector2(-1, -3)
 
 [node name="HarvestSound" parent="." index="5" unique_id=581267007]
 stream = SubResource("AudioStreamRandomizer_skmqv")

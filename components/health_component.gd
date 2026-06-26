@@ -10,17 +10,18 @@ signal healed(amount: int)
 
 var health: int
 var dead := false
-var can_get_hit := false
+var can_get_hit := true
 
 func _ready() -> void:
 	health = max_health
 
 func take_damage(damage: int):
-	health = max(0, health - damage)
-	damaged.emit(damage)
-	if health <= 0 and !dead:
-		dead = true
-		health_depleted.emit()
+	if can_get_hit:
+		health = max(0, health - damage)
+		damaged.emit(damage)
+		if health <= 0 and !dead:
+			dead = true
+			health_depleted.emit()
 
 func reset():
 	healed.emit(max_health - health)
