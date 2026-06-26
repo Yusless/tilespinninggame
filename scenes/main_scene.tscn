@@ -95,13 +95,13 @@ environment_manager = NodePath("../EnvironmentManager")
 player = NodePath("../Player")
 
 [node name="Tile9" parent="World/CellsSystem" unique_id=1779673374 instance=ExtResource("21_kkokr")]
-position = Vector2(744, 2176)
+position = Vector2(376, 2176)
 left_border = 2
 up_border = 2
 
 [node name="HubTile" parent="World/CellsSystem" unique_id=1282555252 instance=ExtResource("6_c1pb6")]
 y_sort_enabled = false
-position = Vector2(1104, 1104)
+position = Vector2(736, 1104)
 up_border = 2
 down_border = 2
 
@@ -109,140 +109,140 @@ down_border = 2
 position = Vector2(2, 37)
 
 [node name="Tile" parent="World/CellsSystem" unique_id=1904470472 instance=ExtResource("4_pu3yx")]
-position = Vector2(1120, 728)
+position = Vector2(736, 736)
 demand_for_unlock = ExtResource("17_kkokr")
 left_border = 2
 up_border = 2
 right_border = 2
 
 [node name="WheatTile" parent="World/CellsSystem" unique_id=1863255674 instance=ExtResource("11_e1cbu")]
-position = Vector2(1104, 1472)
+position = Vector2(736, 1472)
 left_border = 2
 up_border = 2
 
 [node name="Tile2" parent="World/CellsSystem" unique_id=1796618350 instance=ExtResource("4_pu3yx")]
-position = Vector2(1472, 1104)
+position = Vector2(1104, 1104)
 demand_for_unlock = ExtResource("17_kkokr")
 right_border = 2
 down_border = 2
 
 [node name="TileLavaLake" parent="World/CellsSystem" unique_id=1232429263 instance=ExtResource("12_si52b")]
-position = Vector2(736, 1840)
+position = Vector2(368, 1840)
 demand_for_unlock = ExtResource("22_l40q6")
 left_border = 2
 up_border = 2
 down_border = 2
 
 [node name="Tile4" parent="World/CellsSystem" unique_id=61829586 instance=ExtResource("4_pu3yx")]
-position = Vector2(1840, 1472)
+position = Vector2(1472, 1472)
 demand_for_unlock = ExtResource("25_3mjum")
 left_border = 2
 up_border = 2
 
 [node name="TileForest" parent="World/CellsSystem" unique_id=749212154 instance=ExtResource("17_6u1mn")]
-position = Vector2(1840, 1104)
+position = Vector2(1472, 1104)
 demand_for_unlock = ExtResource("25_3mjum")
 up_border = 2
 right_border = 2
 
 [node name="TilePond2" parent="World/CellsSystem" unique_id=1105230833 instance=ExtResource("7_6wevv")]
-position = Vector2(1472, 1472)
+position = Vector2(1104, 1472)
 demand_for_unlock = ExtResource("25_3mjum")
 up_border = 2
 down_border = 2
 
 [node name="Tile5" parent="World/CellsSystem" unique_id=2114152352 instance=ExtResource("4_pu3yx")]
-position = Vector2(1472, 736)
+position = Vector2(1104, 736)
 demand_for_unlock = ExtResource("17_kkokr")
 left_border = 2
 down_border = 2
 
 [node name="TileForest2" parent="World/CellsSystem" unique_id=764088540 instance=ExtResource("17_6u1mn")]
-position = Vector2(1104, 1840)
+position = Vector2(736, 1840)
 demand_for_unlock = ExtResource("25_lhwp2")
 right_border = 2
 down_border = 2
 
 [node name="Tile6" parent="World/CellsSystem" unique_id=159186767 instance=ExtResource("4_pu3yx")]
-position = Vector2(1104, 2208)
+position = Vector2(736, 2208)
 demand_for_unlock = ExtResource("27_iav3h")
 left_border = 2
 up_border = 2
 
 [node name="WheatTile3" parent="World/CellsSystem" unique_id=2050367479 instance=ExtResource("11_e1cbu")]
-position = Vector2(1840, 1840)
+position = Vector2(1472, 1840)
 demand_for_unlock = ExtResource("25_lhwp2")
 left_border = 2
 up_border = 2
 
 [node name="Tile8" parent="World/CellsSystem" unique_id=1444063064 instance=ExtResource("4_pu3yx")]
-position = Vector2(736, 1104)
+position = Vector2(368, 1104)
 demand_for_unlock = ExtResource("22_l40q6")
 up_border = 2
 right_border = 2
 
 [node name="Tile10" parent="World/CellsSystem" unique_id=1180479000 instance=ExtResource("4_pu3yx")]
-position = Vector2(1840, 2208)
-demand_for_unlock = ExtResource("27_iav3h")
-left_border = 2
-up_border = 2
-
-[node name="TileLavaLake3" parent="World/CellsSystem" unique_id=2024873826 instance=ExtResource("12_si52b")]
 position = Vector2(1472, 2208)
 demand_for_unlock = ExtResource("27_iav3h")
 left_border = 2
 up_border = 2
 
+[node name="TileLavaLake3" parent="World/CellsSystem" unique_id=2024873826 instance=ExtResource("12_si52b")]
+position = Vector2(1104, 2208)
+demand_for_unlock = ExtResource("27_iav3h")
+left_border = 2
+up_border = 2
+
 [node name="TileLavaLake4" parent="World/CellsSystem" unique_id=1766471919 instance=ExtResource("12_si52b")]
-position = Vector2(736, 368)
+position = Vector2(368, 368)
 demand_for_unlock = ExtResource("16_xa0eo")
 down_border = 2
 
 [node name="TileForest3" parent="World/CellsSystem" unique_id=1697970260 instance=ExtResource("17_6u1mn")]
-position = Vector2(736, 736)
+position = Vector2(368, 736)
 demand_for_unlock = ExtResource("16_xa0eo")
 right_border = 2
 down_border = 2
 
 [node name="Tile11" parent="World/CellsSystem" unique_id=2034028508 instance=ExtResource("4_pu3yx")]
-position = Vector2(1480, 1832)
+position = Vector2(1104, 1840)
 demand_for_unlock = ExtResource("25_lhwp2")
 up_border = 2
 down_border = 2
 
 [node name="TilePond3" parent="World/CellsSystem" unique_id=603446098 instance=ExtResource("7_6wevv")]
-position = Vector2(736, 1472)
+position = Vector2(368, 1472)
 demand_for_unlock = ExtResource("22_l40q6")
 up_border = 2
 down_border = 2
 
 [node name="Tile7" parent="World/CellsSystem" unique_id=15378058 instance=ExtResource("4_pu3yx")]
-position = Vector2(1104, 368)
+position = Vector2(736, 368)
 demand_for_unlock = ExtResource("31_3mjum")
 left_border = 2
 down_border = 2
 
 [node name="TilePond4" parent="World/CellsSystem" unique_id=533184424 instance=ExtResource("7_6wevv")]
-position = Vector2(1840, 368)
+position = Vector2(1472, 368)
 demand_for_unlock = ExtResource("31_3mjum")
 up_border = 2
 right_border = 2
 
 [node name="Tile12" parent="World/CellsSystem" unique_id=1161516724 instance=ExtResource("4_pu3yx")]
-position = Vector2(1472, 368)
+position = Vector2(1104, 368)
 demand_for_unlock = ExtResource("31_3mjum")
 up_border = 2
 down_border = 2
 
 [node name="Tile13" parent="World/CellsSystem" unique_id=1302818631 instance=ExtResource("4_pu3yx")]
-position = Vector2(1840, 736)
+position = Vector2(1472, 736)
 demand_for_unlock = ExtResource("31_3mjum")
 left_border = 2
 down_border = 2
 
 [node name="Player" parent="World" unique_id=251603508 node_paths=PackedStringArray("cells_system", "spawn_point", "resource_manager") instance=ExtResource("1_w2twt")]
 y_sort_enabled = false
-position = Vector2(1083, 1140)
+position = Vector2(715, 1140)
 cells_system = NodePath("../CellsSystem")
 spawn_point = NodePath("../CellsSystem/HubTile/SpawnPoint")
 resource_manager = NodePath("../../ResourceManager")
@@ -272,7 +272,7 @@ hub_tile = NodePath("../../World/CellsSystem/HubTile")
 metadata/_edit_lock_ = true
 
 [node name="PromptDisplayer" parent="." unique_id=24052782 instance=ExtResource("26_6p3nn")]
-position = Vector2(979, 1353)
+position = Vector2(611, 1353)
 script = ExtResource("27_k67gn")
 prompt_text = "to attack"
 prompt_icon = SubResource("AtlasTexture_k67gn")
@@ -282,7 +282,7 @@ position = Vector2(123, 10)
 shape = SubResource("RectangleShape2D_kg37j")
 
 [node name="PromptDisplayer2" parent="." unique_id=1677368385 node_paths=PackedStringArray("hub_tile") instance=ExtResource("26_6p3nn")]
-position = Vector2(976, 1046)
+position = Vector2(608, 1046)
 script = ExtResource("29_02d50")
 wheat = ExtResource("7_c1pb6")
 hub_tile = NodePath("../World/CellsSystem/HubTile")
@@ -293,7 +293,7 @@ position = Vector2(129, 181)
 shape = SubResource("RectangleShape2D_kkokr")
 
 [node name="PromptDisplayer3" parent="." unique_id=1974343526 node_paths=PackedStringArray("hub_tile") instance=ExtResource("26_6p3nn")]
-position = Vector2(1048, 853)
+position = Vector2(680, 853)
 script = ExtResource("30_02d50")
 wheat = ExtResource("7_c1pb6")
 hub_tile = NodePath("../World/CellsSystem/HubTile")
