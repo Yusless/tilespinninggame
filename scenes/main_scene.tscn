@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://cgco3trm2p16g"]
+[gd_scene format=4 uid="uid://bic5v8bsj303"]
 
 [ext_resource type="Script" uid="uid://hhgxf43xrpcn" path="res://scenes/upgrade_manager.gd" id="1_7nt27"]
 [ext_resource type="PackedScene" uid="uid://c5bhx5utsovbg" path="res://player/player.tscn" id="1_w2twt"]
@@ -35,6 +35,7 @@
 [ext_resource type="Texture2D" uid="uid://d2ccavou661qm" path="res://hud/button_prompts.png" id="28_4bgka"]
 [ext_resource type="Script" uid="uid://cmurhu2ehuhu5" path="res://hud/prompt_end_expedition.gd" id="29_02d50"]
 [ext_resource type="Script" uid="uid://bdw36dw6y1sog" path="res://hud/prompt_unlock_new_tiles.gd" id="30_02d50"]
+[ext_resource type="Resource" uid="uid://cybgnstf536l5" path="res://natural_resources/demands/demand_6.tres" id="31_3mjum"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lhwp2"]
 texture = ExtResource("25_kkokr")
@@ -241,6 +242,30 @@ down_border = 2
 position = Vector2(736, 1472)
 demand_for_unlock = ExtResource("22_l40q6")
 up_border = 2
+down_border = 2
+
+[node name="Tile7" parent="World/CellsSystem" unique_id=15378058 instance=ExtResource("4_pu3yx")]
+position = Vector2(1104, 368)
+demand_for_unlock = ExtResource("31_3mjum")
+left_border = 2
+down_border = 2
+
+[node name="TilePond4" parent="World/CellsSystem" unique_id=533184424 instance=ExtResource("7_6wevv")]
+position = Vector2(1840, 368)
+demand_for_unlock = ExtResource("31_3mjum")
+up_border = 2
+right_border = 2
+
+[node name="Tile12" parent="World/CellsSystem" unique_id=1161516724 instance=ExtResource("4_pu3yx")]
+position = Vector2(1472, 368)
+demand_for_unlock = ExtResource("31_3mjum")
+up_border = 2
+down_border = 2
+
+[node name="Tile13" parent="World/CellsSystem" unique_id=1302818631 instance=ExtResource("4_pu3yx")]
+position = Vector2(1840, 736)
+demand_for_unlock = ExtResource("31_3mjum")
+left_border = 2
 down_border = 2
 
 [node name="Player" parent="World" unique_id=251603508 node_paths=PackedStringArray("cells_system", "spawn_point", "resource_manager") instance=ExtResource("1_w2twt")]
