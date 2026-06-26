@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://csyjbax0lxw7j"]
+
+[node name="Settings" type="Control" unique_id=1949159426]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=773023784]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 104.0
+offset_right = 104.0
+offset_bottom = 232.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=706324736]
+layout_mode = 2
+
+[node name="Master" type="RichTextLabel" parent="MarginContainer/VBoxContainer" unique_id=1839303314]
+layout_mode = 2
+text = "Master Volume
+"
+fit_content = true
+
+[node name="Master Volume Slider" type="HSlider" parent="MarginContainer/VBoxContainer" unique_id=1627067043]
+layout_mode = 2
+
+[node name="Music" type="RichTextLabel" parent="MarginContainer/VBoxContainer" unique_id=1838366597]
+layout_mode = 2
+text = "Music Volume
+"
+fit_content = true
+
+[node name="Music Volume Slider" type="HSlider" parent="MarginContainer/VBoxContainer" unique_id=131569236]
+layout_mode = 2
+
+[node name="SFX" type="RichTextLabel" parent="MarginContainer/VBoxContainer" unique_id=1891207416]
+layout_mode = 2
+text = "SFX Volume
+"
+fit_content = true
+
+[node name="SFX Volume Slider" type="HSlider" parent="MarginContainer/VBoxContainer" unique_id=1403767995]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer" unique_id=288456810]
+layout_mode = 2
+text = "Return to Menu"

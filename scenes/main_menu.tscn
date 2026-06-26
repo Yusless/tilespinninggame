@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://cgco3trm2p16g"]
+
+[ext_resource type="Theme" uid="uid://cyr5vfnkvpaly" path="res://hud/main_theme.tres" id="1_l6cm7"]
+
+[node name="MainMenu" type="Control" unique_id=1682306964]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="." unique_id=1658001589]
+layout_mode = 0
+offset_right = 480.0
+offset_bottom = 272.0
+
+[node name="Logo" type="TextureRect" parent="." unique_id=1840071568]
+layout_mode = 0
+offset_left = 168.0
+offset_top = 16.0
+offset_right = 472.0
+offset_bottom = 96.0
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1095070282]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 144.0
+offset_right = 312.0
+offset_bottom = 216.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=2050782080]
+layout_mode = 2
+alignment = 1
+
+[node name="Start" type="Button" parent="MarginContainer/VBoxContainer" unique_id=860453287]
+layout_mode = 2
+theme = ExtResource("1_l6cm7")
+text = "Start New"
+
+[node name="Settings" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1016379727]
+layout_mode = 2
+text = "Settings"
