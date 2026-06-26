@@ -1,6 +1,8 @@
 extends Control
 class_name ResourceDemander
 
+signal demand_set(new_demand: Demand)
+
 @export var number_root: GridContainer
 
 var demand: Demand
@@ -18,6 +20,7 @@ func set_demand(new_demand: Demand):
 			num.update(demand.resources_needed[num.resource])
 		else:
 			num.update(0)
+	demand_set.emit(new_demand)
 
 func is_demand_met() -> bool:
 	var res_mgr: ResourceManager = Global.get_manager(ResourceManager)

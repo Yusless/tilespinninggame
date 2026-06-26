@@ -2,11 +2,13 @@
 
 [ext_resource type="Script" uid="uid://dp8qer5fmukpn" path="res://tiles/working stations/upgrade_table.gd" id="1_6abvd"]
 [ext_resource type="Script" uid="uid://ekfhsugdy8f3" path="res://natural_resources/demand.gd" id="2_5lqid"]
+[ext_resource type="Resource" uid="uid://c68qftlmflmn2" path="res://natural_resources/demands/toad_unlock.tres" id="3_a30aw"]
 [ext_resource type="Resource" uid="uid://1lp2ssn0t0im" path="res://natural_resources/demands/forest_unlock.tres" id="3_udmnr"]
 [ext_resource type="Resource" uid="uid://c74136c2d2yhp" path="res://natural_resources/demands/lava_lake_unlock.tres" id="4_a30aw"]
 [ext_resource type="Resource" uid="uid://cihy01e2mprig" path="res://natural_resources/demands/full_map_unlock.tres" id="5_5lqid"]
 [ext_resource type="Texture2D" uid="uid://brwyo4phhmm1q" path="res://tiles/working stations/workbench.png" id="5_n7sav"]
 [ext_resource type="PackedScene" uid="uid://b87baohfr4ygs" path="res://components/interaction_component.tscn" id="6_pd0ct"]
+[ext_resource type="Resource" uid="uid://bb2uvd5vpoudt" path="res://natural_resources/demands/final_demand.tres" id="6_udmnr"]
 [ext_resource type="PackedScene" uid="uid://cc7s456mf6s4q" path="res://hud/resource_demander.tscn" id="7_55yqh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kg37j"]
@@ -19,7 +21,7 @@ size = Vector2(44, 6)
 script = ExtResource("1_6abvd")
 resource_demander = NodePath("ResourceDemander")
 interaction_component = NodePath("InteractionComponent")
-demands = Array[ExtResource("2_5lqid")]([ExtResource("3_udmnr"), ExtResource("4_a30aw"), ExtResource("5_5lqid")])
+demands = Array[ExtResource("2_5lqid")]([ExtResource("3_a30aw"), ExtResource("3_udmnr"), ExtResource("4_a30aw"), ExtResource("5_5lqid"), ExtResource("6_udmnr")])
 metadata/_edit_group_ = true
 
 [node name="Workbench" type="Sprite2D" parent="." unique_id=1510258831]

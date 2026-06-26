@@ -2,12 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://co6nj0ikyhojc" path="res://natural_resources/natural_resource_node.tscn" id="1_wtba6"]
 [ext_resource type="Resource" uid="uid://c3xr3hu8jlinu" path="res://natural_resources/wheat_resource.tres" id="2_skmqv"]
+[ext_resource type="Texture2D" uid="uid://bydaej4opy1jt" path="res://assets/graphics/wheat_placeholder.png" id="3_wtba6"]
 [ext_resource type="Texture2D" uid="uid://cucejsxyki48h" path="res://assets/graphics/resources/wheat_placeholder.png" id="4_2byp2"]
-[ext_resource type="Texture2D" uid="uid://ccks4rl8s3h2l" path="res://natural_resources/resource_icons.png" id="5_skmqv"]
 [ext_resource type="AudioStream" uid="uid://k4tmeeg0o5an" path="res://natural_resources/wheat_cut_softer.wav" id="5_wtba6"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2byp2"]
-atlas = ExtResource("5_skmqv")
+[sub_resource type="AtlasTexture" id="AtlasTexture_skmqv"]
+atlas = ExtResource("3_wtba6")
 region = Rect2(32, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r6an1"]
@@ -22,7 +22,7 @@ region = Rect2(16, 0, 16, 16)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2byp2")
+"texture": SubResource("AtlasTexture_skmqv")
 }],
 "loop": 1,
 "name": &"burnt",
@@ -53,6 +53,8 @@ stream_0/stream = ExtResource("5_wtba6")
 
 [node name="Wheat" unique_id=173354698 instance=ExtResource("1_wtba6")]
 resource = ExtResource("2_skmqv")
+amount_max = 1
+collectable_amount = 5
 
 [node name="HealthComponent" parent="." index="0" unique_id=992880836]
 max_health = 1

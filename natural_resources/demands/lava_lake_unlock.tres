@@ -7,8 +7,9 @@
 
 [resource]
 script = ExtResource("3_xbih8")
+name = "lava_lake_unlock"
 resources_needed = Dictionary[ExtResource("1_icr2w"), int]({
-ExtResource("2_ixwkq"): 250,
-ExtResource("3_ixwkq"): 40
+ExtResource("2_ixwkq"): 50,
+ExtResource("3_ixwkq"): 10
 })
 metadata/_custom_type_script = "uid://ekfhsugdy8f3"

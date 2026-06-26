@@ -7,4 +7,3 @@ class_name HubTile
 
 func _ready() -> void:
 	super()
-	rotatable = false
