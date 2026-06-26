@@ -51,7 +51,7 @@ leave_component = NodePath("Interior/LeaveComponent")
 expedition_table_interaction = NodePath("Interior/InteriorCollider/ExpeditionTable/ExpeditionTableInteraction")
 upgrade_table = NodePath("Interior/UpgradeTable")
 interior_collider = NodePath("Interior/InteriorCollider")
-needs_collision_disabled = [NodePath("Interior/InteriorCollider"), NodePath("Interior/InteriorCollider/ExpeditionTable/StaticBody2D")]
+needs_collision_disabled = [NodePath("Interior/InteriorCollider"), NodePath("Interior/InteriorCollider/ExpeditionTable/StaticBody2D"), NodePath("Interior/UpgradeTable/StaticBody2D")]
 
 [node name="Base" type="Sprite2D" parent="." unique_id=1662788210]
 position = Vector2(0, 1)
@@ -150,5 +150,6 @@ position = Vector2(2, -138)
 [node name="SpawnPointOutside" type="Marker2D" parent="." unique_id=300513277]
 position = Vector2(0, 26)
 
+[editable path="Interior/UpgradeTable"]
 [editable path="Interior/LeaveComponent"]
 [editable path="InteractionComponent"]
