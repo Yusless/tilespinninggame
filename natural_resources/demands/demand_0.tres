@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Demand" format=3 uid="uid://bqhf446dn1553"]
+
+[ext_resource type="Script" uid="uid://36bx0jkgt0vc" path="res://natural_resources/natural_resource.gd" id="1_kvb1j"]
+[ext_resource type="Resource" uid="uid://c3xr3hu8jlinu" path="res://natural_resources/wheat_resource.tres" id="2_qj8to"]
+[ext_resource type="Script" uid="uid://ekfhsugdy8f3" path="res://natural_resources/demand.gd" id="3_xloqv"]
+
+[resource]
+script = ExtResource("3_xloqv")
+name = "demand_0"
+resources_needed = Dictionary[ExtResource("1_kvb1j"), int]({
+ExtResource("2_qj8to"): 50
+})
+metadata/_custom_type_script = "uid://ekfhsugdy8f3"

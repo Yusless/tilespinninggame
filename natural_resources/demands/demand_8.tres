@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Demand" format=3 uid="uid://do4evhpjb5snn"]
+
+[ext_resource type="Script" uid="uid://36bx0jkgt0vc" path="res://natural_resources/natural_resource.gd" id="1_yokl8"]
+[ext_resource type="Resource" uid="uid://cu42um0n8tj08" path="res://natural_resources/lava_core_resource.tres" id="2_cg64m"]
+[ext_resource type="Script" uid="uid://ekfhsugdy8f3" path="res://natural_resources/demand.gd" id="4_3fwko"]
+
+[resource]
+script = ExtResource("4_3fwko")
+name = "demand_8"
+resources_needed = Dictionary[ExtResource("1_yokl8"), int]({
+ExtResource("2_cg64m"): 5
+})
+metadata/_custom_type_script = "uid://ekfhsugdy8f3"
