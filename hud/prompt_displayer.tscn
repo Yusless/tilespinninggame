@@ -11,5 +11,9 @@ prompt = NodePath("Prompt")
 
 [node name="Prompt" parent="." unique_id=1649993671 instance=ExtResource("2_j8h22")]
 anchors_preset = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 102.0
+offset_bottom = 41.0
 text = ""
 icon = null

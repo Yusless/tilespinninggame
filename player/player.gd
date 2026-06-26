@@ -72,6 +72,13 @@ func _input(event: InputEvent) -> void:
 		dash()
 	if event.is_action_pressed("restart") and state not in [States.DEAD, States.INSIDE] and !in_lighthouse:
 		die()
+	if event.is_action_pressed("zoom out"):
+		if camera.zoom > Vector2(0.3,0.3) and state != States.INSIDE or camera.zoom > Vector2(0.2,0.2) and state == States.INSIDE:
+			camera.zoom = camera.zoom - Vector2(0.05,0.05)
+	if event.is_action_pressed("zoom in"):
+		if camera.zoom < Vector2(1,1):
+			camera.zoom = camera.zoom + Vector2(0.05,0.05)
+		
 
 func spawn():
 	health_component.reset()
