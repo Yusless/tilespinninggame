@@ -52,7 +52,7 @@ func start_step(direction: Vector2, step_speed: float):
 	super(direction, step_speed)
 	croak_jump.play()
 
-func be_gone():
+func die():
 	super()
 	if dragonfly_consumed:
 		spawn_lava_core()

@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://bic5v8bsj303"]
+[gd_scene format=4 uid="uid://cgco3trm2p16g"]
 
 [ext_resource type="Script" uid="uid://hhgxf43xrpcn" path="res://scenes/upgrade_manager.gd" id="1_7nt27"]
 [ext_resource type="PackedScene" uid="uid://c5bhx5utsovbg" path="res://player/player.tscn" id="1_w2twt"]
@@ -158,6 +158,7 @@ position = Vector2(736, 1840)
 demand_for_unlock = ExtResource("22_l40q6")
 left_border = 2
 up_border = 2
+down_border = 2
 
 [node name="Tile4" parent="World/CellsSystem" unique_id=61829586 instance=ExtResource("4_pu3yx")]
 position = Vector2(1840, 1472)

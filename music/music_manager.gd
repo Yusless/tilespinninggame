@@ -18,6 +18,8 @@ func _ready() -> void:
 	hub_tile.lighthouse.expedition_finished.connect(_on_lighthosue_expedition_finished)
 	hub_tile.lighthouse.expedition_started.connect(_on_lighthosue_expedition_started)
 	switch_music(music_night, music_day)
+	music_day.play()
+	music_night.play()
 
 func switch_music(current_music: AudioStreamPlayer, other_music: AudioStreamPlayer):
 	var tween = create_tween()
