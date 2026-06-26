@@ -114,7 +114,7 @@ func _on_lighthouse_expedition_started():
 
 func _on_player_died():
 	reset_tiles()
-	hub_tile.lighthouse.start_expedition()
+	hub_tile.lighthouse.expedition_started.emit()
 	player.spawn()
 
 func _on_demand_completed(demand: Demand):

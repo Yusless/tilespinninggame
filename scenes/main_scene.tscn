@@ -95,7 +95,7 @@ environment_manager = NodePath("../EnvironmentManager")
 player = NodePath("../Player")
 
 [node name="Tile9" parent="World/CellsSystem" unique_id=1779673374 instance=ExtResource("21_kkokr")]
-position = Vector2(1472, 1840)
+position = Vector2(736, 2208)
 left_border = 2
 up_border = 2
 
