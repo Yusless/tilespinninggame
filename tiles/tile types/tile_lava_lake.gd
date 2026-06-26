@@ -2,6 +2,15 @@ extends Tile
 class_name TileLavaLake
 
 @export var enemy_spawner: EnemySpawner
+@export var fires: Node2D
+
+func _ready() -> void:
+	super()
+	fires.hide()
+
+func activate():
+	super()
+	fires.show()
 
 func interact(neighbour: Tile, _side: Side.Sides):
 	await NavigationServer2D.map_changed

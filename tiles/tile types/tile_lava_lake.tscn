@@ -5,6 +5,7 @@
 [ext_resource type="TileSet" uid="uid://2s1f4ntvo15j" path="res://assets/graphics/tile/tile_set_grass.tres" id="2_tpdxx"]
 [ext_resource type="PackedScene" uid="uid://d0o7kbchwru1o" path="res://enemies/enemy_spawner.tscn" id="3_mup4n"]
 [ext_resource type="PackedScene" uid="uid://bet52db755cmm" path="res://enemies/dragonfly/dragonfly.tscn" id="4_tpdxx"]
+[ext_resource type="PackedScene" uid="uid://cl1tw6qol35lw" path="res://natural_resources/fire_sprite.tscn" id="6_4ka7m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kg37j"]
 size = Vector2(72, 57)
@@ -15,9 +16,10 @@ size = Vector2(72, 107)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mup4n"]
 size = Vector2(104, 59)
 
-[node name="TileLavaLake" unique_id=1779673374 node_paths=PackedStringArray("enemy_spawner") instance=ExtResource("1_fqisa")]
+[node name="TileLavaLake" unique_id=1779673374 node_paths=PackedStringArray("enemy_spawner", "fires") instance=ExtResource("1_fqisa")]
 script = ExtResource("2_mup4n")
 enemy_spawner = NodePath("TileContents/EnemySpawner")
+fires = NodePath("TileContents/Fires")
 tile_type = 3
 
 [node name="TileMapDetails" parent="TileContents" parent_id_path=PackedInt32Array(1337787306) index="1" unique_id=1440210401]
@@ -49,3 +51,23 @@ shape = SubResource("RectangleShape2D_tpdxx")
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="TileContents/LavaCollision" index="2" unique_id=346068170]
 position = Vector2(25, 14.5)
 shape = SubResource("RectangleShape2D_mup4n")
+
+[node name="Fires" type="Node2D" parent="TileContents" parent_id_path=PackedInt32Array(1337787306) index="6" unique_id=670512884]
+
+[node name="FireSprite" parent="TileContents/Fires" index="0" unique_id=631308366 instance=ExtResource("6_4ka7m")]
+position = Vector2(-73, 5)
+
+[node name="FireSprite2" parent="TileContents/Fires" index="1" unique_id=9982358 instance=ExtResource("6_4ka7m")]
+position = Vector2(61, 43)
+
+[node name="FireSprite3" parent="TileContents/Fires" index="2" unique_id=937834086 instance=ExtResource("6_4ka7m")]
+position = Vector2(-14, -50)
+
+[node name="FireSprite4" parent="TileContents/Fires" index="3" unique_id=1287013887 instance=ExtResource("6_4ka7m")]
+position = Vector2(-8, 57)
+
+[node name="FireSprite5" parent="TileContents/Fires" index="4" unique_id=1113693167 instance=ExtResource("6_4ka7m")]
+position = Vector2(41, 16)
+
+[node name="FireSprite6" parent="TileContents/Fires" index="5" unique_id=178843547 instance=ExtResource("6_4ka7m")]
+position = Vector2(-36, 20)

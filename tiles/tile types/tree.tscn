@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://b80y0wpbj3biu" path="res://natural_resources/tree.png" id="5_k8l2c"]
 [ext_resource type="AudioStream" uid="uid://cosxvx1haasx8" path="res://natural_resources/wood_2.wav" id="6_k8l2c"]
 [ext_resource type="AudioStream" uid="uid://dd2jwivm1t51j" path="res://natural_resources/wood_3.wav" id="7_or2vh"]
+[ext_resource type="PackedScene" uid="uid://cl1tw6qol35lw" path="res://natural_resources/fire_sprite.tscn" id="9_or2vh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_or2vh"]
 atlas = ExtResource("5_k8l2c")
@@ -56,12 +57,13 @@ stream_0/stream = ExtResource("5_8dehk")
 stream_1/stream = ExtResource("6_k8l2c")
 stream_2/stream = ExtResource("7_or2vh")
 
-[node name="Tree" unique_id=173354698 instance=ExtResource("1_6cgcp")]
+[node name="Tree" unique_id=173354698 node_paths=PackedStringArray("fires") instance=ExtResource("1_6cgcp")]
 z_index = 2
 y_sort_enabled = true
 script = ExtResource("1_blsi1")
 coal_res = ExtResource("2_8dehk")
 wood_res = ExtResource("2_55dlt")
+fires = NodePath("Fires")
 resource = ExtResource("2_55dlt")
 amount_max = 1
 collectable_amount = 2
@@ -75,3 +77,22 @@ offset = Vector2(0, -25)
 
 [node name="HarvestSound" parent="." index="5" unique_id=581267007]
 stream = SubResource("AudioStreamRandomizer_blsi1")
+volume_db = 5.0
+
+[node name="Fires" type="Node2D" parent="." index="6" unique_id=2078209732]
+
+[node name="FireSprite" parent="Fires" index="0" unique_id=631308366 instance=ExtResource("9_or2vh")]
+visible = false
+position = Vector2(-15, -32)
+
+[node name="FireSprite2" parent="Fires" index="1" unique_id=156848081 instance=ExtResource("9_or2vh")]
+visible = false
+position = Vector2(8, -8)
+
+[node name="FireSprite3" parent="Fires" index="2" unique_id=1859241021 instance=ExtResource("9_or2vh")]
+visible = false
+position = Vector2(-10, -12)
+
+[node name="FireSprite4" parent="Fires" index="3" unique_id=1400711049 instance=ExtResource("9_or2vh")]
+visible = false
+position = Vector2(3, -37)

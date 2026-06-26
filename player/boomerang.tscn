@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dcicdw0afe04b" path="res://player/boomerang.gd" id="1_wt5k1"]
 [ext_resource type="Texture2D" uid="uid://02f72d0pgon" path="res://assets/graphics/player/boomerang.png" id="2_y75ew"]
 [ext_resource type="Script" uid="uid://drkvcnbwm8ot3" path="res://components/attack_component.gd" id="3_c7gwn"]
+[ext_resource type="AudioStream" uid="uid://bvvtrmikxjtsq" path="res://player/boomer.wav" id="4_al46a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kg37j"]
 size = Vector2(18, 18)
@@ -10,13 +11,14 @@ size = Vector2(18, 18)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3xd07"]
 size = Vector2(162, 180)
 
-[node name="Boomerang" type="CharacterBody2D" unique_id=864464630 node_paths=PackedStringArray("sprite", "hitbox")]
+[node name="Boomerang" type="CharacterBody2D" unique_id=864464630 node_paths=PackedStringArray("sprite", "hitbox", "fly_sound")]
 z_index = 1
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_wt5k1")
 sprite = NodePath("Sprite")
 hitbox = NodePath("Hitbox")
+fly_sound = NodePath("FlySound")
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=2129376263]
 texture = ExtResource("2_y75ew")
@@ -49,7 +51,12 @@ collision_mask = 8
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BounceDetector" unique_id=2003210502]
 shape = SubResource("RectangleShape2D_3xd07")
 
+[node name="FlySound" type="AudioStreamPlayer2D" parent="." unique_id=584873973]
+stream = ExtResource("4_al46a")
+volume_db = 10.0
+
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="body_entered" from="ReturnDetector" to="." method="_on_return_detector_body_entered"]
 [connection signal="area_entered" from="BounceDetector" to="." method="_on_bounce_detector_area_entered"]
 [connection signal="area_exited" from="BounceDetector" to="." method="_on_bounce_detector_area_exited"]
+[connection signal="finished" from="FlySound" to="." method="_on_fly_sound_finished"]

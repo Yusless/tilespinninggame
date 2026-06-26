@@ -10,7 +10,7 @@ var current_demand_id := 0
 var res_mgr: ResourceManager
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("forest_unlock"):
+	if event.is_action_pressed("forest_unlock") and current_demand_id < demands.size():
 		complete_demand()
 
 func _ready() -> void:

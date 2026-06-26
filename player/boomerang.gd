@@ -14,6 +14,7 @@ signal launched
 @export_group("Deps")
 @export var sprite: Sprite2D
 @export var hitbox: AttackComponent
+@export var fly_sound: AudioStreamPlayer2D
 
 
 var is_launched := false
@@ -40,6 +41,7 @@ func launch(origin: Vector2, direction: float, inherited_speed: Vector2):
 	hitbox.begin_attack()
 	show()
 	launched.emit()
+	fly_sound.play()
 
 func retrieve():
 	is_launched = false
@@ -47,6 +49,7 @@ func retrieve():
 	hitbox.end_attack()
 	hide()
 	returned.emit()
+	fly_sound.stop()
 
 func _physics_process(delta: float) -> void:
 	
@@ -104,3 +107,8 @@ func _on_bounce_detector_area_entered(area: Area2D) -> void:
 func _on_bounce_detector_area_exited(area: Area2D) -> void:
 	if area in targets_to_bounce:
 		targets_to_bounce.erase(area)
+
+
+func _on_fly_sound_finished() -> void:
+	if is_launched:
+		fly_sound.play()

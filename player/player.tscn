@@ -274,13 +274,11 @@ one_shot = true
 position = Vector2(-0.5, -7)
 stream = SubResource("AudioStreamRandomizer_kg37j")
 volume_db = 5.0
-bus = &"sfx"
 
 [node name="StepSound2" type="AudioStreamPlayer2D" parent="." unique_id=1128527735]
 position = Vector2(-0.5, -7)
 stream = SubResource("AudioStreamRandomizer_kg37j")
 volume_db = 5.0
-bus = &"sfx"
 
 [node name="dash_timer" type="Timer" parent="." unique_id=1535436715]
 wait_time = 0.2
@@ -300,7 +298,6 @@ one_shot = true
 collision_mask = 128
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="standbox" unique_id=216538320]
-position = Vector2(0, 7)
 shape = SubResource("RectangleShape2D_qhqgy")
 
 [connection signal="frame_changed" from="Sprite" to="." method="_on_sprite_frame_changed"]

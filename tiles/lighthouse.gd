@@ -15,6 +15,8 @@ signal exited
 @export var upgrade_table: UpgradeTable
 @export var interior_collider: StaticBody2D
 
+@export var needs_collision_disabled: Array[StaticBody2D]
+
 var spin_mode := false
 
 func _input(event: InputEvent) -> void:
@@ -37,13 +39,15 @@ func try_to_interact():
 func enable_interior():
 	outer_layer.hide()
 	interior.show()
-	interior_collider.process_mode = Node.PROCESS_MODE_INHERIT
+	for collider in needs_collision_disabled:
+		collider.process_mode = Node.PROCESS_MODE_INHERIT
 	entered.emit()
 
 func disable_interior():
 	outer_layer.show()
 	interior.hide()
-	interior_collider.process_mode = Node.PROCESS_MODE_DISABLED
+	for collider in needs_collision_disabled:
+		collider.process_mode = Node.PROCESS_MODE_DISABLED
 	exited.emit()
 
 func finish_expedition():

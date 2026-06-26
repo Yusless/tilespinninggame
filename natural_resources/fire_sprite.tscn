@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://cl1tw6qol35lw"]
+
+[ext_resource type="Texture2D" uid="uid://db2yh1jd42vu7" path="res://natural_resources/fire.png" id="1_g7gi7"]
+[ext_resource type="Script" uid="uid://bdc4j5qsrtvpk" path="res://natural_resources/fire_sprite.gd" id="2_jseqx"]
+[ext_resource type="Texture2D" uid="uid://cscxu6da3atos" path="res://enemies/dragonfly/light128.png" id="3_pfkqs"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jseqx"]
+atlas = ExtResource("1_g7gi7")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pfkqs"]
+atlas = ExtResource("1_g7gi7")
+region = Rect2(16, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lxeb0"]
+atlas = ExtResource("1_g7gi7")
+region = Rect2(32, 0, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kg37j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jseqx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pfkqs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lxeb0")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 12.5
+}]
+
+[node name="FireSprite" type="AnimatedSprite2D" unique_id=631308366]
+z_index = 2
+sprite_frames = SubResource("SpriteFrames_kg37j")
+frame_progress = 0.90880275
+offset = Vector2(0, -12)
+script = ExtResource("2_jseqx")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=2129224159]
+position = Vector2(0, -4)
+color = Color(1.353256, 0.59684676, 0, 1)
+energy = 0.7
+texture = ExtResource("3_pfkqs")
+texture_scale = 0.2
