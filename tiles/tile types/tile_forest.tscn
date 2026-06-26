@@ -3,21 +3,60 @@
 [ext_resource type="PackedScene" uid="uid://dhfxsclatflk7" path="res://tiles/tile types/tile.tscn" id="1_f6p5n"]
 [ext_resource type="Script" uid="uid://dxqniiif8ufsk" path="res://tiles/tile types/wheat_tile.gd" id="2_ss37w"]
 [ext_resource type="PackedScene" uid="uid://ce22yjh5n4eiq" path="res://tiles/tile types/tree.tscn" id="2_w85yc"]
+[ext_resource type="PackedScene" uid="uid://cl1tw6qol35lw" path="res://natural_resources/fire_sprite.tscn" id="4_rwgwx"]
 
-[node name="Tile3" unique_id=1779673374 instance=ExtResource("1_f6p5n")]
+[node name="TileForest" unique_id=1779673374 node_paths=PackedStringArray("fires") instance=ExtResource("1_f6p5n")]
 script = ExtResource("2_ss37w")
+fires = NodePath("TileContents/Fires")
 
 [node name="Tree" parent="TileContents" parent_id_path=PackedInt32Array(1337787306) index="3" unique_id=173354698 instance=ExtResource("2_w85yc")]
-position = Vector2(-25, -67)
+position = Vector2(20, 56)
 
 [node name="Tree2" parent="TileContents" parent_id_path=PackedInt32Array(1337787306) index="4" unique_id=1480277034 instance=ExtResource("2_w85yc")]
 position = Vector2(37, -67)
 
 [node name="Tree3" parent="TileContents" parent_id_path=PackedInt32Array(1337787306) index="5" unique_id=1199683696 instance=ExtResource("2_w85yc")]
-position = Vector2(-83, 35)
+position = Vector2(-73, 47)
 
 [node name="Tree4" parent="TileContents" parent_id_path=PackedInt32Array(1337787306) index="6" unique_id=399045991 instance=ExtResource("2_w85yc")]
-position = Vector2(-55, -24)
+position = Vector2(-24, -28)
 
 [node name="Tree5" parent="TileContents" parent_id_path=PackedInt32Array(1337787306) index="7" unique_id=1514663575 instance=ExtResource("2_w85yc")]
 position = Vector2(74, -5)
+
+[node name="Fires" type="Node2D" parent="TileContents" parent_id_path=PackedInt32Array(1337787306) index="8" unique_id=1248596609]
+visible = false
+y_sort_enabled = true
+
+[node name="FireSprite" parent="TileContents/Fires" index="0" unique_id=631308366 instance=ExtResource("4_rwgwx")]
+position = Vector2(-84, 15)
+
+[node name="FireSprite2" parent="TileContents/Fires" index="1" unique_id=332080569 instance=ExtResource("4_rwgwx")]
+position = Vector2(50, 64)
+
+[node name="FireSprite3" parent="TileContents/Fires" index="2" unique_id=1145234409 instance=ExtResource("4_rwgwx")]
+position = Vector2(-67, -37)
+
+[node name="FireSprite4" parent="TileContents/Fires" index="3" unique_id=1051044014 instance=ExtResource("4_rwgwx")]
+position = Vector2(-17, 76)
+
+[node name="FireSprite5" parent="TileContents/Fires" index="4" unique_id=178555691 instance=ExtResource("4_rwgwx")]
+position = Vector2(7, 29)
+
+[node name="FireSprite6" parent="TileContents/Fires" index="5" unique_id=409070970 instance=ExtResource("4_rwgwx")]
+position = Vector2(10, -7)
+
+[node name="FireSprite7" parent="TileContents/Fires" index="6" unique_id=101659533 instance=ExtResource("4_rwgwx")]
+position = Vector2(-55, -72)
+
+[node name="FireSprite8" parent="TileContents/Fires" index="7" unique_id=137765630 instance=ExtResource("4_rwgwx")]
+position = Vector2(-38, 40)
+
+[node name="FireSprite9" parent="TileContents/Fires" index="8" unique_id=704349309 instance=ExtResource("4_rwgwx")]
+position = Vector2(69, -70)
+
+[node name="FireSprite10" parent="TileContents/Fires" index="9" unique_id=1053300679 instance=ExtResource("4_rwgwx")]
+position = Vector2(49, -63)
+
+[node name="FireSprite11" parent="TileContents/Fires" index="10" unique_id=538187440 instance=ExtResource("4_rwgwx")]
+position = Vector2(-18, 15)

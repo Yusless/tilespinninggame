@@ -67,9 +67,10 @@ debug_color = Color(1, 0, 0, 0.38500002)
 [node name="ExpireTimer" type="Timer" parent="." unique_id=1463770567]
 one_shot = true
 
-[node name="PointLight2D" type="PointLight2D" parent="." unique_id=475238974]
-color = Color(4.0059752, 1.8247246, 0, 1)
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=192433157]
+color = Color(1.353256, 0.59684676, 0, 1)
+energy = 0.7
 texture = ExtResource("4_hbguw")
-texture_scale = 0.1
+texture_scale = 0.2
 
 [connection signal="timeout" from="ExpireTimer" to="." method="_on_expire_timer_timeout"]

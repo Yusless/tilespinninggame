@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://2ywgxwdhdrt0" path="res://tiles/bridge.tscn" id="3_bwym4"]
 [ext_resource type="TileSet" uid="uid://2s1f4ntvo15j" path="res://assets/graphics/tile/tile_set_grass.tres" id="3_ys7py"]
 [ext_resource type="Shader" uid="uid://c5sakyyec35pn" path="res://tiles/fog.gdshader" id="5_ys7py"]
+[ext_resource type="Texture2D" uid="uid://cy2wx10fai1ly" path="res://assets/graphics/tile/water-Sheet.png" id="6_bwym4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3xd07"]
 size = Vector2(250, 256)
@@ -93,6 +94,70 @@ shader_parameter/distortion_speed = 0.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jq8tk"]
 size = Vector2(236, 236)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_qraw0"]
+atlas = ExtResource("6_bwym4")
+region = Rect2(0, 48, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sbq4f"]
+atlas = ExtResource("6_bwym4")
+region = Rect2(32, 48, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4x1ba"]
+atlas = ExtResource("6_bwym4")
+region = Rect2(64, 48, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_td10f"]
+atlas = ExtResource("6_bwym4")
+region = Rect2(96, 48, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3t1rg"]
+atlas = ExtResource("6_bwym4")
+region = Rect2(128, 48, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nyxwp"]
+atlas = ExtResource("6_bwym4")
+region = Rect2(160, 48, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2shex"]
+atlas = ExtResource("6_bwym4")
+region = Rect2(192, 48, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uocj4"]
+atlas = ExtResource("6_bwym4")
+region = Rect2(224, 48, 32, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kg37j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qraw0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sbq4f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4x1ba")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_td10f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3t1rg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nyxwp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2shex")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uocj4")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Tile" type="Node2D" unique_id=1779673374 node_paths=PackedStringArray("up_bridge_collision", "right_bridge_collision", "down_bridge_collision", "left_bridge_collision", "tile_contents", "color_rect", "life_zone")]
 y_sort_enabled = true
 script = ExtResource("1_h3aqd")
@@ -117,13 +182,13 @@ debug_color = Color(0.5953718, 1, 0.59690833, 0.42)
 
 [node name="TileContents" type="Node2D" parent="." unique_id=1337787306 node_paths=PackedStringArray("tile_map_ground", "tile_map_details", "tile_map_texture") groups=["NeedsResetting"]]
 z_index = -1
+y_sort_enabled = true
 script = ExtResource("2_l53t7")
 tile_map_ground = NodePath("TileMapGround")
 tile_map_details = NodePath("TileMapDetails")
 tile_map_texture = NodePath("TileMapTexture")
 
 [node name="TileMapGround" type="TileMapLayer" parent="TileContents" unique_id=803984556]
-y_sort_enabled = true
 tile_map_data = PackedByteArray("AAD4//r/AAADAAIAAAD4//v/AAADAAIAAAD4//z/AAADAAIAAAD4//3/AAADAAIAAAD4//7/AAADAAIAAAD4////AAADAAIAAAD4/wAAAAADAAIAAAD4/wEAAAADAAIAAAD4/wIAAAADAAIAAAD4/wMAAAADAAIAAAD4/wQAAAADAAIAAAD4/wUAAAADAAIAAAD4/wYAAAADAAIAAAD5//r/AAAEAAIAAAD5//v/AAAEAAIAAAD5//z/AAAEAAIAAAD5//3/AAAEAAIAAAD5//7/AAAEAAIAAAD5////AAAEAAIAAAD5/wAAAAAEAAIAAAD5/wEAAAAEAAIAAAD5/wIAAAAEAAIAAAD5/wMAAAAEAAIAAAD5/wQAAAAEAAIAAAD5/wUAAAAEAAIAAAD5/wYAAAAEAAIAAAD6//r/AAAEAAIAAAD6//v/AAAEAAIAAAD6//z/AAAEAAIAAAD6//3/AAAEAAIAAAD6//7/AAAEAAIAAAD6////AAAEAAIAAAD6/wAAAAAEAAIAAAD6/wEAAAAEAAIAAAD6/wIAAAAEAAIAAAD6/wMAAAAEAAIAAAD6/wQAAAAEAAIAAAD6/wUAAAAEAAIAAAD6/wYAAAAEAAIAAAD7//r/AAAEAAIAAAD7//v/AAAEAAIAAAD7//z/AAAEAAIAAAD7//3/AAAEAAIAAAD7//7/AAAEAAIAAAD7////AAAEAAIAAAD7/wAAAAAEAAIAAAD7/wEAAAAEAAIAAAD7/wIAAAAEAAIAAAD7/wMAAAAEAAIAAAD7/wQAAAAEAAIAAAD7/wUAAAAEAAIAAAD7/wYAAAAEAAIAAAD8//r/AAAEAAIAAAD8//v/AAAEAAIAAAD8//z/AAAEAAIAAAD8//3/AAAEAAIAAAD8//7/AAAEAAIAAAD8////AAAEAAIAAAD8/wAAAAAEAAIAAAD8/wEAAAAEAAIAAAD8/wIAAAAEAAIAAAD8/wMAAAAEAAIAAAD8/wQAAAAEAAIAAAD8/wUAAAAEAAIAAAD8/wYAAAAEAAIAAAD9//r/AAAEAAIAAAD9//v/AAAEAAIAAAD9//z/AAAEAAIAAAD9//3/AAAEAAIAAAD9//7/AAAEAAIAAAD9////AAAEAAIAAAD9/wAAAAAEAAIAAAD9/wEAAAAEAAIAAAD9/wIAAAAEAAIAAAD9/wMAAAAEAAIAAAD9/wQAAAAEAAIAAAD9/wUAAAAEAAIAAAD9/wYAAAAEAAIAAAD+//r/AAAEAAIAAAD+//v/AAAEAAIAAAD+//z/AAAEAAIAAAD+//3/AAAEAAIAAAD+//7/AAAEAAIAAAD+////AAAEAAIAAAD+/wAAAAAEAAIAAAD+/wEAAAAEAAIAAAD+/wIAAAAEAAIAAAD+/wMAAAAEAAIAAAD+/wQAAAAEAAIAAAD+/wUAAAAEAAIAAAD+/wYAAAAEAAIAAAD///r/AAAEAAIAAAD///v/AAAEAAIAAAD///z/AAAEAAIAAAD///3/AAAEAAIAAAD///7/AAAEAAIAAAD/////AAAEAAIAAAD//wAAAAAEAAIAAAD//wEAAAAEAAIAAAD//wIAAAAEAAIAAAD//wMAAAAEAAIAAAD//wQAAAAEAAIAAAD//wUAAAAEAAIAAAD//wYAAAAEAAIAAAAAAPr/AAAEAAIAAAAAAPv/AAAEAAIAAAAAAPz/AAAEAAIAAAAAAP3/AAAEAAIAAAAAAP7/AAAEAAIAAAAAAP//AAAEAAIAAAAAAAAAAAAEAAIAAAAAAAEAAAAEAAIAAAAAAAIAAAAEAAIAAAAAAAMAAAAEAAIAAAAAAAQAAAAEAAIAAAAAAAUAAAAEAAIAAAAAAAYAAAAEAAIAAAABAPr/AAAEAAIAAAABAPv/AAAEAAIAAAABAPz/AAAEAAIAAAABAP3/AAAEAAIAAAABAP7/AAAEAAIAAAABAP//AAAEAAIAAAABAAAAAAAEAAIAAAABAAEAAAAEAAIAAAABAAIAAAAEAAIAAAABAAMAAAAEAAIAAAABAAQAAAAEAAIAAAABAAUAAAAEAAIAAAABAAYAAAAEAAIAAAACAPr/AAAEAAIAAAACAPv/AAAEAAIAAAACAPz/AAAEAAIAAAACAP3/AAAEAAIAAAACAP7/AAAEAAIAAAACAP//AAAEAAIAAAACAAAAAAAEAAIAAAACAAEAAAAEAAIAAAACAAIAAAAEAAIAAAACAAMAAAAEAAIAAAACAAQAAAAEAAIAAAACAAUAAAAEAAIAAAACAAYAAAAEAAIAAAADAPr/AAAEAAIAAAADAPv/AAAEAAIAAAADAPz/AAAEAAIAAAADAP3/AAAEAAIAAAADAP7/AAAEAAIAAAADAP//AAAEAAIAAAADAAAAAAAEAAIAAAADAAEAAAAEAAIAAAADAAIAAAAEAAIAAAADAAMAAAAEAAIAAAADAAQAAAAEAAIAAAADAAUAAAAEAAIAAAADAAYAAAAEAAIAAAAEAPr/AAAEAAIAAAAEAPv/AAAEAAIAAAAEAPz/AAAEAAIAAAAEAP3/AAAEAAIAAAAEAP7/AAAEAAIAAAAEAP//AAAEAAIAAAAEAAAAAAAEAAIAAAAEAAEAAAAEAAIAAAAEAAIAAAAEAAIAAAAEAAMAAAAEAAIAAAAEAAQAAAAEAAIAAAAEAAUAAAAEAAIAAAAEAAYAAAAEAAIAAAAFAPr/AAAEAAIAAAAFAPv/AAAEAAIAAAAFAPz/AAAEAAIAAAAFAP3/AAAEAAIAAAAFAP7/AAAEAAIAAAAFAP//AAAEAAIAAAAFAAAAAAAEAAIAAAAFAAEAAAAEAAIAAAAFAAIAAAAEAAIAAAAFAAMAAAAEAAIAAAAFAAQAAAAEAAIAAAAFAAUAAAAEAAIAAAAFAAYAAAAEAAIAAAAGAPr/AAAEAAIAAAAGAPv/AAAEAAIAAAAGAPz/AAAEAAIAAAAGAP3/AAAEAAIAAAAGAP7/AAAEAAIAAAAGAP//AAAEAAIAAAAGAAAAAAAEAAIAAAAGAAEAAAAEAAIAAAAGAAIAAAAEAAIAAAAGAAMAAAAEAAIAAAAGAAQAAAAEAAIAAAAGAAUAAAAEAAIAAAAGAAYAAAAEAAIAAAAHAPr/AAAFAAIAAAAHAPv/AAAFAAIAAAAHAPz/AAAFAAIAAAAHAP3/AAAFAAIAAAAHAP7/AAAFAAIAAAAHAP//AAAFAAIAAAAHAAAAAAAFAAIAAAAHAAEAAAAFAAIAAAAHAAIAAAAFAAIAAAAHAAMAAAAFAAIAAAAHAAQAAAAFAAIAAAAHAAYAAAAFAAIAAAAHAAUAAAAFAAIAAAAHAAcAAAAFAAMAAAAGAAcAAAAEAAMAAAAFAAcAAAAEAAMAAAAEAAcAAAAEAAMAAAADAAcAAAAEAAMAAAACAAcAAAAEAAMAAAABAAcAAAAEAAMAAAAAAAcAAAAEAAMAAAD//wcAAAAEAAMAAAD+/wcAAAAEAAMAAAD9/wcAAAAEAAMAAAD8/wcAAAAEAAMAAAD7/wcAAAAEAAMAAAD6/wcAAAAEAAMAAAD5/wcAAAAEAAMAAAD4/wcAAAADAAMAAAAHAPn/AAAFAAIAAAAGAPn/AAAEAAIAAAAFAPn/AAAEAAIAAAAEAPn/AAAEAAIAAAADAPn/AAAEAAIAAAACAPn/AAAEAAIAAAABAPn/AAAEAAIAAAAAAPn/AAAEAAIAAAD///n/AAAEAAIAAAD+//n/AAAEAAIAAAD9//n/AAAEAAIAAAD8//n/AAAEAAIAAAD7//n/AAAEAAIAAAD6//n/AAAEAAIAAAD5//n/AAAEAAIAAAD4//n/AAADAAIAAAD4//j/AAADAAEAAAD5//j/AAAEAAEAAAD6//j/AAAEAAEAAAD7//j/AAAEAAEAAAD8//j/AAAEAAEAAAD9//j/AAAEAAEAAAD///j/AAAEAAEAAAAAAPj/AAAEAAEAAAACAPj/AAAEAAEAAAADAPj/AAAEAAEAAAAEAPj/AAAEAAEAAAAFAPj/AAAEAAEAAAAGAPj/AAAEAAEAAAAHAPj/AAAFAAEAAAABAPj/AAAEAAEAAAD+//j/AAAEAAEAAAA=")
 tile_set = ExtResource("3_ys7py")
 
@@ -201,11 +266,26 @@ offset_right = 330.0
 offset_bottom = 310.0
 
 [node name="LifeZone" type="Area2D" parent="." unique_id=128703694]
+visible = false
 collision_layer = 128
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LifeZone" unique_id=1291769744]
 shape = SubResource("RectangleShape2D_jq8tk")
+
+[node name="ParallaxWater" type="Parallax2D" parent="." unique_id=560848956]
+visible = false
+z_index = -2
+scroll_offset = Vector2(0, 128)
+repeat_size = Vector2(32, 0)
+autoscroll = Vector2(14.615, 0)
+repeat_times = 8
+follow_viewport = false
+ignore_camera_scroll = true
+
+[node name="WaTer" type="AnimatedSprite2D" parent="ParallaxWater" unique_id=1026795040]
+sprite_frames = SubResource("SpriteFrames_kg37j")
+frame_progress = 0.48562345
 
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
