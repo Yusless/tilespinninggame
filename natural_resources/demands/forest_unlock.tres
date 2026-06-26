@@ -6,6 +6,7 @@
 
 [resource]
 script = ExtResource("2_hs8d0")
+name = "forest_unlock"
 resources_needed = Dictionary[ExtResource("1_ryxku"), int]({
 ExtResource("2_bho0h"): 50
 })

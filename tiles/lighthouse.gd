@@ -40,12 +40,21 @@ func disable_interior():
 	interior.hide()
 
 func finish_expedition():
+	var player = Global.get_player()
 	expedition_finished.emit()
 	spin_mode = true
+	upgrade_table.res_mgr.clear()
+	disable_interior()
+	player.hide()
+	player.health_component.reset()
 
 func start_expedition():
+	var player = Global.get_player()
 	expedition_started.emit()
 	spin_mode = false
+	upgrade_table.res_mgr.clear()
+	enable_interior()
+	player.show()
 
 func _on_leave_component_interacted():
 	var player = Global.get_player()

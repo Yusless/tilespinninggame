@@ -50,6 +50,7 @@ func _ready() -> void:
 	rest_timer.wait_time = rest_time
 	hurtbox_component.hit.connect(_on_hurtbox_hit)
 	health_component.health_depleted.connect(_on_health_depleted)
+	sprite.animation = "idle"
 
 func set_movement_target(pos: Vector2):
 	nav_agent.target_position = pos
@@ -176,7 +177,7 @@ func _physics_process(delta: float) -> void:
 	animate()
 
 func add_point_of_interest(poi: Node2D):
-	points_of_interest.push_back(poi)
+	points_of_interest.push_back(poi.global_position)
 	set_movement_target(poi.global_position)
 	state = States.CURIOUS
 

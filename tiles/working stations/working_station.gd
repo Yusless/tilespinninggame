@@ -7,6 +7,8 @@ class_name WorkingStation
 
 var current_demand_id := 0
 
+var res_mgr: ResourceManager
+
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("forest_unlock"):
 		complete_demand()
@@ -15,10 +17,9 @@ func _ready() -> void:
 	interaction_component.area_entered.connect(_on_interaction_area_entered)
 	interaction_component.area_exited.connect(_on_interaction_area_exited)
 	resource_demander.set_demand(demands[current_demand_id])
+	res_mgr = Global.get_manager(ResourceManager)
 
 func complete_demand():
-
-	var res_mgr: ResourceManager = Global.get_manager(ResourceManager)
 
 	for res in demands[current_demand_id].resources_needed:
 		res_mgr.detract_resource(res, demands[current_demand_id].resources_needed[res])

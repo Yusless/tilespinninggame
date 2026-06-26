@@ -12,6 +12,7 @@ class_name ResourceCollectable
 
 var magnetism_started := false
 var magnetism_target: Node2D
+var collected := false
 
 func magnetize_towards_node(node: Node2D):
 	global_position = lerp(global_position, node.global_position, 0.2)
@@ -45,6 +46,7 @@ func collect():
 	var res_mgr: ResourceManager = Global.get_manager(ResourceManager)
 	res_mgr.add_resource(resource, amount)
 	animation_player.play("collect")
+	collected = true
 	await animation_player.animation_finished
 	if is_inside_tree():
 		queue_free()
@@ -53,7 +55,8 @@ func reset():
 	queue_free()
 
 func _on_player_detector_area_entered(_area: Area2D) -> void:
-	collect()
+	if !collected:
+		collect()
 
 
 func _on_magnetism_detector_body_entered(body: Node2D) -> void:

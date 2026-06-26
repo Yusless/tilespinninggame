@@ -48,6 +48,8 @@ var life_areas = []
 var dash_count = 0
 
 var temp_pos
+var last_inside_pos := Vector2.ZERO
+
 var last_direction := Vector2.ONE
 var state := States.IDLE
 var camera_velocity := Vector2.ZERO
@@ -66,10 +68,13 @@ func _input(event: InputEvent) -> void:
 			boomerang.force_return()
 	if event.is_action_pressed("dash") and state != States.INSIDE and can_dash:
 		dash()
-	
+	if event.is_action_pressed("restart"):
+		die()
+
 func spawn():
 	health_component.reset()
 	position = spawn_point.global_position
+	state = States.IDLE
 
 func die():
 	state = States.DEAD
@@ -160,7 +165,6 @@ func _on_hurtbox_hit():
 func _on_health_depleted():
 	die()
 
-
 func enter_spin_mode():
 	create_tween().tween_property(camera, "zoom", Vector2(0.3,0.3), 0.15).set_ease(Tween.EASE_OUT)
 	state = States.INSIDE
@@ -174,6 +178,7 @@ func get_inside(spawn_pos: Vector2):
 	lighthouse_entered.emit()
 	global_position = spawn_pos
 	z_index = 2
+	last_inside_pos = spawn_pos
 	
 func get_outside():
 	spawn()

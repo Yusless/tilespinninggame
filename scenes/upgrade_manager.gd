@@ -6,9 +6,6 @@ extends Node
 @export var sawmill_unlock: Demand
 @export var loom_unlock: Demand
 
-
-
-
 func _ready() -> void:
 	for tile_unlock in tile_unlock_array:
 		tile_unlock.working_station.unlock_demand_completed.connect(_on_unlock_demand_completion)

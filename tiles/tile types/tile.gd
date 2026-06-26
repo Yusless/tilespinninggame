@@ -7,11 +7,11 @@ var hovering_before_interacting
 
 var interaction_dict = {
 	TileTypes.HUB: [],
-	TileTypes.FOREST: [TileTypes.LAVA_LAKE],
-	TileTypes.WHEAT: [TileTypes.LAVA_LAKE],
-	TileTypes.LAVA_LAKE: [TileTypes.FOREST, TileTypes.WHEAT],
+	TileTypes.FOREST: [],
+	TileTypes.WHEAT: [],
+	TileTypes.LAVA_LAKE: [TileTypes.FOREST],
 	TileTypes.EMPTY: [],
-	TileTypes.POND: []
+	TileTypes.POND: [TileTypes.WHEAT]
 }
 
 enum TileTypes {
@@ -162,7 +162,7 @@ func rotate_bridges_to_tile() -> void:
 
 
 func _on_area_2d_mouse_entered() -> void:
-	if treated_as_interface and tile_type != TileTypes.HUB and rotatable:
+	if treated_as_interface and rotatable:
 		tile_contents.position = hovering_position
 	else:
 		hovering_before_interacting = true
@@ -211,6 +211,7 @@ func activate():
 func unlock():
 	unlocked = true
 	rotatable = true
+	set_tile_contents_modulation()
 
 func set_tile_contents_modulation():
 	if unlocked:
