@@ -119,9 +119,10 @@ func _on_player_died():
 
 func _on_demand_completed(demand: Demand):
 	unlock_tiles(demand)
+	update_all_bridges()
 
 
 func unlock_tiles(demand: Demand):
 	if demand in unlock_dict:
-		for tile in unlock_dict[demand]:
+		for tile: Tile in unlock_dict[demand]:
 			tile.unlock()

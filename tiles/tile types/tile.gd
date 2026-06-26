@@ -208,6 +208,7 @@ func activate():
 func unlock():
 	unlocked = true
 	rotatable = true
+	set_tile_contents_modulation()
 
 func set_tile_contents_modulation():
 	if unlocked:

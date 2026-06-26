@@ -62,7 +62,6 @@ max_health = 1
 [node name="Sprite" parent="." index="2" unique_id=262051222]
 position = Vector2(0, 0)
 sprite_frames = SubResource("SpriteFrames_skmqv")
-animation = &"burnt"
 
 [node name="CollectableOrigin" parent="." index="3" unique_id=1246272587]
 position = Vector2(0, 0)

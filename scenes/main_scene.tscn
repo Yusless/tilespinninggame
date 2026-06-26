@@ -168,7 +168,7 @@ hub_tile = NodePath("../../World/CellsSystem/HubTile")
 metadata/_edit_lock_ = true
 
 [node name="PromptDisplayer" parent="." unique_id=24052782 instance=ExtResource("26_6p3nn")]
-position = Vector2(179, 109)
+position = Vector2(736, -368)
 script = ExtResource("27_k67gn")
 prompt_text = "to attack"
 prompt_icon = SubResource("AtlasTexture_k67gn")
@@ -178,7 +178,7 @@ position = Vector2(187, 21)
 shape = SubResource("RectangleShape2D_kg37j")
 
 [node name="PromptDisplayer2" parent="." unique_id=1677368385 node_paths=PackedStringArray("hub_tile") instance=ExtResource("26_6p3nn")]
-position = Vector2(416, 429)
+position = Vector2(973, -48)
 script = ExtResource("29_02d50")
 wheat = ExtResource("7_c1pb6")
 hub_tile = NodePath("../World/CellsSystem/HubTile")
@@ -189,7 +189,7 @@ position = Vector2(-68, -173)
 shape = SubResource("RectangleShape2D_kg37j")
 
 [node name="PromptDisplayer3" parent="." unique_id=1974343526 node_paths=PackedStringArray("hub_tile") instance=ExtResource("26_6p3nn")]
-position = Vector2(675, 135)
+position = Vector2(1232, -342)
 script = ExtResource("30_02d50")
 wheat = ExtResource("7_c1pb6")
 hub_tile = NodePath("../World/CellsSystem/HubTile")

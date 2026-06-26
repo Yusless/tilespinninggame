@@ -14,6 +14,6 @@ resources_needed = Dictionary[ExtResource("1_vtw8c"), int]({
 ExtResource("2_sorsq"): 50,
 ExtResource("3_h42gd"): 15,
 ExtResource("4_0cyug"): 15,
-ExtResource("5_btucd"): 0
+ExtResource("5_btucd"): 5
 })
 metadata/_custom_type_script = "uid://ekfhsugdy8f3"
