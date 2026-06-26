@@ -1,0 +1,200 @@
+[gd_scene format=3 uid="uid://bic5v8bsj303"]
+
+[ext_resource type="Script" uid="uid://hhgxf43xrpcn" path="res://scenes/upgrade_manager.gd" id="1_7nt27"]
+[ext_resource type="PackedScene" uid="uid://c5bhx5utsovbg" path="res://player/player.tscn" id="1_w2twt"]
+[ext_resource type="Resource" uid="uid://djry785e6txmc" path="res://natural_resources/demands/mill_unlock.tres" id="2_u0fll"]
+[ext_resource type="Resource" uid="uid://c5x66rynkscu7" path="res://natural_resources/demands/Sawmill_unlock.tres" id="3_6p3nn"]
+[ext_resource type="Script" uid="uid://c52h00sukof0w" path="res://scripts/cells_system.gd" id="3_7ykc4"]
+[ext_resource type="Resource" uid="uid://dn0snts7urilu" path="res://natural_resources/wood_resource.tres" id="4_4w45t"]
+[ext_resource type="PackedScene" uid="uid://dhfxsclatflk7" path="res://tiles/tile types/tile.tscn" id="4_pu3yx"]
+[ext_resource type="Script" uid="uid://duuyi4e3d3ipw" path="res://natural_resources/resource_manager.gd" id="5_c16ls"]
+[ext_resource type="Resource" uid="uid://dh2vwv3hcj4gu" path="res://natural_resources/coal_resource.tres" id="5_r6p65"]
+[ext_resource type="Resource" uid="uid://cu42um0n8tj08" path="res://natural_resources/lava_core_resource.tres" id="6_7nt27"]
+[ext_resource type="Script" uid="uid://36bx0jkgt0vc" path="res://natural_resources/natural_resource.gd" id="6_18nlu"]
+[ext_resource type="PackedScene" uid="uid://ci5v15gpogo2o" path="res://tiles/tile types/tile_hub.tscn" id="6_c1pb6"]
+[ext_resource type="PackedScene" uid="uid://ssdkn2cnce4d" path="res://tiles/tile types/tile_pond.tscn" id="7_6wevv"]
+[ext_resource type="Resource" uid="uid://c3xr3hu8jlinu" path="res://natural_resources/wheat_resource.tres" id="7_c1pb6"]
+[ext_resource type="PackedScene" uid="uid://bjtqir2jwep7s" path="res://hud/hud.tscn" id="8_18nlu"]
+[ext_resource type="Texture2D" uid="uid://c6cge5t38blbe" path="res://assets/graphics/tile/water.png" id="9_6wevv"]
+[ext_resource type="Resource" uid="uid://c74136c2d2yhp" path="res://natural_resources/demands/lava_lake_unlock.tres" id="9_bcnxi"]
+[ext_resource type="Script" uid="uid://cd7tt018toe7r" path="res://music/music_manager.gd" id="10_lhwp2"]
+[ext_resource type="PackedScene" uid="uid://dumvev7p6ndd6" path="res://tiles/tile types/wheat_tile.tscn" id="11_e1cbu"]
+[ext_resource type="AudioStream" uid="uid://cbcqvc7ilcul" path="res://music/spin_up.ogg" id="11_l40q6"]
+[ext_resource type="Resource" uid="uid://1lp2ssn0t0im" path="res://natural_resources/demands/forest_unlock.tres" id="12_6u1mn"]
+[ext_resource type="AudioStream" uid="uid://dgg7rrup2dpwr" path="res://music/spin_down.ogg" id="12_iav3h"]
+[ext_resource type="Resource" uid="uid://cihy01e2mprig" path="res://natural_resources/demands/full_map_unlock.tres" id="12_k6f3i"]
+[ext_resource type="PackedScene" uid="uid://r27t1jiq2hxy" path="res://tiles/tile types/tile_lava_lake.tscn" id="12_si52b"]
+[ext_resource type="Script" uid="uid://ci8t37q1enmah" path="res://effects/environment_manager.gd" id="13_r6p65"]
+[ext_resource type="PackedScene" uid="uid://ckej6k0mt88cx" path="res://tiles/tile types/tile_forest.tscn" id="17_6u1mn"]
+[ext_resource type="Resource" uid="uid://c68qftlmflmn2" path="res://natural_resources/demands/toad_unlock.tres" id="19_pgk25"]
+[ext_resource type="PackedScene" uid="uid://cx1brj3xebjm3" path="res://hud/prompt_displayer.tscn" id="26_6p3nn"]
+[ext_resource type="Script" uid="uid://b0g4feb0lnsfe" path="res://hud/prompt_attack.gd" id="27_k67gn"]
+[ext_resource type="Texture2D" uid="uid://d2ccavou661qm" path="res://hud/button_prompts.png" id="28_4bgka"]
+[ext_resource type="Script" uid="uid://cmurhu2ehuhu5" path="res://hud/prompt_end_expedition.gd" id="29_02d50"]
+[ext_resource type="Script" uid="uid://bdw36dw6y1sog" path="res://hud/prompt_unlock_new_tiles.gd" id="30_02d50"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k67gn"]
+atlas = ExtResource("28_4bgka")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kg37j"]
+size = Vector2(160, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_02d50"]
+size = Vector2(24, 20)
+
+[node name="MainScene" type="Node" unique_id=2095065835]
+
+[node name="UpgradeManager" type="Node" parent="." unique_id=100137014 groups=["Managers"]]
+script = ExtResource("1_7nt27")
+mill_unlock = ExtResource("2_u0fll")
+sawmill_unlock = ExtResource("3_6p3nn")
+
+[node name="ResourceManager" type="Node" parent="." unique_id=84701733 groups=["Managers"]]
+script = ExtResource("5_c16ls")
+available_resources = Array[ExtResource("6_18nlu")]([ExtResource("7_c1pb6"), ExtResource("4_4w45t"), ExtResource("5_r6p65"), ExtResource("6_7nt27")])
+
+[node name="MusicManager" type="Node" parent="." unique_id=1010421 node_paths=PackedStringArray("music_day", "music_night", "hub_tile") groups=["Managers"]]
+script = ExtResource("10_lhwp2")
+music_day = NodePath("MusicDay")
+music_night = NodePath("MusicNight")
+hub_tile = NodePath("../World/CellsSystem/HubTile")
+
+[node name="MusicDay" type="AudioStreamPlayer" parent="MusicManager" unique_id=1123087044]
+stream = ExtResource("11_l40q6")
+bus = &"Music"
+
+[node name="MusicNight" type="AudioStreamPlayer" parent="MusicManager" unique_id=1273278918]
+stream = ExtResource("12_iav3h")
+bus = &"Music"
+
+[node name="World" type="Node2D" parent="." unique_id=1455164938]
+y_sort_enabled = true
+
+[node name="EnvironmentManager" type="CanvasModulate" parent="World" unique_id=575506547 groups=["Managers"]]
+script = ExtResource("13_r6p65")
+transition_time = 0.5
+
+[node name="CellsSystem" type="Node2D" parent="World" unique_id=280263883 node_paths=PackedStringArray("hub_tile", "environment_manager", "player") groups=["Managers"]]
+y_sort_enabled = true
+script = ExtResource("3_7ykc4")
+hub_tile = NodePath("HubTile")
+environment_manager = NodePath("../EnvironmentManager")
+player = NodePath("../Player")
+
+[node name="HubTile" parent="World/CellsSystem" unique_id=1282555252 instance=ExtResource("6_c1pb6")]
+y_sort_enabled = false
+position = Vector2(1104, 368)
+left_border = 2
+down_border = 2
+
+[node name="SpawnPoint" type="Marker2D" parent="World/CellsSystem/HubTile" unique_id=973232823]
+position = Vector2(2, 37)
+
+[node name="Tile" parent="World/CellsSystem" unique_id=1779673374 instance=ExtResource("4_pu3yx")]
+position = Vector2(1104, 736)
+up_border = 2
+right_border = 2
+
+[node name="WheatTile" parent="World/CellsSystem" unique_id=1863255674 instance=ExtResource("11_e1cbu")]
+position = Vector2(1472, 736)
+left_border = 2
+up_border = 2
+
+[node name="TilePond" parent="World/CellsSystem" unique_id=1611434966 instance=ExtResource("7_6wevv")]
+position = Vector2(1472, 368)
+demand_for_unlock = ExtResource("19_pgk25")
+left_border = 2
+down_border = 2
+
+[node name="TileLavaLake" parent="World/CellsSystem" unique_id=1232429263 instance=ExtResource("12_si52b")]
+position = Vector2(1840, 736)
+demand_for_unlock = ExtResource("9_bcnxi")
+left_border = 2
+up_border = 2
+
+[node name="Tile3" parent="World/CellsSystem" unique_id=1890887602 instance=ExtResource("17_6u1mn")]
+position = Vector2(1840, 368)
+demand_for_unlock = ExtResource("9_bcnxi")
+left_border = 2
+down_border = 2
+
+[node name="WheatTile2" parent="World/CellsSystem" unique_id=1584804239 instance=ExtResource("11_e1cbu")]
+position = Vector2(736, 736)
+demand_for_unlock = ExtResource("12_k6f3i")
+left_border = 2
+right_border = 2
+
+[node name="TileLavaLake2" parent="World/CellsSystem" unique_id=2093512687 instance=ExtResource("12_si52b")]
+position = Vector2(368, 736)
+demand_for_unlock = ExtResource("12_k6f3i")
+left_border = 2
+up_border = 2
+
+[node name="Tile4" parent="World/CellsSystem" unique_id=749212154 instance=ExtResource("17_6u1mn")]
+position = Vector2(368, 368)
+demand_for_unlock = ExtResource("12_6u1mn")
+right_border = 2
+
+[node name="TilePond2" parent="World/CellsSystem" unique_id=1105230833 instance=ExtResource("7_6wevv")]
+position = Vector2(736, 368)
+demand_for_unlock = ExtResource("12_6u1mn")
+left_border = 2
+up_border = 2
+right_border = 2
+
+[node name="Water" type="Sprite2D" parent="World" unique_id=1453842171]
+modulate = Color(0.8346143, 0.8346143, 0.8346143, 1)
+z_index = -7
+texture_repeat = 2
+position = Vector2(1840, 1472)
+texture = ExtResource("9_6wevv")
+region_enabled = true
+region_rect = Rect2(0, 0, 5000, 5000)
+metadata/_edit_lock_ = true
+
+[node name="Player" parent="World" unique_id=251603508 node_paths=PackedStringArray("cells_system", "spawn_point", "resource_manager") instance=ExtResource("1_w2twt")]
+y_sort_enabled = false
+position = Vector2(1102, 410)
+cells_system = NodePath("../CellsSystem")
+spawn_point = NodePath("../CellsSystem/HubTile/SpawnPoint")
+resource_manager = NodePath("../../ResourceManager")
+
+[node name="GUILayer" type="CanvasLayer" parent="." unique_id=587643093]
+
+[node name="HUD" parent="GUILayer" unique_id=1161228326 node_paths=PackedStringArray("hub_tile") instance=ExtResource("8_18nlu")]
+mouse_filter = 1
+hub_tile = NodePath("../../World/CellsSystem/HubTile")
+metadata/_edit_lock_ = true
+
+[node name="PromptDisplayer" parent="." unique_id=24052782 instance=ExtResource("26_6p3nn")]
+position = Vector2(179, 109)
+script = ExtResource("27_k67gn")
+prompt_text = "to attack"
+prompt_icon = SubResource("AtlasTexture_k67gn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PromptDisplayer" unique_id=1272398371]
+position = Vector2(187, 21)
+shape = SubResource("RectangleShape2D_kg37j")
+
+[node name="PromptDisplayer2" parent="." unique_id=1677368385 node_paths=PackedStringArray("hub_tile") instance=ExtResource("26_6p3nn")]
+position = Vector2(416, 429)
+script = ExtResource("29_02d50")
+wheat = ExtResource("7_c1pb6")
+hub_tile = NodePath("../World/CellsSystem/HubTile")
+prompt_text = "Enter the lighthouse to end the expedition"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PromptDisplayer2" unique_id=991133087]
+position = Vector2(-68, -173)
+shape = SubResource("RectangleShape2D_kg37j")
+
+[node name="PromptDisplayer3" parent="." unique_id=1974343526 node_paths=PackedStringArray("hub_tile") instance=ExtResource("26_6p3nn")]
+position = Vector2(675, 135)
+script = ExtResource("30_02d50")
+wheat = ExtResource("7_c1pb6")
+hub_tile = NodePath("../World/CellsSystem/HubTile")
+prompt_text = "Unlock new tiles for resources"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PromptDisplayer3" unique_id=814493418]
+position = Vector2(54, 86)
+shape = SubResource("RectangleShape2D_02d50")
