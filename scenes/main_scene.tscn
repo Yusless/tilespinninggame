@@ -1,5 +1,4 @@
 [gd_scene format=4 uid="uid://cgco3trm2p16g"]
-
 [ext_resource type="Script" uid="uid://hhgxf43xrpcn" path="res://scenes/upgrade_manager.gd" id="1_7nt27"]
 [ext_resource type="PackedScene" uid="uid://c5bhx5utsovbg" path="res://player/player.tscn" id="1_w2twt"]
 [ext_resource type="Resource" uid="uid://djry785e6txmc" path="res://natural_resources/demands/mill_unlock.tres" id="2_u0fll"]
@@ -73,10 +72,13 @@ atlas = ExtResource("28_4bgka")
 region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kg37j"]
-size = Vector2(160, 20)
+size = Vector2(64, 120)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kkokr"]
+size = Vector2(92, 24)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_02d50"]
-size = Vector2(24, 20)
+size = Vector2(30, 20)
 
 [node name="MainScene" type="Node" unique_id=2095065835]
 
@@ -207,33 +209,33 @@ hub_tile = NodePath("../../World/CellsSystem/HubTile")
 metadata/_edit_lock_ = true
 
 [node name="PromptDisplayer" parent="." unique_id=24052782 instance=ExtResource("26_6p3nn")]
-position = Vector2(736, -368)
+position = Vector2(1344, 616)
 script = ExtResource("27_k67gn")
 prompt_text = "to attack"
 prompt_icon = SubResource("AtlasTexture_k67gn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PromptDisplayer" unique_id=1272398371]
-position = Vector2(187, 21)
+position = Vector2(-32, 116)
 shape = SubResource("RectangleShape2D_kg37j")
 
 [node name="PromptDisplayer2" parent="." unique_id=1677368385 node_paths=PackedStringArray("hub_tile") instance=ExtResource("26_6p3nn")]
-position = Vector2(973, -48)
+position = Vector2(784, 208)
 script = ExtResource("29_02d50")
 wheat = ExtResource("7_c1pb6")
 hub_tile = NodePath("../World/CellsSystem/HubTile")
 prompt_text = "Enter the lighthouse to end the expedition"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PromptDisplayer2" unique_id=991133087]
-position = Vector2(-68, -173)
-shape = SubResource("RectangleShape2D_kg37j")
+position = Vector2(312, 392)
+shape = SubResource("RectangleShape2D_kkokr")
 
 [node name="PromptDisplayer3" parent="." unique_id=1974343526 node_paths=PackedStringArray("hub_tile") instance=ExtResource("26_6p3nn")]
-position = Vector2(1232, -342)
+position = Vector2(1016, 112)
 script = ExtResource("30_02d50")
 wheat = ExtResource("7_c1pb6")
 hub_tile = NodePath("../World/CellsSystem/HubTile")
 prompt_text = "Unlock new tiles for resources"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PromptDisplayer3" unique_id=814493418]
-position = Vector2(54, 86)
+position = Vector2(57, 86)
 shape = SubResource("RectangleShape2D_02d50")

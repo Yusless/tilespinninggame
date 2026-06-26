@@ -204,6 +204,7 @@ tile_set = ExtResource("3_ys7py")
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1553304571]
 z_index = 1
 collision_layer = 64
+collision_mask = 11
 
 [node name="UpperLeftBorder" type="CollisionShape2D" parent="StaticBody2D" unique_id=1047201314]
 shape = SubResource("SegmentShape2D_jq8tk")
