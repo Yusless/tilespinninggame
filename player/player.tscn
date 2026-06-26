@@ -300,7 +300,6 @@ one_shot = true
 collision_mask = 128
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="standbox" unique_id=216538320]
-position = Vector2(0, 7)
 shape = SubResource("RectangleShape2D_qhqgy")
 
 [connection signal="frame_changed" from="Sprite" to="." method="_on_sprite_frame_changed"]

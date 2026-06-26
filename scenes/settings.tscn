@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://csyjbax0lxw7j"]
 
+[ext_resource type="Script" uid="uid://d3cqc40ifpdnx" path="res://scenes/settings.gd" id="1_5p8wc"]
+
 [node name="Settings" type="Control" unique_id=1949159426]
 layout_mode = 3
 anchors_preset = 15
@@ -7,6 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_5p8wc")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=773023784]
 layout_mode = 0
@@ -45,6 +48,8 @@ fit_content = true
 [node name="SFX Volume Slider" type="HSlider" parent="MarginContainer/VBoxContainer" unique_id=1403767995]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="MarginContainer/VBoxContainer" unique_id=288456810]
+[node name="Button2" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1264191465]
 layout_mode = 2
 text = "Return to Menu"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Button2" to="." method="_on_button_pressed"]

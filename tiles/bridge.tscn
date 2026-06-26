@@ -68,12 +68,11 @@ vertices = PackedVector2Array(-120, 27.0625, -251.82031, 27.929688, -251.17188, 
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-261, -19, -110, -20, -110, 37, -262, 38)])
 
-[node name="bridge" type="Node2D" unique_id=1152005720 node_paths=PackedStringArray("mid_part", "hit_box", "collision_up", "right_bridge_sprite", "left_bridge_sprite", "up_bridge_sprite", "down_bridge_sprite", "merge_part_left", "merge_part_up", "navreg_left", "navreg_up", "navlink_left", "navlink_up", "navlink_left2", "navlink_up2")]
+[node name="bridge" type="Node2D" unique_id=1152005720 node_paths=PackedStringArray("mid_part", "hit_box", "right_bridge_sprite", "left_bridge_sprite", "up_bridge_sprite", "down_bridge_sprite", "merge_part_left", "merge_part_up", "navreg_left", "navreg_up", "navlink_left", "navlink_up", "navlink_left2", "navlink_up2")]
 z_index = -1
 script = ExtResource("1_bfbeh")
 mid_part = NodePath("CollisionRight/MidPart")
 hit_box = NodePath("CollisionRight")
-collision_up = NodePath("CollisionUp")
 right_bridge_sprite = NodePath("RightBridge")
 left_bridge_sprite = NodePath("LeftBridge")
 up_bridge_sprite = NodePath("UpBridge")

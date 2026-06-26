@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://cgco3trm2p16g"]
 
+[ext_resource type="Script" uid="uid://bwhueoie38pdq" path="res://scenes/main_menu.gd" id="1_ekxnf"]
 [ext_resource type="Theme" uid="uid://cyr5vfnkvpaly" path="res://hud/main_theme.tres" id="1_l6cm7"]
 
 [node name="MainMenu" type="Control" unique_id=1682306964]
@@ -9,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_ekxnf")
 
 [node name="Background" type="TextureRect" parent="." unique_id=1658001589]
 layout_mode = 0
@@ -41,3 +43,6 @@ text = "Start New"
 [node name="Settings" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1016379727]
 layout_mode = 2
 text = "Settings"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
