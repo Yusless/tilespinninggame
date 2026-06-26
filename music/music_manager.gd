@@ -13,7 +13,6 @@ func _input(event: InputEvent) -> void:
 		off = true
 		music_day.stop()
 		music_night.stop()
-		
 
 func _ready() -> void:
 	hub_tile.lighthouse.expedition_finished.connect(_on_lighthosue_expedition_finished)

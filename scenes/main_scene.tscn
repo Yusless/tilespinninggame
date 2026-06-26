@@ -164,7 +164,7 @@ metadata/_edit_lock_ = true
 
 [node name="Player" parent="World" unique_id=251603508 node_paths=PackedStringArray("cells_system", "spawn_point", "resource_manager") instance=ExtResource("1_w2twt")]
 z_index = 1
-position = Vector2(1076, 328)
+position = Vector2(1104, 368)
 cells_system = NodePath("../CellsSystem")
 spawn_point = NodePath("../CellsSystem/HubTile/SpawnPoint")
 resource_manager = NodePath("../../ResourceManager")
