@@ -3,6 +3,8 @@ class_name Lighthouse
 
 signal expedition_finished
 signal expedition_started
+signal entered
+signal exited
 
 @export var base: Sprite2D
 @export var outer_layer: Sprite2D
@@ -11,6 +13,7 @@ signal expedition_started
 @export var leave_component: InteractionComponent
 @export var expedition_table_interaction: InteractionComponent
 @export var upgrade_table: UpgradeTable
+@export var interior_collider: StaticBody2D
 
 var spin_mode := false
 
@@ -34,10 +37,14 @@ func try_to_interact():
 func enable_interior():
 	outer_layer.hide()
 	interior.show()
+	interior_collider.process_mode = Node.PROCESS_MODE_INHERIT
+	entered.emit()
 
 func disable_interior():
 	outer_layer.show()
 	interior.hide()
+	interior_collider.process_mode = Node.PROCESS_MODE_DISABLED
+	exited.emit()
 
 func finish_expedition():
 	var player = Global.get_player()

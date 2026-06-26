@@ -53,14 +53,16 @@ var last_inside_pos := Vector2.ZERO
 var last_direction := Vector2.ONE
 var state := States.IDLE
 var camera_velocity := Vector2.ZERO
+var in_lighthouse := false
 
 func _ready() -> void:
 	boomerang.return_target = self
 	hurtbox.hit.connect(_on_hurtbox_hit)
 	health_component.health_depleted.connect(_on_health_depleted)
+	spawn()
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("attack") and state != States.INSIDE:
+	if event.is_action_pressed("attack") and state not in [States.DEAD, States.INSIDE]:
 		if !boomerang.is_launched:
 			var dir_to_mouse := global_position.direction_to(get_global_mouse_position())
 			boomerang.launch(global_position, dir_to_mouse.angle(), velocity)
@@ -68,7 +70,7 @@ func _input(event: InputEvent) -> void:
 			boomerang.force_return()
 	if event.is_action_pressed("dash") and state != States.INSIDE and can_dash:
 		dash()
-	if event.is_action_pressed("restart"):
+	if event.is_action_pressed("restart") and state not in [States.DEAD, States.INSIDE] and !in_lighthouse:
 		die()
 
 func spawn():
@@ -179,11 +181,13 @@ func get_inside(spawn_pos: Vector2):
 	global_position = spawn_pos
 	z_index = 2
 	last_inside_pos = spawn_pos
+	in_lighthouse = true
 	
 func get_outside():
 	spawn()
 	lighthouse_exited.emit()
 	z_index = 1
+	in_lighthouse = false
 
 
 func _on_sprite_frame_changed() -> void:

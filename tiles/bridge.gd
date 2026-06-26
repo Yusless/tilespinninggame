@@ -4,6 +4,7 @@ class_name Bridge
 var side: Side.Sides = Side.Sides.UP
 @export var mid_part: CollisionShape2D
 @export var hit_box: StaticBody2D
+@export var collision_up: StaticBody2D
 
 @export var right_bridge_sprite: Node2D
 @export var left_bridge_sprite: Node2D

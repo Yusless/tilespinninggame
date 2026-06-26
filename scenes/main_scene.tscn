@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://bic5v8bsj303"]
+[gd_scene format=3 uid="uid://cgco3trm2p16g"]
 
 [ext_resource type="Script" uid="uid://hhgxf43xrpcn" path="res://scenes/upgrade_manager.gd" id="1_7nt27"]
 [ext_resource type="PackedScene" uid="uid://c5bhx5utsovbg" path="res://player/player.tscn" id="1_w2twt"]
@@ -26,8 +26,6 @@
 [ext_resource type="PackedScene" uid="uid://r27t1jiq2hxy" path="res://tiles/tile types/tile_lava_lake.tscn" id="12_si52b"]
 [ext_resource type="Script" uid="uid://ci8t37q1enmah" path="res://effects/environment_manager.gd" id="13_r6p65"]
 [ext_resource type="PackedScene" uid="uid://ckej6k0mt88cx" path="res://tiles/tile types/tile_forest.tscn" id="17_6u1mn"]
-[ext_resource type="PackedScene" uid="uid://c4htw70mfhm2s" path="res://tiles/tile types/tile_unlock_3.tscn" id="21_kkokr"]
-[ext_resource type="PackedScene" uid="uid://c14gjkqh16wlx" path="res://tiles/tile types/tile_unlock_2.tscn" id="22_adb74"]
 [ext_resource type="Resource" uid="uid://c68qftlmflmn2" path="res://natural_resources/demands/toad_unlock.tres" id="19_pgk25"]
 [ext_resource type="PackedScene" uid="uid://cx1brj3xebjm3" path="res://hud/prompt_displayer.tscn" id="26_6p3nn"]
 [ext_resource type="Script" uid="uid://b0g4feb0lnsfe" path="res://hud/prompt_attack.gd" id="27_k67gn"]
@@ -49,7 +47,6 @@ size = Vector2(24, 20)
 
 [node name="UpgradeManager" type="Node" parent="." unique_id=100137014 groups=["Managers"]]
 script = ExtResource("1_7nt27")
-tile_unlock_array = [NodePath("../World/CellsSystem/TileUnlock1"), NodePath("../World/CellsSystem/TileUnlock2"), NodePath("../World/CellsSystem/TileUnlock3")]
 mill_unlock = ExtResource("2_u0fll")
 sawmill_unlock = ExtResource("3_6p3nn")
 
@@ -65,11 +62,9 @@ hub_tile = NodePath("../World/CellsSystem/HubTile")
 
 [node name="MusicDay" type="AudioStreamPlayer" parent="MusicManager" unique_id=1123087044]
 stream = ExtResource("11_l40q6")
-bus = &"Music"
 
 [node name="MusicNight" type="AudioStreamPlayer" parent="MusicManager" unique_id=1273278918]
 stream = ExtResource("12_iav3h")
-bus = &"Music"
 
 [node name="World" type="Node2D" parent="." unique_id=1455164938]
 y_sort_enabled = true

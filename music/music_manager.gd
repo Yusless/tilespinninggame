@@ -6,12 +6,18 @@ class_name MusicManager
 
 @export var hub_tile: HubTile
 
+var off := false
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("music_off"):
+		off = true
+		music_day.stop()
+		music_night.stop()
+
 func _ready() -> void:
-	switch_to_day()
 	hub_tile.lighthouse.expedition_finished.connect(_on_lighthosue_expedition_finished)
 	hub_tile.lighthouse.expedition_started.connect(_on_lighthosue_expedition_started)
-	#music_day.play()
-	#music_night.play()
+	switch_music(music_night, music_day)
 
 func switch_music(current_music: AudioStreamPlayer, other_music: AudioStreamPlayer):
 	var tween = create_tween()
@@ -24,11 +30,6 @@ func switch_music(current_music: AudioStreamPlayer, other_music: AudioStreamPlay
 	var tmp = current_music
 	current_music = other_music
 	other_music = tmp
-
-func switch_to_day():
-	var tween := create_tween()
-	tween.tween_property(music_day, "volume_linear", 1.0, 0.3)
-	tween.tween_property(music_night, "volume_linear", 0.0, 0.3)
 
 func _on_lighthosue_expedition_finished():
 	switch_music(music_day, music_night)

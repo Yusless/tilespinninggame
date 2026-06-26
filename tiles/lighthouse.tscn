@@ -30,8 +30,8 @@ height = 138.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6fhyq"]
 size = Vector2(43, 20)
 
-[node name="Lighthouse" type="Node2D" unique_id=1382120843 node_paths=PackedStringArray("base", "outer_layer", "interior", "spawn_point_interior", "leave_component", "expedition_table_interaction", "upgrade_table")]
-z_index = 1
+[node name="Lighthouse" type="Node2D" unique_id=1382120843 node_paths=PackedStringArray("base", "outer_layer", "interior", "spawn_point_interior", "leave_component", "expedition_table_interaction", "upgrade_table", "interior_collider")]
+z_index = 2
 script = ExtResource("1_km4o1")
 base = NodePath("Base")
 outer_layer = NodePath("OuterLayer")
@@ -40,6 +40,7 @@ spawn_point_interior = NodePath("SpawnPointInterior")
 leave_component = NodePath("Interior/LeaveComponent")
 expedition_table_interaction = NodePath("Interior/InteriorCollider/ExpeditionTable/ExpeditionTableInteraction")
 upgrade_table = NodePath("Interior/UpgradeTable")
+interior_collider = NodePath("Interior/InteriorCollider")
 
 [node name="Base" type="Sprite2D" parent="." unique_id=1662788210]
 position = Vector2(0, 1)
