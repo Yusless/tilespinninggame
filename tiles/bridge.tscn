@@ -27,6 +27,12 @@ b = Vector2(181, -37.999985)
 a = Vector2(180, -38.999985)
 b = Vector2(180, 23.000015)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qc0na"]
+size = Vector2(71, 61)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3xd07"]
+size = Vector2(71, 61)
+
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_ye46i"]
 a = Vector2(121.99999, 37.000015)
 b = Vector2(184, 37.000023)
@@ -39,6 +45,9 @@ b = Vector2(182, -35.999977)
 a = Vector2(182, -35.999977)
 b = Vector2(182, 38.000023)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bfbeh"]
+size = Vector2(60, 60.5)
+
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_3cciu"]
 a = Vector2(124, 36.00001)
 b = Vector2(182, 36.00002)
@@ -50,6 +59,9 @@ b = Vector2(182, -36.99998)
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_o1xw4"]
 a = Vector2(182, -36.99998)
 b = Vector2(182, 36.00002)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x127y"]
+size = Vector2(60, 59.5)
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_qc0na"]
 vertices = PackedVector2Array(-120, 27.0625, -251.82031, 27.929688, -251.17188, -9.0625, -120, -9.9296875)
@@ -76,6 +88,7 @@ navlink_up2 = NodePath("NavlinkUp/NavlinkUp2")
 
 [node name="CollisionRight" type="StaticBody2D" parent="." unique_id=1221304630]
 z_index = 3
+collision_layer = 64
 
 [node name="LeftPart" type="CollisionShape2D" parent="CollisionRight" unique_id=2017517653]
 shape = SubResource("SegmentShape2D_bfbeh")
@@ -89,6 +102,7 @@ shape = SubResource("SegmentShape2D_w7g4v")
 
 [node name="CollisionLeft" type="StaticBody2D" parent="." unique_id=194165701]
 z_index = 3
+collision_layer = 64
 
 [node name="LeftPart" type="CollisionShape2D" parent="CollisionLeft" unique_id=1613118318]
 rotation = -3.1415927
@@ -103,9 +117,26 @@ z_index = 2
 rotation = -3.1415927
 shape = SubResource("SegmentShape2D_jq8tk")
 
+[node name="LifeZoneUp" type="Area2D" parent="." unique_id=300085674]
+collision_layer = 128
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LifeZoneUp" unique_id=2065844532]
+position = Vector2(-0.49999905, -150.5)
+shape = SubResource("RectangleShape2D_qc0na")
+
+[node name="LifeZoneDown" type="Area2D" parent="." unique_id=2131923666]
+collision_layer = 128
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LifeZoneDown" unique_id=1525973286]
+position = Vector2(-0.5, 151)
+shape = SubResource("RectangleShape2D_3xd07")
+
 [node name="CollisionDown" type="StaticBody2D" parent="." unique_id=194129362]
 z_index = 3
 rotation = -1.5707964
+collision_layer = 64
 
 [node name="LeftPart" type="CollisionShape2D" parent="CollisionDown" unique_id=872215712]
 rotation = -3.1415927
@@ -121,9 +152,19 @@ position = Vector2(3.8146973e-06, 0)
 rotation = -3.1415927
 shape = SubResource("SegmentShape2D_e2a6e")
 
+[node name="LifeZoneRight" type="Area2D" parent="." unique_id=950585964]
+rotation = -1.5707964
+collision_layer = 128
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LifeZoneRight" unique_id=1364794382]
+position = Vector2(-8.000007, 149.75)
+shape = SubResource("RectangleShape2D_bfbeh")
+
 [node name="CollisionUp" type="StaticBody2D" parent="." unique_id=103539948]
 z_index = 3
 rotation = -4.712389
+collision_layer = 64
 
 [node name="LeftPart" type="CollisionShape2D" parent="CollisionUp" unique_id=1842853266]
 rotation = -3.1415927
@@ -139,6 +180,15 @@ z_index = 2
 position = Vector2(0, 9.536743e-07)
 rotation = -3.1415927
 shape = SubResource("SegmentShape2D_o1xw4")
+
+[node name="LifeZoneLeft" type="Area2D" parent="." unique_id=325218365]
+rotation = 1.5707964
+collision_layer = 128
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LifeZoneLeft" unique_id=858014817]
+position = Vector2(8.000008, 149.25)
+shape = SubResource("RectangleShape2D_x127y")
 
 [node name="RightBridge" type="TileMapLayer" parent="." unique_id=1014033833]
 z_index = 1

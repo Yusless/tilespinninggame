@@ -198,12 +198,17 @@ stream_5/stream = ExtResource("11_e7oew")
 stream_6/stream = ExtResource("12_c35mf")
 stream_7/stream = ExtResource("13_65viv")
 
-[node name="Player" type="CharacterBody2D" unique_id=251603508 node_paths=PackedStringArray("boomerang", "sprite", "stun_timer", "hurtbox", "animation_player", "health_component", "camera", "step_sound_1", "step_sound_2", "visual_boomerang") groups=["Player"]]
+[node name="Player" type="CharacterBody2D" unique_id=251603508 node_paths=PackedStringArray("check_for_dead_area", "dash_timer", "dash_cooldown", "drowned_timer", "boomerang", "sprite", "stun_timer", "hurtbox", "animation_player", "health_component", "camera", "step_sound_1", "step_sound_2", "visual_boomerang") groups=["Player"]]
 z_index = 1
 y_sort_enabled = true
 collision_layer = 2
+collision_mask = 193
 script = ExtResource("1_g2els")
 max_speed = 200.0
+check_for_dead_area = NodePath("check_for_dead_area")
+dash_timer = NodePath("dash_timer")
+dash_cooldown = NodePath("dash_cooldown")
+drowned_timer = NodePath("DrownedTimer")
 boomerang = NodePath("Boomerang")
 sprite = NodePath("Sprite")
 stun_timer = NodePath("StunTimer")
@@ -240,6 +245,7 @@ position_smoothing_enabled = true
 position_smoothing_speed = 20.0
 
 [node name="Boomerang" parent="." unique_id=864464630 instance=ExtResource("3_qhqgy")]
+visible = false
 top_level = true
 z_index = 2
 position = Vector2(0, -2)
@@ -265,11 +271,40 @@ one_shot = true
 [node name="StepSound1" type="AudioStreamPlayer2D" parent="." unique_id=763131786]
 stream = SubResource("AudioStreamRandomizer_kg37j")
 volume_db = 5.0
+bus = &"sfx"
 
 [node name="StepSound2" type="AudioStreamPlayer2D" parent="." unique_id=1128527735]
 stream = SubResource("AudioStreamRandomizer_kg37j")
 volume_db = 5.0
+bus = &"sfx"
+
+[node name="dash_timer" type="Timer" parent="." unique_id=1535436715]
+wait_time = 0.2
+one_shot = true
+
+[node name="dash_cooldown" type="Timer" parent="." unique_id=957175280]
+one_shot = true
+
+[node name="DrownedTimer" type="Timer" parent="." unique_id=616972757]
+one_shot = true
+
+[node name="check_for_dead_area" type="Timer" parent="." unique_id=1810051416]
+wait_time = 0.2
+one_shot = true
+
+[node name="standbox" type="Area2D" parent="." unique_id=1409417555]
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="standbox" unique_id=216538320]
+position = Vector2(0, 7)
+shape = SubResource("RectangleShape2D_qhqgy")
 
 [connection signal="frame_changed" from="Sprite" to="." method="_on_sprite_frame_changed"]
 [connection signal="launched" from="Boomerang" to="." method="_on_boomerang_launched"]
 [connection signal="returned" from="Boomerang" to="." method="_on_boomerang_returned"]
+[connection signal="timeout" from="dash_timer" to="." method="_on_dash_timer_timeout"]
+[connection signal="timeout" from="dash_cooldown" to="." method="_on_dash_cooldown_timeout"]
+[connection signal="timeout" from="DrownedTimer" to="." method="_on_drowned_timer_timeout"]
+[connection signal="timeout" from="check_for_dead_area" to="." method="_on_check_for_dead_area_timeout"]
+[connection signal="area_entered" from="standbox" to="." method="_on_standbox_area_entered"]
+[connection signal="area_exited" from="standbox" to="." method="_on_standbox_area_exited"]

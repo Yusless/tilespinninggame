@@ -4,6 +4,7 @@ extends Node
 
 @export var mill_unlock: Demand
 @export var sawmill_unlock: Demand
+@export var loom_unlock: Demand
 
 
 
@@ -17,3 +18,5 @@ func _on_unlock_demand_completion(demand: Demand):
 		Global.get_player().boomerang.hitbox.damage = 10
 	if demand == sawmill_unlock:
 		Global.get_player().boomerang.upgraded = true
+	if demand == loom_unlock:
+		Global.get_player().has_dash = true

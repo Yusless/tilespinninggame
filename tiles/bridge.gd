@@ -27,6 +27,7 @@ var sprite_to_side := {}
 var side_to_collision := {}
 var side_to_collision_shapes := {}
 var side_to_middle := {}
+var side_to_life_zone := {}
 var tile: Tile
 
 func _ready() -> void:
@@ -49,6 +50,12 @@ func _ready() -> void:
 	}
 	for s in Side.Sides.values():
 		side_to_collision_shapes[s] = side_to_collision[s].get_children()
+		
+	side_to_life_zone = {Side.Sides.UP: $LifeZoneUp,
+		Side.Sides.RIGHT: $LifeZoneRight,
+		Side.Sides.DOWN: $LifeZoneDown,
+		Side.Sides.LEFT: $LifeZoneLeft,
+	}
 
 func check_for_completed_bridges(recursive = true):
 	var opposite = Side.get_opposite(side)
@@ -84,10 +91,12 @@ func check_for_completed_bridges(recursive = true):
 func enable_collision_on_side(s: Side.Sides):
 	for shape in side_to_collision_shapes[s]:
 		shape.disabled = false
+	side_to_life_zone[s].monitorable = true
 
 func disable_collision_on_side(s: Side.Sides):
 	for shape in side_to_collision_shapes[s]:
 		shape.disabled = true
+	side_to_life_zone[s].monitorable = false
 
 func update():
 	for s in Side.Sides.values():
@@ -95,8 +104,17 @@ func update():
 			enable_collision_on_side(s)
 		else:
 			disable_collision_on_side(s)
+	enable_lifezones()
 	sprite_to_side[side].visible = true
 	for dir in tile.borders:
 		if dir != side:
 			sprite_to_side[dir].visible = false
 	check_for_completed_bridges(true)
+
+
+func enable_lifezones():
+	for s in Side.Sides.values():
+		if s == side and tile.unlocked:
+			side_to_life_zone[s].monitorable = true
+		else:
+			side_to_life_zone[s].monitorable = false

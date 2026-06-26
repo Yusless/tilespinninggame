@@ -19,7 +19,14 @@ const STEP_FRAMES := [1, 4]
 
 @export var max_speed := 250.0
 @export var max_camera_speed := 750.0
+@export var dash_speed := 700.0
+@export var max_dashes := 100
+
 @export_subgroup("Deps")
+@export var check_for_dead_area: Timer
+@export var dash_timer: Timer
+@export var dash_cooldown: Timer
+@export var drowned_timer: Timer
 @export var boomerang: Boomerang
 @export var sprite: AnimatedSprite2D
 @export var stun_timer: Timer
@@ -34,13 +41,17 @@ const STEP_FRAMES := [1, 4]
 @export var step_sound_2: AudioStreamPlayer2D
 @export var visual_boomerang: Sprite2D
 
+var has_dash = true
+var can_dash = true
+var dash_direction = Vector2()
+var life_areas = []
+var dash_count = 0
 
-
+var temp_pos
 var last_direction := Vector2.ONE
 var state := States.IDLE
 var camera_velocity := Vector2.ZERO
 
-# Called when the node enters the scene tree for the first time.	
 func _ready() -> void:
 	boomerang.return_target = self
 	hurtbox.hit.connect(_on_hurtbox_hit)
@@ -53,9 +64,9 @@ func _input(event: InputEvent) -> void:
 			boomerang.launch(global_position, dir_to_mouse.angle(), velocity)
 		elif boomerang.distance_flied > boomerang.minimum_fly_distance:
 			boomerang.force_return()
-	if event.is_action_pressed("lava_lake_unlock"):
-		Engine.time_scale = 0.3
-
+	if event.is_action_pressed("dash") and state != States.INSIDE and can_dash:
+		dash()
+	
 func spawn():
 	health_component.reset()
 	position = spawn_point.global_position
@@ -123,7 +134,7 @@ func move_camera(delta):
 
 func animate():
 	var anim := "idle"
-	if get_movement_vector() and velocity:
+	if get_movement_vector() and velocity and not state ==  States.STUNNED:
 		anim = "run"
 	
 	if last_direction.x >= 0:
@@ -184,3 +195,44 @@ func _on_boomerang_launched() -> void:
 
 func _on_boomerang_returned() -> void:
 	visual_boomerang.show()
+
+
+func dash():
+	if has_dash:
+		temp_pos = position
+		can_dash = false
+		dash_count +=1
+		set_collision_mask_value(7, false)
+		var dir_to_mouse := global_position.direction_to(get_global_mouse_position())
+		dash_direction = dir_to_mouse
+		velocity = dash_direction * dash_speed
+		check_for_dead_area.start()
+		dash_timer.start()
+		dash_cooldown.start()
+
+func _on_dash_timer_timeout() -> void:
+	set_collision_mask_value(7, true)
+
+func _on_dash_cooldown_timeout() -> void:
+	if dash_count < max_dashes:
+		can_dash = true
+
+func _on_drowned_timer_timeout() -> void:
+	print("returned")
+	state = States.IDLE
+	position = temp_pos
+
+
+func _on_check_for_dead_area_timeout() -> void:
+	if !life_areas:
+		state = States.STUNNED
+		stun_timer.start(1)
+		drowned_timer.start()
+
+
+func _on_standbox_area_entered(area: Area2D) -> void:
+	life_areas.append(area)
+
+
+func _on_standbox_area_exited(area: Area2D) -> void:
+	life_areas.erase(area)

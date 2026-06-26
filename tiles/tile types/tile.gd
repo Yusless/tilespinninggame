@@ -49,6 +49,9 @@ var rotatable: = unlocked
 
 @export var color_rect: ColorRect
 
+@export var life_zone: Area2D
+
+
 
 var borders = {}
 
@@ -211,8 +214,11 @@ func unlock():
 
 func set_tile_contents_modulation():
 	if unlocked:
+		
 		color_rect.visible = false
 		tile_contents.modulate = Color("ffffff")
+		life_zone.monitorable = true
 	else:
 		color_rect.visible = true
 		tile_contents.modulate = Color("1a1a1aff")
+		life_zone.monitorable = false
