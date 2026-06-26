@@ -1,4 +1,5 @@
-[gd_scene format=4 uid="uid://cgco3trm2p16g"]
+[gd_scene format=4 uid="uid://bic5v8bsj303"]
+
 [ext_resource type="Script" uid="uid://hhgxf43xrpcn" path="res://scenes/upgrade_manager.gd" id="1_7nt27"]
 [ext_resource type="PackedScene" uid="uid://c5bhx5utsovbg" path="res://player/player.tscn" id="1_w2twt"]
 [ext_resource type="Resource" uid="uid://djry785e6txmc" path="res://natural_resources/demands/mill_unlock.tres" id="2_u0fll"]
@@ -29,8 +30,8 @@
 [ext_resource type="PackedScene" uid="uid://c4htw70mfhm2s" path="res://tiles/tile types/tile_unlock_3.tscn" id="21_kkokr"]
 [ext_resource type="Resource" uid="uid://bus8jkm2usmu1" path="res://natural_resources/demands/demand_3.tres" id="22_l40q6"]
 [ext_resource type="Resource" uid="uid://bqhf446dn1553" path="res://natural_resources/demands/demand_0.tres" id="25_3mjum"]
-[ext_resource type="Resource" uid="uid://b7fjq35g18ap2" path="res://natural_resources/demands/demand_2.tres" id="25_lhwp2"]
 [ext_resource type="Texture2D" uid="uid://cy2wx10fai1ly" path="res://assets/graphics/tile/water-Sheet.png" id="25_kkokr"]
+[ext_resource type="Resource" uid="uid://b7fjq35g18ap2" path="res://natural_resources/demands/demand_2.tres" id="25_lhwp2"]
 [ext_resource type="PackedScene" uid="uid://cx1brj3xebjm3" path="res://hud/prompt_displayer.tscn" id="26_6p3nn"]
 [ext_resource type="Resource" uid="uid://bdj1qto6aokko" path="res://natural_resources/demands/demand_4.tres" id="27_iav3h"]
 [ext_resource type="Script" uid="uid://b0g4feb0lnsfe" path="res://hud/prompt_attack.gd" id="27_k67gn"]
@@ -167,6 +168,7 @@ position = Vector2(736, 1840)
 demand_for_unlock = ExtResource("22_l40q6")
 left_border = 2
 up_border = 2
+down_border = 2
 
 [node name="Tile4" parent="World/CellsSystem" unique_id=61829586 instance=ExtResource("4_pu3yx")]
 position = Vector2(1840, 1472)
@@ -268,7 +270,6 @@ position = Vector2(736, 1472)
 demand_for_unlock = ExtResource("22_l40q6")
 up_border = 2
 down_border = 2
-
 
 [node name="Player" parent="World" unique_id=251603508 node_paths=PackedStringArray("cells_system", "spawn_point", "resource_manager") instance=ExtResource("1_w2twt")]
 y_sort_enabled = false
