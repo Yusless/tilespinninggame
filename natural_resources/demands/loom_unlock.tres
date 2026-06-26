@@ -1,14 +1,8 @@
 [gd_resource type="Resource" script_class="Demand" format=3 uid="uid://ds6r8btpt7upc"]
 
 [ext_resource type="Script" uid="uid://36bx0jkgt0vc" path="res://natural_resources/natural_resource.gd" id="1_j8me1"]
-[ext_resource type="Resource" uid="uid://cu42um0n8tj08" path="res://natural_resources/lava_core_resource.tres" id="2_03xyh"]
-[ext_resource type="Resource" uid="uid://dn0snts7urilu" path="res://natural_resources/wood_resource.tres" id="3_uioy7"]
 [ext_resource type="Script" uid="uid://ekfhsugdy8f3" path="res://natural_resources/demand.gd" id="4_ckv7n"]
 
 [resource]
 script = ExtResource("4_ckv7n")
-resources_needed = Dictionary[ExtResource("1_j8me1"), int]({
-ExtResource("2_03xyh"): 10,
-ExtResource("3_uioy7"): 30
-})
 metadata/_custom_type_script = "uid://ekfhsugdy8f3"

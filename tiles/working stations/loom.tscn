@@ -2,10 +2,12 @@
 
 [ext_resource type="Script" uid="uid://s3fn2lv7ljlk" path="res://tiles/working stations/mill.gd" id="1_avl65"]
 [ext_resource type="Script" uid="uid://ekfhsugdy8f3" path="res://natural_resources/demand.gd" id="2_efjtf"]
-[ext_resource type="Resource" path="res://natural_resources/demands/loom_unlock.tres" id="3_avl65"]
-[ext_resource type="Texture2D" path="res://tiles/working stations/loom.png" id="4_kok3e"]
+[ext_resource type="Resource" uid="uid://ds6r8btpt7upc" path="res://natural_resources/demands/loom_unlock.tres" id="3_avl65"]
+[ext_resource type="Texture2D" uid="uid://bkbj22tefwqck" path="res://tiles/working stations/loom.png" id="4_kok3e"]
 [ext_resource type="PackedScene" uid="uid://b87baohfr4ygs" path="res://components/interaction_component.tscn" id="5_3thbu"]
+[ext_resource type="Texture2D" uid="uid://dm36iwhy2ovmb" path="res://hud/interact_prompt_texture.tres" id="6_efjtf"]
 [ext_resource type="PackedScene" uid="uid://cc7s456mf6s4q" path="res://hud/resource_demander.tscn" id="6_h3wfg"]
+[ext_resource type="PackedScene" uid="uid://cdyuqo2ftw40b" path="res://hud/prompt.tscn" id="7_6afg3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_14pqt"]
 size = Vector2(70, 36)
@@ -14,18 +16,30 @@ size = Vector2(70, 36)
 size = Vector2(61, 12)
 
 [node name="Loom" type="Node2D" unique_id=1337578460 node_paths=PackedStringArray("resource_demander", "interaction_component")]
+z_index = 2
 script = ExtResource("1_avl65")
 resource_demander = NodePath("ResourceDemander")
-interaction_component = NodePath("InteractionComponent2")
+interaction_component = NodePath("InteractionComponent")
 demands = Array[ExtResource("2_efjtf")]([ExtResource("3_avl65")])
 
 [node name="Workbench" type="Sprite2D" parent="." unique_id=243866246]
 position = Vector2(-1, -3)
 texture = ExtResource("4_kok3e")
 
-[node name="InteractionComponent2" parent="." unique_id=522060589 instance=ExtResource("5_3thbu")]
+[node name="InteractionComponent" parent="." unique_id=522060589 instance=ExtResource("5_3thbu")]
+z_index = 3
+prompt_enabled = true
+prompt_text = "Acquire 2 dash charges - dash through half-bridges"
+prompt_icon = ExtResource("6_efjtf")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionComponent2" unique_id=319078658]
+[node name="PromptOrigin" parent="InteractionComponent" index="0" unique_id=1990381663]
+visible = true
+position = Vector2(-74, -55)
+
+[node name="Prompt" parent="InteractionComponent/PromptOrigin" index="0" unique_id=1649993671 instance=ExtResource("7_6afg3")]
+anchors_preset = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionComponent" unique_id=319078658]
 position = Vector2(-6, 18)
 shape = SubResource("RectangleShape2D_14pqt")
 
@@ -35,10 +49,13 @@ shape = SubResource("RectangleShape2D_14pqt")
 position = Vector2(-6.5, 30)
 shape = SubResource("RectangleShape2D_3s362")
 
-[node name="ResourceDemander" parent="." unique_id=1649993671 instance=ExtResource("6_h3wfg")]
+[node name="ResourceDemander" parent="." unique_id=422715465 instance=ExtResource("6_h3wfg")]
 visible = false
+modulate = Color(1, 1, 1, 0)
 z_index = 1
 offset_left = -73.0
 offset_top = -77.0
 offset_right = 7.0
 offset_bottom = -10.0
+
+[editable path="InteractionComponent"]

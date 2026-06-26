@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://db4aflu18ewjr" path="res://enemies/dragonfly/fireball.tscn" id="3_qwgkk"]
 [ext_resource type="Texture2D" uid="uid://ivpld1v7tmo4" path="res://enemies/dragonfly/dragonfly.png" id="3_rgsyg"]
 [ext_resource type="AudioStream" uid="uid://dr3081764manv" path="res://enemies/dragonfly/dragonflu.wav" id="5_xt2do"]
+[ext_resource type="AudioStream" uid="uid://bpm8iy88swuhw" path="res://enemies/toad/dragonfly_attack.wav" id="6_pbnjb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ihiei"]
 atlas = ExtResource("3_rgsyg")
@@ -111,12 +112,13 @@ animations = [{
 "speed": 20.0
 }]
 
-[node name="Dragonfly" unique_id=1894793058 node_paths=PackedStringArray("fireball_origin", "fly_sound") instance=ExtResource("1_o0t5j")]
+[node name="Dragonfly" unique_id=1894793058 node_paths=PackedStringArray("fireball_origin", "fly_sound", "attack_sound") instance=ExtResource("1_o0t5j")]
 collision_mask = 0
 script = ExtResource("2_rgsyg")
 fireball_scene = ExtResource("3_qwgkk")
 fireball_origin = NodePath("Sprite/FireballOrigin")
 fly_sound = NodePath("FlySound")
+attack_sound = NodePath("AttackSound")
 speed = 240.0
 step_distance = 96.0
 step_spread = 0.349
@@ -139,10 +141,16 @@ wait_time = 2.4
 [node name="AttackDelay" parent="." index="10" unique_id=1098934846]
 wait_time = 0.5
 
+[node name="SoundHit" parent="." index="14" unique_id=458644540]
+bus = &"Master"
+
 [node name="FlySound" type="AudioStreamPlayer2D" parent="." index="15" unique_id=1252219503]
 stream = ExtResource("5_xt2do")
 volume_db = 24.0
 max_distance = 384.0
+
+[node name="AttackSound" type="AudioStreamPlayer2D" parent="." index="16" unique_id=359514935]
+stream = ExtResource("6_pbnjb")
 
 [connection signal="animation_finished" from="Sprite" to="." method="_on_sprite_animation_finished"]
 [connection signal="frame_changed" from="Sprite" to="." method="_on_sprite_frame_changed"]

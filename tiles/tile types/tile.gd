@@ -50,6 +50,7 @@ var rotatable: = unlocked
 @export var color_rect: ColorRect
 
 @export var life_zone: Area2D
+@export var spin_sound: AudioStreamPlayer2D
 
 
 
@@ -115,6 +116,7 @@ func rotate_self():
 	rotate_borders()
 	rotate_bridges_to_tile()
 	remove_colissions()
+	spin_sound.play()
 
 
 func collisions_from_export() -> void:
@@ -216,8 +218,8 @@ func unlock():
 func set_tile_contents_modulation():
 	if unlocked:
 		
-		color_rect.visible = false
-		tile_contents.modulate = Color("ffffff")
+		create_tween().tween_property(color_rect, "modulate", Color.TRANSPARENT, 0.5).set_ease(Tween.EASE_OUT)
+		create_tween().tween_property(tile_contents, "modulate", Color("ffffff"), 0.5).set_ease(Tween.EASE_OUT)
 		life_zone.monitorable = true
 	else:
 		color_rect.visible = true
