@@ -2,11 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://dhfxsclatflk7" path="res://tiles/tile types/tile.tscn" id="1_ltuxk"]
 [ext_resource type="Script" uid="uid://cdup3hcnjit32" path="res://tiles/tile types/tile_unlock.gd" id="2_qsg63"]
-[ext_resource type="PackedScene" uid="uid://1hebvkq6ye7c" path="res://tiles/working stations/loom.tscn" id="2_xvyen"]
+[ext_resource type="PackedScene" uid="uid://boc42omv8p0rv" path="res://tiles/working stations/loom.tscn" id="2_xvyen"]
 
-[node name="Tile" unique_id=1779673374 node_paths=PackedStringArray("working_station") instance=ExtResource("1_ltuxk")]
+[node name="Tile2" unique_id=1779673374 node_paths=PackedStringArray("working_station") instance=ExtResource("1_ltuxk")]
 script = ExtResource("2_qsg63")
 working_station = NodePath("TileContents/Loom")
 
 [node name="Loom" parent="TileContents" parent_id_path=PackedInt32Array(1337787306) index="3" unique_id=1337578460 instance=ExtResource("2_xvyen")]
+z_index = 1
 position = Vector2(0, -1)

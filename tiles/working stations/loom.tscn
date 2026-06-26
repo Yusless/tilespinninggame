@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://s3fn2lv7ljlk" path="res://tiles/working stations/mill.gd" id="1_avl65"]
 [ext_resource type="Script" uid="uid://ekfhsugdy8f3" path="res://natural_resources/demand.gd" id="2_efjtf"]
-[ext_resource type="Resource" path="res://natural_resources/demands/loom_unlock.tres" id="3_avl65"]
-[ext_resource type="Texture2D" path="res://tiles/working stations/loom.png" id="4_kok3e"]
+[ext_resource type="Resource" uid="uid://ds6r8btpt7upc" path="res://natural_resources/demands/loom_unlock.tres" id="3_avl65"]
+[ext_resource type="Texture2D" uid="uid://bkbj22tefwqck" path="res://tiles/working stations/loom.png" id="4_kok3e"]
 [ext_resource type="PackedScene" uid="uid://b87baohfr4ygs" path="res://components/interaction_component.tscn" id="5_3thbu"]
 [ext_resource type="PackedScene" uid="uid://cc7s456mf6s4q" path="res://hud/resource_demander.tscn" id="6_h3wfg"]
 

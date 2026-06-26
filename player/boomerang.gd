@@ -7,7 +7,7 @@ signal launched
 @export var fly_distance := 16.0 * 8
 @export var fly_speed := 480.0
 @export var max_fly_speed := 480.0 * 2.0
-@export var inherited_speed_multiplier := 0.0
+@export var inherited_speed_multiplier := 2.0
 @export var decceleration_strength := 4800.0
 @export var sprite_rotation_speed := PI * 12
 
@@ -32,7 +32,7 @@ var upgraded = false
 
 func launch(origin: Vector2, direction: float, inherited_speed: Vector2):
 	var base_velocity := Vector2.RIGHT * fly_speed
-	velocity = base_velocity.rotated(direction) + inherited_speed * inherited_speed_multiplier
+	velocity = base_velocity.rotated(direction)
 	is_launched = true
 	returning = false
 	returning_straight = false

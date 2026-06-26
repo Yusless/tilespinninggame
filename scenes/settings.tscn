@@ -2,6 +2,22 @@
 
 [ext_resource type="Script" uid="uid://d3cqc40ifpdnx" path="res://scenes/settings.gd" id="1_5p8wc"]
 [ext_resource type="Script" uid="uid://pho18kmc0uy2" path="res://scenes/master_volume_slider.gd" id="2_r6d6q"]
+[ext_resource type="Texture2D" uid="uid://byte17fxgtjgk" path="res://tiles/tile types/lighthouse.png" id="3_gis3k"]
+[ext_resource type="PackedScene" uid="uid://dhfxsclatflk7" path="res://tiles/tile types/tile.tscn" id="4_83j8s"]
+[ext_resource type="Texture2D" uid="uid://c6cge5t38blbe" path="res://assets/graphics/tile/water.png" id="5_gjs24"]
+[ext_resource type="Texture2D" uid="uid://3b8xhhpq4f7a" path="res://assets/graphics/player/player-Sheet.png" id="6_am25x"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ppmf"]
+atlas = ExtResource("3_gis3k")
+region = Rect2(0, 0, 143, 273.5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uhhto"]
+atlas = ExtResource("3_gis3k")
+region = Rect2(140, 0, 148, 121.5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1g033"]
+atlas = ExtResource("6_am25x")
+region = Rect2(0, 0, 15, 18.5)
 
 [node name="Settings" type="Control" unique_id=1949159426]
 layout_mode = 3
@@ -64,5 +80,32 @@ bus_name = "sfx"
 [node name="Button2" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1264191465]
 layout_mode = 2
 text = "Return to Menu"
+
+[node name="Lighthouse2" type="Sprite2D" parent="MarginContainer/VBoxContainer" unique_id=1443052425]
+position = Vector2(420, 0.5)
+texture = SubResource("AtlasTexture_4ppmf")
+
+[node name="Lighthouse" type="Sprite2D" parent="MarginContainer/VBoxContainer" unique_id=1327811839]
+position = Vector2(418, -75.5)
+texture = SubResource("AtlasTexture_uhhto")
+
+[node name="Tile" parent="MarginContainer/VBoxContainer" unique_id=1779673374 instance=ExtResource("4_83j8s")]
+position = Vector2(420, 64.5)
+script = null
+
+[node name="Water" type="Sprite2D" parent="MarginContainer/VBoxContainer" unique_id=892909208]
+modulate = Color(0.8346143, 0.8346143, 0.8346143, 1)
+z_index = -7
+texture_repeat = 2
+position = Vector2(1840, 1472)
+texture = ExtResource("5_gjs24")
+region_enabled = true
+region_rect = Rect2(0, 0, 5000, 5000)
+metadata/_edit_lock_ = true
+
+[node name="PlayerSheet" type="Sprite2D" parent="MarginContainer/VBoxContainer" unique_id=740197392]
+position = Vector2(320, 88)
+texture = SubResource("AtlasTexture_1g033")
+flip_h = true
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Button2" to="." method="_on_button_pressed"]
