@@ -4,6 +4,7 @@ class_name WorkingStation
 @export var resource_demander: ResourceDemander
 @export var interaction_component: Area2D
 @export var demands: Array[Demand]
+@export var working_sound: AudioStreamPlayer2D
 
 var current_demand_id := 0
 
@@ -20,6 +21,9 @@ func _ready() -> void:
 	res_mgr = Global.get_manager(ResourceManager)
 
 func complete_demand():
+	
+	if working_sound:
+		working_sound.play()
 
 	for res in demands[current_demand_id].resources_needed:
 		res_mgr.detract_resource(res, demands[current_demand_id].resources_needed[res])

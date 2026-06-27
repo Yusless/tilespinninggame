@@ -33,7 +33,7 @@ modulate = Color(12.837791, 4.4924655, 0, 1)
 tile_map_data = PackedByteArray("AAD7/wAAAAADAAYAAAD7/wEAAAADAAYAAAD7/wIAAAADAAcAAAD8/wAAAAAEAAYAAAD8/wEAAAAEAAYAAAD8/wIAAAAEAAcAAAD9//7/AAADAAYAAAD9////AAAGAAYAAAD9/wAAAAAEAAYAAAD9/wEAAAAEAAYAAAD9/wIAAAAGAAcAAAD9/wMAAAADAAcAAAD+//7/AAAEAAYAAAD+////AAAEAAYAAAD+/wAAAAAEAAYAAAD+/wEAAAAEAAYAAAD+/wIAAAAEAAYAAAD+/wMAAAAEAAcAAAD///3/AAAGAAYAAAD///7/AAAEAAYAAAD/////AAAEAAYAAAD//wAAAAAEAAYAAAD//wEAAAAEAAYAAAD//wIAAAAEAAYAAAD//wMAAAAEAAcAAAAAAP3/AAAEAAYAAAAAAP7/AAAEAAYAAAAAAP//AAAEAAYAAAAAAAAAAAAEAAYAAAAAAAEAAAAEAAYAAAAAAAIAAAAEAAYAAAAAAAMAAAAEAAcAAAABAP3/AAAEAAYAAAABAP7/AAAEAAYAAAABAP//AAAEAAYAAAABAAAAAAAEAAYAAAABAAEAAAAEAAYAAAABAAIAAAAHAAcAAAABAAMAAAAFAAcAAAACAP3/AAAEAAYAAAACAP7/AAAEAAYAAAACAP//AAAEAAYAAAACAAAAAAAEAAYAAAACAAEAAAAHAAcAAAACAAIAAAAFAAcAAAADAP3/AAAFAAYAAAADAP7/AAAFAAYAAAADAP//AAAFAAYAAAADAAAAAAAFAAYAAAADAAEAAAAFAAcAAAD7////AAADAAUAAAD8////AAAEAAUAAAD9//3/AAADAAUAAAD+//3/AAAEAAUAAAD///z/AAADAAUAAAAAAPz/AAAEAAUAAAABAPz/AAAEAAUAAAACAPz/AAAEAAUAAAADAPz/AAAFAAUAAAA=")
 tile_set = ExtResource("2_tpdxx")
 
-[node name="EnemySpawner" parent="TileContents" parent_id_path=PackedInt32Array(1337787306) index="4" unique_id=92675540 instance=ExtResource("3_mup4n")]
+[node name="EnemySpawner" parent="TileContents" parent_id_path=PackedInt32Array(1337787306) index="4" unique_id=92675540 groups=["NeedsRotationChanged"] instance=ExtResource("3_mup4n")]
 z_index = 1
 enemy_scene = ExtResource("4_tpdxx")
 boundry_left = Vector2(-65, -40)
@@ -41,7 +41,7 @@ boundry_right = Vector2(40, 41)
 spawn_interval = 4.0
 enemy_limit = 5
 
-[node name="LavaCollision" type="StaticBody2D" parent="TileContents" parent_id_path=PackedInt32Array(1337787306) index="5" unique_id=1279213773]
+[node name="LavaCollision" type="StaticBody2D" parent="TileContents" parent_id_path=PackedInt32Array(1337787306) index="5" unique_id=1279213773 groups=["NeedsRotationChanged"]]
 position = Vector2(0, -16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileContents/LavaCollision" index="0" unique_id=1474812402]

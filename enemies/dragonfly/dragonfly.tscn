@@ -113,7 +113,7 @@ animations = [{
 }]
 
 [node name="Dragonfly" unique_id=1894793058 node_paths=PackedStringArray("fireball_origin", "fly_sound", "attack_sound") instance=ExtResource("1_o0t5j")]
-collision_mask = 0
+collision_mask = 256
 script = ExtResource("2_rgsyg")
 fireball_scene = ExtResource("3_qwgkk")
 fireball_origin = NodePath("Sprite/FireballOrigin")
@@ -140,9 +140,6 @@ wait_time = 2.4
 
 [node name="AttackDelay" parent="." index="10" unique_id=1098934846]
 wait_time = 0.5
-
-[node name="SoundHit" parent="." index="14" unique_id=458644540]
-bus = &"Master"
 
 [node name="FlySound" type="AudioStreamPlayer2D" parent="." index="15" unique_id=1252219503]
 stream = ExtResource("5_xt2do")

@@ -47,7 +47,7 @@ region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k67gn"]
 atlas = ExtResource("28_4bgka")
-region = Rect2(0, 0, 16, 16)
+region = Rect2(112, 16, 32, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kg37j"]
 size = Vector2(64, 120)
@@ -338,6 +338,20 @@ prompt_icon = SubResource("AtlasTexture_k67gn")
 position = Vector2(123, 10)
 shape = SubResource("RectangleShape2D_kg37j")
 
+[node name="PromptDisplayer4" parent="." unique_id=795343925 instance=ExtResource("26_6p3nn")]
+position = Vector2(828, 2055)
+script = ExtResource("27_k67gn")
+prompt_text = "to dash(in mouse direction)"
+prompt_icon = SubResource("AtlasTexture_k67gn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PromptDisplayer4" unique_id=1739013406]
+position = Vector2(101, 143)
+shape = SubResource("RectangleShape2D_kg37j")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="PromptDisplayer4" unique_id=917881399]
+position = Vector2(-87, -36)
+shape = SubResource("RectangleShape2D_kg37j")
+
 [node name="PromptDisplayer2" parent="." unique_id=1677368385 node_paths=PackedStringArray("hub_tile") instance=ExtResource("26_6p3nn")]
 position = Vector2(976, 1046)
 script = ExtResource("29_02d50")
@@ -350,7 +364,7 @@ position = Vector2(129, 181)
 shape = SubResource("RectangleShape2D_kkokr")
 
 [node name="PromptDisplayer3" parent="." unique_id=1974343526 node_paths=PackedStringArray("hub_tile") instance=ExtResource("26_6p3nn")]
-position = Vector2(1048, 853)
+position = Vector2(1007, 995)
 script = ExtResource("30_02d50")
 wheat = ExtResource("7_c1pb6")
 hub_tile = NodePath("../World/CellsSystem/HubTile")
@@ -358,5 +372,5 @@ prompt_text = "Unlock new tiles for resources"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PromptDisplayer3" unique_id=814493418]
 z_index = 2
-position = Vector2(51, 113)
+position = Vector2(99, -33)
 shape = SubResource("RectangleShape2D_02d50")

@@ -59,7 +59,7 @@ collision_mask = 2
 script = ExtResource("2_3gtl2")
 prompt_enabled = true
 prompt_scene = ExtResource("3_6g5ig")
-prompt_text = "Rotate tiles"
+prompt_text = "Rotate tiles(free)"
 prompt_icon = ExtResource("4_6k6if")
 prompt_origin = NodePath("PromptOrigin")
 
@@ -92,6 +92,7 @@ frame_progress = 0.063218124
 offset = Vector2(0, -22)
 
 [node name="PointLight2D" parent="FireSprite" index="0" unique_id=2129224159]
+position = Vector2(0, -11)
 color = Color(0, 1.3087615, 1.353256, 1)
 
 [connection signal="area_entered" from="ExpeditionTableInteraction" to="ExpeditionTableInteraction" method="_on_area_entered"]
