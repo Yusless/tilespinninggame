@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 class_name WorkingStation
 
 @export var resource_demander: ResourceDemander
