@@ -47,7 +47,6 @@ var has_dash = false
 var can_dash = true
 var dash_direction = Vector2()
 var life_areas = []
-var dash_count = 0
 
 var temp_pos
 var last_inside_pos := Vector2.ZERO
@@ -234,7 +233,7 @@ func dash():
 	if has_dash:
 		temp_pos = position
 		can_dash = false
-		dash_count +=1
+		max_dashes -=1
 		set_collision_mask_value(7, false)
 		var dir_to_mouse := global_position.direction_to(get_global_mouse_position())
 		dash_direction = dir_to_mouse
@@ -247,7 +246,7 @@ func _on_dash_timer_timeout() -> void:
 	set_collision_mask_value(7, true)
 
 func _on_dash_cooldown_timeout() -> void:
-	if dash_count < max_dashes:
+	if max_dashes != 0:
 		can_dash = true
 
 func _on_drowned_timer_timeout() -> void:

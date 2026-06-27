@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://pmwmck8pptn8"]
+
+[ext_resource type="Script" uid="uid://cjfodk2dwmrwd" path="res://hud/dash_count.gd" id="1_o463g"]
+
+[node name="DashCount" type="HBoxContainer" unique_id=1252288025]
+script = ExtResource("1_o463g")
+
+[node name="Label" type="Label" parent="." unique_id=508442250]
+layout_mode = 2
+text = "0"
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=867542730]
+layout_mode = 2
