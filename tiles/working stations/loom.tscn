@@ -36,7 +36,7 @@ prompt_icon = ExtResource("6_efjtf")
 
 [node name="PromptOrigin" parent="InteractionComponent" index="0" unique_id=1990381663]
 visible = true
-position = Vector2(-74, -55)
+position = Vector2(-158, -55)
 
 [node name="Prompt" parent="InteractionComponent/PromptOrigin" index="0" unique_id=1649993671 instance=ExtResource("7_6afg3")]
 anchors_preset = 0

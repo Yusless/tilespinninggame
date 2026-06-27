@@ -267,7 +267,7 @@ random_volume_offset_db = 1.0
 streams_count = 1
 stream_0/stream = ExtResource("15_wodsf")
 
-[node name="Player" type="CharacterBody2D" unique_id=251603508 node_paths=PackedStringArray("check_for_dead_area", "dash_timer", "dash_cooldown", "drowned_timer", "boomerang", "sprite", "stun_timer", "hurtbox", "animation_player", "health_component", "camera", "step_sound_1", "step_sound_2", "visual_boomerang", "damage_sound") groups=["Player"]]
+[node name="Player" type="CharacterBody2D" unique_id=251603508 node_paths=PackedStringArray("check_for_dead_area", "dash_timer", "dash_cooldown", "drowned_timer", "boomerang", "sprite", "stun_timer", "hurtbox", "animation_player", "health_component", "camera", "step_sound_1", "step_sound_2", "visual_boomerang", "damage_sound", "dash_sound") groups=["Player"]]
 z_index = 1
 y_sort_enabled = true
 collision_layer = 2
@@ -289,6 +289,7 @@ step_sound_1 = NodePath("StepSound1")
 step_sound_2 = NodePath("StepSound2")
 visual_boomerang = NodePath("Sprite/VisualBoomerang")
 damage_sound = NodePath("DamageSound")
+dash_sound = NodePath("DashSound")
 
 [node name="HealthComponent" type="Node" parent="." unique_id=504088857]
 script = ExtResource("2_yw30f")

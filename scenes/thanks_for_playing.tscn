@@ -2,7 +2,7 @@
 
 [ext_resource type="TileSet" uid="uid://qk1sv4xryi8j" path="res://tiles/wa_ter.tres" id="1_i1gb3"]
 [ext_resource type="Texture2D" uid="uid://cy2wx10fai1ly" path="res://assets/graphics/tile/water-Sheet.png" id="2_na8tq"]
-[ext_resource type="PackedScene" uid="uid://bsbvtell7k17b" path="res://tiles/tile types/tile_unlock_1.tscn" id="3_ysrj2"]
+[ext_resource type="PackedScene" uid="uid://dyfxefhiafjso" path="res://tiles/tile types/tile_unlock_1.tscn" id="3_ysrj2"]
 [ext_resource type="PackedScene" uid="uid://c14gjkqh16wlx" path="res://tiles/tile types/tile_unlock_2.tscn" id="4_51qlj"]
 [ext_resource type="Texture2D" uid="uid://b2ombqpddahws" path="res://assets/graphics/tile/lighthouse.png" id="5_t7a3d"]
 [ext_resource type="Texture2D" uid="uid://3b8xhhpq4f7a" path="res://assets/graphics/player/player-Sheet.png" id="6_i5lih"]
@@ -82,12 +82,15 @@ offset_bottom = 72.0
 theme_override_font_sizes/font_size = 20
 text = "Thanks for playing!"
 
-[node name="Label2" type="Label" parent="." unique_id=687029766]
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1811147997]
 layout_mode = 0
-offset_left = 144.0
-offset_top = 168.0
-offset_right = 329.0
-offset_bottom = 228.0
+offset_left = 138.0
+offset_top = 257.0
+offset_right = 339.0
+offset_bottom = 333.0
+
+[node name="Label2" type="Label" parent="PanelContainer" unique_id=687029766]
+layout_mode = 2
 theme_override_font_sizes/font_size = 14
 text = "We hope you had fun
 solving these puzzles

@@ -42,6 +42,7 @@ const STEP_FRAMES := [1, 4]
 @export var step_sound_2: AudioStreamPlayer2D
 @export var visual_boomerang: Sprite2D
 @export var damage_sound: AudioStreamPlayer2D
+@export var dash_sound: AudioStreamPlayer2D
 
 var has_dash = false
 var can_dash = true
@@ -97,6 +98,8 @@ func spawn():
 	health_component.reset()
 	position = spawn_point.global_position
 	state = States.IDLE
+	if boomerang.is_launched:
+		boomerang.retrieve()
 
 func die():
 	state = States.DEAD
@@ -241,6 +244,7 @@ func dash():
 		check_for_dead_area.start()
 		dash_timer.start()
 		dash_cooldown.start()
+		dash_sound.play()
 
 func _on_dash_timer_timeout() -> void:
 	set_collision_mask_value(7, true)
