@@ -108,7 +108,6 @@ left_border = 2
 up_border = 2
 
 [node name="HubTile" parent="World/CellsSystem" unique_id=1282555252 instance=ExtResource("6_c1pb6")]
-y_sort_enabled = false
 position = Vector2(1104, 1104)
 up_border = 2
 down_border = 2

@@ -12,10 +12,11 @@ func _on_lighthouse_entered():
 			bridge.process_mode = Node.PROCESS_MODE_DISABLED
 
 func _on_lighthouse_exited():
-	if border_objects[Side.Sides.UP]:
-		var bridge := border_objects[Side.Sides.UP]
-		if bridge is Bridge:
-			bridge.process_mode = Node.PROCESS_MODE_INHERIT
+	for obj in border_objects.values():
+		if obj:
+			var bridge = obj
+			if bridge is Bridge:
+				bridge.process_mode = Node.PROCESS_MODE_INHERIT
 
 func _ready() -> void:
 	super()
