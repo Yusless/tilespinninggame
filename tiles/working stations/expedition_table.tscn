@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cc7s456mf6s4q" path="res://hud/resource_demander.tscn" id="5_3wi6x"]
 [ext_resource type="PackedScene" uid="uid://cl1tw6qol35lw" path="res://natural_resources/fire_sprite.tscn" id="6_bgy6v"]
 [ext_resource type="Texture2D" uid="uid://wp1u20hiwcy7" path="res://tiles/tile types/where_our_blue_is.png" id="7_6k6if"]
+[ext_resource type="AudioStream" uid="uid://b4w64ix8ws5lh" path="res://tiles/working stations/workbench.wav" id="9_6g5ig"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hbrul"]
 size = Vector2(30, 10)
@@ -45,12 +46,13 @@ animations = [{
 "speed": 12.5
 }]
 
-[node name="ExpeditionTable" type="Node2D" unique_id=1629293209 node_paths=PackedStringArray("resource_demander", "interaction_component")]
+[node name="ExpeditionTable" type="Node2D" unique_id=1629293209 node_paths=PackedStringArray("resource_demander", "interaction_component", "working_sound")]
 z_index = 1
 y_sort_enabled = true
 script = ExtResource("1_b4vsk")
 resource_demander = NodePath("ResourceDemander")
 interaction_component = NodePath("ExpeditionTableInteraction")
+working_sound = NodePath("WorkingSound")
 metadata/_edit_group_ = true
 
 [node name="ExpeditionTableInteraction" type="Area2D" parent="." unique_id=522060589 node_paths=PackedStringArray("prompt_origin")]
@@ -94,6 +96,11 @@ offset = Vector2(0, -22)
 [node name="PointLight2D" parent="FireSprite" index="0" unique_id=2129224159]
 position = Vector2(0, -11)
 color = Color(0, 1.3087615, 1.353256, 1)
+
+[node name="WorkingSound" type="AudioStreamPlayer2D" parent="." unique_id=913125835]
+stream = ExtResource("9_6g5ig")
+volume_db = 5.0
+bus = &"sfx"
 
 [connection signal="area_entered" from="ExpeditionTableInteraction" to="ExpeditionTableInteraction" method="_on_area_entered"]
 [connection signal="area_exited" from="ExpeditionTableInteraction" to="ExpeditionTableInteraction" method="_on_area_exited"]

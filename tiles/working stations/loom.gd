@@ -10,4 +10,3 @@ func complete_demand():
 	resource_demander.hide()
 	unlock_demand_completed.emit(demands[current_demand_id])
  	
-

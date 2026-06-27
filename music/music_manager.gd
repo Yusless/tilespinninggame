@@ -9,10 +9,11 @@ class_name MusicManager
 var off := false
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("music_off"):
-		off = true
-		music_day.stop()
-		music_night.stop()
+	pass
+	#if event.is_action_pressed("music_off"):
+		#off = true
+		#music_day.stop()
+		#music_night.stop()
 
 func _ready() -> void:
 	hub_tile.lighthouse.expedition_finished.connect(_on_lighthosue_expedition_finished)

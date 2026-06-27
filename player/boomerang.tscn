@@ -54,6 +54,7 @@ shape = SubResource("RectangleShape2D_3xd07")
 [node name="FlySound" type="AudioStreamPlayer2D" parent="." unique_id=584873973]
 stream = ExtResource("4_al46a")
 volume_db = 10.0
+bus = &"sfx"
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="body_entered" from="ReturnDetector" to="." method="_on_return_detector_body_entered"]

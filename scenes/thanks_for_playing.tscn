@@ -85,9 +85,9 @@ text = "Thanks for playing!"
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=1811147997]
 layout_mode = 0
 offset_left = 138.0
-offset_top = 257.0
+offset_top = 190.0
 offset_right = 339.0
-offset_bottom = 333.0
+offset_bottom = 266.0
 
 [node name="Label2" type="Label" parent="PanelContainer" unique_id=687029766]
 layout_mode = 2

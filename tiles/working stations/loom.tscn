@@ -67,5 +67,6 @@ offset_bottom = -10.0
 [node name="WorkingSound" type="AudioStreamPlayer2D" parent="." unique_id=2001159188]
 stream = ExtResource("9_kok3e")
 volume_db = 5.0
+bus = &"sfx"
 
 [editable path="InteractionComponent"]

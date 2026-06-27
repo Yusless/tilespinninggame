@@ -12,7 +12,8 @@ var res_mgr: ResourceManager
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("forest_unlock") and current_demand_id < demands.size():
-		complete_demand()
+		pass
+		#complete_demand()
 
 func _ready() -> void:
 	interaction_component.area_entered.connect(_on_interaction_area_entered)

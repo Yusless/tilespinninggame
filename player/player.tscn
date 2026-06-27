@@ -356,11 +356,13 @@ bus = &"sfx"
 [node name="DamageSound" type="AudioStreamPlayer2D" parent="." unique_id=485178595]
 stream = SubResource("AudioStreamRandomizer_tqiix")
 volume_db = -10.0
+bus = &"sfx"
 
 [node name="DashSound" type="AudioStreamPlayer2D" parent="." unique_id=17126598]
 stream = SubResource("AudioStreamRandomizer_5xsjk")
 volume_db = -10.0
 pitch_scale = 0.8
+bus = &"sfx"
 
 [node name="dash_timer" type="Timer" parent="." unique_id=1535436715]
 wait_time = 0.2

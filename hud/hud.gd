@@ -20,7 +20,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if player:
-		if player.has_dash:
+		if player.max_dashes:
 			dash_panel.show()
 			
 		dash_counter.counter.text = str(player.max_dashes)
