@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://boc42omv8p0rv"]
 
-[ext_resource type="Script" uid="uid://s3fn2lv7ljlk" path="res://tiles/working stations/mill.gd" id="1_avl65"]
+[ext_resource type="Script" uid="uid://chngme6qiqxp" path="res://tiles/working stations/loom.gd" id="1_6afg3"]
 [ext_resource type="Script" uid="uid://ekfhsugdy8f3" path="res://natural_resources/demand.gd" id="2_efjtf"]
 [ext_resource type="Resource" uid="uid://ds6r8btpt7upc" path="res://natural_resources/demands/loom_unlock.tres" id="3_avl65"]
 [ext_resource type="Texture2D" uid="uid://bkbj22tefwqck" path="res://tiles/working stations/loom.png" id="4_kok3e"]
@@ -17,7 +17,7 @@ size = Vector2(61, 12)
 
 [node name="Loom" type="Node2D" unique_id=1337578460 node_paths=PackedStringArray("resource_demander", "interaction_component")]
 z_index = 2
-script = ExtResource("1_avl65")
+script = ExtResource("1_6afg3")
 resource_demander = NodePath("ResourceDemander")
 interaction_component = NodePath("InteractionComponent")
 demands = Array[ExtResource("2_efjtf")]([ExtResource("3_avl65")])
@@ -38,6 +38,10 @@ position = Vector2(-74, -55)
 
 [node name="Prompt" parent="InteractionComponent/PromptOrigin" index="0" unique_id=1649993671 instance=ExtResource("7_6afg3")]
 anchors_preset = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 102.0
+offset_bottom = 41.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionComponent" unique_id=319078658]
 position = Vector2(-6, 18)

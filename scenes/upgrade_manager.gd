@@ -11,9 +11,11 @@ func _ready() -> void:
 		tile_unlock.working_station.unlock_demand_completed.connect(_on_unlock_demand_completion)
 
 func _on_unlock_demand_completion(demand: Demand):
+	print(demand)
 	if demand == mill_unlock:
 		Global.get_player().boomerang.hitbox.damage = 10
 	if demand == sawmill_unlock:
 		Global.get_player().boomerang.upgraded = true
 	if demand == loom_unlock:
+		
 		Global.get_player().has_dash = true
