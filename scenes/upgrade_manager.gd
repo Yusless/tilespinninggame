@@ -21,6 +21,6 @@ func _on_unlock_demand_completion(demand: Demand):
 	if demand == sawmill_unlock:
 		Global.get_player().boomerang.upgraded = true
 	if demand == loom_unlock:
-		Global.get_player().has_dash = true
+		Global.get_player().max_dashes = 2
 	if demand == final_unlock:
 		get_tree().change_scene_to_file("res://scenes/thanks_for_playing.tscn")

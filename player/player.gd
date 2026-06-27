@@ -20,7 +20,7 @@ const STEP_FRAMES := [1, 4]
 @export var max_speed := 250.0
 @export var max_camera_speed := 750.0
 @export var dash_speed := 700.0
-@export var max_dashes := 2
+@export var max_dashes := 0
 
 @export_subgroup("Deps")
 @export var settings: MarginContainer
@@ -43,7 +43,7 @@ const STEP_FRAMES := [1, 4]
 @export var visual_boomerang: Sprite2D
 @export var damage_sound: AudioStreamPlayer2D
 
-var has_dash = false
+var has_dash = true
 var can_dash = true
 var dash_direction = Vector2()
 var life_areas = []

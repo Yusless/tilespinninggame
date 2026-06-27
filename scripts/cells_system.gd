@@ -98,12 +98,14 @@ func check_for_interactions():
 					tile.interact(tile.neighbours[side], side)
 
 func _on_lighthouse_expedition_finished():
+	player.max_dashes = 0
 	environment_manager.switch_to_night()
 	for tile in get_tiles_as_array():
 		tile.enable_interface_mode()
 	reset_tiles()
 
 func _on_lighthouse_expedition_started():
+	player.max_dashes = 0
 	environment_manager.switch_to_day()
 	for tile in get_tiles_as_array():
 		tile.disable_interface_mode()

@@ -9,6 +9,7 @@ script = ExtResource("1_531ly")
 enemy_scene = ExtResource("2_5lcht")
 boundry_left = Vector2(-65, 10)
 boundry_right = Vector2(50.935, 38.605)
+enemy_limit = 4
 boundry_left_marker = NodePath("RectBoundryLeft")
 boundry_right_marker = NodePath("RectBoundryRight")
 spawn_timer = NodePath("SpawnTimer")
