@@ -99,6 +99,7 @@ func check_for_interactions():
 
 func _on_lighthouse_expedition_finished():
 	player.max_dashes = 0
+	player.can_dash = true
 	environment_manager.switch_to_night()
 	for tile in get_tiles_as_array():
 		tile.enable_interface_mode()
@@ -106,6 +107,7 @@ func _on_lighthouse_expedition_finished():
 
 func _on_lighthouse_expedition_started():
 	player.max_dashes = 0
+	player.can_dash = true
 	environment_manager.switch_to_day()
 	for tile in get_tiles_as_array():
 		tile.disable_interface_mode()

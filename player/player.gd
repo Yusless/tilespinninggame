@@ -230,7 +230,7 @@ func _on_boomerang_returned() -> void:
 
 
 func dash():
-	if has_dash:
+	if max_dashes != 0:
 		temp_pos = position
 		can_dash = false
 		max_dashes -=1
@@ -246,8 +246,7 @@ func _on_dash_timer_timeout() -> void:
 	set_collision_mask_value(7, true)
 
 func _on_dash_cooldown_timeout() -> void:
-	if max_dashes != 0:
-		can_dash = true
+	can_dash = true
 
 func _on_drowned_timer_timeout() -> void:
 	print("returned")
