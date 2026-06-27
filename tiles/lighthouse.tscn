@@ -24,7 +24,7 @@ region = Rect2(0, 0, 144, 276)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kg37j"]
 atlas = ExtResource("2_kma2a")
-region = Rect2(144, 0, 144, 276)
+region = Rect2(288, 0, 144, 280)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v4osi"]
 size = Vector2(30, 10)
@@ -71,7 +71,7 @@ texture = SubResource("AtlasTexture_v4clq")
 offset = Vector2(0, -106)
 
 [node name="OuterLayer" type="Sprite2D" parent="." unique_id=1057670920]
-visible = false
+z_index = 2
 position = Vector2(0, 1)
 texture = SubResource("AtlasTexture_kg37j")
 offset = Vector2(0, -106)

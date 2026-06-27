@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dm36iwhy2ovmb" path="res://hud/interact_prompt_texture.tres" id="6_efjtf"]
 [ext_resource type="PackedScene" uid="uid://cc7s456mf6s4q" path="res://hud/resource_demander.tscn" id="6_h3wfg"]
 [ext_resource type="PackedScene" uid="uid://cdyuqo2ftw40b" path="res://hud/prompt.tscn" id="7_6afg3"]
+[ext_resource type="AudioStream" uid="uid://b4w64ix8ws5lh" path="res://tiles/working stations/workbench.wav" id="9_kok3e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_14pqt"]
 size = Vector2(70, 36)
@@ -15,12 +16,13 @@ size = Vector2(70, 36)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3s362"]
 size = Vector2(61, 12)
 
-[node name="Loom" type="Node2D" unique_id=1337578460 node_paths=PackedStringArray("resource_demander", "interaction_component")]
+[node name="Loom" type="Node2D" unique_id=1337578460 node_paths=PackedStringArray("resource_demander", "interaction_component", "working_sound")]
 z_index = 2
 script = ExtResource("1_6afg3")
 resource_demander = NodePath("ResourceDemander")
 interaction_component = NodePath("InteractionComponent")
 demands = Array[ExtResource("2_efjtf")]([ExtResource("3_avl65")])
+working_sound = NodePath("WorkingSound")
 
 [node name="Workbench" type="Sprite2D" parent="." unique_id=243866246]
 position = Vector2(-5, 19)
@@ -61,5 +63,9 @@ offset_left = -73.0
 offset_top = -77.0
 offset_right = 7.0
 offset_bottom = -10.0
+
+[node name="WorkingSound" type="AudioStreamPlayer2D" parent="." unique_id=2001159188]
+stream = ExtResource("9_kok3e")
+volume_db = 5.0
 
 [editable path="InteractionComponent"]

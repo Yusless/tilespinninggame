@@ -1,4 +1,5 @@
 extends HBoxContainer
+class_name DashCounter
 
 @export var counter: Label
 

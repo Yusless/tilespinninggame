@@ -252,6 +252,7 @@ func _on_drowned_timer_timeout() -> void:
 	print("returned")
 	state = States.IDLE
 	position = temp_pos
+	animation_player.play("RESET")
 
 
 func _on_check_for_dead_area_timeout() -> void:
@@ -259,6 +260,7 @@ func _on_check_for_dead_area_timeout() -> void:
 		state = States.STUNNED
 		stun_timer.start(1)
 		drowned_timer.start()
+		animation_player.play("fall")
 
 
 func _on_standbox_area_entered(area: Area2D) -> void:

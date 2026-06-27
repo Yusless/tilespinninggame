@@ -1,13 +1,20 @@
 [gd_scene format=3 uid="uid://pmwmck8pptn8"]
 
 [ext_resource type="Script" uid="uid://cjfodk2dwmrwd" path="res://hud/dash_count.gd" id="1_o463g"]
+[ext_resource type="Texture2D" uid="uid://d2ccavou661qm" path="res://hud/button_prompts.png" id="2_fuouu"]
 
-[node name="DashCount" type="HBoxContainer" unique_id=1252288025]
+[sub_resource type="AtlasTexture" id="AtlasTexture_jvpmi"]
+atlas = ExtResource("2_fuouu")
+region = Rect2(32, 16, 16, 16)
+
+[node name="DashCount" type="HBoxContainer" unique_id=1252288025 node_paths=PackedStringArray("counter")]
 script = ExtResource("1_o463g")
+counter = NodePath("Label")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=867542730]
+layout_mode = 2
+texture = SubResource("AtlasTexture_jvpmi")
 
 [node name="Label" type="Label" parent="." unique_id=508442250]
 layout_mode = 2
 text = "0"
-
-[node name="TextureRect" type="TextureRect" parent="." unique_id=867542730]
-layout_mode = 2

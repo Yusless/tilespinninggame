@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://c5bhx5utsovbg"]
+[gd_scene format=4 uid="uid://c5bhx5utsovbg"]
 
 [ext_resource type="Script" uid="uid://xvje5h6ttbty" path="res://player/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://3b8xhhpq4f7a" path="res://assets/graphics/player/player-Sheet.png" id="2_qhqgy"]
@@ -14,7 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://cgl817eu61c8b" path="res://player/steps/step_6.wav" id="11_e7oew"]
 [ext_resource type="AudioStream" uid="uid://tln0dqgiasdk" path="res://player/steps/step_7.wav" id="12_c35mf"]
 [ext_resource type="AudioStream" uid="uid://2ktd3faac1nf" path="res://player/steps/step_8.wav" id="13_65viv"]
-[ext_resource type="AudioStream" uid="uid://jmjffn8kcwae" path="res://player/hitHurt.wav" id="15_wodsf"]
+[ext_resource type="AudioStream" uid="uid://d1sk3wwajqxke" path="res://player/dash_3-2.wav" id="15_wodsf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dqkch"]
 atlas = ExtResource("2_qhqgy")
@@ -110,6 +110,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(0, 0)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_qjkh3"]
 resource_name = "damaged"
@@ -179,11 +191,51 @@ tracks/1/keys = {
 "values": [Vector2(0, 0), Vector2(0, 7)]
 }
 
+[sub_resource type="Animation" id="Animation_wodsf"]
+resource_name = "fall"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 2),
+"update": 0,
+"values": [0.0, -4.110250388446646]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 2),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.195, 0.195)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 0.06470422),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -6.925)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_boad6"]
 _data = {
 &"RESET": SubResource("Animation_yw30f"),
 &"damaged": SubResource("Animation_qjkh3"),
-&"dead": SubResource("Animation_g6k8r")
+&"dead": SubResource("Animation_g6k8r"),
+&"fall": SubResource("Animation_wodsf")
 }
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_kg37j"]
@@ -198,6 +250,22 @@ stream_4/stream = ExtResource("10_tqiix")
 stream_5/stream = ExtResource("11_e7oew")
 stream_6/stream = ExtResource("12_c35mf")
 stream_7/stream = ExtResource("13_65viv")
+
+[sub_resource type="AudioStreamWAV" id="AudioStreamWAV_32hag"]
+data = PackedByteArray("cW9hZgAAGbEBAKxEFAAIGAAAAAAAAAAAAAAAAOAAQAD7t+gYuGfv4+jxX+/4/z6+7c7zx3D4d5/99v9Ntlf2O/gbyD5Kn+O29dcz2/LoFPb/vPD+vpdttv3wR22/2CJI/+PTruv9SBbxONtqK8Kktvk/22yfmklR5opd//nf/1/y7dimlj/sXfs15zmgQSBP8Ao7P/EO/zr2kEKJH/ft7v+h/8OABIZw88w6Wg33YPT0bKiRyA9v9/zb92deypyj99f2XU07Hrb9pYkU2D3tNvKFa7Gf/yVA/SQ+h/Qrcqfzx+0zQmtOgvB6/JJ62HCg/eXHPEB9+3D1EgB+vaCFZvvckXnzjxy08/oMAEM1+9z2fVmNn8P7i/gO0Uw6BYxc9LvIU9DKtl/wkwCfA0gTk9igAWoJHKkQ8I4v9THefuj+Tg3z1/aLpfXlye2nSfYd8vYE5aQFf875T7dVrnWzwvQI7LKOzmyr+D8AegkbMU71C5kB+Lk98P7tPaW0B2Hq8xVWI6Lbaev8mAgkiP28nv+FNbbLQAAA+8lJsQA5BkDywAKivwHuC/aaw2Gy/YJJ4CBtaBNxD0nzUJsxzGfWcvL70NpeyJcA/9hZt/rIAlb81WkwgZEkMOfHKi/ZOhK78n1sPIsqAErwSa0E+2DQUemDK9b9ldPF5LRbaIFcNXH1e4n7HE6w3OxWncukSiSS8AE1ABkgrJTovlH+FHtRY+TRCSSWCYP69jgksDRKLhLzb4Yzi2Ss1by7kgOSCSyF8jkAOMMAAAr4AyeyW9VUMuTJ7QRCCKCA4AX9U3ZsZdzwK2CCKAgTt/TgSAIJYABP8MsvYJYfpv/1tSNmCACP4dnrCZYISJKI4Iggh8NUs6DiogSAAQXyTeZaYJBLQBA25g6dCAEAAgD8m6i/QXyWmsIOldBF5opb1goprYhSD9Phyz4Y0xlWwPAiBYIP7d9J/ZkaFUhAEEf6y2y5nWEAA/BBBJmSUQIBtVNEEc5Jhpj/0q6CDm6wQfBtSQJBAlDIsAE35RpgETenQQQQcQSAAfBWopAI6QBB4DONFNfynkuZN6WCC6EE0cBTBAJB0aKC8EIkgggjtBn6mHs4simj7sK9LBmpYAAI4811skgokgngQDsisUQCee0QJJBDoKIIlEk7U0EEkEb8QEE0SCP43/ZIIBOVJQCIwgHb1lNEEgGuZASCQQQUA7JAJAIJB9gR4gkEEgv2REHSCCASMm2QQYBBIIL7IBBBcEEEAjIFggmQQSCCDsgEkMBAIIBBF5Jbf80MkEkEA/zwCCCCAcCAgPABBfZr6YaI8nNsgEEAguq9iwQQQHAywHAIBIB2tpBIogEEbBlRFFF0SDla0QQASMID6SBJIJJB8E9GEEEggEiyjm2wAQQSCtJCzICBRBBB0Ag5egAgNEP00wCOEkSSCZDBJDTD4KRAsEEEgEEEEYBe5MokgkgggdBG1tIBBIBBkgEEEFfpJAA+0k0FUFUVUYByZZJJBBBB8EEggEEG8M2RwSmAQQQSmnqIIIBzbJTROXcJ77iXUy6SCCCFi2wQQU1BBBBBBBBBwEEEEELJkABfAEyCmAU0wTjn1ll3l33xp9xAkkkkEgkzw7K2WWGJQ6IIIIBBIIL7laIggEEpgppeU00UwQU0wTEcspl1Mu6TYEpgfhZIkNE599d5TvrLuDl3Eu4lEu4lMJhMJmMvVKo7qky9Q9QYycGWRSQBKaYBTNBkhOUBMgw+JSI3vAzHOjT3Mus+pjlnPXfeBqy74tU4LLm0GrFULDFgsZQXhaQqMWFVBeFVBeA0fAj854UDUG93NZuJbJZKTlMBgokypokzqXmWNQ9QxjoZzLAjDBzLMHVVPMMgRhgyDqqmjqWiDjoYIBELDRIBPVUAgERhgggwQRCWCCAQCDjDBAIIIBBGcgkESWDVNkA0MsbA1cbC5zwaLQaC8LhaMLwNAVBfNeIwfnPAB80PmjHgR+ca8KA8Mxp2GNdIAgc4EQR4ESAPCjBANRQBBA8MNpogjwIkAEEx4EQQCCCB4DRIKaJAINQRsEj/w2shogk9sX9GWgR8EzNzngHyPU+NPNw3Np53ffJGGnGrGmmmmD3331eu71UsPqUJhMypUShwSAQQQQs+2TxhzTRAQBRRMAACEsAEAEAwQCACACDqGBcKAQRRQRQCMgAkAEEEDVkRCAAiAEQEQK25MQCIIBBBSWMKxlNBotM8vC0vnOl8LDIsLQXzXxXSMD5r4p2AD5yyCAQSCCAcO2+hjQacqaJBPfD7y774Wfc8vLBYKri0LDLhsDQFS+K6NWFVAWFeGdKgSCP9BWwwwTC4VMoe6MZlMnUPUE6k6kg90xumN01KGDObBEZJTzJIkpgEEEEv6ANMKqFUGgwmZTUoeolCZO6MNkxk6h6kjUs8yTqCdSSo2IKaYIAJBBBHfGAkpgpggEg3mTKCRqSc2DIjDB1DTzLAMRlog6kggbo2CDqqmiRqGfBIwJgRAaIabkkAggEggEEwqJdxPnPvqTl33w++++sFOfWCwtXNwWGCASAQ/ggSCU1RBYAIIYABMED5ogEGwok00R4ESAQCPjaBBAIIHgABsEggEEgEgalv0QmACCA0SDVhsAqXxFSHOBeBeFfNVIE/ij80PiAbCjI+aBsKI+cawgEjuEtkMAlcyqiAwmmAQDu4lEp3SZOpOVJsbp6k6k46TqTvKpQTqJIBBIBIBBBPiKAkEEEEpgE8KZQYzGZQ8zL1VzJjJ1J3NE6kPMk6hgY+mN0wIySDqAEArEQFsQJg8OTx9/Hp8en3yAn26x4zIIIBBIBIBGpJHRYRJJKCCCAYIFAkkkhAkiAAAAAAKKIHFaQgggggEEEI40QCAQCAQOIBIIBIIIzQrRIAgEAkEAhOVcyHGA0HGTVzcLS+K8LhNoL5qoWAVBE6gvmjUF80PDAA+aIqATYRsE9FMMMEEgk982zGWDumDjoYIjJB1DBAOMMEHUNNMagyQQRGGmAQdTBIIIIhJIIIcgEEEEEEH+JdiAUCmCmmiDuoJjD1VUoJPUMRhg6hgRkyDqGCIwSDGDJBEYJII1DAMgiMEgkEaglwSAQQQQQQX10gCBCJBRIKPpp5kkahg6o2QdQwDqGCBDYYIIjBIJGoNppgHUEgggg9Q00wCCISSDIIIIBEYJBAkgEggEZglEA8soknEkVYEDAFQCIHzRAAM1AAAgeFEAgwRUUQQAQDUTRAIBAIHhABMAgEEAgeEAgwQCAQQCAQahugACKKKKKAMEEAggEeNAgO8tIpFIpFIgkUikUikUikMEEEAgg1EAgaiCCAQQQCCAaIBAIBAIBAAgEAgEAgEAgAQCAQCAQCAQAIBAIBAIBAAgEAgEAgEAgAQCAQCAQCAQAIBAIBAIBAAgEAgEAgEAhQTeAE2GGCQS7pbLZzbZYYMkGMMEEggkExGCQSCCCCCDB1BIIIIIIIMEEEEEQkgggfCAQAQAQACDBBBBAIIII1HcAEEAgAgEADAgkEgkEgkASCQSCQSCQSAJBIJBIJBIIEEgkEgkEgkASCQSCQSCQSAJBIJBIJBIIEEgkEgkEgkDBBBBBBAIgA")
+format = 3
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_tqiix"]
+random_pitch = 1.0174797
+random_volume_offset_db = 1.0
+streams_count = 1
+stream_0/stream = SubResource("AudioStreamWAV_32hag")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_5xsjk"]
+random_pitch = 1.0174797
+random_volume_offset_db = 1.0
+streams_count = 1
+stream_0/stream = ExtResource("15_wodsf")
 
 [node name="Player" type="CharacterBody2D" unique_id=251603508 node_paths=PackedStringArray("check_for_dead_area", "dash_timer", "dash_cooldown", "drowned_timer", "boomerang", "sprite", "stun_timer", "hurtbox", "animation_player", "health_component", "camera", "step_sound_1", "step_sound_2", "visual_boomerang", "damage_sound") groups=["Player"]]
 z_index = 1
@@ -285,8 +353,13 @@ volume_db = 5.0
 bus = &"sfx"
 
 [node name="DamageSound" type="AudioStreamPlayer2D" parent="." unique_id=485178595]
-stream = ExtResource("15_wodsf")
+stream = SubResource("AudioStreamRandomizer_tqiix")
 volume_db = -10.0
+
+[node name="DashSound" type="AudioStreamPlayer2D" parent="." unique_id=17126598]
+stream = SubResource("AudioStreamRandomizer_5xsjk")
+volume_db = -10.0
+pitch_scale = 0.8
 
 [node name="dash_timer" type="Timer" parent="." unique_id=1535436715]
 wait_time = 0.2
