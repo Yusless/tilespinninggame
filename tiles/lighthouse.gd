@@ -60,8 +60,9 @@ func finish_expedition():
 	upgrade_table.res_mgr.clear()
 	outer_layer.show()
 	interior.hide()
-	player.hide()
-	player.health_component.reset()
+	if player:
+		player.hide()
+		player.health_component.reset()
 
 func start_expedition():
 	var player = Global.get_player()
@@ -80,7 +81,8 @@ func _on_expedition_table_interacted():
 	if !spin_mode:
 		finish_expedition()
 		var player = Global.get_player()
-		player.enter_spin_mode()
+		if player:
+			player.enter_spin_mode()
 
 func _on_transparency_area_body_entered(body: Node2D) -> void:
 	if !interior.visible and !spin_mode:
